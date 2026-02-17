@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T12:44:06.349Z\n"
-"PO-Revision-Date: 2026-02-17T10:14:38.718Z\n"
+"PO-Revision-Date: 2026-02-17T12:28:09.154Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -223,13 +223,12 @@ msgstr ""
 "Each favicon uses bold colors, strong contrasts, and clear iconography suitable for various\n"
 "display sizes."
 
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"On this page you'll find free, private AI tools that run entirely in your browser - and even\n"
-"\t\t\t\toffline!"
-msgstr ""
-"On this page you'll find free, private AI tools that run entirely in your browser - and even\n"
-"offline!"
+#~ msgid ""
+#~ "On this page you'll find free, private AI tools that run entirely in your browser - and even\n"
+#~ "\t\t\t\toffline!"
+#~ msgstr ""
+#~ "On this page you'll find free, private AI tools that run entirely in your browser - and even\n"
+#~ "offline!"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #01"
@@ -240,9 +239,8 @@ msgstr "Tool #01"
 msgid "Chat"
 msgstr "Chat"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp"
-msgstr "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp"
+#~ msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp"
+#~ msgstr "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #02"
@@ -260,13 +258,12 @@ msgstr "Tool #03"
 msgid "Text to Speech"
 msgstr "Text to Speech"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper,\n"
-"\t\t\t\t\t\tor Kokoro models for high-quality voice synthesis."
-msgstr ""
-"Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper,\n"
-"or Kokoro models for high-quality voice synthesis."
+#~ msgid ""
+#~ "Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper,\n"
+#~ "\t\t\t\t\t\tor Kokoro models for high-quality voice synthesis."
+#~ msgstr ""
+#~ "Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper,\n"
+#~ "or Kokoro models for high-quality voice synthesis."
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #04"
@@ -645,13 +642,12 @@ msgstr "Words"
 msgid "<0/> Count LLM Tokens"
 msgstr "<0/> Count LLM Tokens"
 
-#: src/routes/[[lang]]/count-tokens/+page.svelte
-msgid ""
-"Calculate how many tokens your text will use with different AI models. Token counts affect\n"
-"\t\t\tcontext limits for AI conversations."
-msgstr ""
-"Calculate how many tokens your text will use with different AI models. Token counts affect\n"
-"context limits for AI conversations."
+#~ msgid ""
+#~ "Calculate how many tokens your text will use with different AI models. Token counts affect\n"
+#~ "\t\t\tcontext limits for AI conversations."
+#~ msgstr ""
+#~ "Calculate how many tokens your text will use with different AI models. Token counts affect\n"
+#~ "context limits for AI conversations."
 
 #: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid "Anthropic Claude"
@@ -675,25 +671,23 @@ msgstr "Count tokens for GPT-4, GPT-4o, GPT-3.5 Turbo, and other OpenAI models"
 msgid "What are tokens?"
 msgstr "What are tokens?"
 
-#: src/routes/[[lang]]/count-tokens/+page.svelte
-msgid ""
-"Tokens are the basic units that language models process. A token can be as short as one\n"
-"\t\t\tcharacter or as long as one word. On average:"
-msgstr ""
-"Tokens are the basic units that language models process. A token can be as short as one\n"
-"character or as long as one word. On average:"
+#~ msgid ""
+#~ "Tokens are the basic units that language models process. A token can be as short as one\n"
+#~ "\t\t\tcharacter or as long as one word. On average:"
+#~ msgstr ""
+#~ "Tokens are the basic units that language models process. A token can be as short as one\n"
+#~ "character or as long as one word. On average:"
 
 #: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid "1 token ≈ 4 characters in English"
 msgstr "1 token ≈ 4 characters in English"
 
-#: src/routes/[[lang]]/count-tokens/+page.svelte
-msgid ""
-"Different models use different tokenization methods, so the same text may result in different\n"
-"\t\t\ttoken counts."
-msgstr ""
-"Different models use different tokenization methods, so the same text may result in different\n"
-"token counts."
+#~ msgid ""
+#~ "Different models use different tokenization methods, so the same text may result in different\n"
+#~ "\t\t\ttoken counts."
+#~ msgstr ""
+#~ "Different models use different tokenization methods, so the same text may result in different\n"
+#~ "token counts."
 
 #: src/routes/[[lang]]/chat/+page.svelte
 msgid "Failed to load model. Please check your connection and try again."
@@ -1177,21 +1171,19 @@ msgstr "Nook: Local AI"
 msgid "Count tokens for Claude models including Claude Opus 4.1, Sonnet 4, and Haiku"
 msgstr "Count tokens for Claude models including Claude Opus 4.1, Sonnet 4, and Haiku"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"Convert speech to text using Whisper AI. Upload any existing audio file or record a new\n"
-"audio clip directly in your browser and export as text or a subtitle file."
-msgstr ""
-"Convert speech to text using Whisper AI. Upload any existing audio file or record a new\n"
-"audio clip directly in your browser and export as text or a subtitle file."
+#~ msgid ""
+#~ "Convert speech to text using Whisper AI. Upload any existing audio file or record a new\n"
+#~ "audio clip directly in your browser and export as text or a subtitle file."
+#~ msgstr ""
+#~ "Convert speech to text using Whisper AI. Upload any existing audio file or record a new\n"
+#~ "audio clip directly in your browser and export as text or a subtitle file."
 
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2 models for\n"
-"professional results."
-msgstr ""
-"Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2 models for\n"
-"professional results."
+#~ msgid ""
+#~ "Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2 models for\n"
+#~ "professional results."
+#~ msgstr ""
+#~ "Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2 models for\n"
+#~ "professional results."
 
 #: src/routes/[[lang]]/language/+page.svelte
 msgid "Language Settings - Nook"
@@ -1621,3 +1613,103 @@ msgstr "More tools"
 #: src/routes/[[lang]]/+page.svelte
 msgid "Ibex Tools Local AI"
 msgstr "Ibex Tools Local AI"
+
+#~ msgid ""
+#~ "On this page you'll find free, private AI tools that run entirely in your browser - and\n"
+#~ "even offline!"
+#~ msgstr ""
+#~ "On this page you'll find free, private AI tools that run entirely in your browser - and\n"
+#~ "even offline!"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid ""
+"Chat with Large Language Models like Gemma3, completely on-device thanks to\n"
+"llama.cpp"
+msgstr ""
+"Chat with Large Language Models like Gemma3, completely on-device thanks to\n"
+"llama.cpp"
+
+#~ msgid ""
+#~ "Convert speech to text using Whisper AI. Upload any existing audio file or record a\n"
+#~ "new audio clip directly in your browser and export as text or a subtitle file."
+#~ msgstr ""
+#~ "Convert speech to text using Whisper AI. Upload any existing audio file or record a\n"
+#~ "new audio clip directly in your browser and export as text or a subtitle file."
+
+#: src/routes/[[lang]]/+page.svelte
+msgid ""
+"Convert text to natural-sounding speech using AI models. Choose from Kitten TTS,\n"
+"Piper, or Kokoro models for high-quality voice synthesis."
+msgstr ""
+"Convert text to natural-sounding speech using AI models. Choose from Kitten TTS,\n"
+"Piper, or Kokoro models for high-quality voice synthesis."
+
+#~ msgid ""
+#~ "Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2 models\n"
+#~ "for professional results."
+#~ msgstr ""
+#~ "Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2 models\n"
+#~ "for professional results."
+
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+msgid ""
+"Different models use different tokenization methods, so the same text may result in\n"
+"different token counts."
+msgstr ""
+"Different models use different tokenization methods, so the same text may result in\n"
+"different token counts."
+
+#~ msgid ""
+#~ "div <0><0><0><0><0><0>Tool #01</0> <1><0/> <1>Chat</1> <2>Chat with Large Language Models like Gemma3, completely on-device thanks to\n"
+#~ "llama.cpp</2></1></0> <1><0>Tool #02</0> <1><0/> <1>Transcribe Audio</1> <2>Convert speech to text using Whisper AI. Upload any existing audio file or record a\n"
+#~ "new audio clip directly in your browser and export as text or a subtitle file.</2></1></1> <2><0>Tool #03</0> <1><0/> <1>Text to Speech</1> <2>Convert text to natural-sounding speech using AI models. Choose from Kitten TTS,\n"
+#~ "Piper, or Kokoro models for high-quality voice synthesis.</2></1></2> <3><0>Tool #04</0> <1><0/> <1>Remove Background</1> <2>Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2 models\n"
+#~ "for professional results.</2></1></3> <4><0>Tool #05</0> <1><0/> <1>Count Tokens</1> <2>Estimate token usage for prompts across OpenAI and Anthropic models.</2></1></4></0></0> <1><0><0>All processing happens locally in your browser using WebAssembly.</0> <1>No data is sent to external servers.</1></0></1></0></0>"
+#~ msgstr ""
+#~ "div <0><0><0><0><0><0>Tool #01</0> <1><0/> <1>Chat</1> <2>Chat with Large Language Models like Gemma3, completely on-device thanks to\n"
+#~ "llama.cpp</2></1></0> <1><0>Tool #02</0> <1><0/> <1>Transcribe Audio</1> <2>Convert speech to text using Whisper AI. Upload any existing audio file or record a\n"
+#~ "new audio clip directly in your browser and export as text or a subtitle file.</2></1></1> <2><0>Tool #03</0> <1><0/> <1>Text to Speech</1> <2>Convert text to natural-sounding speech using AI models. Choose from Kitten TTS,\n"
+#~ "Piper, or Kokoro models for high-quality voice synthesis.</2></1></2> <3><0>Tool #04</0> <1><0/> <1>Remove Background</1> <2>Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2 models\n"
+#~ "for professional results.</2></1></3> <4><0>Tool #05</0> <1><0/> <1>Count Tokens</1> <2>Estimate token usage for prompts across OpenAI and Anthropic models.</2></1></4></0></0> <1><0><0>All processing happens locally in your browser using WebAssembly.</0> <1>No data is sent to external servers.</1></0></1></0></0>"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid ""
+"On this page you'll find free, private AI tools that run entirely in your browser -\n"
+"and even offline!"
+msgstr ""
+"On this page you'll find free, private AI tools that run entirely in your browser -\n"
+"and even offline!"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid ""
+"Convert speech to text using Whisper AI. Upload any existing audio file or\n"
+"record a new audio clip directly in your browser and export as text or a\n"
+"subtitle file."
+msgstr ""
+"Convert speech to text using Whisper AI. Upload any existing audio file or\n"
+"record a new audio clip directly in your browser and export as text or a\n"
+"subtitle file."
+
+#: src/routes/[[lang]]/+page.svelte
+msgid ""
+"Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2\n"
+"models for professional results."
+msgstr ""
+"Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2\n"
+"models for professional results."
+
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+msgid ""
+"Calculate how many tokens your text will use with different AI models. Token counts\n"
+"affect context limits for AI conversations."
+msgstr ""
+"Calculate how many tokens your text will use with different AI models. Token counts\n"
+"affect context limits for AI conversations."
+
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+msgid ""
+"Tokens are the basic units that language models process. A token can be as short as\n"
+"one character or as long as one word. On average:"
+msgstr ""
+"Tokens are the basic units that language models process. A token can be as short as\n"
+"one character or as long as one word. On average:"

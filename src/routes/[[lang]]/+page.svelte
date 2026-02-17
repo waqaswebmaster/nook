@@ -4,6 +4,9 @@
 	import ImageIcon from 'virtual:icons/lucide/image';
 	import SpeechIcon from 'virtual:icons/lucide/speech';
 	import CalculatorIcon from 'virtual:icons/lucide/calculator';
+	import CardInterface from '$lib/components/common/CardInterface.svelte';
+	import SectionCard from '$lib/components/common/SectionCard.svelte';
+	import ContentArea from '$lib/components/common/ContentArea.svelte';
 	import { page } from '$app/stores';
 	import { resolve } from '$app/paths';
 	import { getCurrentLanguageFromPage, createLocalizedLink } from '$lib/i18n-utils';
@@ -19,90 +22,106 @@
 
 <div class="main-menu">
 	<div class="menu-container">
-		<header class="menu-header">
-			<h1 class="main-title">
-				<span class="title-line">Ibex Tools Local AI</span>
-			</h1>
-			<p class="subtitle">
-				On this page you'll find free, private AI tools that run entirely in your browser - and even
-				offline!
-			</p>
-		</header>
+		<CardInterface>
+			<div class="menu-header-container">
+				<SectionCard rotation={-0.5} animationDelay={0}>
+					<header class="menu-header">
+						<h1 class="main-title">
+							<span class="title-line">Ibex Tools Local AI</span>
+						</h1>
+						<p class="subtitle">
+							On this page you'll find free, private AI tools that run entirely in your browser -
+							and even offline!
+						</p>
+					</header>
+				</SectionCard>
+			</div>
 
-		<div class="feature-grid">
-			<a href={resolve(chatLink)} class="feature-card chat-card">
-				<div class="card-number">Tool #01</div>
-				<div class="card-content">
-					<div class="icon-container">
-						<MessageSquareIcon style="width: 48px; height: 48px; stroke-width: 2.5" />
-					</div>
-					<h2>Chat</h2>
-					<p class="feature-description">
-						Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp
-					</p>
+			<ContentArea>
+				<div class="main-content">
+					<SectionCard rotation={0.3} animationDelay={0.1}>
+						<div class="feature-grid">
+							<a href={resolve(chatLink)} class="feature-card chat-card">
+								<div class="card-number">Tool #01</div>
+								<div class="card-content">
+									<div class="icon-container">
+										<MessageSquareIcon style="width: 48px; height: 48px; stroke-width: 2.5" />
+									</div>
+									<h2>Chat</h2>
+									<p class="feature-description">
+										Chat with Large Language Models like Gemma3, completely on-device thanks to
+										llama.cpp
+									</p>
+								</div>
+							</a>
+
+							<a href={resolve(transcribeLink)} class="feature-card transcribe-card">
+								<div class="card-number">Tool #02</div>
+								<div class="card-content">
+									<div class="icon-container">
+										<MicIcon style="width: 48px; height: 48px; stroke-width: 2.5" />
+									</div>
+									<h2>Transcribe Audio</h2>
+									<p class="feature-description">
+										Convert speech to text using Whisper AI. Upload any existing audio file or
+										record a new audio clip directly in your browser and export as text or a
+										subtitle file.
+									</p>
+								</div>
+							</a>
+
+							<a href={resolve(ttsLink)} class="feature-card tts-card">
+								<div class="card-number">Tool #03</div>
+								<div class="card-content">
+									<div class="icon-container">
+										<SpeechIcon style="width: 48px; height: 48px; stroke-width: 2.5" />
+									</div>
+									<h2>Text to Speech</h2>
+									<p class="feature-description">
+										Convert text to natural-sounding speech using AI models. Choose from Kitten TTS,
+										Piper, or Kokoro models for high-quality voice synthesis.
+									</p>
+								</div>
+							</a>
+
+							<a href={resolve(backgroundLink)} class="feature-card background-card">
+								<div class="card-number">Tool #04</div>
+								<div class="card-content">
+									<div class="icon-container">
+										<ImageIcon style="width: 48px; height: 48px; stroke-width: 2.5" />
+									</div>
+									<h2>Remove Background</h2>
+									<p class="feature-description">
+										Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2
+										models for professional results.
+									</p>
+								</div>
+							</a>
+
+							<a href={resolve(tokensLink)} class="feature-card tokens-card">
+								<div class="card-number">Tool #05</div>
+								<div class="card-content">
+									<div class="icon-container">
+										<CalculatorIcon style="width: 48px; height: 48px; stroke-width: 2.5" />
+									</div>
+									<h2>Count Tokens</h2>
+									<p class="feature-description">
+										Estimate token usage for prompts across OpenAI and Anthropic models.
+									</p>
+								</div>
+							</a>
+						</div>
+					</SectionCard>
+
+					<SectionCard rotation={-0.2} animationDelay={0.2}>
+						<footer class="menu-footer">
+							<p>All processing happens locally in your browser using WebAssembly.</p>
+							<p>No data is sent to external servers.</p>
+						</footer>
+					</SectionCard>
 				</div>
-			</a>
-
-			<a href={resolve(transcribeLink)} class="feature-card transcribe-card">
-				<div class="card-number">Tool #02</div>
-				<div class="card-content">
-					<div class="icon-container">
-						<MicIcon style="width: 48px; height: 48px; stroke-width: 2.5" />
-					</div>
-					<h2>Transcribe Audio</h2>
-					<p class="feature-description">
-						Convert speech to text using Whisper AI. Upload any existing audio file or record a new
-						audio clip directly in your browser and export as text or a subtitle file.
-					</p>
-				</div>
-			</a>
-
-			<a href={resolve(ttsLink)} class="feature-card tts-card">
-				<div class="card-number">Tool #03</div>
-				<div class="card-content">
-					<div class="icon-container">
-						<SpeechIcon style="width: 48px; height: 48px; stroke-width: 2.5" />
-					</div>
-					<h2>Text to Speech</h2>
-					<p class="feature-description">
-						Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper,
-						or Kokoro models for high-quality voice synthesis.
-					</p>
-				</div>
-			</a>
-
-			<a href={resolve(backgroundLink)} class="feature-card background-card">
-				<div class="card-number">Tool #04</div>
-				<div class="card-content">
-					<div class="icon-container">
-						<ImageIcon style="width: 48px; height: 48px; stroke-width: 2.5" />
-					</div>
-					<h2>Remove Background</h2>
-					<p class="feature-description">
-						Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2 models for
-						professional results.
-					</p>
-				</div>
-			</a>
-
-			<a href={resolve(tokensLink)} class="feature-card tokens-card">
-				<div class="card-number">Tool #05</div>
-				<div class="card-content">
-					<div class="icon-container">
-						<CalculatorIcon style="width: 48px; height: 48px; stroke-width: 2.5" />
-					</div>
-					<h2>Count Tokens</h2>
-					<p class="feature-description">
-						Estimate token usage for prompts across OpenAI and Anthropic models.
-					</p>
-				</div>
-			</a>
-		</div>
-
-		<footer class="menu-footer">
-			<p>All processing happens locally in your browser using WebAssembly.</p>
-			<p>No data is sent to external servers.</p>
-		</footer>
+			</ContentArea>
+		</CardInterface>
 	</div>
 </div>
 
@@ -143,15 +162,16 @@
 		display: flex;
 		align-items: flex-start;
 		justify-content: center;
-		padding: 1rem 1rem 2rem;
 		box-sizing: border-box;
 		position: relative;
 		z-index: 2;
 	}
 
+	.menu-header-container {
+		padding: 1.5rem;
+	}
 	.menu-container {
 		width: 100%;
-		max-width: 1200px;
 		margin: 0 auto;
 	}
 
@@ -315,6 +335,17 @@
 
 	.menu-footer p {
 		margin: 0.5rem 0;
+	}
+
+	/* main-content wrapper (keeps layout consistent with other pages) */
+	.main-content {
+		transition: all 0.3s ease;
+	}
+
+	.main-content.disabled {
+		opacity: 0.3;
+		pointer-events: none;
+		filter: grayscale(50%);
 	}
 
 	/* Responsive adjustments */
