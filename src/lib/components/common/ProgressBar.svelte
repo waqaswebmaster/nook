@@ -38,7 +38,7 @@
 
 	.progress-bar-fill {
 		height: 100%;
-		background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-warning) 100%);
+		background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
 		position: relative;
 		transition: width 0.3s ease;
 	}

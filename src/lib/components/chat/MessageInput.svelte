@@ -209,7 +209,7 @@
 		height: 44px;
 		margin: 8px;
 		align-self: center;
-		background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-warning) 100%);
+		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
 		color: var(--color-text-primary);
 		border: var(--border-brutalist-thin);
 		border-radius: 8px;

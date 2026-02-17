@@ -144,7 +144,11 @@
 	}
 
 	.user-message .message-content {
-		background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-warning) 100%);
+		background: linear-gradient(
+			135deg,
+			var(--color-primary-dark) 0%,
+			var(--color-primary-hover) 100%
+		);
 		color: var(--color-text-primary);
 		box-shadow: 5px 5px 0 var(--color-border-primary);
 		border-bottom-right-radius: 4px;

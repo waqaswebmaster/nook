@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T12:44:06.349Z\n"
-"PO-Revision-Date: 2026-02-17T12:28:09.154Z\n"
+"PO-Revision-Date: 2026-02-17T13:57:20.207Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -470,9 +470,8 @@ msgstr "Runs on most computers and phones"
 msgid "High quality responses"
 msgstr "High quality responses"
 
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "<0/> Chat with AI Models"
-msgstr "<0/> Chat with AI Models"
+#~ msgid "<0/> Chat with AI Models"
+#~ msgstr "<0/> Chat with AI Models"
 
 #: src/lib/components/chat/ModelSelector.svelte
 msgid "<0>Step 1:</0> Choose Your AI Model"
@@ -1713,3 +1712,7 @@ msgid ""
 msgstr ""
 "Tokens are the basic units that language models process. A token can be as short as\n"
 "one character or as long as one word. On average:"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "Chat with AI Models"
+msgstr "Chat with AI Models"

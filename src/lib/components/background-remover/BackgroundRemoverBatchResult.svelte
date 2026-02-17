@@ -192,7 +192,7 @@
 		left: -10px;
 		right: -10px;
 		bottom: -10px;
-		background: linear-gradient(135deg, var(--color-success) 0%, var(--color-accent-blue) 100%);
+		background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent-blue) 100%);
 		z-index: -1;
 		opacity: 0.3;
 		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
@@ -222,7 +222,7 @@
 		align-items: center;
 		justify-content: center;
 		gap: 0.5rem;
-		background: var(--color-success);
+		background: var(--color-secondary);
 		padding: 0.5rem 1rem;
 		border: var(--border-brutalist-thick);
 		box-shadow: var(--shadow-brutalist-medium);
@@ -276,7 +276,7 @@
 	}
 
 	.summary-item.success {
-		background: var(--color-success);
+		background: var(--color-secondary);
 		color: var(--color-text-primary);
 	}
 
@@ -517,7 +517,7 @@
 	}
 
 	.download-individual-btn:hover {
-		background: var(--color-success);
+		background: var(--color-secondary);
 		transform: scale(1.1);
 	}
 

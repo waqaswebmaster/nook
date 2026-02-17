@@ -163,7 +163,7 @@
 			90deg,
 			var(--color-primary) 0%,
 			var(--color-primary) 40%,
-			var(--color-warning) 60%,
+			var(--color-primary-hover) 60%,
 			var(--color-primary) 100%
 		);
 		background-size: 300% 100%;
