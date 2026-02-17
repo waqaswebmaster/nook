@@ -4,6 +4,9 @@
 	import SparklesIcon from 'virtual:icons/lucide/sparkles';
 	import ShapesIcon from 'virtual:icons/lucide/shapes';
 	import ChevronRightIcon from 'virtual:icons/lucide/chevron-right';
+	import CardInterface from '$lib/components/common/CardInterface.svelte';
+	import SectionCard from '$lib/components/common/SectionCard.svelte';
+	import ContentArea from '$lib/components/common/ContentArea.svelte';
 	import { page } from '$app/stores';
 	import { resolve } from '$app/paths';
 	import { getCurrentLanguageFromPage, getTokenizerPaths } from '$lib/i18n-utils';
@@ -14,90 +17,111 @@
 </script>
 
 <div class="tokenizers-container">
-	<div class="tokenizers-header">
-		<h1>
-			<span class="header-icon"><SparklesIcon /></span>
-			Count LLM Tokens
-		</h1>
-		<p class="header-description">
-			Calculate how many tokens your text will use with different AI models. Token counts affect
-			context limits for AI conversations.
-		</p>
-	</div>
+	<CardInterface>
+		<ContentArea>
+			<div class="main-content">
+				<SectionCard rotation={-0.5} animationDelay={0}>
+					<div class="tokenizers-header">
+						<h1>
+							<span class="header-icon"><SparklesIcon /></span>
+							Count LLM Tokens
+						</h1>
+						<p class="header-description">
+							Calculate how many tokens your text will use with different AI models. Token counts
+							affect context limits for AI conversations.
+						</p>
+					</div>
+				</SectionCard>
 
-	<div class="tokenizer-cards">
-		<a href={resolve(tokenizerPaths.anthropic)} class="tokenizer-card claude-card">
-			<div class="card-decoration"></div>
-			<div class="card-content">
-				<div class="card-icon">
-					<BrainIcon />
-				</div>
-				<h2>Anthropic Claude</h2>
-				<p class="card-description">
-					Count tokens for Claude models including Claude Opus 4.1, Sonnet 4, and Haiku
-				</p>
-				<div class="card-action">
-					<span>Open Tokenizer</span>
-					<ChevronRightIcon />
-				</div>
+				<SectionCard rotation={0.3} animationDelay={0.1}>
+					<div class="tokenizer-cards">
+						<a href={resolve(tokenizerPaths.anthropic)} class="tokenizer-card claude-card">
+							<div class="card-decoration"></div>
+							<div class="card-content">
+								<div class="card-icon">
+									<BrainIcon />
+								</div>
+								<h2>Anthropic Claude</h2>
+								<p class="card-description">
+									Count tokens for Claude models including Claude Opus 4.1, Sonnet 4, and Haiku
+								</p>
+								<div class="card-action">
+									<span>Open Tokenizer</span>
+									<ChevronRightIcon />
+								</div>
+							</div>
+						</a>
+
+						<a href={resolve(tokenizerPaths.openai)} class="tokenizer-card chatgpt-card">
+							<div class="card-decoration"></div>
+							<div class="card-content">
+								<div class="card-icon">
+									<MessageSquareIcon />
+								</div>
+								<h2>OpenAI ChatGPT</h2>
+								<p class="card-description">
+									Count tokens for GPT-4, GPT-4o, GPT-3.5 Turbo, and other OpenAI models
+								</p>
+								<div class="card-action">
+									<span>Open Tokenizer</span>
+									<ChevronRightIcon />
+								</div>
+							</div>
+						</a>
+
+						<a href={resolve(tokenizerPaths.gemini)} class="tokenizer-card gemini-card">
+							<div class="card-decoration"></div>
+							<div class="card-content">
+								<div class="card-icon">
+									<ShapesIcon />
+								</div>
+								<h2>Google Gemini</h2>
+								<p class="card-description">Count tokens for Gemini models</p>
+								<div class="card-action">
+									<span>Open Tokenizer</span>
+									<ChevronRightIcon />
+								</div>
+							</div>
+						</a>
+					</div>
+				</SectionCard>
+
+				<SectionCard rotation={-0.2} animationDelay={0.2}>
+					<div class="info-section">
+						<h3>What are tokens?</h3>
+						<p>
+							Tokens are the basic units that language models process. A token can be as short as
+							one character or as long as one word. On average:
+						</p>
+						<ul>
+							<li>1 token ≈ 4 characters in English</li>
+						</ul>
+						<p>
+							Different models use different tokenization methods, so the same text may result in
+							different token counts.
+						</p>
+					</div>
+				</SectionCard>
 			</div>
-		</a>
-
-		<a href={resolve(tokenizerPaths.openai)} class="tokenizer-card chatgpt-card">
-			<div class="card-decoration"></div>
-			<div class="card-content">
-				<div class="card-icon">
-					<MessageSquareIcon />
-				</div>
-				<h2>OpenAI ChatGPT</h2>
-				<p class="card-description">
-					Count tokens for GPT-4, GPT-4o, GPT-3.5 Turbo, and other OpenAI models
-				</p>
-				<div class="card-action">
-					<span>Open Tokenizer</span>
-					<ChevronRightIcon />
-				</div>
-			</div>
-		</a>
-
-		<a href={resolve(tokenizerPaths.gemini)} class="tokenizer-card gemini-card">
-			<div class="card-decoration"></div>
-			<div class="card-content">
-				<div class="card-icon">
-					<ShapesIcon />
-				</div>
-				<h2>Google Gemini</h2>
-				<p class="card-description">Count tokens for Gemini models</p>
-				<div class="card-action">
-					<span>Open Tokenizer</span>
-					<ChevronRightIcon />
-				</div>
-			</div>
-		</a>
-	</div>
-
-	<div class="info-section">
-		<h3>What are tokens?</h3>
-		<p>
-			Tokens are the basic units that language models process. A token can be as short as one
-			character or as long as one word. On average:
-		</p>
-		<ul>
-			<li>1 token ≈ 4 characters in English</li>
-		</ul>
-		<p>
-			Different models use different tokenization methods, so the same text may result in different
-			token counts.
-		</p>
-	</div>
+		</ContentArea>
+	</CardInterface>
 </div>
 
 <style>
 	.tokenizers-container {
-		padding: 1rem;
-		max-width: 900px;
 		margin: 0 auto;
 		animation: fadeIn 0.5s ease-out;
+	}
+
+	/* main-content wrapper to match other pages */
+	.main-content {
+		transition: all 0.3s ease;
+	}
+
+	.main-content.disabled {
+		opacity: 0.3;
+		pointer-events: none;
+		filter: grayscale(50%);
 	}
 
 	@keyframes fadeIn {
@@ -113,12 +137,12 @@
 
 	.tokenizers-header {
 		text-align: center;
-		margin-bottom: 3rem;
-		padding: 2rem;
-		background: var(--color-background-main);
-		border: var(--border-brutalist-thick);
-		box-shadow: var(--shadow-brutalist-large);
-		transform: rotate(-0.5deg);
+		margin: 0;
+		padding: 0;
+		background: transparent;
+		border: none;
+		box-shadow: none;
+		transform: none;
 	}
 
 	.tokenizers-header h1 {
@@ -309,11 +333,11 @@
 	}
 
 	.info-section {
-		background: var(--color-background-secondary);
-		border: var(--border-brutalist-thick);
-		padding: 2rem;
-		box-shadow: var(--shadow-brutalist-medium);
-		transform: rotate(-0.3deg);
+		background: transparent;
+		border: none;
+		padding: 0;
+		box-shadow: none;
+		transform: none;
 	}
 
 	.info-section h3 {
@@ -366,7 +390,7 @@
 		}
 
 		.tokenizers-header {
-			padding: 1.5rem;
+			padding: 0;
 		}
 
 		.tokenizers-header h1 {
@@ -378,7 +402,7 @@
 		}
 
 		.info-section {
-			padding: 1.5rem;
+			padding: 0;
 		}
 	}
 </style>

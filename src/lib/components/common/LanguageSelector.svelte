@@ -174,7 +174,7 @@
 	}
 
 	.language-option.selected {
-		background: var(--color-success);
+		background: var(--color-secondary);
 	}
 
 	.language-btn {

@@ -8,6 +8,8 @@
 	import BrainIcon from 'virtual:icons/lucide/brain';
 	import SmartphoneIcon from 'virtual:icons/lucide/smartphone';
 	import SparklesIcon from 'virtual:icons/lucide/sparkles';
+	import CardInterface from '$lib/components/common/CardInterface.svelte';
+	import Toolbar from '$lib/components/common/Toolbar.svelte';
 
 	interface Props {
 		modelSelection: string;
@@ -29,14 +31,8 @@
 	}
 </script>
 
-<div class="card-interface" style="animation: fadeIn 0.5s ease-out;">
-	<div class="toolbar">
-		<span class="model-info">
-			<span class="model-emoji"><RocketIcon /></span>
-			Chat with AI Models
-		</span>
-		<div class="toolbar-decoration"></div>
-	</div>
+<CardInterface>
+	<Toolbar modelInfo="Chat with AI Models" ModelIcon={RocketIcon} />
 
 	<div class="content-area">
 		<!-- Model Selection -->
@@ -110,7 +106,7 @@
 			Models run locally in your browser. No data is sent to external servers.
 		</div>
 	</div>
-</div>
+</CardInterface>
 
 <style>
 	.model-selection {

@@ -378,7 +378,7 @@
 
 	.container {
 		width: 100%;
-		max-width: 900px;
+		max-width: 90vw;
 		margin: 0 auto;
 		padding: 1rem;
 		box-sizing: border-box;

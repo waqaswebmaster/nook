@@ -44,7 +44,7 @@
 <style>
 	.action-button {
 		padding: 0.5rem 1rem;
-		background: var(--color-success);
+		background: var(--color-secondary);
 		color: var(--color-text-primary);
 		border: var(--border-brutalist-thin);
 		border-radius: 6px;

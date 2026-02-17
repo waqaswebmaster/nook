@@ -246,7 +246,7 @@
 	}
 
 	.background-remover-upload.batch-mode .upload-decoration {
-		background: linear-gradient(135deg, var(--color-accent-blue) 0%, var(--color-success) 100%);
+		background: linear-gradient(135deg, var(--color-accent-blue) 0%, var(--color-secondary) 100%);
 	}
 
 	@keyframes slideIn {
@@ -478,7 +478,7 @@
 		gap: 0.5rem;
 		width: 100%;
 		padding: 1rem 1.5rem;
-		background: var(--color-success);
+		background: var(--color-secondary);
 		color: var(--color-text-primary);
 		border: var(--border-brutalist-thick);
 		border-radius: 8px;
