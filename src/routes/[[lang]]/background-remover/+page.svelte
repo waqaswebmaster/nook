@@ -503,7 +503,11 @@
 			<!-- Model Selection -->
 			{#if !isProcessing && !processedImageUrl && batchResults.length === 0}
 				<SectionCard rotation={0.2} animationDelay={0}>
-					<StepHeader stepNumber={1} title="Model Selection" backgroundColor="#ff69b4" />
+					<StepHeader
+						stepNumber={1}
+						title="Model Selection"
+						backgroundColor="var(--color-accent-red)"
+					/>
 					<div class="model-buttons">
 						{#each getAvailableModels() as modelOption (modelOption.id)}
 							<button

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T12:44:06.349Z\n"
-"PO-Revision-Date: 2026-02-17T13:57:20.207Z\n"
+"PO-Revision-Date: 2026-02-17T14:33:09.239Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -1716,3 +1716,12 @@ msgstr ""
 #: src/lib/components/chat/ModelSelector.svelte
 msgid "Chat with AI Models"
 msgstr "Chat with AI Models"
+
+#~ msgid "All processing happens locally — no data leaves your browser."
+#~ msgstr "All processing happens locally — no data leaves your browser."
+
+#~ msgid "Ibex"
+#~ msgstr "Ibex"
+
+#~ msgid "Ibex Tools"
+#~ msgstr "Ibex Tools"

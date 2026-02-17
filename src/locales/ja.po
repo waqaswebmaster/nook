@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:41:34.932Z\n"
-"PO-Revision-Date: 2026-02-17T13:56:58.049Z\n"
+"PO-Revision-Date: 2026-02-17T14:33:00.251Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -271,9 +271,8 @@ msgstr "ほとんどのコンピューターとスマートフォンで動作"
 msgid "High quality responses"
 msgstr "高品質な応答"
 
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "<0/> Chat with AI Models"
-msgstr "<0/> AIモデルとチャット"
+#~ msgid "<0/> Chat with AI Models"
+#~ msgstr "<0/> AIモデルとチャット"
 
 #: src/lib/components/chat/ModelSelector.svelte
 msgid "<0>Step 1:</0> Choose Your AI Model"
@@ -1688,4 +1687,14 @@ msgstr ""
 
 #: src/lib/components/chat/ModelSelector.svelte
 msgid "Chat with AI Models"
+msgstr ""
+
+#~ msgid "All processing happens locally — no data leaves your browser."
+#~ msgstr ""
+
+#~ msgid "Ibex"
+#~ msgstr ""
+
+#: src/routes/+layout.svelte
+msgid "Ibex Tools"
 msgstr ""
