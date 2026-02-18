@@ -506,7 +506,7 @@
 					<StepHeader
 						stepNumber={1}
 						title="Model Selection"
-						backgroundColor="var(--color-accent-red)"
+						backgroundColor="var(--color-background-secondary)"
 					/>
 					<div class="model-buttons">
 						{#each getAvailableModels() as modelOption (modelOption.id)}

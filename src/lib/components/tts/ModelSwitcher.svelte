@@ -17,7 +17,7 @@
 	<StepHeader
 		stepNumber={1}
 		title="Text-to-speech Model"
-		backgroundColor="var(--color-primary-dark)"
+		backgroundColor="var(--color-background-secondary)"
 	/>
 
 	<div class="model-cards">

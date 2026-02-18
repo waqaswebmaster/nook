@@ -7,6 +7,7 @@
 	import CardInterface from '$lib/components/common/CardInterface.svelte';
 	import SectionCard from '$lib/components/common/SectionCard.svelte';
 	import ContentArea from '$lib/components/common/ContentArea.svelte';
+	import Toolbar from '$lib/components/common/Toolbar.svelte';
 	import { page } from '$app/stores';
 	import { resolve } from '$app/paths';
 	import { getCurrentLanguageFromPage, getTokenizerPaths } from '$lib/i18n-utils';
@@ -119,11 +120,11 @@
 		transition: all 0.3s ease;
 	}
 
-	.main-content.disabled {
+	/* .main-content.disabled {
 		opacity: 0.3;
 		pointer-events: none;
 		filter: grayscale(50%);
-	}
+	} */
 
 	@keyframes fadeIn {
 		from {

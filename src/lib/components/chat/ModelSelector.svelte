@@ -41,7 +41,7 @@
 			<StepHeader
 				stepNumber={1}
 				title="Choose Your AI Model"
-				backgroundColor="var(--color-primary-dark)"
+				backgroundColor="var(--color-background-secondary)"
 			/>
 			<div class="model-cards">
 				{#each AVAILABLE_MODELS as model (model.url)}
@@ -73,7 +73,7 @@
 			<StepHeader
 				stepNumber={2}
 				title="Advanced Settings"
-				backgroundColor="var(--color-primary-dark)"
+				backgroundColor="var(--color-background-secondary)"
 			/>
 			<AdvancedSection>
 				<label class="param-item">
@@ -141,6 +141,18 @@
 	}
 
 	/* step header handled by shared `StepHeader` component */
+
+	/* Override StepHeader background + badge for chat page */
+	:global(.model-selection .step-header) {
+		background: var(--color-background-secondary);
+	}
+	:global(.model-selection .step-header),
+	:global(.advanced-section .step-header) {
+		background: var(--color-background-secondary);
+		color: var(--color-text-primary);
+		border: 1px solid var(--color-border-secondary);
+		box-shadow: none;
+	}
 
 	/* using StepHeader component's step badge */
 
@@ -320,7 +332,7 @@
 		animation-fill-mode: both;
 	}
 
-	.advanced-section h3 {
+	/* .advanced-section h3 {
 		margin-top: 0;
 		margin-bottom: 1.25rem;
 		font-family: var(--font-family-display);
@@ -337,7 +349,7 @@
 		width: fit-content;
 		margin-left: auto;
 		margin-right: auto;
-	}
+	} */
 
 	.param-item {
 		display: flex;
@@ -502,7 +514,7 @@
 		height: 1.25rem;
 	}
 
-	.toolbar-decoration {
+	/* .toolbar-decoration {
 		position: absolute;
 		bottom: -8px;
 		left: 0;
@@ -515,7 +527,7 @@
 			var(--color-success) 10px,
 			var(--color-success) 20px
 		);
-	}
+	} */
 
 	@keyframes fadeIn {
 		from {
