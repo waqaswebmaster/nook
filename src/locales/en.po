@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T12:44:06.349Z\n"
-"PO-Revision-Date: 2026-02-17T14:33:09.239Z\n"
+"PO-Revision-Date: 2026-02-18T14:04:37.256Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -12,8 +12,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/+layout.svelte
-#: src/routes/+layout.ts
 #: src/routes/[[lang]]/og/+page.svelte
 msgid "Nook"
 msgstr "Nook"
@@ -22,9 +20,8 @@ msgstr "Nook"
 msgid "Change language"
 msgstr "Change language"
 
-#: src/routes/+layout.svelte
-msgid "View source on GitHub"
-msgstr "View source on GitHub"
+#~ msgid "View source on GitHub"
+#~ msgstr "View source on GitHub"
 
 #: src/routes/[[lang]]/transcribe/+page.svelte
 msgid "Whisper Audio Transcription"
@@ -185,9 +182,8 @@ msgstr "<0/> Copied!"
 msgid "<0/> Copy"
 msgstr "<0/> Copy"
 
-#: src/routes/[[lang]]/language/+page.svelte
-msgid "Change the language settings for the Nook application"
-msgstr "Change the language settings for the Nook application"
+#~ msgid "Change the language settings for the Nook application"
+#~ msgstr "Change the language settings for the Nook application"
 
 #: src/routes/[[lang]]/language/+page.svelte
 msgid "Language Settings"
@@ -473,13 +469,11 @@ msgstr "High quality responses"
 #~ msgid "<0/> Chat with AI Models"
 #~ msgstr "<0/> Chat with AI Models"
 
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "<0>Step 1:</0> Choose Your AI Model"
-msgstr "<0>Step 1:</0> Choose Your AI Model"
+#~ msgid "<0>Step 1:</0> Choose Your AI Model"
+#~ msgstr "<0>Step 1:</0> Choose Your AI Model"
 
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "<0>Step 2:</0> Advanced Settings"
-msgstr "<0>Step 2:</0> Advanced Settings"
+#~ msgid "<0>Step 2:</0> Advanced Settings"
+#~ msgstr "<0>Step 2:</0> Advanced Settings"
 
 #: src/lib/components/chat/ModelSelector.svelte
 msgid "Threads <0>(-1 auto)</0>"
@@ -564,9 +558,8 @@ msgstr "{0}x"
 msgid "Sample Rate:"
 msgstr "Sample Rate:"
 
-#: src/lib/components/tts/ModelSwitcher.svelte
-msgid "<0>Step 1:</0> Text-to-speech Model"
-msgstr "<0>Step 1:</0> Text-to-speech Model"
+#~ msgid "<0>Step 1:</0> Text-to-speech Model"
+#~ msgstr "<0>Step 1:</0> Text-to-speech Model"
 
 #: src/lib/components/tts/ModelSwitcher.svelte
 msgid "Kitten TTS Nano"
@@ -1105,33 +1098,29 @@ msgstr "BG Remover"
 msgid "Private AI tools that run in your browser"
 msgstr "Private AI tools that run in your browser"
 
-#: src/routes/[[lang]]/+page.ts
-msgid "Nook - Private, Offline AI in Your Browser"
-msgstr "Nook - Private, Offline AI in Your Browser"
+#~ msgid "Nook - Private, Offline AI in Your Browser"
+#~ msgstr "Nook - Private, Offline AI in Your Browser"
 
 #: src/routes/[[lang]]/+page.ts
 msgid "Free, private AI tools that run entirely in your browser - and even offline! Chat with LLMs, transcribe audio, and remove backgrounds using WebAssembly."
 msgstr "Free, private AI tools that run entirely in your browser - and even offline! Chat with LLMs, transcribe audio, and remove backgrounds using WebAssembly."
 
-#: src/routes/[[lang]]/text-to-speech/+page.ts
-msgid "Text to Speech - Nook"
-msgstr "Text to Speech - Nook"
+#~ msgid "Text to Speech - Nook"
+#~ msgstr "Text to Speech - Nook"
 
 #: src/routes/[[lang]]/text-to-speech/+page.ts
 msgid "Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper, or Kokoro models for high-quality voice synthesis, all running locally in your browser."
 msgstr "Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper, or Kokoro models for high-quality voice synthesis, all running locally in your browser."
 
-#: src/routes/[[lang]]/background-remover/+page.ts
-msgid "Background Remover - Nook"
-msgstr "Background Remover - Nook"
+#~ msgid "Background Remover - Nook"
+#~ msgstr "Background Remover - Nook"
 
 #: src/routes/[[lang]]/background-remover/+page.ts
 msgid "Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for professional results. AI-powered, high quality."
 msgstr "Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for professional results. AI-powered, high quality."
 
-#: src/routes/[[lang]]/count-tokens/+page.ts
-msgid "Count LLM Tokens - Nook"
-msgstr "Count LLM Tokens - Nook"
+#~ msgid "Count LLM Tokens - Nook"
+#~ msgstr "Count LLM Tokens - Nook"
 
 #: src/routes/[[lang]]/count-tokens/+page.ts
 msgid "Calculate token counts for different AI models. Understand context limits for Claude and ChatGPT models with our tokenizer tools."
@@ -1145,17 +1134,15 @@ msgstr "Favicon Concepts - Nook"
 msgid "A comprehensive gallery of 31 favicon concept designs in 512×512 format, featuring AI-themed icons, tech patterns, and brutalist design elements for the Nook application."
 msgstr "A comprehensive gallery of 31 favicon concept designs in 512×512 format, featuring AI-themed icons, tech patterns, and brutalist design elements for the Nook application."
 
-#: src/routes/[[lang]]/chat/+page.ts
-msgid "AI Chat - Nook"
-msgstr "AI Chat - Nook"
+#~ msgid "AI Chat - Nook"
+#~ msgstr "AI Chat - Nook"
 
 #: src/routes/[[lang]]/chat/+page.ts
 msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp. Private, secure, and works offline with no data sharing."
 msgstr "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp. Private, secure, and works offline with no data sharing."
 
-#: src/routes/[[lang]]/transcribe/+page.ts
-msgid "Audio Transcription - Nook"
-msgstr "Audio Transcription - Nook"
+#~ msgid "Audio Transcription - Nook"
+#~ msgstr "Audio Transcription - Nook"
 
 #: src/routes/[[lang]]/transcribe/+page.ts
 msgid "Convert speech to text using Whisper AI. Upload any existing audio file and export as text or subtitle file. High accuracy with multiple formats and local processing."
@@ -1184,9 +1171,8 @@ msgstr "Count tokens for Claude models including Claude Opus 4.1, Sonnet 4, and 
 #~ "Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2 models for\n"
 #~ "professional results."
 
-#: src/routes/[[lang]]/language/+page.svelte
-msgid "Language Settings - Nook"
-msgstr "Language Settings - Nook"
+#~ msgid "Language Settings - Nook"
+#~ msgstr "Language Settings - Nook"
 
 #: src/routes/[[lang]]/og/+page.svelte
 msgid "OpenGraph Generator - Nook: Local AI"
@@ -1571,37 +1557,30 @@ msgstr "Type your message..."
 msgid "Processing..."
 msgstr "Processing..."
 
-#: src/routes/+layout.svelte
-msgid "Escape"
-msgstr "Escape"
+#~ msgid "Escape"
+#~ msgstr "Escape"
 
-#: src/routes/+layout.svelte
-msgid "Close menu"
-msgstr "Close menu"
+#~ msgid "Close menu"
+#~ msgstr "Close menu"
 
-#: src/routes/+layout.svelte
-msgid "Home"
-msgstr "Home"
+#~ msgid "Home"
+#~ msgstr "Home"
 
-#: src/routes/+layout.svelte
-msgid "Change Language"
-msgstr "Change Language"
+#~ msgid "Change Language"
+#~ msgstr "Change Language"
 
 #: src/routes/+layout.svelte
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/routes/+layout.svelte
-msgid "Open tools menu"
-msgstr "Open tools menu"
+#~ msgid "Open tools menu"
+#~ msgstr "Open tools menu"
 
-#: src/routes/+layout.svelte
-msgid "Tools"
-msgstr "Tools"
+#~ msgid "Tools"
+#~ msgstr "Tools"
 
-#: src/routes/+layout.svelte
-msgid "More tools"
-msgstr "More tools"
+#~ msgid "More tools"
+#~ msgstr "More tools"
 
 #~ msgid "Nook Local AI"
 #~ msgstr "Nook Local AI"
@@ -1723,5 +1702,74 @@ msgstr "Chat with AI Models"
 #~ msgid "Ibex"
 #~ msgstr "Ibex"
 
-#~ msgid "Ibex Tools"
-#~ msgstr "Ibex Tools"
+#: src/routes/+layout.svelte
+#: src/routes/+layout.svelte
+#: src/routes/+layout.ts
+msgid "Ibex Tools"
+msgstr "Ibex Tools"
+
+#: src/routes/[[lang]]/chat/+page.ts
+msgid "AI Chat - Ibex Tools"
+msgstr "AI Chat - Ibex Tools"
+
+#: src/routes/[[lang]]/language/+page.svelte
+msgid "Language Settings - Ibex Tools"
+msgstr "Language Settings - Ibex Tools"
+
+#: src/routes/[[lang]]/language/+page.svelte
+msgid "Change the language settings for the Ibex Tools application"
+msgstr "Change the language settings for the Ibex Tools application"
+
+#: src/routes/[[lang]]/+page.ts
+msgid "Ibex Tools - Private, Offline AI in Your Browser"
+msgstr "Ibex Tools - Private, Offline AI in Your Browser"
+
+#: src/routes/[[lang]]/transcribe/+page.ts
+msgid "Audio Transcription - Ibex Tools"
+msgstr "Audio Transcription - Ibex Tools"
+
+#: src/routes/+layout.svelte
+msgid "Ibex Tools home"
+msgstr "Ibex Tools home"
+
+#: src/routes/+layout.svelte
+msgid "Toggle theme"
+msgstr "Toggle theme"
+
+#: src/routes/[[lang]]/text-to-speech/+page.ts
+msgid "Text to Speech - Ibex Tools"
+msgstr "Text to Speech - Ibex Tools"
+
+#: src/routes/[[lang]]/background-remover/+page.ts
+msgid "Background Remover - Ibex Tools"
+msgstr "Background Remover - Ibex Tools"
+
+#: src/routes/[[lang]]/count-tokens/+page.ts
+msgid "Count LLM Tokens - Ibex Tools"
+msgstr "Count LLM Tokens - Ibex Tools"
+
+#~ msgid "Open tools"
+#~ msgstr "Open tools"
+
+#: src/routes/+layout.svelte
+msgid "Primary"
+msgstr "Primary"
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "Text-to-speech Model"
+msgstr "Text-to-speech Model"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "Choose Your AI Model"
+msgstr "Choose Your AI Model"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "Advanced Settings"
+msgstr "Advanced Settings"
+
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+msgid "Count LLM Tokens"
+msgstr "Count LLM Tokens"
+
+#~ msgid "Choose Audio Source"
+#~ msgstr "Choose Audio Source"

@@ -133,16 +133,12 @@
 		font-family: var(--font-family-primary);
 		font-size: 16px;
 		line-height: 1.5;
-		background: linear-gradient(
-			135deg,
-			var(--color-gradient-gold) 0%,
-			var(--color-gradient-lavender) 50%,
-			var(--color-gradient-mint) 100%
-		);
-		background-size: 200% 200%;
-		animation: gradient-shift 20s ease infinite;
+		background: var(--color-background-main);
 		color: var(--color-text-primary);
 		overflow-x: hidden;
+		transition:
+			background-color var(--transition-smooth),
+			color var(--transition-smooth);
 	}
 
 	@keyframes gradient-shift {
@@ -200,14 +196,15 @@
 	}
 
 	.title-line {
-		background: var(--color-text-primary);
-		color: var(--color-primary);
-		padding: 0.5rem 2rem;
+		background: var(--color-primary);
+		color: var(--color-text-inverse);
+		padding: 0.5rem 1.25rem;
 		display: inline-block;
-		border: var(--border-brutalist-thick);
-		box-shadow: 5px 5px 0 var(--color-border-primary);
-		letter-spacing: 2px;
+		border-radius: 8px;
+		box-shadow: var(--shadow-soft-sm);
+		letter-spacing: 1px;
 		text-transform: uppercase;
+		font-weight: 700;
 	}
 
 	.subtitle {
@@ -281,16 +278,16 @@
 		position: absolute;
 		top: 1rem;
 		right: 1rem;
-		background: var(--color-text-primary);
-		color: var(--color-primary);
+		background: var(--color-step-badge);
+		color: var(--color-step-badge-text);
 		padding: 0.25rem 0.75rem;
-		font-weight: 700;
+		font-weight: 800;
 		font-size: 0.875rem;
-		letter-spacing: 1px;
-		border-radius: 4px;
+		letter-spacing: 0.5px;
+		border-radius: 6px;
 		text-transform: uppercase;
+		box-shadow: var(--shadow-soft-sm);
 	}
-
 	.feature-card:hover {
 		transform: translate(-3px, -3px);
 		box-shadow: 8px 8px 0 var(--color-border-primary);
@@ -304,11 +301,11 @@
 		margin-bottom: 1.5rem;
 		width: fit-content;
 		padding: 0.75rem;
-		background: var(--color-gradient-gold);
-		border: var(--border-brutalist-thin);
+		background: var(--color-background-tertiary);
+		border: 1px solid var(--color-border-primary);
 		border-radius: 8px;
+		box-shadow: var(--shadow-soft-sm);
 	}
-
 	.feature-card h2 {
 		font-size: 1.75rem;
 		font-weight: 700;

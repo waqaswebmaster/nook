@@ -10,11 +10,11 @@
 </script>
 
 <svelte:head>
-	<title>OpenGraph Generator - Nook: Local AI</title>
+	<title>OpenGraph Generator - Ibex Tools: Local AI</title>
 </svelte:head>
 
 <CardInterface>
-	<Toolbar modelInfo="OpenGraph Image Generator" ModelIcon={ImageIcon} />
+	<Toolbar modelInfo="OpenGraph Image Generator" ModelIcon={ImageIcon} variant="studio" />
 
 	<ContentArea>
 		<div class="og-generator">
@@ -73,7 +73,7 @@
 						</div>
 					</div>
 					<div class="main">
-						<h1>Nook</h1>
+						<h1>Ibex Tools</h1>
 						<p>Run offline: Chat • Transcribe • TTS • Background • Tokens</p>
 					</div>
 					<div class="footer">
@@ -131,14 +131,14 @@
 	.og-layout-container h2 {
 		font-family: 'Bebas Neue', sans-serif;
 		font-size: 1.5rem;
-		color: #000;
+		color: var(--color-text-inverse);
 		margin-bottom: 1rem;
 		text-transform: uppercase;
 		letter-spacing: 2px;
-		background: #98fb98;
+		background: var(--color-primary-dark);
 		padding: 0.5rem 1rem;
-		border: 3px solid #000;
-		box-shadow: 4px 4px 0 #000;
+		border: var(--border-brutalist-thick);
+		box-shadow: var(--shadow-brutalist-small);
 		display: inline-block;
 		transform: rotate(-0.5deg);
 	}
@@ -212,11 +212,11 @@
 	.layout-1 .url {
 		font-size: 1.75rem;
 		font-weight: 700;
-		color: #000;
-		background: #98fb98;
+		color: var(--color-text-primary);
+		background: var(--color-success);
 		padding: 0.75rem 1.5rem;
-		border: 3px solid #000;
-		box-shadow: 5px 5px 0 #000;
+		border: var(--border-brutalist-thick);
+		box-shadow: var(--shadow-brutalist-small);
 		text-transform: uppercase;
 		letter-spacing: 2px;
 		transform: rotate(-1deg);
@@ -310,11 +310,11 @@
 	.layout-2 .features span {
 		font-size: 1.75rem;
 		font-weight: 700;
-		color: #000;
-		background: #98fb98;
+		color: var(--color-text-primary);
+		background: var(--color-success);
 		padding: 1rem 1.5rem;
-		border: 3px solid #000;
-		box-shadow: 4px 4px 0 #000;
+		border: var(--border-brutalist-thick);
+		box-shadow: var(--shadow-brutalist-small);
 		text-align: center;
 		transform: rotate(-0.5deg);
 	}
@@ -353,8 +353,8 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 1rem;
-		background: #98fb98;
-		color: #000;
+		background: var(--color-success);
+		color: var(--color-text-primary);
 		padding: 1rem 2rem;
 		border: 4px solid #fff;
 		border-radius: 30px;

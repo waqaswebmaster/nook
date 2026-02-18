@@ -33,7 +33,7 @@
 
 <style>
 	.advanced-params {
-		background: linear-gradient(135deg, rgba(255, 217, 61, 0.1) 0%, rgba(152, 251, 152, 0.1) 100%);
+		background: var(--color-background-secondary);
 		padding: 1.25rem;
 		border: var(--border-brutalist-thick);
 		border-radius: 8px;

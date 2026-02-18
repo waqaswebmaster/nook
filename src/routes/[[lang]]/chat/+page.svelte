@@ -282,7 +282,7 @@
 		</div>
 	{:else}
 		<CardInterface fixedHeight={true}>
-			<Toolbar modelInfo={selectedModel.name} ModelIcon={BotIcon}>
+			<Toolbar modelInfo={selectedModel.name} ModelIcon={BotIcon} variant="studio">
 				<ActionButton onClick={newChat} Icon={SparklesIcon}>
 					New <span class="desktop-only">Chat</span>
 				</ActionButton>

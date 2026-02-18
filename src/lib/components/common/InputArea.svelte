@@ -14,11 +14,13 @@
 <style>
 	.input-area {
 		padding: 1rem 1.25rem;
-		border-top: 3px solid #000;
-		background: #f5f5f5;
+		border-top: 1px solid var(--color-border-primary);
+		background: var(--color-background-secondary);
 		box-sizing: border-box;
 		flex: 0 0 auto;
-		transition: all 0.3s ease;
+		transition:
+			background-color var(--transition-fast),
+			color var(--transition-fast);
 	}
 
 	.input-area.disabled {

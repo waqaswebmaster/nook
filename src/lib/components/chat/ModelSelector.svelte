@@ -2,6 +2,7 @@
 	import { AVAILABLE_MODELS, formatFileSize } from '$lib/wllama-config';
 	import { inferenceParams } from '$lib/stores';
 	import AdvancedSection from '../common/AdvancedSection.svelte';
+	import StepHeader from '$lib/components/common/StepHeader.svelte';
 	import RocketIcon from 'virtual:icons/lucide/rocket';
 	import ZapIcon from 'virtual:icons/lucide/zap';
 	import HourglassIcon from 'virtual:icons/lucide/hourglass';
@@ -32,12 +33,16 @@
 </script>
 
 <CardInterface>
-	<Toolbar modelInfo="Chat with AI Models" ModelIcon={RocketIcon} />
+	<Toolbar modelInfo="Chat with AI Models" ModelIcon={RocketIcon} variant="studio" />
 
 	<div class="content-area">
 		<!-- Model Selection -->
 		<div class="model-selection">
-			<h3><span class="step-number">Step 1:</span> Choose Your AI Model</h3>
+			<StepHeader
+				stepNumber={1}
+				title="Choose Your AI Model"
+				backgroundColor="var(--color-primary-dark)"
+			/>
 			<div class="model-cards">
 				{#each AVAILABLE_MODELS as model (model.url)}
 					{@const pros = getModelPros(model.url)}
@@ -65,7 +70,11 @@
 		</div>
 
 		<div class="advanced-section">
-			<h3><span class="step-number">Step 2:</span> Advanced Settings</h3>
+			<StepHeader
+				stepNumber={2}
+				title="Advanced Settings"
+				backgroundColor="var(--color-primary-dark)"
+			/>
 			<AdvancedSection>
 				<label class="param-item">
 					<span class="param-label">Threads <span class="param-hint">(-1 auto)</span></span>
@@ -110,7 +119,7 @@
 
 <style>
 	.model-selection {
-		background: var(--color-background-main);
+		background: var(--color-background-secondary);
 		border: var(--border-brutalist-extra-thick);
 		padding: 1.5rem;
 		box-shadow: var(--shadow-brutalist-large);
@@ -131,36 +140,9 @@
 		}
 	}
 
-	.model-selection h3 {
-		margin-top: 0;
-		margin-bottom: 1.25rem;
-		font-family: var(--font-family-display);
-		font-size: 1.75rem;
-		color: var(--color-text-primary);
-		text-align: center;
-		letter-spacing: 2px;
-		text-transform: uppercase;
-		background: var(--color-primary-dark);
-		padding: 0.5rem 1rem;
-		border: var(--border-brutalist-thick);
-		box-shadow: var(--shadow-brutalist-medium);
-		transform: rotate(1deg);
-		width: fit-content;
-		margin-left: auto;
-		margin-right: auto;
-	}
+	/* step header handled by shared `StepHeader` component */
 
-	.step-number {
-		background: var(--color-text-primary);
-		color: var(--color-text-inverse);
-		padding: 0.25rem 0.5rem;
-		border-radius: 4px;
-		font-size: 0.875rem;
-		font-weight: 700;
-		margin-right: 0.5rem;
-		display: inline-block;
-		transform: rotate(0deg);
-	}
+	/* using StepHeader component's step badge */
 
 	.model-cards {
 		display: grid;
@@ -274,7 +256,7 @@
 
 	.model-size {
 		font-size: 0.75rem;
-		color: var(--color-text-tertiary);
+		color: var(--color-text-inverse);
 		background: var(--color-primary-dark);
 		padding: 0.25rem 0.5rem;
 		border: var(--border-brutalist-thin);
@@ -326,7 +308,7 @@
 
 	/* Advanced Section */
 	.advanced-section {
-		background: var(--color-background-main);
+		background: var(--color-background-secondary);
 		border: var(--border-brutalist-extra-thick);
 		padding: 1.5rem;
 		box-shadow: var(--shadow-brutalist-large);
@@ -340,18 +322,18 @@
 
 	.advanced-section h3 {
 		margin-top: 0;
-		margin-bottom: 1rem;
+		margin-bottom: 1.25rem;
 		font-family: var(--font-family-display);
 		font-size: 1.75rem;
-		color: var(--color-text-primary);
+		color: var(--color-text-inverse);
 		text-align: center;
 		letter-spacing: 2px;
 		text-transform: uppercase;
-		background: var(--color-accent-pink);
+		background: var(--color-primary-dark);
 		padding: 0.5rem 1rem;
 		border: var(--border-brutalist-thick);
 		box-shadow: var(--shadow-brutalist-medium);
-		transform: rotate(-0.5deg);
+		transform: rotate(1deg);
 		width: fit-content;
 		margin-left: auto;
 		margin-right: auto;

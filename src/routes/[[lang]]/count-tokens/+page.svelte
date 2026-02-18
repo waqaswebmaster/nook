@@ -18,6 +18,7 @@
 
 <div class="tokenizers-container">
 	<CardInterface>
+		<Toolbar modelInfo="Count LLM Tokens" ModelIcon={SparklesIcon} variant="studio" />
 		<ContentArea>
 			<div class="main-content">
 				<SectionCard rotation={-0.5} animationDelay={0}>

@@ -388,7 +388,7 @@
 </script>
 
 <CardInterface>
-	<Toolbar modelInfo="Text to Speech Studio" ModelIcon={MicIcon} />
+	<Toolbar modelInfo="Text to Speech Studio" ModelIcon={MicIcon} variant="studio" />
 
 	<ContentArea>
 		<div class="tts-container">

@@ -24,12 +24,21 @@
 		warning: 'var(--color-warning)',
 		danger: 'var(--color-danger-hover)'
 	};
+
+	const activeStyles = {
+		default: 'var(--color-success-active)',
+		success: 'var(--color-success-active)',
+		warning: 'var(--color-warning-hover)',
+		danger: 'var(--color-danger-hover)'
+	};
 </script>
 
 <button
 	class="action-button"
 	class:disabled
-	style="background: {variantStyles[variant]}; --hover-color: {hoverStyles[variant]};"
+	style="background: {variantStyles[variant]}; --hover-color: {hoverStyles[
+		variant
+	]}; --active-color: {activeStyles[variant]};"
 	onclick={onClick}
 	{disabled}
 >
@@ -67,6 +76,12 @@
 		transform: translate(-2px, -2px) rotate(0deg);
 		box-shadow: 5px 5px 0 var(--color-border-primary);
 		background: var(--hover-color);
+	}
+
+	.action-button:active:not(.disabled) {
+		background: var(--active-color);
+		transform: translate(0);
+		box-shadow: var(--shadow-brutalist-small);
 	}
 
 	.action-button.disabled {
