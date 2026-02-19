@@ -48,10 +48,8 @@
 
 	label {
 		font-size: 0.875rem;
-		font-weight: 700;
-		color: var(--color-text-primary);
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		font-weight: 500;
+		color: var(--color-text-secondary);
 		flex-shrink: 0;
 	}
 
@@ -64,28 +62,28 @@
 	select {
 		width: 100%;
 		padding: 0.5rem 2rem 0.5rem 0.75rem;
-		background: var(--color-background-main);
-		border: var(--border-brutalist-thick);
+		background: var(--color-card);
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-md);
 		font-size: 0.875rem;
-		font-weight: 600;
+		font-weight: 500;
 		cursor: pointer;
 		appearance: none;
-		box-shadow: var(--shadow-brutalist-small);
+		box-shadow: var(--shadow-xs);
 		font-family: var(--font-family-primary);
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
 		color: var(--color-text-primary);
 		transition: all 0.2s;
 	}
 
 	select:hover {
-		transform: translate(-1px, -1px);
-		box-shadow: var(--shadow-brutalist-medium);
+		border-color: var(--color-primary);
+		box-shadow: var(--shadow-sm);
 	}
 
 	select:focus {
 		outline: none;
-		background: var(--color-background-cream);
+		border-color: var(--color-primary);
+		box-shadow: 0 0 0 2px var(--color-accent-primary-alpha);
 	}
 
 	.select-arrow {
@@ -96,7 +94,7 @@
 		pointer-events: none;
 		display: flex;
 		align-items: center;
-		color: var(--color-text-primary);
+		color: var(--color-text-secondary);
 	}
 
 	.select-arrow :global(svg) {

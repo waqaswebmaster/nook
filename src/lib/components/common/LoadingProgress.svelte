@@ -54,103 +54,72 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 1.25rem;
-		padding: 2rem;
-		background: var(--color-background-main);
-		border: var(--border-brutalist-thick);
-		box-shadow: 5px 5px 0 var(--color-border-primary);
-		width: calc(100% - 4rem);
+		gap: var(--sp-4);
+		padding: var(--sp-6);
+		background: var(--color-card);
+		border: 1px solid var(--color-border-light);
+		box-shadow: var(--shadow-md);
+		width: calc(100% - var(--sp-8));
 		max-width: 500px;
 		text-align: center;
-		border-radius: 12px;
+		border-radius: var(--radius-lg);
 		margin: 0 auto;
 		box-sizing: border-box;
 	}
 
 	.loading-progress.top-margin {
-		margin-top: 2rem;
+		margin-top: var(--sp-6);
 	}
 
 	.loading-progress h3 {
-		font-size: 1.75rem;
+		font-size: 1.25rem;
 		font-weight: 700;
 		margin: 0;
 		color: var(--color-text-primary);
-		text-transform: uppercase;
-		letter-spacing: 1px;
 	}
 
 	.download-percentage {
-		font-size: 1.25rem;
+		font-size: 1rem;
 		font-weight: 600;
-		color: var(--color-text-primary);
+		color: var(--color-primary);
 		margin: 0;
-		background: var(--color-gradient-gold);
-		padding: 0.375rem 1rem;
-		border: var(--border-brutalist-thin);
-		border-radius: 6px;
-		text-transform: uppercase;
+		background: var(--color-primary-subtle);
+		padding: var(--sp-1) var(--sp-3);
+		border-radius: var(--radius-full);
 	}
 
 	.loading-message {
-		font-size: 0.9375rem;
-		font-weight: 500;
+		font-size: 0.875rem;
+		font-weight: 400;
 		color: var(--color-text-tertiary);
 		margin: 0;
 		max-width: 100%;
-		padding: 0 1rem;
+		padding: 0 var(--sp-3);
 		word-wrap: break-word;
 	}
 
-	@media (max-width: 600px) {
+	@media (max-width: 768px) {
 		.loading-progress {
-			width: calc(100% - 2rem);
-			padding: 1.5rem 1rem;
+			width: calc(100% - var(--sp-4));
+			padding: var(--sp-5) var(--sp-4);
 			max-width: none;
-			margin: 0 1rem;
+			margin: 0 auto;
 		}
 
 		.loading-progress h3 {
-			font-size: 1.5rem;
-		}
-
-		.download-percentage {
 			font-size: 1.125rem;
-			padding: 0.25rem 0.75rem;
-		}
-
-		.loading-message {
-			font-size: 0.875rem;
-			padding: 0 0.5rem;
-		}
-	}
-
-	@media (max-width: 400px) {
-		.loading-progress {
-			width: calc(100% - 1rem);
-			margin: 0 0.5rem;
-			padding: 1.25rem 0.75rem;
-		}
-
-		.loading-progress h3 {
-			font-size: 1.25rem;
-		}
-
-		.download-percentage {
-			font-size: 1rem;
 		}
 	}
 
 	.spinner-progress {
 		width: 100%;
-		margin: 0.5rem 0;
+		margin: var(--sp-1) 0;
 	}
 
 	.animated-progress-bar {
-		height: 1.25rem;
+		height: 0.5rem;
 		background: var(--color-background-tertiary);
-		border: var(--border-brutalist-thin);
-		border-radius: 6px;
+		border-radius: var(--radius-full);
 		overflow: hidden;
 		width: 100%;
 		position: relative;
@@ -169,6 +138,7 @@
 		background-size: 300% 100%;
 		animation: gradientShift 3s ease-in-out infinite;
 		position: relative;
+		border-radius: var(--radius-full);
 	}
 
 	.animated-progress-fill::after {

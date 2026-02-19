@@ -50,7 +50,7 @@
 		text-align: center;
 	}
 
-	@media (max-width: 600px) {
+	@media (max-width: 768px) {
 		.step-header {
 			font-size: 1rem;
 		}

@@ -112,10 +112,9 @@
 <style>
 	.tokenizers-container {
 		margin: 0 auto;
-		animation: fadeIn 0.5s ease-out;
+		animation: fadeIn 0.35s ease-out;
 	}
 
-	/* main-content wrapper to match other pages */
 	.main-content {
 		transition: all 0.3s ease;
 	}
@@ -129,7 +128,7 @@
 	@keyframes fadeIn {
 		from {
 			opacity: 0;
-			transform: translateY(20px);
+			transform: translateY(10px);
 		}
 		to {
 			opacity: 1;
@@ -148,80 +147,60 @@
 	}
 
 	.tokenizers-header h1 {
-		margin: 0 0 1rem 0;
-		font-family: var(--font-family-display);
-		font-size: 2.5rem;
+		margin: 0 0 var(--sp-3) 0;
+		font-family: var(--font-family-primary);
+		font-size: 1.75rem;
+		font-weight: 700;
 		color: var(--color-text-primary);
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		gap: 0.75rem;
-		text-transform: uppercase;
-		letter-spacing: 2px;
+		gap: var(--sp-2);
 	}
 
 	.header-icon {
 		display: flex;
 		align-items: center;
-		color: var(--color-text-primary);
-		animation: sparkle 2s ease-in-out infinite;
+		color: var(--color-primary);
 	}
 
 	.header-icon :global(svg) {
-		width: 2.5rem;
-		height: 2.5rem;
-	}
-
-	@keyframes sparkle {
-		0%,
-		100% {
-			transform: scale(1) rotate(0deg);
-		}
-		50% {
-			transform: scale(1.1) rotate(180deg);
-		}
+		width: 1.75rem;
+		height: 1.75rem;
 	}
 
 	.header-description {
 		margin: 0;
-		font-size: 1.125rem;
+		font-size: 1rem;
 		color: var(--color-text-secondary);
 		line-height: 1.5;
 	}
 
 	.tokenizer-cards {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		gap: 2rem;
-		margin-bottom: 3rem;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: var(--sp-5);
+		margin-bottom: var(--sp-6);
 	}
 
 	.tokenizer-card {
 		display: block;
 		text-decoration: none;
 		color: var(--color-text-primary);
-		background: var(--color-background-main);
-		border: var(--border-brutalist-thick);
+		background: var(--color-card);
+		border: 1px solid var(--color-border-light);
 		padding: 0;
-		box-shadow: var(--shadow-brutalist-large);
-		transition: all 0.2s ease;
+		box-shadow: var(--shadow-sm);
+		transition: all var(--transition-fast);
 		position: relative;
 		overflow: hidden;
-		border-radius: 12px;
-		transform: rotate(0.5deg);
-	}
-
-	.tokenizer-card:nth-child(2) {
-		transform: rotate(-0.5deg);
-	}
-
-	.tokenizer-card:nth-child(3) {
-		transform: rotate(0.3deg);
+		border-radius: var(--radius-lg);
 	}
 
 	.tokenizer-card:hover {
-		transform: translate(-3px, -3px) rotate(0deg);
-		box-shadow: 8px 8px 0 var(--color-border-primary);
+		transform: translateY(-3px);
+		box-shadow: var(--shadow-lg);
+		border-color: var(--color-primary);
 	}
 
 	.card-decoration {
@@ -230,14 +209,13 @@
 		right: -10px;
 		width: 80px;
 		height: 80px;
-		opacity: 0.3;
-		border: var(--border-brutalist-thin);
-		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
+		opacity: 0.15;
+		border-radius: 50%;
 		z-index: 0;
 	}
 
 	.claude-card .card-decoration {
-		background: var(--color-accent-pink);
+		background: var(--color-primary);
 	}
 
 	.chatgpt-card .card-decoration {
@@ -247,91 +225,86 @@
 	}
 
 	.gemini-card .card-decoration {
-		background: var(--color-accent-blue);
+		background: var(--color-warning);
 		top: -10px;
 		left: 50%;
 		transform: translateX(-50%);
 	}
 
 	.card-content {
-		padding: 2rem;
+		padding: var(--sp-5);
 		position: relative;
 		z-index: 1;
 	}
 
 	.card-icon {
-		margin-bottom: 1.5rem;
+		margin-bottom: var(--sp-4);
 		width: fit-content;
-		padding: 1rem;
-		background: var(--color-gradient-gold);
-		border: var(--border-brutalist-thick);
-		border-radius: 12px;
-		box-shadow: var(--shadow-brutalist-small);
+		padding: var(--sp-3);
+		background: var(--color-primary-subtle);
+		border-radius: var(--radius-md);
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		font-size: 2.5rem;
-		color: var(--color-text-primary);
+		color: var(--color-primary);
 	}
 
 	.card-icon :global(svg) {
-		width: 2.5rem;
-		height: 2.5rem;
+		width: 2rem;
+		height: 2rem;
 	}
 
 	.claude-card:hover .card-icon {
-		background: var(--color-accent-pink);
+		background: var(--color-primary);
+		color: #fff;
 	}
 
 	.chatgpt-card:hover .card-icon {
 		background: var(--color-success);
+		color: #fff;
 	}
 
 	.gemini-card:hover .card-icon {
-		background: var(--color-accent-blue);
+		background: var(--color-warning);
+		color: #000;
 	}
 
 	.tokenizer-card h2 {
-		font-size: 1.75rem;
+		font-size: 1.25rem;
 		font-weight: 700;
-		margin: 0 0 1rem 0;
+		margin: 0 0 var(--sp-2) 0;
 		color: var(--color-text-primary);
-		text-transform: uppercase;
-		letter-spacing: 1px;
 	}
 
 	.card-description {
-		font-size: 1rem;
+		font-size: 0.9375rem;
 		color: var(--color-text-secondary);
 		line-height: 1.5;
-		margin: 0 0 1.5rem 0;
+		margin: 0 0 var(--sp-4) 0;
 	}
 
 	.card-action {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
-		color: var(--color-text-primary);
-		padding: 0.75rem 1rem;
-		background: var(--color-primary-dark);
-		border: var(--border-brutalist-thin);
-		border-radius: 6px;
-		box-shadow: var(--shadow-brutalist-small);
-		transition: all 0.2s ease;
+		gap: var(--sp-2);
+		font-weight: 600;
+		font-size: 0.875rem;
+		color: var(--color-primary);
+		padding: var(--sp-2) var(--sp-3);
+		background: var(--color-primary-subtle);
+		border-radius: var(--radius-md);
+		width: fit-content;
+		transition: all var(--transition-fast);
 	}
 
 	.card-action :global(svg) {
-		width: 1.25rem;
-		height: 1.25rem;
+		width: 1rem;
+		height: 1rem;
 	}
 
 	.tokenizer-card:hover .card-action {
 		background: var(--color-primary);
-		transform: translate(-1px, -1px);
-		box-shadow: var(--shadow-brutalist-medium);
+		color: #fff;
 	}
 
 	.info-section {
@@ -343,68 +316,54 @@
 	}
 
 	.info-section h3 {
-		margin: 0 0 1rem 0;
-		font-size: 1.5rem;
+		margin: 0 0 var(--sp-3) 0;
+		font-size: 1.125rem;
 		font-weight: 700;
 		color: var(--color-text-primary);
-		text-transform: uppercase;
-		letter-spacing: 1px;
 	}
 
 	.info-section p {
-		font-size: 1rem;
+		font-size: 0.9375rem;
 		color: var(--color-text-secondary);
-		line-height: 1.5;
-		margin: 0 0 1rem 0;
+		line-height: 1.6;
+		margin: 0 0 var(--sp-3) 0;
 	}
 
 	.info-section ul {
-		margin: 0 0 1rem 0;
-		padding-left: 1.5rem;
+		margin: 0 0 var(--sp-3) 0;
+		padding-left: var(--sp-5);
 	}
 
 	.info-section li {
-		font-size: 1rem;
+		font-size: 0.9375rem;
 		color: var(--color-text-secondary);
-		line-height: 1.5;
-		margin: 0.5rem 0;
+		line-height: 1.6;
+		margin: var(--sp-1) 0;
 		font-weight: 500;
 	}
 
 	@media (max-width: 768px) {
 		.tokenizers-header h1 {
-			font-size: 2rem;
+			font-size: 1.5rem;
 		}
 
 		.tokenizer-cards {
 			grid-template-columns: 1fr;
-			gap: 1.5rem;
+			gap: var(--sp-4);
 		}
 
 		.card-content {
-			padding: 1.5rem;
+			padding: var(--sp-4);
 		}
 	}
 
 	@media (max-width: 600px) {
-		.tokenizers-container {
-			padding: 0.75rem;
-		}
-
-		.tokenizers-header {
-			padding: 0;
-		}
-
 		.tokenizers-header h1 {
-			font-size: 1.75rem;
+			font-size: 1.25rem;
 		}
 
 		.header-description {
-			font-size: 1rem;
-		}
-
-		.info-section {
-			padding: 0;
+			font-size: 0.9375rem;
 		}
 	}
 </style>

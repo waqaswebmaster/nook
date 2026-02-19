@@ -22,7 +22,6 @@
 </script>
 
 <div class="transcribing">
-	<div class="transcribing-decoration"></div>
 	<h3>
 		<span class="title-icon"><HeadphonesIcon /></span>
 		Transcribing Audio
@@ -37,7 +36,6 @@
 		<div class="segment-preview">
 			<h4>Current Segment</h4>
 			<p>"{currentSegment}"</p>
-			<div class="segment-decoration"></div>
 		</div>
 	{/if}
 
@@ -60,118 +58,53 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		padding: 2.5rem;
-		background: var(--color-background-main);
-		border: var(--border-brutalist-extra-thick);
-		box-shadow: var(--shadow-brutalist-xlarge);
+		padding: 2rem;
+		background: var(--color-card);
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-sm);
 		margin: 1.5rem 0;
-		animation: wobbleIn 0.5s ease-out;
-		position: relative;
-		transform: rotate(-1deg);
+		animation: fadeIn 0.3s ease-out;
 	}
 
-	@keyframes wobbleIn {
+	@keyframes fadeIn {
 		from {
-			transform: scale(0.9) rotate(-3deg);
 			opacity: 0;
+			transform: translateY(8px);
 		}
 		to {
-			transform: scale(1) rotate(-1deg);
 			opacity: 1;
-		}
-	}
-
-	.transcribing-decoration {
-		position: absolute;
-		top: -10px;
-		left: -10px;
-		width: 100px;
-		height: 100px;
-		background: repeating-linear-gradient(
-			45deg,
-			var(--color-success),
-			var(--color-success) 10px,
-			transparent 10px,
-			transparent 20px
-		);
-		border: var(--border-brutalist-thick);
-		border-radius: 50%;
-		opacity: 0.3;
-		animation: spin 10s linear infinite;
-	}
-
-	@keyframes spin {
-		from {
-			transform: rotate(0deg);
-		}
-		to {
-			transform: rotate(360deg);
+			transform: translateY(0);
 		}
 	}
 
 	.transcribing h3 {
 		margin-top: 0;
 		margin-bottom: 1rem;
-		font-family: var(--font-family-display);
-		font-size: 2.5rem;
+		font-size: 1.25rem;
+		font-weight: 600;
 		color: var(--color-text-primary);
-		letter-spacing: 3px;
 		display: flex;
 		align-items: center;
-		gap: 0.75rem;
-		background: var(--color-primary-dark);
-		padding: 0.5rem 2rem;
-		border: var(--border-brutalist-thick);
-		box-shadow: var(--shadow-brutalist-large);
-		transform: rotate(-2deg);
-		text-transform: uppercase;
+		gap: 0.5rem;
 	}
 
 	.title-icon {
-		font-size: 2rem;
 		display: flex;
 		align-items: center;
-		color: var(--color-text-primary);
-		animation: bounce 2s ease-in-out infinite;
+		color: var(--color-primary);
 	}
 
 	.title-icon :global(svg) {
-		width: 2rem;
-		height: 2rem;
-	}
-
-	@keyframes bounce {
-		0%,
-		100% {
-			transform: translateY(0);
-		}
-		50% {
-			transform: translateY(-5px);
-		}
+		width: 1.25rem;
+		height: 1.25rem;
 	}
 
 	.progress-percentage {
-		font-size: 1.5rem;
-		font-weight: 700;
-		color: var(--color-text-primary);
-		margin-bottom: 1.5rem;
-		background: var(--color-success);
-		padding: 0.5rem 1.5rem;
-		border: var(--border-brutalist-thick);
-		box-shadow: 5px 5px 0 var(--color-text-primary);
-		transform: rotate(1deg);
-		animation: pulse 2s ease-in-out infinite;
-		text-transform: uppercase;
-	}
-
-	@keyframes pulse {
-		0%,
-		100% {
-			transform: scale(1) rotate(1deg);
-		}
-		50% {
-			transform: scale(1.05) rotate(1deg);
-		}
+		font-size: 1.125rem;
+		font-weight: 600;
+		color: var(--color-primary);
+		margin-bottom: 1rem;
 	}
 
 	.progress-wrapper {
@@ -181,97 +114,71 @@
 	}
 
 	.segment-preview {
-		margin: 1.5rem 0;
-		padding: 1.5rem;
-		background: var(--color-background-main);
-		border: var(--border-brutalist-thick);
-		box-shadow: var(--shadow-brutalist-large);
+		margin: 1rem 0;
+		padding: 1.25rem;
+		background: var(--color-card);
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-md);
+		box-shadow: var(--shadow-xs);
 		width: 100%;
 		max-width: 500px;
 		animation: slideIn 0.3s ease-out;
-		position: relative;
-		transform: rotate(0.5deg);
 	}
 
 	@keyframes slideIn {
 		from {
-			transform: translateY(10px) rotate(0.5deg);
+			transform: translateY(8px);
 			opacity: 0;
 		}
 		to {
-			transform: translateY(0) rotate(0.5deg);
+			transform: translateY(0);
 			opacity: 1;
 		}
 	}
 
-	.segment-decoration {
-		position: absolute;
-		top: -8px;
-		right: -8px;
-		width: 50px;
-		height: 50px;
-		background: var(--color-accent-pink);
-		border: var(--border-brutalist-thin);
-		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
-		opacity: 0.4;
-		transform: rotate(-45deg);
-	}
-
 	.segment-preview h4 {
-		text-align: center;
-		margin: 0 0 0.75rem 0;
-		font-size: 1rem;
-		font-weight: 700;
-		color: var(--color-text-primary);
-		text-transform: uppercase;
-		letter-spacing: 2px;
-		background: var(--color-primary-dark);
-		padding: 4px 12px;
-		border: var(--border-brutalist-thin);
-		display: inline-block;
-		box-shadow: var(--shadow-brutalist-small);
+		margin: 0 0 0.5rem 0;
+		font-size: 0.8125rem;
+		font-weight: 600;
+		color: var(--color-text-secondary);
+		letter-spacing: 0.025em;
 	}
 
 	.segment-preview p {
 		margin: 0;
-		font-size: 1.0625rem;
+		font-size: 0.9375rem;
 		line-height: 1.5;
 		color: var(--color-text-primary);
 		font-style: italic;
-		font-weight: 500;
 		padding: 0.75rem;
-		background: linear-gradient(135deg, rgba(255, 217, 61, 0.1) 0%, rgba(152, 251, 152, 0.1) 100%);
-		border: 2px dashed var(--color-text-primary);
+		background: var(--color-accent-primary-alpha);
+		border-radius: var(--radius-sm);
 	}
 
 	.transcribing-message {
 		margin-top: 1rem;
-		color: var(--color-text-primary);
-		font-weight: 700;
+		color: var(--color-text-secondary);
+		font-weight: 500;
+		font-size: 0.875rem;
 		text-align: center;
-		background: var(--color-primary-dark);
-		padding: 1rem 1.5rem;
-		border: var(--border-brutalist-thick);
-		box-shadow: 5px 5px 0 var(--color-text-primary);
-		text-transform: uppercase;
-		letter-spacing: 1px;
+		padding: 0.75rem 1.25rem;
+		background: var(--color-accent-primary-alpha);
+		border-radius: var(--radius-md);
 		display: flex;
 		align-items: center;
-		gap: 0.75rem;
-		transform: rotate(-0.5deg);
+		gap: 0.5rem;
 	}
 
 	.pulse-icon {
-		font-size: 1.5rem;
 		display: flex;
 		align-items: center;
-		color: var(--color-text-primary);
-		animation: flash 1s ease-in-out infinite;
+		color: var(--color-primary);
+		animation: flash 2s ease-in-out infinite;
 	}
 
 	.pulse-icon :global(svg) {
-		width: 1.5rem;
-		height: 1.5rem;
+		width: 1rem;
+		height: 1rem;
 	}
 
 	@keyframes flash {
@@ -280,81 +187,61 @@
 			opacity: 1;
 		}
 		50% {
-			opacity: 0.5;
+			opacity: 0.4;
 		}
 	}
 
 	.stuck-message {
 		margin-top: 1rem;
-		color: var(--color-text-primary);
-		font-weight: 700;
+		color: var(--color-danger);
+		font-weight: 500;
+		font-size: 0.875rem;
 		text-align: center;
-		background: var(--color-danger);
-		padding: 1rem 1.5rem;
-		border: var(--border-brutalist-thick);
-		box-shadow: 5px 5px 0 var(--color-text-primary);
+		padding: 1rem 1.25rem;
+		background: color-mix(in srgb, var(--color-danger) 8%, transparent);
+		border: 1px solid color-mix(in srgb, var(--color-danger) 20%, transparent);
+		border-radius: var(--radius-md);
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		gap: 0.75rem;
-		animation: shake 0.5s ease-in-out;
-		transform: rotate(-1deg);
-		text-transform: uppercase;
-	}
-
-	@keyframes shake {
-		0%,
-		100% {
-			transform: translateX(0) rotate(-1deg);
-		}
-		25% {
-			transform: translateX(-5px) rotate(-1deg);
-		}
-		75% {
-			transform: translateX(5px) rotate(-1deg);
-		}
 	}
 
 	.warning-icon {
-		font-size: 2rem;
 		display: flex;
 		align-items: center;
-		color: var(--color-text-primary);
+		color: var(--color-danger);
 	}
 
 	.warning-icon :global(svg) {
-		width: 2rem;
-		height: 2rem;
+		width: 1.5rem;
+		height: 1.5rem;
 	}
 
 	.reload-link {
-		background: var(--color-primary-dark);
-		border: var(--border-brutalist-thick);
-		color: var(--color-text-primary);
+		background: var(--color-primary);
+		border: none;
+		color: white;
 		padding: 0.5rem 1rem;
 		cursor: pointer;
-		font-size: 1rem;
-		font-weight: 700;
-		box-shadow: var(--shadow-brutalist-medium);
-		text-transform: uppercase;
-		letter-spacing: 1px;
-		font-family: var(--font-family-primary);
-		transition: all 0.15s;
+		font-size: 0.875rem;
+		font-weight: 600;
+		border-radius: var(--radius-sm);
+		font-family: inherit;
+		transition: opacity 0.15s;
 	}
 
 	.reload-link:hover {
-		transform: translate(-2px, -2px);
-		box-shadow: var(--shadow-brutalist-large);
-		background: var(--color-success);
+		opacity: 0.85;
 	}
 
 	@media (max-width: 600px) {
 		.transcribing {
-			padding: 1.75rem;
+			padding: 1.5rem;
 		}
 
 		.transcribing h3 {
-			font-size: 2rem;
+			font-size: 1.125rem;
 		}
 
 		.segment-preview {
@@ -363,8 +250,8 @@
 
 		.transcribing-message,
 		.stuck-message {
-			font-size: 0.875rem;
-			padding: 0.875rem 1rem;
+			font-size: 0.8125rem;
+			padding: 0.75rem 1rem;
 		}
 	}
 </style>

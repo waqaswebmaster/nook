@@ -89,11 +89,11 @@
 
 <style>
 	.input-section {
-		background: var(--color-background-main);
-		border: var(--border-brutalist-thick);
-		box-shadow: var(--shadow-brutalist-large);
+		background: var(--color-card);
+		border: 1px solid var(--color-border-light);
+		box-shadow: var(--shadow-sm);
 		padding: 1.5rem;
-		transform: rotate(0.2deg);
+		border-radius: var(--radius-lg);
 	}
 
 	.section-header {
@@ -105,46 +105,45 @@
 
 	.section-header h3 {
 		margin: 0;
-		font-size: 1.25rem;
-		font-weight: 700;
+		font-size: 1rem;
+		font-weight: 600;
 		color: var(--color-text-primary);
-		text-transform: uppercase;
-		letter-spacing: 1px;
 	}
 
 	.header-actions {
 		display: flex;
-		gap: 0.5rem;
+		gap: 0.375rem;
 	}
 
 	.icon-button {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 2.5rem;
-		height: 2.5rem;
+		width: 2.25rem;
+		height: 2.25rem;
 		background: var(--color-background-secondary);
-		border: var(--border-brutalist-thin);
-		border-radius: 6px;
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-md);
 		cursor: pointer;
-		transition: all 0.2s;
-		color: var(--color-text-primary);
+		transition:
+			background 0.15s,
+			box-shadow 0.15s;
+		color: var(--color-text-secondary);
 		font-size: 1rem;
 	}
 
 	.icon-button:hover:not(:disabled) {
-		background: var(--color-background-tertiary);
-		transform: translate(-1px, -1px);
-		box-shadow: var(--shadow-brutalist-small);
+		background: var(--color-accent-primary-alpha);
+		color: var(--color-text-primary);
+		box-shadow: var(--shadow-xs);
 	}
 
 	.icon-button:active {
-		transform: translate(1px, 1px);
 		box-shadow: none;
 	}
 
 	.icon-button:disabled {
-		opacity: 0.5;
+		opacity: 0.4;
 		cursor: not-allowed;
 	}
 
@@ -157,22 +156,24 @@
 		width: 100%;
 		height: 200px;
 		background: var(--color-background-secondary);
-		border: var(--border-brutalist-thin);
-		border-radius: 6px;
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-md);
 		padding: 1rem;
 		font-family: var(--font-family-mono);
-		font-size: 0.9rem;
+		font-size: 0.875rem;
 		color: var(--color-text-primary);
 		resize: vertical;
 		min-height: 120px;
 		max-height: 400px;
-		transition: all 0.2s;
+		transition:
+			border-color 0.15s,
+			box-shadow 0.15s;
 		box-sizing: border-box;
 	}
 
 	.text-input:focus {
 		outline: none;
-		border-color: var(--color-accent-primary);
+		border-color: var(--color-primary);
 		box-shadow: 0 0 0 2px var(--color-accent-primary-alpha);
 	}
 

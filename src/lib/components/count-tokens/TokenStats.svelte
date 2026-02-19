@@ -35,45 +35,41 @@
 	}
 
 	.stat-card {
-		background: var(--color-background-secondary);
-		border: var(--border-brutalist-thin);
+		background: var(--color-card);
+		border: 1px solid var(--color-border-light);
 		padding: 1rem;
 		text-align: center;
-		box-shadow: var(--shadow-brutalist-small);
-		border-radius: 6px;
-		transition: all 0.2s;
+		box-shadow: var(--shadow-xs);
+		border-radius: var(--radius-md);
+		transition: box-shadow 0.15s;
 	}
 
 	.stat-card.tokens {
-		background: var(--color-success);
+		background: var(--color-accent-primary-alpha);
 	}
 
 	.stat-card.chars {
-		background: var(--color-accent-blue);
+		background: var(--color-accent-primary-alpha);
 	}
 
 	.stat-card.ratio {
-		background: var(--color-accent-pink);
+		background: var(--color-accent-primary-alpha);
 	}
 
 	.stat-card:hover {
-		transform: translate(-1px, -1px);
-		box-shadow: var(--shadow-brutalist-medium);
+		box-shadow: var(--shadow-md);
 	}
 
 	.stat-label {
-		font-size: 0.875rem;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
-		color: var(--color-text-primary);
-		margin-bottom: 0.5rem;
+		font-size: 0.8125rem;
+		font-weight: 500;
+		color: var(--color-text-secondary);
+		margin-bottom: 0.375rem;
 	}
 
 	.stat-value {
 		font-size: 1.75rem;
-		font-weight: 700;
+		font-weight: 600;
 		color: var(--color-text-primary);
-		font-family: var(--font-family-display);
 	}
 </style>

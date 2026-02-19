@@ -24,13 +24,13 @@
 	}
 
 	.input-area.disabled {
-		opacity: 0.3;
+		opacity: 0.35;
 		pointer-events: none;
 	}
 
-	@media (max-width: 600px) {
+	@media (max-width: 768px) {
 		.input-area {
-			padding: 0.875rem 1rem;
+			padding: var(--sp-3) var(--sp-4);
 		}
 	}
 </style>

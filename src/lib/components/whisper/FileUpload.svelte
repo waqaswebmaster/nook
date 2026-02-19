@@ -95,36 +95,35 @@
 	}
 
 	.upload-area {
-		border: 3px dashed var(--color-text-primary);
+		border: 2px dashed var(--color-border-light);
 		padding: 2rem;
 		text-align: center;
-		background: linear-gradient(135deg, rgba(255, 229, 180, 0.1) 0%, rgba(230, 230, 250, 0.1) 100%);
+		background: var(--color-card);
 		cursor: pointer;
-		transition: all 0.3s;
+		transition:
+			border-color 0.2s,
+			background 0.2s;
 		position: relative;
-		transform: rotate(-0.5deg);
+		border-radius: var(--radius-lg);
 	}
 
 	.upload-area.drag-over {
-		background: var(--color-accent-light-yellow);
+		background: var(--color-accent-primary-alpha);
 		border-color: var(--color-primary);
-		transform: rotate(0deg) scale(1.02);
-		box-shadow: 5px 5px 0 var(--color-text-primary);
+		box-shadow: var(--shadow-sm);
 	}
 
 	.upload-icon {
-		font-size: 3rem;
-		display: block;
-		margin-bottom: 1rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		color: var(--color-text-primary);
+		margin-bottom: 1rem;
+		color: var(--color-text-tertiary);
 	}
 
 	.upload-icon :global(svg) {
-		width: 3rem;
-		height: 3rem;
+		width: 2.5rem;
+		height: 2.5rem;
 	}
 
 	.upload-area p {
@@ -139,22 +138,23 @@
 
 	.browse-button {
 		margin-top: 1rem;
-		padding: 0.75rem 1.5rem;
-		background: var(--color-success);
-		border: var(--border-brutalist-thick);
-		box-shadow: var(--shadow-brutalist-medium);
-		font-size: 1rem;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 1px;
+		padding: 0.625rem 1.25rem;
+		background: var(--color-primary);
+		color: #fff;
+		border: none;
+		border-radius: var(--radius-md);
+		box-shadow: var(--shadow-xs);
+		font-size: 0.875rem;
+		font-weight: 600;
 		cursor: pointer;
-		transition: all 0.15s;
+		transition:
+			background 0.2s,
+			box-shadow 0.2s;
 	}
 
 	.browse-button:hover:not(:disabled) {
-		transform: translate(-2px, -2px);
-		box-shadow: var(--shadow-brutalist-large);
-		background: var(--color-primary-dark);
+		box-shadow: var(--shadow-sm);
+		filter: brightness(1.05);
 	}
 
 	.browse-button:disabled {
@@ -163,44 +163,43 @@
 	}
 
 	.file-selected {
-		background: var(--color-background-light-blue);
-		border: var(--border-brutalist-thick);
-		box-shadow: 5px 5px 0 var(--color-text-primary);
-		padding: 1.5rem;
+		background: var(--color-card);
+		border: 1px solid var(--color-border-light);
+		box-shadow: var(--shadow-sm);
+		padding: 1.25rem;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		transform: rotate(0.5deg);
-		animation: slideIn 0.3s ease-out;
+		border-radius: var(--radius-lg);
+		animation: slideIn 0.2s ease-out;
 	}
 
 	@keyframes slideIn {
 		from {
 			opacity: 0;
-			transform: translateY(10px) rotate(0.5deg);
+			transform: translateY(6px);
 		}
 		to {
 			opacity: 1;
-			transform: translateY(0) rotate(0.5deg);
+			transform: translateY(0);
 		}
 	}
 
 	.file-info {
 		display: flex;
 		align-items: center;
-		gap: 1rem;
+		gap: 0.75rem;
 	}
 
 	.file-icon {
-		font-size: 2rem;
 		display: flex;
 		align-items: center;
-		color: var(--color-text-primary);
+		color: var(--color-primary);
 	}
 
 	.file-icon :global(svg) {
-		width: 2rem;
-		height: 2rem;
+		width: 1.75rem;
+		height: 1.75rem;
 	}
 
 	.file-details {
@@ -209,38 +208,39 @@
 	}
 
 	.file-details strong {
-		font-size: 1.125rem;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		font-size: 0.9375rem;
+		font-weight: 600;
 	}
 
 	.file-details small {
 		color: var(--color-text-tertiary);
-		font-weight: 500;
+		font-weight: 400;
 	}
 
 	.clear-button {
-		padding: 0.5rem;
-		background: var(--color-danger);
-		border: var(--border-brutalist-thin);
-		box-shadow: var(--shadow-brutalist-small);
+		padding: 0.4rem;
+		background: transparent;
+		border: 1px solid var(--color-border-light);
 		cursor: pointer;
-		transition: all 0.15s;
+		transition:
+			background 0.15s,
+			border-color 0.15s;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		border-radius: 4px;
-		color: var(--color-text-primary);
+		border-radius: var(--radius-sm);
+		color: var(--color-text-tertiary);
 	}
 
 	.clear-button :global(svg) {
-		width: 1.25rem;
-		height: 1.25rem;
+		width: 1.125rem;
+		height: 1.125rem;
 	}
 
 	.clear-button:hover:not(:disabled) {
-		transform: translate(-2px, -2px);
-		box-shadow: 5px 5px 0 var(--color-text-primary);
+		background: var(--color-accent-primary-alpha);
+		border-color: var(--color-primary);
+		color: var(--color-text-primary);
 	}
 
 	.clear-button:disabled {
@@ -253,13 +253,9 @@
 			padding: 1.5rem;
 		}
 
-		.upload-icon {
-			font-size: 2.5rem;
-		}
-
 		.upload-icon :global(svg) {
-			width: 2.5rem;
-			height: 2.5rem;
+			width: 2rem;
+			height: 2rem;
 		}
 
 		.file-selected {
@@ -270,7 +266,7 @@
 
 		.clear-button {
 			width: 100%;
-			padding: 0.75rem;
+			padding: 0.625rem;
 		}
 	}
 </style>

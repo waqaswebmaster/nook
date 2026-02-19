@@ -22,12 +22,12 @@
 
 <style>
 	.tokenizer-header {
-		background: var(--color-background-main);
-		border: var(--border-brutalist-thick);
-		box-shadow: var(--shadow-brutalist-large);
+		background: var(--color-card);
+		border: 1px solid var(--color-border-light);
+		box-shadow: var(--shadow-sm);
 		padding: 1.5rem;
 		margin-bottom: 2rem;
-		transform: rotate(-0.3deg);
+		border-radius: var(--radius-lg);
 		position: relative;
 	}
 
@@ -40,33 +40,31 @@
 		align-items: center;
 		justify-content: center;
 		gap: 0.75rem;
-		margin-bottom: 1rem;
+		margin-bottom: 0.5rem;
 	}
 
 	.header-icon {
 		display: flex;
 		align-items: center;
-		color: var(--color-text-primary);
-		font-size: 2rem;
+		color: var(--color-primary);
+		font-size: 1.5rem;
 	}
 
 	.header-icon :global(svg) {
-		width: 2rem;
-		height: 2rem;
+		width: 1.5rem;
+		height: 1.5rem;
 	}
 
 	.tokenizer-header h1 {
 		margin: 0;
-		font-family: var(--font-family-display);
-		font-size: 2rem;
+		font-size: 1.5rem;
+		font-weight: 600;
 		color: var(--color-text-primary);
-		text-transform: uppercase;
-		letter-spacing: 2px;
 	}
 
 	.header-description {
 		margin: 0;
-		font-size: 1rem;
+		font-size: 0.95rem;
 		color: var(--color-text-secondary);
 	}
 </style>

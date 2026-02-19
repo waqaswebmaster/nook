@@ -1,6 +1,7 @@
 import type { PageLoad } from './$types';
 
-export const ssr = true;
+export const ssr = false;
+export const prerender = false;
 
 export const load: PageLoad = ({ parent }) => {
 	return parent().then((data) => ({

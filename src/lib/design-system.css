@@ -1,3 +1,7 @@
+/* ═══════════════════════════════════════════════════════════
+   Nook Design System — Light + Dark Mode
+   ═══════════════════════════════════════════════════════════ */
+
 :root {
 	/* Design tokens — Light mode (default) */
 	--radius: 12px;
@@ -106,12 +110,28 @@
 		transform 200ms ease;
 }
 
+/* ═══════════  BASE RESETS  ═══════════ */
 html {
 	box-sizing: border-box;
+	scroll-behavior: smooth;
+	height: 100%;
 }
 
 *,
 *:before,
 *:after {
 	box-sizing: inherit;
+}
+
+/* ── Focus ring ── */
+:focus-visible {
+	outline: 2px solid var(--color-primary);
+	outline-offset: 2px;
+	border-radius: var(--radius-sm);
+}
+
+/* ── Selection ── */
+::selection {
+	background: var(--color-primary);
+	color: var(--color-text-inverse);
 }

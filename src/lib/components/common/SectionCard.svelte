@@ -8,10 +8,7 @@
 	let { children, rotation = 0.5, animationDelay = 0 }: Props = $props();
 </script>
 
-<div
-	class="section-card"
-	style="transform: rotate({rotation}deg); animation-delay: {animationDelay}s;"
->
+<div class="section-card" style="animation-delay: {animationDelay}s;">
 	{@render children?.()}
 </div>
 
@@ -29,18 +26,18 @@
 
 	@keyframes slideIn {
 		from {
-			transform: translateY(10px) rotate(var(--rotation, 0.5deg));
+			transform: translateY(6px);
 			opacity: 0;
 		}
 		to {
-			transform: translateY(0) rotate(var(--rotation, 0.5deg));
+			transform: translateY(0);
 			opacity: 1;
 		}
 	}
 
 	@media (max-width: 600px) {
 		.section-card {
-			padding: 1.25rem;
+			padding: var(--sp-4);
 		}
 	}
 </style>

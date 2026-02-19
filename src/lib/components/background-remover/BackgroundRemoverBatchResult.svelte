@@ -52,7 +52,6 @@
 
 <div class="batch-results-wrapper">
 	<div class="batch-results">
-		<div class="results-decoration"></div>
 		<div class="results-content">
 			<div class="results-header">
 				<h3>
@@ -165,46 +164,19 @@
 		display: flex;
 		margin: 1.5rem 0;
 		width: 100%;
-		animation: resultSlide 0.5s ease-out;
-	}
-
-	@keyframes resultSlide {
-		from {
-			transform: translateY(20px) rotate(-1deg);
-			opacity: 0;
-		}
-		to {
-			transform: translateY(0) rotate(0.5deg);
-			opacity: 1;
-		}
 	}
 
 	.batch-results {
 		position: relative;
 		width: 100%;
-		max-width: 100%;
-		transform: rotate(0.5deg);
-	}
-
-	.results-decoration {
-		position: absolute;
-		top: -10px;
-		left: -10px;
-		right: -10px;
-		bottom: -10px;
-		background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent-blue) 100%);
-		z-index: -1;
-		opacity: 0.3;
-		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
-		transform: rotate(-1deg);
 	}
 
 	.results-content {
 		padding: 2rem;
-		background: var(--color-background-main);
-		border: var(--border-brutalist-extra-thick);
-		box-shadow: var(--shadow-brutalist-xlarge);
-		position: relative;
+		background: var(--color-card);
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-sm);
 	}
 
 	.results-header {
@@ -214,149 +186,125 @@
 
 	.results-content h3 {
 		margin: 0 0 1rem 0;
-		font-family: var(--font-family-display);
-		font-size: 2rem;
+		font-size: 1.25rem;
+		font-weight: 600;
 		color: var(--color-text-primary);
-		letter-spacing: 2px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		gap: 0.5rem;
-		background: var(--color-secondary);
-		padding: 0.5rem 1rem;
-		border: var(--border-brutalist-thick);
-		box-shadow: var(--shadow-brutalist-medium);
-		transform: rotate(-1deg);
-		text-transform: uppercase;
-		width: fit-content;
-		margin-left: auto;
-		margin-right: auto;
 	}
 
 	.header-icon {
-		font-size: 1.5rem;
+		font-size: 1.25rem;
 		display: flex;
 		align-items: center;
-		color: var(--color-text-primary);
-		animation: sparkle 2s ease-in-out infinite;
+		color: var(--color-primary);
 	}
 
 	.header-icon :global(svg) {
-		width: 1.5rem;
-		height: 1.5rem;
-	}
-
-	@keyframes sparkle {
-		0%,
-		100% {
-			transform: scale(1) rotate(0deg);
-		}
-		50% {
-			transform: scale(1.2) rotate(180deg);
-		}
+		width: 1.25rem;
+		height: 1.25rem;
 	}
 
 	.results-summary {
 		display: flex;
 		justify-content: center;
-		gap: 1rem;
+		gap: 0.75rem;
 		flex-wrap: wrap;
 	}
 
 	.summary-item {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
-		padding: 0.5rem 1rem;
-		border: var(--border-brutalist-thin);
-		border-radius: 6px;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		gap: 0.375rem;
+		padding: 0.375rem 0.75rem;
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-sm);
+		font-weight: 500;
+		font-size: 0.875rem;
+		color: var(--color-text-secondary);
 	}
 
 	.summary-item.success {
-		background: var(--color-secondary);
-		color: var(--color-text-primary);
+		color: var(--color-success);
+		border-color: var(--color-success);
 	}
 
 	.summary-item.failed {
-		background: var(--color-danger);
-		color: var(--color-text-primary);
+		color: var(--color-danger);
+		border-color: var(--color-danger);
 	}
 
 	.summary-icon {
-		font-size: 1.125rem;
+		font-size: 1rem;
 		display: flex;
 		align-items: center;
-		color: var(--color-text-primary);
 	}
 
 	.summary-icon :global(svg) {
-		width: 1.125rem;
-		height: 1.125rem;
+		width: 1rem;
+		height: 1rem;
 	}
 
 	.batch-actions {
 		display: flex;
 		justify-content: center;
-		gap: 1rem;
+		gap: 0.75rem;
 		margin-bottom: 2rem;
 		flex-wrap: wrap;
 	}
 
-	.download-zip-btn,
+	.download-zip-btn {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.625rem 1.25rem;
+		border: none;
+		cursor: pointer;
+		font-size: 0.9375rem;
+		font-weight: 500;
+		transition: opacity 0.2s;
+		font-family: var(--font-family-primary);
+		border-radius: var(--radius-md);
+		background: var(--color-primary);
+		color: white;
+	}
+
 	.process-another-btn {
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
-		padding: 0.75rem 1.5rem;
-		border: var(--border-brutalist-thick);
+		padding: 0.625rem 1.25rem;
 		cursor: pointer;
-		font-size: 1rem;
-		font-weight: 700;
+		font-size: 0.9375rem;
+		font-weight: 500;
 		transition: all 0.2s;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
 		font-family: var(--font-family-primary);
-		box-shadow: var(--shadow-brutalist-medium);
-		border-radius: 6px;
-	}
-
-	.download-zip-btn {
-		background: var(--color-accent-blue);
-		color: var(--color-text-primary);
-	}
-
-	.process-another-btn {
-		background: var(--color-primary-dark);
-		color: var(--color-text-primary);
-	}
-
-	.download-zip-btn:hover,
-	.process-another-btn:hover {
-		transform: translate(-2px, -2px);
-		box-shadow: var(--shadow-brutalist-large);
+		border-radius: var(--radius-md);
+		background: transparent;
+		color: var(--color-text-secondary);
+		border: 1px solid var(--color-border-light);
 	}
 
 	.download-zip-btn:hover {
-		background: #87cefa;
+		opacity: 0.9;
 	}
 
 	.process-another-btn:hover {
-		background: var(--color-warning);
+		border-color: var(--color-primary);
+		color: var(--color-primary);
 	}
 
 	.btn-icon {
-		font-size: 1.25rem;
+		font-size: 1.125rem;
 		display: flex;
 		align-items: center;
-		color: var(--color-text-primary);
 	}
 
 	.btn-icon :global(svg) {
-		width: 1.25rem;
-		height: 1.25rem;
+		width: 1.125rem;
+		height: 1.125rem;
 	}
 
 	.results-section,
@@ -367,41 +315,32 @@
 	.results-section h4,
 	.failed-section h4 {
 		margin: 0 0 1rem 0;
-		font-size: 1.25rem;
-		font-weight: 700;
+		font-size: 1rem;
+		font-weight: 600;
 		color: var(--color-text-primary);
-		text-transform: uppercase;
-		letter-spacing: 1px;
-		padding: 0.5rem 1rem;
-		background: var(--color-primary-dark);
-		border: var(--border-brutalist-thin);
-		box-shadow: var(--shadow-brutalist-small);
-		width: fit-content;
 	}
 
 	.results-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		gap: 1.5rem;
+		gap: 1rem;
 	}
 
 	.result-item {
-		background: var(--color-background-secondary);
-		border: var(--border-brutalist-thick);
-		border-radius: 8px;
+		background: var(--color-card);
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-md);
 		overflow: hidden;
-		box-shadow: var(--shadow-brutalist-medium);
-		transition: all 0.2s;
+		transition: box-shadow 0.2s;
 	}
 
 	.result-item:hover {
-		transform: translate(-1px, -1px);
-		box-shadow: 5px 5px 0 var(--color-border-primary);
+		box-shadow: var(--shadow-md);
 	}
 
 	.result-preview {
-		background: var(--color-background-main);
-		border-bottom: var(--border-brutalist-thick);
+		background: var(--color-card);
+		border-bottom: 1px solid var(--color-border-light);
 	}
 
 	.before-after {
@@ -412,7 +351,7 @@
 
 	.image-side {
 		position: relative;
-		border-right: var(--border-brutalist-thin);
+		border-right: 1px solid var(--color-border-light);
 	}
 
 	.image-side:last-child {
@@ -423,15 +362,13 @@
 		position: absolute;
 		top: 0.5rem;
 		left: 0.5rem;
-		background: var(--color-text-primary);
-		color: var(--color-text-inverse);
-		padding: 0.25rem 0.5rem;
-		font-size: 0.75rem;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		background: rgba(0, 0, 0, 0.6);
+		color: white;
+		padding: 0.125rem 0.5rem;
+		font-size: 0.6875rem;
+		font-weight: 500;
 		z-index: 2;
-		border-radius: 2px;
+		border-radius: var(--radius-sm);
 	}
 
 	.image-side img {
@@ -474,7 +411,7 @@
 	}
 
 	.result-info {
-		padding: 1rem;
+		padding: 0.75rem 1rem;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -483,7 +420,7 @@
 
 	.result-name {
 		font-size: 0.875rem;
-		font-weight: 600;
+		font-weight: 500;
 		color: var(--color-text-primary);
 		overflow: hidden;
 		text-overflow: ellipsis;
@@ -499,16 +436,15 @@
 	.download-individual-btn {
 		width: 32px;
 		height: 32px;
-		background: var(--color-background-main);
-		border: var(--border-brutalist-thin);
-		border-radius: 4px;
+		background: var(--color-card);
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-sm);
 		cursor: pointer;
-		font-size: 1rem;
 		transition: all 0.2s;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		color: var(--color-text-primary);
+		color: var(--color-text-secondary);
 	}
 
 	.download-individual-btn :global(svg) {
@@ -517,8 +453,8 @@
 	}
 
 	.download-individual-btn:hover {
-		background: var(--color-secondary);
-		transform: scale(1.1);
+		border-color: var(--color-primary);
+		color: var(--color-primary);
 	}
 
 	.failed-list {
@@ -528,12 +464,10 @@
 	}
 
 	.failed-item {
-		background: var(--color-background-light-pink);
-		border: var(--border-brutalist-thin);
-		border-color: var(--color-danger);
-		border-radius: 8px;
+		background: var(--color-card);
+		border: 1px solid var(--color-danger);
+		border-radius: var(--radius-md);
 		overflow: hidden;
-		box-shadow: 3px 3px 0 var(--color-danger);
 	}
 
 	.failed-preview {
@@ -556,22 +490,22 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
-		background: rgba(255, 107, 107, 0.8);
+		background: rgba(239, 68, 68, 0.5);
 		display: flex;
 		align-items: center;
 		justify-content: center;
 	}
 
 	.failed-icon {
-		font-size: 2rem;
-		color: var(--color-text-inverse);
+		font-size: 1.5rem;
+		color: white;
 		display: flex;
 		align-items: center;
 	}
 
 	.failed-icon :global(svg) {
-		width: 2rem;
-		height: 2rem;
+		width: 1.5rem;
+		height: 1.5rem;
 	}
 
 	.failed-info {
@@ -580,7 +514,7 @@
 
 	.failed-name {
 		font-size: 0.875rem;
-		font-weight: 600;
+		font-weight: 500;
 		color: var(--color-text-primary);
 		margin-bottom: 0.25rem;
 		overflow: hidden;
@@ -626,7 +560,7 @@
 		}
 
 		.results-content h3 {
-			font-size: 1.5rem;
+			font-size: 1.125rem;
 		}
 
 		.results-summary {
@@ -640,7 +574,7 @@
 
 		.image-side {
 			border-right: none;
-			border-bottom: var(--border-brutalist-thin);
+			border-bottom: 1px solid var(--color-border-light);
 		}
 
 		.image-side:last-child {

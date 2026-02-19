@@ -42,18 +42,17 @@
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
-		padding: 0.75rem;
-		background: var(--color-background-tertiary);
-		border: var(--border-brutalist-thick);
-		box-shadow: var(--shadow-brutalist-small);
+		padding: 0.625rem 0.75rem;
+		background: var(--color-card);
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-md);
 	}
 
 	input[type='checkbox'] {
-		width: 20px;
-		height: 20px;
+		width: 18px;
+		height: 18px;
 		accent-color: var(--color-primary);
 		cursor: pointer;
-		border: var(--border-brutalist-thick);
 	}
 
 	input[type='checkbox']:disabled {
@@ -63,10 +62,8 @@
 
 	label {
 		font-size: 0.875rem;
-		font-weight: 700;
+		font-weight: 500;
 		color: var(--color-text-primary);
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
 		cursor: pointer;
 		user-select: none;
 	}
@@ -79,8 +76,6 @@
 	.not-supported {
 		font-size: 0.75rem;
 		color: var(--color-text-tertiary);
-		text-transform: none;
-		letter-spacing: 0;
-		font-weight: 500;
+		font-weight: 400;
 	}
 </style>

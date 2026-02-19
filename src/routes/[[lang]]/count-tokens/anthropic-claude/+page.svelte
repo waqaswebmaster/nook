@@ -123,21 +123,20 @@
 
 	.results-section {
 		background: var(--color-background-main);
-		border: var(--border-brutalist-thick);
-		box-shadow: var(--shadow-brutalist-large);
+		border: 1px solid var(--color-border-light);
+		box-shadow: var(--shadow-sm);
 		padding: 1.5rem;
-		transform: rotate(-0.2deg);
 		animation: slideIn 0.3s ease-out;
 	}
 
 	@keyframes slideIn {
 		from {
 			opacity: 0;
-			transform: translateY(10px) rotate(-0.2deg);
+			transform: translateY(10px);
 		}
 		to {
 			opacity: 1;
-			transform: translateY(0) rotate(-0.2deg);
+			transform: translateY(0);
 		}
 	}
 

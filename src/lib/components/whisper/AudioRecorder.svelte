@@ -152,35 +152,35 @@
 	.audio-recorder {
 		margin-top: 1rem;
 		padding: 1.5rem;
-		background: var(--color-background-light-blue);
-		border: var(--border-brutalist-thick);
-		box-shadow: 5px 5px 0 var(--color-text-primary);
-		transform: rotate(-0.5deg);
+		background: var(--color-card);
+		border: 1px solid var(--color-border-light);
+		box-shadow: var(--shadow-sm);
+		border-radius: var(--radius-lg);
 	}
 
 	.error-message {
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
-		padding: 1rem;
+		padding: 0.75rem 1rem;
 		background: var(--color-background-light-pink);
-		border: var(--border-brutalist-thin);
-		border-color: var(--color-danger);
+		border: 1px solid var(--color-danger);
+		border-radius: var(--radius-md);
 		margin-bottom: 1rem;
 		font-weight: 500;
+		font-size: 0.875rem;
 		color: var(--color-text-danger);
 	}
 
 	.error-icon {
-		font-size: 1.25rem;
 		display: flex;
 		align-items: center;
 		color: var(--color-text-danger);
 	}
 
 	.error-icon :global(svg) {
-		width: 1.25rem;
-		height: 1.25rem;
+		width: 1.125rem;
+		height: 1.125rem;
 	}
 
 	.record-button,
@@ -189,20 +189,21 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 0.5rem;
-		padding: 0.75rem 1.5rem;
-		background: var(--color-background-main);
-		border: var(--border-brutalist-thick);
-		box-shadow: var(--shadow-brutalist-medium);
-		font-size: 1rem;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 1px;
+		padding: 0.625rem 1.25rem;
+		border: none;
+		border-radius: var(--radius-md);
+		box-shadow: var(--shadow-xs);
+		font-size: 0.875rem;
+		font-weight: 600;
 		cursor: pointer;
-		transition: all 0.15s;
+		transition:
+			background 0.15s,
+			box-shadow 0.15s;
 	}
 
 	.record-button {
-		background: var(--color-success-hover);
+		background: var(--color-primary);
+		color: #fff;
 	}
 
 	.stop-button {
@@ -211,15 +212,17 @@
 	}
 
 	.clear-button {
-		background: var(--color-primary-dark);
+		background: var(--color-card);
+		border: 1px solid var(--color-border-light);
+		color: var(--color-text-primary);
 		margin-top: 1rem;
 	}
 
 	.record-button:hover:not(:disabled),
 	.stop-button:hover:not(:disabled),
 	.clear-button:hover:not(:disabled) {
-		transform: translate(-2px, -2px);
-		box-shadow: var(--shadow-brutalist-large);
+		box-shadow: var(--shadow-sm);
+		filter: brightness(1.05);
 	}
 
 	.record-button:disabled,
@@ -230,14 +233,13 @@
 	}
 
 	.button-icon {
-		font-size: 1.25rem;
 		display: flex;
 		align-items: center;
 	}
 
 	.button-icon :global(svg) {
-		width: 1.25rem;
-		height: 1.25rem;
+		width: 1.125rem;
+		height: 1.125rem;
 	}
 
 	.recording-status {
@@ -250,16 +252,17 @@
 		display: flex;
 		align-items: center;
 		gap: 0.75rem;
-		padding: 1rem;
-		background: var(--color-background-main);
-		border: var(--border-brutalist-thin);
-		font-weight: 700;
-		font-size: 1.125rem;
+		padding: 0.75rem 1rem;
+		background: var(--color-card);
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-md);
+		font-weight: 600;
+		font-size: 1rem;
 	}
 
 	.recording-dot {
-		width: 12px;
-		height: 12px;
+		width: 10px;
+		height: 10px;
 		background: var(--color-accent-red);
 		border-radius: 50%;
 		animation: pulse 1.5s infinite;
@@ -271,8 +274,8 @@
 			transform: scale(1);
 		}
 		50% {
-			opacity: 0.7;
-			transform: scale(1.2);
+			opacity: 0.5;
+			transform: scale(1.15);
 		}
 		100% {
 			opacity: 1;
@@ -283,13 +286,14 @@
 	.recorded-audio {
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
+		gap: 0.75rem;
 	}
 
 	.audio-player {
-		background: var(--color-background-main);
-		padding: 1rem;
-		border: var(--border-brutalist-thin);
+		background: var(--color-card);
+		padding: 0.75rem;
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-md);
 	}
 
 	.audio-player audio {
@@ -304,14 +308,13 @@
 	}
 
 	.audio-info strong {
-		font-size: 1.125rem;
-		text-transform: uppercase;
-		letter-spacing: 1px;
+		font-size: 0.9375rem;
+		font-weight: 600;
 	}
 
 	.audio-info small {
 		color: var(--color-text-tertiary);
-		font-weight: 500;
+		font-weight: 400;
 	}
 
 	@media (max-width: 600px) {

@@ -67,12 +67,11 @@
 	.tokenizer-nav {
 		display: flex;
 		gap: 0;
-		background: var(--color-background-main);
-		border: var(--border-brutalist-thick);
-		box-shadow: var(--shadow-brutalist-medium);
+		background: var(--color-card);
+		border: 1px solid var(--color-border-light);
 		margin-bottom: 0.5rem;
 		overflow: hidden;
-		border-radius: 8px;
+		border-radius: var(--radius-lg);
 	}
 
 	.nav-item {
@@ -81,18 +80,16 @@
 		align-items: center;
 		justify-content: center;
 		gap: 0.5rem;
-		padding: 0.75rem 1rem;
-		background: var(--color-background-main);
+		padding: 0.625rem 1rem;
+		background: transparent;
 		border: none;
-		border-right: var(--border-brutalist-thin);
+		border-right: 1px solid var(--color-border-light);
 		color: var(--color-text-secondary);
-		font-weight: 600;
+		font-weight: 500;
 		font-size: 0.875rem;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
 		cursor: pointer;
-		transition: all 0.2s ease;
-		position: relative;
+		transition: all 0.15s ease;
+		font-family: var(--font-family-primary);
 	}
 
 	.nav-item:last-child {
@@ -100,31 +97,28 @@
 	}
 
 	.nav-item:hover {
-		background: var(--color-background-secondary);
+		background: var(--color-accent-primary-alpha);
 		color: var(--color-text-primary);
-		transform: translateY(-1px);
 	}
 
 	.nav-item.active {
 		background: var(--color-primary);
-		color: var(--color-text-primary);
-		font-weight: 700;
-		box-shadow: inset 0 2px 0 var(--color-accent-gold);
+		color: white;
+		font-weight: 600;
 	}
 
 	.nav-item.active:hover {
-		background: var(--color-primary-dark);
-		transform: none;
+		background: var(--color-primary-hover);
 	}
 
 	.nav-item :global(svg) {
-		width: 1.25rem;
-		height: 1.25rem;
+		width: 1.125rem;
+		height: 1.125rem;
 		flex-shrink: 0;
 	}
 
 	.nav-item span {
-		font-family: var(--font-family-display);
+		font-family: var(--font-family-primary);
 	}
 
 	.tokenizer-content {
@@ -134,7 +128,7 @@
 	@keyframes fadeIn {
 		from {
 			opacity: 0;
-			transform: translateY(10px);
+			transform: translateY(8px);
 		}
 		to {
 			opacity: 1;
@@ -144,7 +138,7 @@
 
 	@media (max-width: 600px) {
 		.nav-item {
-			padding: 0.625rem 0.75rem;
+			padding: 0.5rem 0.75rem;
 			font-size: 0.75rem;
 		}
 
@@ -153,18 +147,8 @@
 		}
 
 		.nav-item :global(svg) {
-			width: 1.5rem;
-			height: 1.5rem;
-		}
-	}
-
-	@media (max-width: 400px) {
-		.tokenizer-nav {
-			margin-bottom: 1rem;
-		}
-
-		.nav-item {
-			padding: 0.5rem;
+			width: 1.25rem;
+			height: 1.25rem;
 		}
 	}
 </style>

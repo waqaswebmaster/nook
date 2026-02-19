@@ -17,7 +17,7 @@
 		background: var(--color-background-secondary);
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
+		gap: var(--sp-4);
 		box-sizing: border-box;
 		min-height: 0;
 		transition:
@@ -27,14 +27,13 @@
 	}
 
 	.content-area.disabled {
-		opacity: 0.3;
+		opacity: 0.35;
 		pointer-events: none;
-		filter: grayscale(50%);
 	}
 
-	@media (max-width: 600px) {
+	@media (max-width: 768px) {
 		.content-area {
-			padding: 1rem;
+			padding: var(--sp-4);
 			min-height: 0;
 		}
 	}

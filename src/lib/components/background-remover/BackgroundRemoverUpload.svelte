@@ -116,7 +116,6 @@
 </script>
 
 <div class="background-remover-upload" class:batch-mode={mode === 'batch'}>
-	<div class="upload-decoration"></div>
 	<h3>
 		<span class="title-icon"><FolderIcon /></span>
 		{mode === 'single' ? 'Choose Image' : 'Batch Processing'}
@@ -233,86 +232,37 @@
 
 <style>
 	.background-remover-upload {
-		background: var(--color-background-main);
-		border: var(--border-brutalist-extra-thick);
+		background: var(--color-card);
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-lg);
 		padding: 2rem;
-		box-shadow: var(--shadow-brutalist-xlarge);
+		box-shadow: var(--shadow-sm);
 		margin-bottom: 1.5rem;
-		position: relative;
-		transform: rotate(0.5deg);
-		animation: slideIn 0.4s ease-out;
-		animation-delay: 0.1s;
-		animation-fill-mode: both;
-	}
-
-	.background-remover-upload.batch-mode .upload-decoration {
-		background: linear-gradient(135deg, var(--color-accent-blue) 0%, var(--color-secondary) 100%);
-	}
-
-	@keyframes slideIn {
-		from {
-			transform: translateX(20px) rotate(1deg);
-			opacity: 0;
-		}
-		to {
-			transform: translateX(0) rotate(0.5deg);
-			opacity: 1;
-		}
-	}
-
-	.upload-decoration {
-		position: absolute;
-		top: -8px;
-		left: -8px;
-		right: -8px;
-		bottom: -8px;
-		background: linear-gradient(
-			135deg,
-			var(--color-primary-dark) 0%,
-			var(--color-accent-pink) 100%
-		);
-		z-index: -1;
-		opacity: 0.3;
-		border-radius: 5% 20% 5% 20% / 20% 5% 20% 5%;
 	}
 
 	.background-remover-upload h3 {
 		margin-top: 0;
 		margin-bottom: 1.5rem;
-		font-family: var(--font-family-display);
-		font-size: 2rem;
+		font-size: 1.25rem;
+		font-weight: 600;
 		color: var(--color-text-primary);
 		text-align: center;
-		letter-spacing: 2px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		gap: 0.75rem;
-		background: var(--color-primary-dark);
-		padding: 0.5rem 1.5rem;
-		border: var(--border-brutalist-thick);
-		box-shadow: 5px 5px 0 var(--color-text-primary);
-		transform: rotate(1deg);
-		width: fit-content;
-		margin-left: auto;
-		margin-right: auto;
-		text-transform: uppercase;
-	}
-
-	.batch-mode h3 {
-		background: var(--color-accent-blue);
+		gap: 0.5rem;
 	}
 
 	.title-icon {
-		font-size: 1.75rem;
+		font-size: 1.25rem;
 		display: flex;
 		align-items: center;
-		color: var(--color-text-primary);
+		color: var(--color-text-secondary);
 	}
 
 	.title-icon :global(svg) {
-		width: 1.75rem;
-		height: 1.75rem;
+		width: 1.25rem;
+		height: 1.25rem;
 	}
 
 	.background-remover-upload input[type='file'] {
@@ -323,46 +273,36 @@
 		display: block;
 		position: relative;
 		min-height: 180px;
-		background: var(--color-background-main);
-		border: 4px dashed var(--color-text-primary);
+		background: var(--color-card);
+		border: 2px dashed var(--color-border-light);
+		border-radius: var(--radius-lg);
 		cursor: pointer;
-		transition: all 0.15s ease;
+		transition: all 0.2s ease;
 		overflow: hidden;
-		transform: rotate(-0.5deg);
-		box-shadow: 5px 5px 0 var(--color-text-primary);
 		margin-bottom: 1.5rem;
 	}
 
 	.file-upload-label:hover:not(.disabled) {
-		transform: translate(-2px, -2px) rotate(0deg);
-		box-shadow: 7px 7px 0 var(--color-text-primary);
-		background: var(--color-background-cream);
+		border-color: var(--color-primary);
+		background: var(--color-accent-primary-alpha);
 	}
 
 	.file-upload-label.has-file {
 		border-style: solid;
-	}
-
-	.file-upload-label.has-file {
-		background: var(--color-success);
-	}
-
-	.batch-mode .file-upload-label.has-file {
-		background: var(--color-accent-blue);
+		border-color: var(--color-primary);
+		background: var(--color-accent-primary-alpha);
 	}
 
 	.file-upload-label.disabled {
 		cursor: not-allowed;
 		opacity: 0.6;
-		background: var(--color-background-disabled);
 	}
 
 	.file-upload-label.dragging {
-		background: var(--color-primary-dark);
+		border-color: var(--color-primary);
 		border-style: solid;
-		border-color: var(--color-text-primary);
-		transform: translate(-3px, -3px) rotate(0deg);
-		box-shadow: 8px 8px 0 var(--color-text-primary);
+		background: var(--color-accent-primary-alpha);
+		box-shadow: var(--shadow-md);
 	}
 
 	.upload-content {
@@ -373,72 +313,48 @@
 		padding: 2rem;
 		height: 100%;
 		min-height: 180px;
-		position: relative;
-		z-index: 1;
 	}
 
 	.upload-icon {
-		color: var(--color-text-primary);
+		color: var(--color-text-tertiary);
 		margin-bottom: 1rem;
-		animation: float 3s ease-in-out infinite;
 		display: flex;
-		font-size: 48px;
+		font-size: 40px;
 	}
 
 	.upload-icon :global(svg) {
-		width: 48px;
-		height: 48px;
-	}
-
-	@keyframes float {
-		0%,
-		100% {
-			transform: translateY(0);
-		}
-		50% {
-			transform: translateY(-10px);
-		}
+		width: 40px;
+		height: 40px;
 	}
 
 	.upload-text {
-		font-size: 1.125rem;
+		font-size: 1rem;
 		color: var(--color-text-primary);
 		margin: 0 0 0.5rem 0;
 		text-align: center;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 1px;
+		font-weight: 600;
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
 	}
 
 	.file-icon {
-		font-size: 1.25rem;
+		font-size: 1.125rem;
 		display: flex;
 		align-items: center;
-		color: var(--color-text-primary);
+		color: var(--color-text-secondary);
 	}
 
 	.file-icon :global(svg) {
-		width: 1.25rem;
-		height: 1.25rem;
+		width: 1.125rem;
+		height: 1.125rem;
 	}
 
 	.upload-hint {
-		font-size: 0.9375rem;
-		color: var(--color-text-secondary);
+		font-size: 0.875rem;
+		color: var(--color-text-tertiary);
 		margin: 0;
 		text-align: center;
-		font-weight: 600;
-		background: var(--color-primary-dark);
-		padding: 4px 12px;
-		border: var(--border-brutalist-thin);
-		box-shadow: var(--shadow-brutalist-small);
-	}
-
-	.file-upload-label.has-file .upload-hint {
-		background: var(--color-background-main);
 	}
 
 	.or-divider {
@@ -450,12 +366,10 @@
 	}
 
 	.or-divider span {
-		background: var(--color-background-main);
+		background: var(--color-card);
 		padding: 0 1rem;
-		font-weight: 700;
-		font-size: 0.875rem;
-		text-transform: uppercase;
-		letter-spacing: 2px;
+		font-weight: 500;
+		font-size: 0.8125rem;
 		color: var(--color-text-tertiary);
 		position: relative;
 	}
@@ -465,8 +379,8 @@
 		position: absolute;
 		left: 0;
 		right: 0;
-		height: 2px;
-		background: var(--color-gray-300);
+		height: 1px;
+		background: var(--color-border-light);
 		top: 50%;
 		transform: translateY(-50%);
 	}
@@ -477,44 +391,37 @@
 		justify-content: center;
 		gap: 0.5rem;
 		width: 100%;
-		padding: 1rem 1.5rem;
-		background: var(--color-secondary);
-		color: var(--color-text-primary);
-		border: var(--border-brutalist-thick);
-		border-radius: 8px;
+		padding: 0.75rem 1.5rem;
+		background: transparent;
+		color: var(--color-primary);
+		border: 1px solid var(--color-primary);
+		border-radius: var(--radius-md);
 		cursor: pointer;
-		font-size: 1rem;
-		font-weight: 700;
+		font-size: 0.9375rem;
+		font-weight: 500;
 		transition: all 0.2s;
-		box-shadow: var(--shadow-brutalist-medium);
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
 		font-family: var(--font-family-primary);
-		transform: rotate(-0.5deg);
 	}
 
 	.example-button:hover:not(:disabled) {
-		transform: translate(-2px, -2px) rotate(0deg);
-		box-shadow: var(--shadow-brutalist-large);
-		background: var(--color-primary-dark);
+		background: var(--color-accent-primary-alpha);
 	}
 
 	.example-button:disabled {
-		background: var(--color-background-disabled);
+		opacity: 0.5;
 		cursor: not-allowed;
-		opacity: 0.6;
 	}
 
 	.example-icon {
-		font-size: 1.25rem;
+		font-size: 1.125rem;
 		display: flex;
 		align-items: center;
-		color: var(--color-text-primary);
+		color: var(--color-primary);
 	}
 
 	.example-icon :global(svg) {
-		width: 1.25rem;
-		height: 1.25rem;
+		width: 1.125rem;
+		height: 1.125rem;
 	}
 
 	/* Batch Mode Specific Styles */
@@ -527,17 +434,15 @@
 		justify-content: space-between;
 		align-items: center;
 		margin-bottom: 1rem;
-		padding-bottom: 0.5rem;
-		border-bottom: var(--border-brutalist-thin);
+		padding-bottom: 0.75rem;
+		border-bottom: 1px solid var(--color-border-light);
 	}
 
 	.files-header h4 {
 		margin: 0;
-		font-size: 1.125rem;
-		font-weight: 700;
+		font-size: 1rem;
+		font-weight: 600;
 		color: var(--color-text-primary);
-		text-transform: uppercase;
-		letter-spacing: 1px;
 	}
 
 	.clear-all-btn {
@@ -545,40 +450,36 @@
 		align-items: center;
 		gap: 0.375rem;
 		padding: 0.375rem 0.75rem;
-		background: var(--color-danger);
-		color: var(--color-text-primary);
-		border: var(--border-brutalist-thin);
-		border-radius: 4px;
+		background: transparent;
+		color: var(--color-text-secondary);
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-sm);
 		cursor: pointer;
 		font-size: 0.8125rem;
-		font-weight: 700;
+		font-weight: 500;
 		transition: all 0.2s;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
 		font-family: var(--font-family-primary);
 	}
 
 	.clear-all-btn:hover:not(:disabled) {
-		background: var(--color-danger-hover);
-		transform: translate(-1px, -1px);
-		box-shadow: var(--shadow-brutalist-small);
+		color: var(--color-danger);
+		border-color: var(--color-danger);
 	}
 
 	.clear-all-btn:disabled {
-		opacity: 0.6;
+		opacity: 0.5;
 		cursor: not-allowed;
 	}
 
 	.clear-icon {
-		font-size: 1rem;
+		font-size: 0.875rem;
 		display: flex;
 		align-items: center;
-		color: var(--color-text-primary);
 	}
 
 	.clear-icon :global(svg) {
-		width: 1rem;
-		height: 1rem;
+		width: 0.875rem;
+		height: 0.875rem;
 	}
 
 	.files-grid {
@@ -591,26 +492,24 @@
 	.file-item {
 		display: flex;
 		flex-direction: column;
-		background: var(--color-background-secondary);
-		border: var(--border-brutalist-thin);
-		border-radius: 8px;
+		background: var(--color-card);
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-md);
 		overflow: hidden;
 		position: relative;
-		transition: all 0.2s;
-		box-shadow: var(--shadow-brutalist-small);
+		transition: box-shadow 0.2s;
 	}
 
 	.file-item:hover {
-		transform: translate(-1px, -1px);
-		box-shadow: var(--shadow-brutalist-medium);
+		box-shadow: var(--shadow-md);
 	}
 
 	.file-preview {
 		width: 100%;
 		height: 120px;
 		overflow: hidden;
-		background: var(--color-background-main);
-		border-bottom: var(--border-brutalist-thin);
+		background: var(--color-card);
+		border-bottom: 1px solid var(--color-border-light);
 	}
 
 	.file-preview img {
@@ -626,7 +525,7 @@
 
 	.file-name {
 		font-size: 0.875rem;
-		font-weight: 600;
+		font-weight: 500;
 		color: var(--color-text-primary);
 		margin-bottom: 0.25rem;
 		overflow: hidden;
@@ -637,7 +536,6 @@
 	.file-size {
 		font-size: 0.75rem;
 		color: var(--color-text-tertiary);
-		font-weight: 500;
 	}
 
 	.remove-file-btn {
@@ -646,27 +544,26 @@
 		right: 0.5rem;
 		width: 24px;
 		height: 24px;
-		background: var(--color-danger);
-		color: var(--color-text-primary);
-		border: var(--border-brutalist-thin);
-		border-radius: 50%;
+		background: rgba(0, 0, 0, 0.6);
+		color: white;
+		border: none;
+		border-radius: var(--radius-sm);
 		cursor: pointer;
 		font-size: 1rem;
-		font-weight: 700;
+		font-weight: 600;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		transition: all 0.2s;
+		transition: background 0.2s;
 		line-height: 1;
 	}
 
 	.remove-file-btn:hover:not(:disabled) {
-		background: var(--color-danger-hover);
-		transform: scale(1.1);
+		background: rgba(0, 0, 0, 0.8);
 	}
 
 	.remove-file-btn:disabled {
-		opacity: 0.6;
+		opacity: 0.5;
 		cursor: not-allowed;
 	}
 
@@ -674,32 +571,43 @@
 		display: flex;
 		justify-content: center;
 		padding-top: 1rem;
-		border-top: var(--border-brutalist-thin);
+		border-top: 1px solid var(--color-border-light);
 	}
 
 	.start-batch-btn {
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
-		padding: 1rem 2rem;
-		font-size: 1.125rem;
-		background: var(--color-success);
+		padding: 0.75rem 1.5rem;
+		font-size: 1rem;
+		background: var(--color-primary);
+		color: white;
+		border: none;
+		border-radius: var(--radius-md);
+		cursor: pointer;
+		font-weight: 500;
+		transition: opacity 0.2s;
+		font-family: var(--font-family-primary);
 	}
 
 	.start-batch-btn:hover:not(:disabled) {
-		background: var(--color-success-hover);
+		opacity: 0.9;
+	}
+
+	.start-batch-btn:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
 	}
 
 	.btn-icon {
-		font-size: 1.5rem;
+		font-size: 1.25rem;
 		display: flex;
 		align-items: center;
-		color: var(--color-text-primary);
 	}
 
 	.btn-icon :global(svg) {
-		width: 1.5rem;
-		height: 1.5rem;
+		width: 1.25rem;
+		height: 1.25rem;
 	}
 
 	@media (max-width: 768px) {
@@ -734,16 +642,16 @@
 		}
 
 		.upload-text {
-			font-size: 1rem;
+			font-size: 0.9375rem;
 		}
 
 		.upload-hint {
-			font-size: 0.875rem;
+			font-size: 0.8125rem;
 		}
 
 		.example-button {
 			font-size: 0.875rem;
-			padding: 0.875rem 1.25rem;
+			padding: 0.625rem 1.25rem;
 		}
 
 		.files-grid {

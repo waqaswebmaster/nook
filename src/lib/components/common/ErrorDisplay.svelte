@@ -22,84 +22,74 @@
 <style>
 	.error {
 		color: var(--color-text-primary);
-		background: #ffb6c1;
-		padding: 1.5rem;
-		border: var(--border-brutalist-thick);
+		background: var(--color-card);
+		padding: var(--sp-6);
+		border: 1px solid var(--color-danger);
 		text-align: center;
-		box-shadow: 5px 5px 0 var(--color-border-primary);
-		width: calc(100% - 4rem);
+		box-shadow: var(--shadow-md);
+		width: calc(100% - var(--sp-8));
 		max-width: 500px;
-		border-radius: 12px;
+		border-radius: var(--radius-lg);
 		margin: 0 auto;
 		box-sizing: border-box;
 	}
 
 	.error h3 {
-		font-size: 1.5rem;
-		margin: 0 0 0.75rem 0;
-		color: var(--color-text-primary);
+		font-size: 1.25rem;
+		margin: 0 0 var(--sp-2) 0;
+		color: var(--color-danger);
 		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 1px;
 	}
 
 	.error p {
-		font-size: 1rem;
-		font-weight: 500;
-		margin-bottom: 1.25rem;
-		line-height: 1.5;
-		color: var(--color-text-primary);
+		font-size: 0.9375rem;
+		font-weight: 400;
+		margin-bottom: var(--sp-4);
+		line-height: 1.6;
+		color: var(--color-text-secondary);
 		word-wrap: break-word;
 	}
 
 	.retry-button {
-		padding: 0.75rem 1.5rem;
-		background: var(--color-text-primary);
-		color: var(--color-text-inverse);
+		padding: var(--sp-3) var(--sp-5);
+		background: var(--color-primary);
+		color: #fff;
 		border: none;
-		border-radius: 8px;
+		border-radius: var(--radius-md);
 		cursor: pointer;
-		font-size: 1rem;
+		font-size: 0.9375rem;
 		font-weight: 600;
-		transition: all 0.2s;
+		transition: all var(--transition-fast);
 		font-family: var(--font-family-primary);
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
 	}
 
 	.retry-button:hover:not(:disabled) {
-		transform: translateY(-2px);
-		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+		background: var(--color-primary-hover);
+		transform: translateY(-1px);
+		box-shadow: var(--shadow-md);
 	}
 
 	.retry-button:disabled {
-		background: var(--color-text-tertiary);
+		background: var(--color-background-disabled);
+		color: var(--color-text-disabled);
 		cursor: not-allowed;
 		opacity: 0.7;
 	}
 
 	@media (max-width: 600px) {
 		.error {
-			width: calc(100% - 2rem);
+			width: calc(100% - var(--sp-4));
 			max-width: none;
-			padding: 1.25rem 1rem;
-			margin: 0 1rem;
+			padding: var(--sp-5) var(--sp-4);
+			margin: 0 auto;
 		}
 
 		.error h3 {
-			font-size: 1.25rem;
+			font-size: 1.125rem;
 		}
 
 		.error p {
-			font-size: 0.9375rem;
-		}
-	}
-
-	@media (max-width: 400px) {
-		.error {
-			width: calc(100% - 1rem);
-			margin: 0 0.5rem;
-			padding: 1rem 0.75rem;
+			font-size: 0.875rem;
 		}
 	}
 </style>

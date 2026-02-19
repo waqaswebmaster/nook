@@ -16,10 +16,10 @@ msgstr ""
 msgid "Nook"
 msgstr "Nook"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Tool #01"
-msgstr "ツール #01"
+#~ msgid "Tool #01"
+#~ msgstr "ツール #01"
 
+#: src/lib/components/Footer.svelte
 #: src/routes/+layout.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Chat"
@@ -28,49 +28,43 @@ msgstr "チャット"
 #~ msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp"
 #~ msgstr "llama.cppにより、Gemma3などの大規模言語モデルとデバイス上で完全にチャット"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Tool #02"
-msgstr "ツール #02"
+#~ msgid "Tool #02"
+#~ msgstr "ツール #02"
 
+#: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Transcribe Audio"
 msgstr "音声文字起こし"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Tool #03"
-msgstr "ツール #03"
+#~ msgid "Tool #03"
+#~ msgstr "ツール #03"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "Text to Speech"
 msgstr "テキスト読み上げ"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Tool #04"
-msgstr "ツール #04"
+#~ msgid "Tool #04"
+#~ msgstr "ツール #04"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "Remove Background"
 msgstr "背景除去"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Tool #05"
-msgstr "ツール #05"
+#~ msgid "Tool #05"
+#~ msgstr "ツール #05"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "Count Tokens"
 msgstr "トークンカウント"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Estimate token usage for prompts across OpenAI and Anthropic models."
-msgstr "OpenAIとAnthropicモデルのプロンプトのトークン使用量を推定。"
+#~ msgid "Estimate token usage for prompts across OpenAI and Anthropic models."
+#~ msgstr "OpenAIとAnthropicモデルのプロンプトのトークン使用量を推定。"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "All processing happens locally in your browser using WebAssembly."
-msgstr "すべての処理はWebAssemblyを使用してブラウザ内でローカルに実行されます。"
+#~ msgid "All processing happens locally in your browser using WebAssembly."
+#~ msgstr "すべての処理はWebAssemblyを使用してブラウザ内でローカルに実行されます。"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "No data is sent to external servers."
-msgstr "外部サーバーにデータは送信されません。"
+#~ msgid "No data is sent to external servers."
+#~ msgstr "外部サーバーにデータは送信されません。"
 
 #: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "<0/> Batch Processing Complete!"
@@ -169,7 +163,6 @@ msgid "Drop multiple images here"
 msgstr "ここに複数の画像をドロップ"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-#: src/lib/components/whisper/TranscribeOptions.svelte
 msgid "OR"
 msgstr "または"
 
@@ -358,6 +351,7 @@ msgstr "録音完了"
 msgid "<0/> Clear Recording"
 msgstr "<0/> 録音をクリア"
 
+#: src/lib/components/Footer.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
 #: src/routes/+layout.svelte
 msgid "Tokens"
@@ -377,6 +371,7 @@ msgid "Drag & Drop Audio File"
 msgstr "音声ファイルをドラッグ＆ドロップ"
 
 #: src/lib/components/whisper/FileUpload.svelte
+#: src/lib/components/whisper/TranscribeOptions.svelte
 msgid "or"
 msgstr "または"
 
@@ -487,6 +482,7 @@ msgid "75MB • Better Quality • Fast"
 msgstr "75MB • より高品質 • 高速"
 
 #: src/lib/components/tts/ModelSwitcher.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Kokoro"
 msgstr "Kokoro"
 
@@ -552,22 +548,18 @@ msgstr "(非対応)"
 msgid "Try WebGPU (experimental) <0/>"
 msgstr "WebGPUを試す (実験的) <0/>"
 
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "Failed to load model. Please check your connection and try again."
-msgstr "モデルの読み込みに失敗しました。接続を確認してもう一度お試しください。"
+#~ msgid "Failed to load model. Please check your connection and try again."
+#~ msgstr "モデルの読み込みに失敗しました。接続を確認してもう一度お試しください。"
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
-#: src/routes/[[lang]]/chat/+page.svelte
 msgid "Loading Model"
 msgstr "モデル読み込み中"
 
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "This will take a couple of minutes. The chat model is being downloaded to your browser."
-msgstr "数分かかります。チャットモデルをブラウザにダウンロード中です。"
+#~ msgid "This will take a couple of minutes. The chat model is being downloaded to your browser."
+#~ msgstr "数分かかります。チャットモデルをブラウザにダウンロード中です。"
 
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "New <0>Chat</0>"
-msgstr "新規<0>チャット</0>"
+#~ msgid "New <0>Chat</0>"
+#~ msgstr "新規<0>チャット</0>"
 
 #: src/routes/[[lang]]/og/+page.svelte
 msgid "OpenGraph Image Generator"
@@ -1045,13 +1037,11 @@ msgstr "ClaudeはGPTモデルと同様のBPE（バイトペアエンコーディ
 msgid "Special characters and code may use more tokens"
 msgstr "特殊文字とコードはより多くのトークンを使用する可能性があります"
 
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "Reloading..."
-msgstr "再読み込み中..."
+#~ msgid "Reloading..."
+#~ msgstr "再読み込み中..."
 
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "Reload Model"
-msgstr "モデルを再読み込み"
+#~ msgid "Reload Model"
+#~ msgstr "モデルを再読み込み"
 
 #: src/lib/components/common/AdvancedSection.svelte
 msgid "Advanced Parameters"
@@ -1062,6 +1052,7 @@ msgstr "詳細パラメータ"
 msgid "RMBG-1.4"
 msgstr "RMBG-1.4"
 
+#: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "RMBG v1.4"
 msgstr "RMBG v1.4"
@@ -1074,6 +1065,7 @@ msgstr "QUANT"
 msgid "BEN2-ONNX"
 msgstr "BEN2-ONNX"
 
+#: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "BEN2"
 msgstr "BEN2"
@@ -1082,10 +1074,12 @@ msgstr "BEN2"
 msgid "FP16"
 msgstr "FP16"
 
+#: src/lib/components/Footer.svelte
 #: src/routes/+layout.svelte
 msgid "Transcribe"
 msgstr "文字起こし"
 
+#: src/lib/components/Footer.svelte
 #: src/routes/+layout.svelte
 msgid "TTS"
 msgstr "TTS"
@@ -1207,10 +1201,12 @@ msgstr "Geminiモデルのトークンをカウント"
 msgid "Claude"
 msgstr "Claude"
 
+#: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/count-tokens/+layout.svelte
 msgid "OpenAI"
 msgstr "OpenAI"
 
+#: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/count-tokens/+layout.svelte
 msgid "Gemini"
 msgstr "Gemini"
@@ -1569,6 +1565,7 @@ msgstr ""
 #~ msgid "Change Language"
 #~ msgstr "言語を変更"
 
+#: src/lib/components/Footer.svelte
 #: src/routes/+layout.svelte
 msgid "GitHub"
 msgstr "GitHub"
@@ -1588,31 +1585,28 @@ msgstr "GitHub"
 #~ msgid "Local AI"
 #~ msgstr ""
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Ibex Tools Local AI"
-msgstr ""
+#~ msgid "Ibex Tools Local AI"
+#~ msgstr ""
 
 #~ msgid ""
 #~ "On this page you'll find free, private AI tools that run entirely in your browser - and\n"
 #~ "even offline!"
 #~ msgstr ""
 
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"Chat with Large Language Models like Gemma3, completely on-device thanks to\n"
-"llama.cpp"
-msgstr ""
+#~ msgid ""
+#~ "Chat with Large Language Models like Gemma3, completely on-device thanks to\n"
+#~ "llama.cpp"
+#~ msgstr ""
 
 #~ msgid ""
 #~ "Convert speech to text using Whisper AI. Upload any existing audio file or record a\n"
 #~ "new audio clip directly in your browser and export as text or a subtitle file."
 #~ msgstr ""
 
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"Convert text to natural-sounding speech using AI models. Choose from Kitten TTS,\n"
-"Piper, or Kokoro models for high-quality voice synthesis."
-msgstr ""
+#~ msgid ""
+#~ "Convert text to natural-sounding speech using AI models. Choose from Kitten TTS,\n"
+#~ "Piper, or Kokoro models for high-quality voice synthesis."
+#~ msgstr ""
 
 #~ msgid ""
 #~ "Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2 models\n"
@@ -1633,24 +1627,21 @@ msgstr ""
 #~ "for professional results.</2></1></3> <4><0>Tool #05</0> <1><0/> <1>Count Tokens</1> <2>Estimate token usage for prompts across OpenAI and Anthropic models.</2></1></4></0></0> <1><0><0>All processing happens locally in your browser using WebAssembly.</0> <1>No data is sent to external servers.</1></0></1></0></0>"
 #~ msgstr ""
 
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"On this page you'll find free, private AI tools that run entirely in your browser -\n"
-"and even offline!"
-msgstr ""
+#~ msgid ""
+#~ "On this page you'll find free, private AI tools that run entirely in your browser -\n"
+#~ "and even offline!"
+#~ msgstr ""
 
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"Convert speech to text using Whisper AI. Upload any existing audio file or\n"
-"record a new audio clip directly in your browser and export as text or a\n"
-"subtitle file."
-msgstr ""
+#~ msgid ""
+#~ "Convert speech to text using Whisper AI. Upload any existing audio file or\n"
+#~ "record a new audio clip directly in your browser and export as text or a\n"
+#~ "subtitle file."
+#~ msgstr ""
 
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2\n"
-"models for professional results."
-msgstr ""
+#~ msgid ""
+#~ "Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2\n"
+#~ "models for professional results."
+#~ msgstr ""
 
 #: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid ""
@@ -1673,6 +1664,26 @@ msgstr ""
 
 #~ msgid "Ibex"
 #~ msgstr ""
+
+#~ msgid "Ibex Tools"
+#~ msgstr ""
+
+#: src/routes/+layout.svelte
+#: src/routes/+layout.svelte
+msgid "N"
+msgstr ""
+
+#: src/routes/+layout.svelte
+msgid "Main navigation"
+msgstr ""
+
+#: src/routes/+layout.svelte
+msgid "Open menu"
+msgstr ""
+
+#: src/routes/+layout.svelte
+msgid "Navigation menu"
+msgstr ""
 
 #: src/routes/+layout.svelte
 #: src/routes/+layout.svelte

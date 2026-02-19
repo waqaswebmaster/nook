@@ -3,7 +3,11 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:20:18.035Z\n"
+
+"PO-Revision-Date: 2026-02-19T16:57:30.776Z\n"
+=======
 "PO-Revision-Date: 2026-02-18T14:04:37.556Z\n"
+
 "Last-Translator: \n"
 "Language: uk\n"
 "Language-Team: \n"
@@ -11,6 +15,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "MIME-Version: 1.0\n"
+
+
+#: src/lib/components/Footer.svelte
+#: src/routes/+layout.svelte
+#: src/routes/+layout.svelte
+#: src/routes/+layout.svelte
+#: src/routes/+layout.ts
 
 #: src/routes/[[lang]]/og/+page.svelte
 msgid "Nook"
@@ -23,10 +34,10 @@ msgstr "Nook"
 #~ "На цій сторінці ви знайдете безкоштовні, приватні AI інструменти, які працюють повністю у вашому браузері - і навіть\n"
 #~ "офлайн!"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Tool #01"
-msgstr "Інструмент #01"
+#~ msgid "Tool #01"
+#~ msgstr "Інструмент #01"
 
+#: src/lib/components/Footer.svelte
 #: src/routes/+layout.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Chat"
@@ -35,17 +46,16 @@ msgstr "Чат"
 #~ msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp"
 #~ msgstr "Спілкуйтеся з великими мовними моделями як Gemma3, повністю на вашому пристрої завдяки llama.cpp"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Tool #02"
-msgstr "Інструмент #02"
+#~ msgid "Tool #02"
+#~ msgstr "Інструмент #02"
 
+#: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Transcribe Audio"
 msgstr "Транскрибувати аудіо"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Tool #03"
-msgstr "Інструмент #03"
+#~ msgid "Tool #03"
+#~ msgstr "Інструмент #03"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "Text to Speech"
@@ -58,34 +68,30 @@ msgstr "Текст у мовлення"
 #~ "Перетворюйте текст на природне мовлення за допомогою AI моделей. Оберіть з Kitten TTS, Piper\n"
 #~ "або Kokoro моделей для високоякісного синтезу голосу."
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Tool #04"
-msgstr "Інструмент #04"
+#~ msgid "Tool #04"
+#~ msgstr "Інструмент #04"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "Remove Background"
 msgstr "Видалити фон"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Tool #05"
-msgstr "Інструмент #05"
+#~ msgid "Tool #05"
+#~ msgstr "Інструмент #05"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "Count Tokens"
 msgstr "Підрахувати токени"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Estimate token usage for prompts across OpenAI and Anthropic models."
-msgstr "Оцініть використання токенів для запитів у моделях OpenAI та Anthropic."
+#~ msgid "Estimate token usage for prompts across OpenAI and Anthropic models."
+#~ msgstr "Оцініть використання токенів для запитів у моделях OpenAI та Anthropic."
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "All processing happens locally in your browser using WebAssembly."
-msgstr "Вся обробка відбувається локально у вашому браузері за допомогою WebAssembly."
+#~ msgid "All processing happens locally in your browser using WebAssembly."
+#~ msgstr "Вся обробка відбувається локально у вашому браузері за допомогою WebAssembly."
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "No data is sent to external servers."
-msgstr "Жодні дані не передаються на зовнішні сервери."
+#~ msgid "No data is sent to external servers."
+#~ msgstr "Жодні дані не передаються на зовнішні сервери."
 
+#: src/lib/components/Footer.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
 #: src/routes/+layout.svelte
 msgid "Tokens"
@@ -250,7 +256,6 @@ msgid "or click to browse • JPG, PNG, WebP supported"
 msgstr "або клацніть для вибору • Підтримуються JPG, PNG, WebP"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-#: src/lib/components/whisper/TranscribeOptions.svelte
 msgid "OR"
 msgstr "АБО"
 
@@ -458,6 +463,7 @@ msgid "Drag & Drop Audio File"
 msgstr "Перетягніть аудіофайл"
 
 #: src/lib/components/whisper/FileUpload.svelte
+#: src/lib/components/whisper/TranscribeOptions.svelte
 msgid "or"
 msgstr "або"
 
@@ -554,6 +560,7 @@ msgid "75MB • Better Quality • Fast"
 msgstr "75МБ • Краща якість • Швидко"
 
 #: src/lib/components/tts/ModelSwitcher.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Kokoro"
 msgstr "Kokoro"
 
@@ -606,22 +613,18 @@ msgstr "Демо файл"
 msgid "Listen →"
 msgstr "Слухати →"
 
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "Failed to load model. Please check your connection and try again."
-msgstr "Не вдалося завантажити модель. Перевірте з'єднання та спробуйте знову."
+#~ msgid "Failed to load model. Please check your connection and try again."
+#~ msgstr "Не вдалося завантажити модель. Перевірте з'єднання та спробуйте знову."
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
-#: src/routes/[[lang]]/chat/+page.svelte
 msgid "Loading Model"
 msgstr "Завантаження моделі"
 
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "This will take a couple of minutes. The chat model is being downloaded to your browser."
-msgstr "Це займе кілька хвилин. Чат-модель завантажується у ваш браузер."
+#~ msgid "This will take a couple of minutes. The chat model is being downloaded to your browser."
+#~ msgstr "Це займе кілька хвилин. Чат-модель завантажується у ваш браузер."
 
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "New <0>Chat</0>"
-msgstr "Новий <0>чат</0>"
+#~ msgid "New <0>Chat</0>"
+#~ msgstr "Новий <0>чат</0>"
 
 #: src/lib/components/tts/VoiceSelector.svelte
 msgid "Hello! I'm Heart, your friendly voice assistant."
@@ -1037,13 +1040,11 @@ msgstr "Обробка зображення та видалення фону..."
 msgid "Processing image {0} of {1}..."
 msgstr "Обробка зображення {0} з {1}..."
 
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "Reloading..."
-msgstr "Перезавантаження..."
+#~ msgid "Reloading..."
+#~ msgstr "Перезавантаження..."
 
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "Reload Model"
-msgstr "Перезавантажити модель"
+#~ msgid "Reload Model"
+#~ msgstr "Перезавантажити модель"
 
 #: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
 msgid "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
@@ -1062,6 +1063,7 @@ msgstr "Розширені параметри"
 msgid "RMBG-1.4"
 msgstr "RMBG-1.4"
 
+#: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "RMBG v1.4"
 msgstr "RMBG v1.4"
@@ -1074,6 +1076,7 @@ msgstr "QUANT"
 msgid "BEN2-ONNX"
 msgstr "BEN2-ONNX"
 
+#: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "BEN2"
 msgstr "BEN2"
@@ -1082,10 +1085,12 @@ msgstr "BEN2"
 msgid "FP16"
 msgstr "FP16"
 
+#: src/lib/components/Footer.svelte
 #: src/routes/+layout.svelte
 msgid "Transcribe"
 msgstr "Транскрибувати"
 
+#: src/lib/components/Footer.svelte
 #: src/routes/+layout.svelte
 msgid "TTS"
 msgstr "TTS"
@@ -1207,10 +1212,12 @@ msgstr "Підрахувати токени для моделей Gemini"
 msgid "Claude"
 msgstr "Claude"
 
+#: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/count-tokens/+layout.svelte
 msgid "OpenAI"
 msgstr "OpenAI"
 
+#: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/count-tokens/+layout.svelte
 msgid "Gemini"
 msgstr "Gemini"
@@ -1569,6 +1576,7 @@ msgstr ""
 #~ msgid "Change Language"
 #~ msgstr "Змінити мову"
 
+#: src/lib/components/Footer.svelte
 #: src/routes/+layout.svelte
 msgid "GitHub"
 msgstr "GitHub"
@@ -1588,31 +1596,28 @@ msgstr "GitHub"
 #~ msgid "Local AI"
 #~ msgstr ""
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Ibex Tools Local AI"
-msgstr ""
+#~ msgid "Ibex Tools Local AI"
+#~ msgstr ""
 
 #~ msgid ""
 #~ "On this page you'll find free, private AI tools that run entirely in your browser - and\n"
 #~ "even offline!"
 #~ msgstr ""
 
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"Chat with Large Language Models like Gemma3, completely on-device thanks to\n"
-"llama.cpp"
-msgstr ""
+#~ msgid ""
+#~ "Chat with Large Language Models like Gemma3, completely on-device thanks to\n"
+#~ "llama.cpp"
+#~ msgstr ""
 
 #~ msgid ""
 #~ "Convert speech to text using Whisper AI. Upload any existing audio file or record a\n"
 #~ "new audio clip directly in your browser and export as text or a subtitle file."
 #~ msgstr ""
 
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"Convert text to natural-sounding speech using AI models. Choose from Kitten TTS,\n"
-"Piper, or Kokoro models for high-quality voice synthesis."
-msgstr ""
+#~ msgid ""
+#~ "Convert text to natural-sounding speech using AI models. Choose from Kitten TTS,\n"
+#~ "Piper, or Kokoro models for high-quality voice synthesis."
+#~ msgstr ""
 
 #~ msgid ""
 #~ "Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2 models\n"
@@ -1633,24 +1638,21 @@ msgstr ""
 #~ "for professional results.</2></1></3> <4><0>Tool #05</0> <1><0/> <1>Count Tokens</1> <2>Estimate token usage for prompts across OpenAI and Anthropic models.</2></1></4></0></0> <1><0><0>All processing happens locally in your browser using WebAssembly.</0> <1>No data is sent to external servers.</1></0></1></0></0>"
 #~ msgstr ""
 
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"On this page you'll find free, private AI tools that run entirely in your browser -\n"
-"and even offline!"
-msgstr ""
+#~ msgid ""
+#~ "On this page you'll find free, private AI tools that run entirely in your browser -\n"
+#~ "and even offline!"
+#~ msgstr ""
 
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"Convert speech to text using Whisper AI. Upload any existing audio file or\n"
-"record a new audio clip directly in your browser and export as text or a\n"
-"subtitle file."
-msgstr ""
+#~ msgid ""
+#~ "Convert speech to text using Whisper AI. Upload any existing audio file or\n"
+#~ "record a new audio clip directly in your browser and export as text or a\n"
+#~ "subtitle file."
+#~ msgstr ""
 
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2\n"
-"models for professional results."
-msgstr ""
+#~ msgid ""
+#~ "Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2\n"
+#~ "models for professional results."
+#~ msgstr ""
 
 #: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid ""
@@ -1673,6 +1675,26 @@ msgstr ""
 
 #~ msgid "Ibex"
 #~ msgstr ""
+
+#~ msgid "Ibex Tools"
+#~ msgstr ""
+
+#: src/routes/+layout.svelte
+#: src/routes/+layout.svelte
+msgid "N"
+msgstr ""
+
+#: src/routes/+layout.svelte
+msgid "Main navigation"
+msgstr ""
+
+#: src/routes/+layout.svelte
+msgid "Open menu"
+msgstr ""
+
+#: src/routes/+layout.svelte
+msgid "Navigation menu"
+msgstr ""
 
 #: src/routes/+layout.svelte
 #: src/routes/+layout.svelte

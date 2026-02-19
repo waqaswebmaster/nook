@@ -52,30 +52,29 @@
 
 <style>
 	.action-button {
-		padding: 0.5rem 1rem;
-		background: var(--color-secondary);
+		padding: var(--sp-2) var(--sp-3);
+		background: var(--color-background-secondary);
 		color: var(--color-text-primary);
-		border: var(--border-brutalist-thin);
-		border-radius: 6px;
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-md);
 		cursor: pointer;
-		font-size: 0.875rem;
-		font-weight: 700;
-		transition: all 0.2s;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		font-size: 0.8125rem;
+		font-weight: 600;
+		transition: all var(--transition-fast);
 		font-family: var(--font-family-primary);
 		white-space: nowrap;
-		box-shadow: var(--shadow-brutalist-medium);
+		box-shadow: var(--shadow-xs);
 		display: flex;
 		align-items: center;
-		gap: 0.375rem;
-		transform: rotate(0deg);
+		gap: var(--sp-1);
 	}
 
 	.action-button:hover:not(.disabled) {
-		transform: translate(-2px, -2px) rotate(0deg);
-		box-shadow: 5px 5px 0 var(--color-border-primary);
-		background: var(--hover-color);
+		background: var(--hover-color, var(--color-primary-subtle));
+		border-color: var(--color-primary);
+		color: var(--color-primary);
+		box-shadow: var(--shadow-sm);
+		transform: translateY(-1px);
 	}
 
 	.action-button:active:not(.disabled) {
@@ -85,7 +84,7 @@
 	}
 
 	.action-button.disabled {
-		opacity: 0.6;
+		opacity: 0.5;
 		cursor: not-allowed;
 	}
 
@@ -93,7 +92,7 @@
 		font-size: 1rem;
 		display: flex;
 		align-items: center;
-		color: var(--color-text-primary);
+		color: currentColor;
 	}
 
 	.btn-icon :global(svg) {
@@ -101,10 +100,10 @@
 		height: 1rem;
 	}
 
-	@media (max-width: 600px) {
+	@media (max-width: 768px) {
 		.action-button {
-			padding: 0.375rem 0.75rem;
-			font-size: 0.8125rem;
+			padding: var(--sp-1) var(--sp-2);
+			font-size: 0.75rem;
 		}
 	}
 </style>

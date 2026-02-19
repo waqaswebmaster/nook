@@ -50,10 +50,7 @@
 </script>
 
 <div class="input-area">
-	<div class="input-decoration"></div>
-
 	<div class="message-input" class:is-disabled={isGenerating}>
-		<span class="input-emoji"><MessageCircleIcon /></span>
 		<textarea
 			id="chat"
 			bind:this={inputElement}
@@ -64,7 +61,7 @@
 			onkeydown={handleKeyDown}
 		></textarea>
 		{#if isGenerating && onStop}
-			<button onclick={onStop} class="stop-btn-inline" aria-label="Stop generation">
+			<button onclick={onStop} class="stop-btn" aria-label="Stop generation">
 				<SquareIcon />
 			</button>
 		{:else}
@@ -87,108 +84,39 @@
 
 <style>
 	.input-area {
-		padding: 1.25rem;
-		background: linear-gradient(135deg, var(--color-background-secondary) 0%, #fafafa 100%);
-		border-top: var(--border-brutalist-thick);
-		position: relative;
-		overflow: hidden;
-	}
-
-	.input-decoration {
-		position: absolute;
-		top: -2px;
-		left: 0;
-		right: 0;
-		height: 3px;
-		background: repeating-linear-gradient(
-			90deg,
-			var(--color-success),
-			var(--color-success) 8px,
-			var(--color-primary-dark) 8px,
-			var(--color-primary-dark) 16px
-		);
-		animation: slide 2s linear infinite;
-	}
-
-	@keyframes slide {
-		from {
-			transform: translateX(0);
-		}
-		to {
-			transform: translateX(16px);
-		}
+		padding: 1rem 1.25rem;
+		border-top: 1px solid var(--color-border-light);
 	}
 
 	.message-input {
 		display: flex;
 		align-items: flex-end;
-		background: var(--color-background-main);
-		border: var(--border-brutalist-thick);
-		padding: 0;
-		box-shadow: 5px 5px 0 var(--color-border-primary);
-		border-radius: 12px;
+		background: var(--color-card);
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-lg);
 		overflow: hidden;
-		transition: all 0.2s;
-		margin-bottom: 0.75rem;
-		transform: rotate(-0.5deg);
-		position: relative;
+		transition: border-color 0.2s ease;
+		margin-bottom: 0.5rem;
 	}
 
-	.input-emoji {
-		position: absolute;
-		top: -15px;
-		left: 10px;
-		font-size: 1.5rem;
-		z-index: 1;
-		background: var(--color-success);
-		padding: 0 8px;
-		border: var(--border-brutalist-thin);
-		border-radius: 4px;
-		animation: bounce-emoji 3s ease-in-out infinite;
-		display: flex;
-		align-items: center;
-		color: var(--color-text-primary);
-	}
-
-	.input-emoji :global(svg) {
-		width: 1.5rem;
-		height: 1.5rem;
-	}
-
-	@keyframes bounce-emoji {
-		0%,
-		100% {
-			transform: translateY(0) rotate(-5deg);
-		}
-		50% {
-			transform: translateY(-3px) rotate(5deg);
-		}
-	}
-
-	.message-input:hover:not(.is-disabled) {
-		transform: translate(-2px, -2px) rotate(0deg);
-		box-shadow: 7px 7px 0 var(--color-border-primary);
+	.message-input:focus-within:not(.is-disabled) {
+		border-color: var(--color-primary);
+		box-shadow: 0 0 0 3px var(--color-accent-primary-alpha);
 	}
 
 	.message-input.is-disabled {
-		background: linear-gradient(
-			135deg,
-			var(--color-background-tertiary) 0%,
-			var(--color-background-pattern) 100%
-		);
-		opacity: 0.7;
+		opacity: 0.6;
 	}
 
 	textarea {
 		flex-grow: 1;
-		padding: 0.875rem 1rem;
-		padding-top: 1.25rem;
+		padding: 0.75rem 1rem;
 		border: none;
 		resize: none;
 		font-family: var(--font-family-primary);
-		font-size: 1rem;
-		font-weight: 500;
-		line-height: 1.4;
+		font-size: 0.9375rem;
+		font-weight: 400;
+		line-height: 1.5;
 		background: transparent;
 		min-height: 22px;
 		max-height: 120px;
@@ -198,155 +126,104 @@
 
 	textarea::placeholder {
 		color: var(--color-text-disabled);
-		font-weight: 400;
 	}
 
 	.send-btn {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 44px;
-		height: 44px;
-		margin: 8px;
+		width: 40px;
+		height: 40px;
+		margin: 6px;
 		align-self: center;
-		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
-		color: var(--color-text-primary);
-		border: var(--border-brutalist-thin);
-		border-radius: 8px;
+		background: var(--color-primary);
+		color: white;
+		border: none;
+		border-radius: var(--radius-md);
 		cursor: pointer;
-		transition: all 0.2s;
-		box-shadow: var(--shadow-brutalist-small);
-		transform: rotate(5deg);
+		transition: all 0.15s ease;
 	}
 
 	.send-btn :global(svg) {
-		width: 20px;
-		height: 20px;
+		width: 18px;
+		height: 18px;
 	}
 
 	.send-btn:hover:not(:disabled) {
-		background: linear-gradient(135deg, var(--color-success) 0%, var(--color-success-hover) 100%);
-		transform: scale(1.1) rotate(0deg);
-		box-shadow: var(--shadow-brutalist-medium);
+		background: var(--color-primary-hover);
+		transform: scale(1.05);
 	}
 
 	.send-btn:active:not(:disabled) {
 		transform: scale(0.95);
-		box-shadow: 1px 1px 0 var(--color-border-primary);
 	}
 
 	.send-btn:disabled {
 		background: var(--color-background-disabled);
 		cursor: not-allowed;
 		opacity: 0.5;
-		transform: rotate(0deg);
 	}
 
-	.stop-btn-inline {
+	.stop-btn {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 44px;
-		height: 44px;
-		margin: 8px;
+		width: 40px;
+		height: 40px;
+		margin: 6px;
 		align-self: center;
-		background: linear-gradient(135deg, var(--color-danger) 0%, var(--color-danger-hover) 100%);
-		color: var(--color-text-primary);
-		border: var(--border-brutalist-thin);
-		border-radius: 8px;
+		background: var(--color-danger);
+		color: white;
+		border: none;
+		border-radius: var(--radius-md);
 		cursor: pointer;
-		transition: all 0.2s;
-		box-shadow: var(--shadow-brutalist-small);
-		transform: rotate(-2deg);
-		animation: pulse-stop 1s ease-in-out infinite;
+		transition: all 0.15s ease;
 	}
 
-	.stop-btn-inline :global(svg) {
-		width: 20px;
-		height: 20px;
+	.stop-btn :global(svg) {
+		width: 18px;
+		height: 18px;
 	}
 
-	@keyframes pulse-stop {
-		0%,
-		100% {
-			transform: rotate(-2deg) scale(1);
-		}
-		50% {
-			transform: rotate(-2deg) scale(1.05);
-		}
-	}
-
-	.stop-btn-inline:hover {
-		background: linear-gradient(135deg, #ff8a80 0%, var(--color-danger) 100%);
-		transform: scale(1.1) rotate(0deg);
-		box-shadow: var(--shadow-brutalist-medium);
-		animation: none;
-	}
-
-	.stop-btn-inline:active {
-		transform: scale(0.95) rotate(0deg);
-		box-shadow: 1px 1px 0 var(--color-border-primary);
+	.stop-btn:hover {
+		background: var(--color-danger-hover);
+		transform: scale(1.05);
 	}
 
 	.disclaimer {
 		font-size: 0.75rem;
-		font-weight: 400;
 		color: var(--color-text-tertiary);
 		text-align: center;
-		background: var(--color-background-tertiary);
-		padding: 0.5rem 0.75rem;
-		border: 1px solid var(--color-gray-200);
-		border-radius: 4px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		gap: 0.25rem;
-		margin: 0 auto;
-		width: fit-content;
-		max-width: 300px;
 	}
 
 	.disclaimer-icon {
-		font-size: 0.875rem;
 		display: flex;
 		align-items: center;
 		color: var(--color-text-tertiary);
 	}
 
 	.disclaimer-icon :global(svg) {
-		width: 0.875rem;
-		height: 0.875rem;
+		width: 0.75rem;
+		height: 0.75rem;
 	}
 
 	@media (max-width: 600px) {
 		.input-area {
-			padding: 1rem;
+			padding: 0.75rem;
 		}
 
 		textarea {
-			font-size: 0.9375rem;
-			padding: 0.75rem;
-			padding-top: 1.125rem;
+			font-size: 0.875rem;
 		}
 
 		.send-btn,
-		.stop-btn-inline {
-			width: 40px;
-			height: 40px;
-		}
-
-		.disclaimer {
-			font-size: 0.75rem;
-			width: 100%;
-		}
-
-		.input-emoji {
-			font-size: 1.25rem;
-		}
-
-		.input-emoji :global(svg) {
-			width: 1.25rem;
-			height: 1.25rem;
+		.stop-btn {
+			width: 36px;
+			height: 36px;
 		}
 	}
 </style>

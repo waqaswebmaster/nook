@@ -39,9 +39,9 @@
 
 <style>
 	.tokens-section {
-		background: var(--color-background-tertiary);
-		border: var(--border-brutalist-thin);
-		border-radius: 6px;
+		background: var(--color-card);
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-md);
 		overflow: hidden;
 	}
 
@@ -50,20 +50,18 @@
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
-		padding: 1rem;
-		background: var(--color-background-tertiary);
+		padding: 0.875rem 1rem;
+		background: transparent;
 		border: none;
 		color: var(--color-text-primary);
 		cursor: pointer;
-		font-size: 1rem;
+		font-size: 0.875rem;
 		font-weight: 600;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
-		transition: all 0.2s;
+		transition: background 0.15s;
 	}
 
 	.toggle-button:hover {
-		background: var(--color-background-secondary);
+		background: var(--color-accent-primary-alpha);
 	}
 
 	.toggle-button :global(svg) {
@@ -75,7 +73,7 @@
 	.tokens-display {
 		padding: 1rem;
 		background: var(--color-background-main);
-		border-top: var(--border-brutalist-thin);
+		border-top: 1px solid var(--color-border-light);
 		max-height: 400px;
 		overflow-y: auto;
 	}
@@ -91,23 +89,24 @@
 		flex-direction: column;
 		padding: 0.5rem;
 		background: var(--color-background-secondary);
-		border: var(--border-brutalist-thin);
-		border-radius: 4px;
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-sm);
 		font-family: var(--font-family-mono);
 		font-size: 0.75rem;
 		cursor: pointer;
-		transition: all 0.2s;
+		transition:
+			background 0.15s,
+			box-shadow 0.15s;
 	}
 
 	.token-item:hover {
-		background: var(--color-background-tertiary);
-		transform: translate(-1px, -1px);
-		box-shadow: var(--shadow-brutalist-small);
+		background: var(--color-accent-primary-alpha);
+		box-shadow: var(--shadow-xs);
 	}
 
 	.token-id {
-		font-weight: 700;
-		color: var(--color-text-secondary);
+		font-weight: 600;
+		color: var(--color-text-tertiary);
 		font-size: 0.7rem;
 		margin-bottom: 0.25rem;
 	}
@@ -121,19 +120,19 @@
 
 	/* Custom scrollbar for tokens display */
 	.tokens-display::-webkit-scrollbar {
-		width: 8px;
+		width: 6px;
 	}
 
 	.tokens-display::-webkit-scrollbar-track {
-		background: var(--color-background-tertiary);
+		background: transparent;
 	}
 
 	.tokens-display::-webkit-scrollbar-thumb {
-		background: var(--color-text-secondary);
-		border-radius: 4px;
+		background: var(--color-border-light);
+		border-radius: 3px;
 	}
 
 	.tokens-display::-webkit-scrollbar-thumb:hover {
-		background: var(--color-text-primary);
+		background: var(--color-text-tertiary);
 	}
 </style>

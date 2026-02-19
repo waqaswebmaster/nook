@@ -77,10 +77,8 @@
 		background: var(--color-background-secondary);
 		border: var(--border-brutalist-extra-thick);
 		padding: 1.5rem;
-		box-shadow: var(--shadow-brutalist-large);
+		box-shadow: var(--shadow-sm);
 		margin-bottom: 1.5rem;
-		position: relative;
-		transform: rotate(-0.2deg);
 	}
 
 	/* Step header now uses shared StepHeader component */
@@ -97,37 +95,28 @@
 		align-items: center;
 		gap: 0.75rem;
 		padding: 1.25rem 1rem;
-		background: var(--color-background-tertiary);
-		border: var(--border-brutalist-thick);
+		background: var(--color-card);
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-md);
 		cursor: pointer;
 		transition: all 0.2s;
 		font-family: var(--font-family-primary);
-		box-shadow: var(--shadow-brutalist-medium);
+		box-shadow: var(--shadow-xs);
 		text-align: center;
 		position: relative;
 		overflow: hidden;
-		transform: rotate(0.5deg);
-	}
-
-	.model-card:nth-child(2) {
-		transform: rotate(-0.3deg);
-	}
-
-	.model-card:nth-child(3) {
-		transform: rotate(0.3deg);
 	}
 
 	.model-card:hover {
-		transform: translate(-2px, -2px) rotate(0deg);
-		box-shadow: var(--shadow-brutalist-large);
-		background: var(--color-background-pattern);
+		border-color: var(--color-primary);
+		box-shadow: var(--shadow-md);
+		background: var(--color-accent-primary-alpha);
 	}
 
 	.model-card.active {
-		background: var(--color-success);
-		transform: translate(-2px, -2px) rotate(0deg);
-		box-shadow: var(--shadow-brutalist-large);
-		border-color: var(--color-text-primary);
+		background: var(--color-accent-primary-alpha);
+		border-color: var(--color-primary);
+		box-shadow: var(--shadow-md);
 	}
 
 	.model-card.loading {
@@ -136,23 +125,15 @@
 		pointer-events: none;
 	}
 
-	.model-card.loading:hover {
-		transform: inherit;
-		box-shadow: var(--shadow-brutalist-medium);
-		background: var(--color-background-tertiary);
-	}
-
 	.model-icon {
 		font-size: 2rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		color: var(--color-text-primary);
-		background: var(--color-background-main);
-		border: var(--border-brutalist-thick);
-		border-radius: 8px;
+		color: var(--color-primary);
+		background: var(--color-accent-primary-alpha);
+		border-radius: var(--radius-md);
 		padding: 0.75rem;
-		box-shadow: var(--shadow-brutalist-small);
 	}
 
 	.model-icon :global(svg) {
@@ -163,9 +144,7 @@
 	.model-info h4 {
 		margin: 0 0 0.25rem 0;
 		font-size: 1rem;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		font-weight: 600;
 		color: var(--color-text-primary);
 	}
 
@@ -181,16 +160,12 @@
 		position: absolute;
 		top: 0.5rem;
 		right: 0.5rem;
-		background: black;
+		background: var(--color-primary);
 		color: white;
 		font-size: 0.625rem;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
-		padding: 0.25rem 0.5rem;
-		border: var(--border-brutalist-thin);
-		box-shadow: var(--shadow-brutalist-small);
-		transform: rotate(-2deg);
+		font-weight: 600;
+		padding: 0.2rem 0.5rem;
+		border-radius: var(--radius-sm);
 		z-index: 1;
 	}
 
@@ -218,7 +193,7 @@
 			top: 0.25rem;
 			right: 0.25rem;
 			font-size: 0.55rem;
-			padding: 0.2rem 0.4rem;
+			padding: 0.15rem 0.4rem;
 		}
 	}
 
@@ -228,7 +203,7 @@
 		}
 
 		h3 {
-			font-size: 1.5rem;
+			font-size: 1rem;
 		}
 	}
 </style>

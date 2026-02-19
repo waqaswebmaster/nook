@@ -311,35 +311,29 @@
 
 	/* When in chat mode (model loaded), apply height constraints */
 	.chat-page.chat-mode {
-		/* Calculate height accounting for navigation and container padding:
-		   - Container padding: 1rem top + 1rem bottom = 2rem
-		   - Navigation height: ~0.75rem padding × 2 + ~3rem nav content + 1rem margin-bottom = ~5.5rem
-		   - Border thickness: 3px top + 3px bottom = 6px
-		   - Box shadow: 5px bottom = 5px
-		   Total: ~7.5rem + 11px */
-		height: calc(100vh - 7.5rem - 11px);
-		overflow: hidden; /* Prevent overall page scroll when chat scrolls */
+		height: calc(100vh - var(--nav-height) - var(--sp-8));
+		overflow: hidden;
 	}
 
 	/* Apply flex and scrolling constraints to fixed-height CardInterfaces in chat mode */
 	.chat-page.chat-mode :global(.card-interface.fixed-height) {
-		flex: 1; /* Take remaining space */
-		min-height: 0; /* Critical for flex scrolling */
+		flex: 1;
+		min-height: 0;
 	}
 
 	/* Apply flex and scrolling constraints to content areas in chat mode */
 	.chat-page.chat-mode :global(.card-interface.fixed-height .content-area) {
-		flex: 1; /* Take remaining space */
-		min-height: 0; /* Critical for flex scrolling */
-		overflow-y: auto; /* Allow scrolling when needed */
+		flex: 1;
+		min-height: 0;
+		overflow-y: auto;
 	}
 
 	.loading {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 2rem;
-		animation: fadeIn 0.4s ease-out;
+		gap: var(--sp-6);
+		animation: fadeIn 0.35s ease-out;
 		width: 100%;
 		box-sizing: border-box;
 		overflow-x: hidden;
@@ -349,7 +343,7 @@
 	@keyframes fadeIn {
 		from {
 			opacity: 0;
-			transform: translateY(20px);
+			transform: translateY(10px);
 		}
 		to {
 			opacity: 1;
@@ -357,14 +351,9 @@
 		}
 	}
 
-	@media (max-width: 600px) {
+	@media (max-width: 768px) {
 		.chat-page.chat-mode {
-			/* Adjust for smaller mobile padding:
-			   - Container padding: 0.75rem × 2 = 1.5rem  
-			   - Navigation: ~0.5rem padding × 2 + ~2.5rem nav content + 1rem margin = ~4.5rem
-			   - Border thickness: 6px + Box shadow: 5px = 11px
-			   Total: ~6rem + 11px */
-			height: calc(100vh - 6rem - 11px);
+			height: calc(100vh - var(--nav-height) - var(--sp-6));
 		}
 
 		.loading {
@@ -373,17 +362,6 @@
 
 		.desktop-only {
 			display: none;
-		}
-	}
-
-	@media (max-width: 400px) {
-		.chat-page.chat-mode {
-			/* Adjust for smallest mobile padding:
-			   - Container padding: 0.5rem × 2 = 1rem
-			   - Navigation: similar to 600px breakpoint = ~4.5rem
-			   - Border thickness: 6px + Box shadow: 5px = 11px
-			   Total: ~5.5rem + 11px */
-			height: calc(100vh - 5.5rem - 11px);
 		}
 	}
 </style>

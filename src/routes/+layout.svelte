@@ -25,43 +25,30 @@
 
 	let { children }: Props = $props();
 
-	// Get current language from URL and generate localized navigation links
 	const currentLang = $derived(getCurrentLanguage(page.url.pathname));
 
-	// Check if a path is active
 	function isActive(path: string): boolean {
-		// Exact match
-		if (page.url.pathname === path) {
-			return true;
-		}
-		// Don't allow parent path matching for language home pages
+		if (page.url.pathname === path) return true;
 		const isLanguageHomePage = locales.some((locale) => path === `/${locale}`);
-		if (!isLanguageHomePage && path !== '/' && page.url.pathname.startsWith(path + '/')) {
+		if (!isLanguageHomePage && path !== '/' && page.url.pathname.startsWith(path + '/'))
 			return true;
-		}
 		return false;
 	}
 
 	const DEFAULT_TITLE = 'Ibex Tools';
 
-	const getLocalizedNavLinks = (currentLang: string) => {
-		return [
-			{ path: createLocalizedLink('/', currentLang), label: '', icon: 'home' },
-			{ path: createLocalizedLink('/chat', currentLang), label: 'Chat', icon: 'chat' },
-			{ path: createLocalizedLink('/transcribe', currentLang), label: 'Transcribe', icon: 'mic' },
-			{ path: createLocalizedLink('/text-to-speech', currentLang), label: 'TTS', icon: 'speech' },
-			{
-				path: createLocalizedLink('/background-remover', currentLang),
-				label: 'BG Remover',
-				icon: 'image'
-			},
-			{
-				path: createLocalizedLink('/count-tokens', currentLang),
-				label: 'Tokens',
-				icon: 'calculator'
-			}
-		];
-	};
+	const getLocalizedNavLinks = (currentLang: string) => [
+		{ path: createLocalizedLink('/', currentLang), label: 'Home', icon: 'home' },
+		{ path: createLocalizedLink('/chat', currentLang), label: 'Chat', icon: 'chat' },
+		{ path: createLocalizedLink('/transcribe', currentLang), label: 'Transcribe', icon: 'mic' },
+		{ path: createLocalizedLink('/text-to-speech', currentLang), label: 'TTS', icon: 'speech' },
+		{
+			path: createLocalizedLink('/background-remover', currentLang),
+			label: 'BG Remover',
+			icon: 'image'
+		},
+		{ path: createLocalizedLink('/count-tokens', currentLang), label: 'Tokens', icon: 'calculator' }
+	];
 
 	// Navigation: header-only (removed persistent left drawer and its persisted state)
 	// Global navigation is rendered in the top header below — no `toolsDrawerOpen` state anymore.
@@ -89,20 +76,15 @@
 <svelte:head>
 	<title>{page.data.seo?.title || DEFAULT_TITLE}</title>
 	<meta name="description" content={page.data.seo?.description || ''} />
-
 	{#if page.data.seo?.url}
 		<link rel="canonical" href={page.data.seo?.url} />
 	{/if}
-
-	<!-- Open Graph meta tags -->
 	<meta property="og:title" content={page.data.seo?.title || DEFAULT_TITLE} />
 	<meta property="og:description" content={page.data.seo?.description || ''} />
 	<meta property="og:image" content={page.data.seo?.ogImage || ''} />
 	<meta property="og:url" content={page.data.seo?.url} />
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content={DEFAULT_TITLE} />
-
-	<!-- Twitter Card meta tags -->
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content={page.data.seo?.title || DEFAULT_TITLE} />
 	<meta name="twitter:description" content={page.data.seo?.description || ''} />
@@ -188,16 +170,15 @@
 
 <Toaster
 	position="bottom-right"
-	theme="light"
 	richColors
 	toastOptions={{
 		style:
-			'border: 3px solid #000; box-shadow: 4px 4px 0 #000; border-radius: 8px; font-family: Space Grotesk, sans-serif; font-weight: 600;'
+			'border: 1px solid var(--color-border-light); box-shadow: var(--shadow-lg); border-radius: var(--radius-md); font-family: Space Grotesk, sans-serif; font-weight: 500; background: var(--color-card); color: var(--color-text-primary);'
 	}}
 />
 
 <style>
-	/* Base styles with refined Neo-Brutalist approach */
+	/* ── Global body ── */
 	:global(html) {
 		height: 100%;
 	}
@@ -210,7 +191,6 @@
 		line-height: 1.5;
 		background: var(--color-background-main); /* theme-controlled */
 		color: var(--color-text-primary);
-		position: relative;
 		overflow-x: hidden;
 		min-height: 100vh;
 		transition:
@@ -218,60 +198,11 @@
 			color var(--transition-smooth);
 	}
 
-	:global(body)::before {
-		content: '';
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background-image: repeating-linear-gradient(
-			0deg,
-			transparent,
-			transparent 40px,
-			rgba(0, 0, 0, 0.02) 40px,
-			rgba(0, 0, 0, 0.02) 41px
-		);
-		pointer-events: none;
-		z-index: 0;
-	}
-
-	:global(body)::after {
-		content: '';
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background: var(--mobile-menu-overlay, transparent);
-		pointer-events: var(--mobile-menu-overlay-events, none);
-		z-index: 999;
-		transition: background 0.3s ease;
-	}
-
-	@keyframes gradient-shift {
-		0% {
-			background-position: 0% 50%;
-		}
-		50% {
-			background-position: 100% 50%;
-		}
-		100% {
-			background-position: 0% 50%;
-		}
-	}
-
-	.container.fullWidth {
-		width: 100% !important;
-		max-width: 9000px;
-	}
-
-	.app-wrapper {
+	/* ── App shell ── */
+	.app-shell {
 		min-height: 100vh;
 		display: flex;
 		flex-direction: column;
-		position: relative;
-		z-index: 2;
 	}
 
 	.container {
@@ -288,10 +219,10 @@
 		min-height: calc(100vh - 2rem);
 	}
 
-	.content-wrapper {
-		width: 100%;
-		position: relative;
-		flex: 1;
+	.nav-inner {
+		max-width: 1200px;
+		margin: 0 auto;
+		height: 100%;
 		display: flex;
 		flex-direction: column;
 		min-height: 0; /* Critical for nested flex scrolling */
@@ -439,17 +370,16 @@
 		}
 	}
 
-	/* Shared component styling - Refined Neo-Brutalist */
+	/* ── Global component overrides ── */
 	:global(.card-interface) {
 		border: var(--border-brutalist-thick);
 		background: var(--color-background-secondary);
 		box-shadow: var(--shadow-brutalist-large);
 		width: 100%;
 		position: relative;
-		border-radius: 12px;
+		border-radius: var(--radius-lg);
 		overflow: hidden;
 		box-sizing: border-box;
-		border-bottom-right-radius: 16px;
 		display: flex;
 		flex-direction: column;
 	}
@@ -462,16 +392,15 @@
 		background: var(--color-background-secondary);
 		border-bottom: 1px solid var(--color-border-primary);
 		flex-wrap: wrap;
-		gap: 0.5rem;
-		flex: 0 0 auto; /* Don't grow/shrink */
+		gap: var(--sp-2);
+		flex: 0 0 auto;
 	}
 
 	:global(.model-info) {
-		font-size: 0.875rem;
-		font-weight: 700;
-		color: var(--color-text-primary);
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		font-size: 0.8125rem;
+		font-weight: 600;
+		color: var(--color-text-secondary);
+		letter-spacing: 0.02em;
 		word-break: break-word;
 		max-width: 100%;
 	}
@@ -481,39 +410,28 @@
 		background: var(--color-background-secondary);
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
+		gap: var(--sp-4);
 		box-sizing: border-box;
 	}
 
 	:global(.input-area) {
-		padding: 1rem 1.25rem;
-		border-top: var(--border-brutalist-thick);
+		padding: var(--sp-4) var(--sp-5);
+		border-top: 1px solid var(--color-border-light);
 		background: var(--color-background-secondary);
 		box-sizing: border-box;
-		flex: 0 0 auto; /* Don't grow/shrink */
+		flex: 0 0 auto;
 	}
 
 	:global(.disclaimer) {
-		margin-top: 0.5rem;
+		margin-top: var(--sp-2);
 		font-size: 0.8125rem;
-		font-weight: 500;
+		font-weight: 400;
 		color: var(--color-text-tertiary);
 		text-align: center;
 	}
 
-	@keyframes fadeIn {
-		from {
-			opacity: 0;
-			transform: translateY(10px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-
 	:global(.primary-button) {
-		padding: 0.875rem 1.75rem;
+		padding: var(--sp-3) var(--sp-5);
 		background: var(--color-primary);
 		color: var(--color-button-text);
 		border: 1px solid transparent;
@@ -532,13 +450,14 @@
 	}
 
 	:global(.primary-button:hover) {
-		transform: translate(-2px, -2px);
-		box-shadow: var(--shadow-brutalist-large);
+		background: var(--color-primary-hover);
+		box-shadow: var(--shadow-md);
+		transform: translateY(-1px);
 	}
 
 	:global(.primary-button:active) {
-		transform: translate(0);
-		box-shadow: var(--shadow-brutalist-small);
+		transform: translateY(0);
+		box-shadow: var(--shadow-xs);
 	}
 
 	:global(.primary-button:disabled) {
@@ -572,12 +491,12 @@
 			padding: 0.875rem 1rem;
 		}
 
-		:global(.model-info) {
-			font-size: 0.75rem;
+		:global(.toolbar) {
+			padding: var(--sp-3) var(--sp-4);
 		}
 
 		:global(.content-area) {
-			padding: 1rem;
+			padding: var(--sp-4);
 		}
 
 		:global(.input-area) {

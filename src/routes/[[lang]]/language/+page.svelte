@@ -77,12 +77,10 @@
 	}
 
 	h2 {
-		font-size: 1.5rem;
-		font-weight: 700;
+		font-size: 1.25rem;
+		font-weight: 600;
 		color: var(--color-text-primary);
 		margin: 0;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
 	}
 
 	.description {
@@ -95,7 +93,7 @@
 	.language-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-		gap: 1rem;
+		gap: 0.75rem;
 		margin: 1rem 0;
 	}
 
@@ -104,38 +102,28 @@
 		flex-direction: column;
 		align-items: center;
 		gap: 0.75rem;
-		padding: 1.5rem 1rem;
-		background: var(--color-background-main);
-		border: var(--border-brutalist-thick);
-		border-radius: 8px;
-		box-shadow: var(--shadow-brutalist-small);
+		padding: 1.25rem 1rem;
+		background: var(--color-card);
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-xs);
 		text-decoration: none;
-		transition: all 0.2s ease;
+		transition: all 0.15s ease;
 		cursor: pointer;
 	}
 
 	.language-card:hover {
-		transform: translate(-2px, -2px);
-		box-shadow: var(--shadow-brutalist-medium);
-		background: var(--color-background-secondary);
-	}
-
-	.language-card:active {
-		transform: translate(-1px, -1px);
-		box-shadow: var(--shadow-brutalist-small);
+		border-color: var(--color-primary);
+		box-shadow: var(--shadow-md);
 	}
 
 	.language-code {
-		padding: 0.5rem 1rem;
-		background: var(--color-primary);
-		color: var(--color-text-primary);
-		border: var(--border-brutalist-thick);
-		border-radius: 4px;
-		font-weight: 700;
-		font-size: 0.875rem;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
-		box-shadow: var(--shadow-brutalist-small);
+		padding: 0.375rem 0.75rem;
+		background: var(--color-accent-primary-alpha);
+		color: var(--color-primary);
+		border-radius: var(--radius-sm);
+		font-weight: 600;
+		font-size: 0.8125rem;
 	}
 
 	.language-info {
@@ -149,34 +137,22 @@
 	.language-name {
 		font-weight: 600;
 		color: var(--color-text-primary);
-		font-size: 1rem;
-		text-transform: uppercase;
-		letter-spacing: 0.25px;
+		font-size: 0.9375rem;
 	}
 
 	.language-native {
-		font-weight: 500;
-		color: var(--color-text-secondary);
-		font-size: 0.875rem;
-		font-style: italic;
+		font-weight: 400;
+		color: var(--color-text-tertiary);
+		font-size: 0.8125rem;
 	}
 
 	@media (max-width: 600px) {
-		.language-settings {
-			max-width: none;
-		}
-
 		.language-grid {
 			grid-template-columns: 1fr;
-			gap: 0.75rem;
-		}
-
-		.language-card {
-			padding: 1.25rem 1rem;
 		}
 
 		h2 {
-			font-size: 1.25rem;
+			font-size: 1.125rem;
 		}
 	}
 
@@ -188,19 +164,6 @@
 		.language-card {
 			padding: 1rem 0.75rem;
 			gap: 0.5rem;
-		}
-
-		.language-code {
-			padding: 0.375rem 0.75rem;
-			font-size: 0.75rem;
-		}
-
-		.language-name {
-			font-size: 0.875rem;
-		}
-
-		.language-native {
-			font-size: 0.75rem;
 		}
 	}
 </style>
