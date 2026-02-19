@@ -2,6 +2,7 @@
 	import CatIcon from 'virtual:icons/lucide/cat';
 	import FlowerIcon from 'virtual:icons/lucide/flower';
 	import TheaterIcon from 'virtual:icons/lucide/theater';
+	import StepHeader from '$lib/components/common/StepHeader.svelte';
 
 	interface Props {
 		selectedModel: string | null;
@@ -13,7 +14,11 @@
 </script>
 
 <div class="model-switcher">
-	<h3>Text-to-speech Model</h3>
+	<StepHeader
+		stepNumber={1}
+		title="Text-to-speech Model"
+		backgroundColor="var(--color-background-secondary)"
+	/>
 
 	<div class="model-cards">
 		<button
@@ -69,21 +74,14 @@
 
 <style>
 	.model-switcher {
-		background: var(--color-card);
-		border: 1px solid var(--color-border-light);
-		border-radius: var(--radius-lg);
+		background: var(--color-background-secondary);
+		border: var(--border-brutalist-extra-thick);
 		padding: 1.5rem;
 		box-shadow: var(--shadow-sm);
 		margin-bottom: 1.5rem;
 	}
 
-	h3 {
-		margin: 0 0 1.25rem 0;
-		font-size: 1.125rem;
-		font-weight: 600;
-		color: var(--color-text-primary);
-		text-align: center;
-	}
+	/* Step header now uses shared StepHeader component */
 
 	.model-cards {
 		display: grid;

@@ -2,6 +2,7 @@
 	import { AVAILABLE_MODELS, formatFileSize } from '$lib/wllama-config';
 	import { inferenceParams } from '$lib/stores';
 	import AdvancedSection from '../common/AdvancedSection.svelte';
+	import StepHeader from '$lib/components/common/StepHeader.svelte';
 	import RocketIcon from 'virtual:icons/lucide/rocket';
 	import ZapIcon from 'virtual:icons/lucide/zap';
 	import HourglassIcon from 'virtual:icons/lucide/hourglass';
@@ -32,12 +33,16 @@
 </script>
 
 <CardInterface>
-	<Toolbar modelInfo="Chat with AI Models" ModelIcon={RocketIcon} />
+	<Toolbar modelInfo="Chat with AI Models" ModelIcon={RocketIcon} variant="studio" />
 
 	<div class="content-area">
 		<!-- Model Selection -->
 		<div class="model-selection">
-			<h3>Choose Your AI Model</h3>
+			<StepHeader
+				stepNumber={1}
+				title="Choose Your AI Model"
+				backgroundColor="var(--color-background-secondary)"
+			/>
 			<div class="model-cards">
 				{#each AVAILABLE_MODELS as model (model.url)}
 					{@const pros = getModelPros(model.url)}
@@ -64,6 +69,11 @@
 		</div>
 
 		<div class="advanced-section">
+			<StepHeader
+				stepNumber={2}
+				title="Advanced Settings"
+				backgroundColor="var(--color-background-secondary)"
+			/>
 			<AdvancedSection>
 				<label class="param-item">
 					<span class="param-label">Threads <span class="param-hint">(-1 auto)</span></span>
@@ -108,15 +118,28 @@
 
 <style>
 	.model-selection {
+		background: var(--color-background-secondary);
+		border: var(--border-brutalist-extra-thick);
+		padding: 1.5rem;
+		box-shadow: var(--shadow-brutalist-large);
 		margin-bottom: 1.5rem;
 	}
 
-	.model-selection h3 {
-		margin: 0 0 1rem;
-		font-size: 1.125rem;
-		font-weight: 600;
-		color: var(--color-text-primary);
+	/* step header handled by shared `StepHeader` component */
+
+	/* Override StepHeader background + badge for chat page */
+	:global(.model-selection .step-header) {
+		background: var(--color-background-secondary);
 	}
+	:global(.model-selection .step-header),
+	:global(.advanced-section .step-header) {
+		background: var(--color-background-secondary);
+		color: var(--color-text-primary);
+		border: 1px solid var(--color-border-secondary);
+		box-shadow: none;
+	}
+
+	/* using StepHeader component's step badge */
 
 	.model-cards {
 		display: grid;
@@ -189,8 +212,15 @@
 
 	.model-size {
 		font-size: 0.75rem;
-		color: var(--color-text-tertiary);
-		font-weight: 500;
+		color: var(--color-text-inverse);
+		background: var(--color-primary-dark);
+		padding: 0.25rem 0.5rem;
+		border: var(--border-brutalist-thin);
+		border-radius: 4px;
+		font-weight: 700;
+		box-shadow: var(--shadow-brutalist-small);
+		width: fit-content;
+		margin: 0 auto;
 	}
 
 	.model-pros {
@@ -226,8 +256,36 @@
 	}
 
 	.advanced-section {
+		background: var(--color-background-secondary);
+		border: var(--border-brutalist-extra-thick);
+		padding: 1.5rem;
+		box-shadow: var(--shadow-brutalist-large);
 		margin-bottom: 1.5rem;
+		position: relative;
+		transform: rotate(0.1deg);
+		animation: slideIn 0.4s ease-out;
+		animation-delay: 0.1s;
+		animation-fill-mode: both;
 	}
+
+	/* .advanced-section h3 {
+		margin-top: 0;
+		margin-bottom: 1.25rem;
+		font-family: var(--font-family-display);
+		font-size: 1.75rem;
+		color: var(--color-text-inverse);
+		text-align: center;
+		letter-spacing: 2px;
+		text-transform: uppercase;
+		background: var(--color-primary-dark);
+		padding: 0.5rem 1rem;
+		border: var(--border-brutalist-thick);
+		box-shadow: var(--shadow-brutalist-medium);
+		transform: rotate(1deg);
+		width: fit-content;
+		margin-left: auto;
+		margin-right: auto;
+	} */
 
 	.param-item {
 		display: flex;
@@ -327,8 +385,34 @@
 	}
 
 	.disclaimer-icon :global(svg) {
-		width: 1rem;
-		height: 1rem;
+		width: 1.25rem;
+		height: 1.25rem;
+	}
+
+	/* .toolbar-decoration {
+		position: absolute;
+		bottom: -8px;
+		left: 0;
+		right: 0;
+		height: 4px;
+		background: repeating-linear-gradient(
+			90deg,
+			var(--color-text-primary),
+			var(--color-text-primary) 10px,
+			var(--color-success) 10px,
+			var(--color-success) 20px
+		);
+	} */
+
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(20px) rotate(-1deg);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0) rotate(-0.5deg);
+		}
 	}
 
 	@media (max-width: 768px) {

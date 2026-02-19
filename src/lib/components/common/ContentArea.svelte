@@ -13,13 +13,17 @@
 
 <style>
 	.content-area {
-		background: var(--color-card);
+		padding: 1rem;
+		background: var(--color-background-secondary);
 		display: flex;
 		flex-direction: column;
 		gap: var(--sp-4);
 		box-sizing: border-box;
 		min-height: 0;
-		transition: opacity 0.25s ease;
+		transition:
+			background-color var(--transition-fast),
+			color var(--transition-fast);
+		border-radius: 10px;
 	}
 
 	.content-area.disabled {

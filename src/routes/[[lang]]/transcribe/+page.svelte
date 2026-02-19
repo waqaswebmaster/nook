@@ -283,7 +283,7 @@
 </script>
 
 <CardInterface>
-	<Toolbar modelInfo="Whisper Audio Transcription" />
+	<Toolbar modelInfo="Whisper Audio Transcription" variant="studio" />
 
 	<ContentArea>
 		<WhisperModelSelector
