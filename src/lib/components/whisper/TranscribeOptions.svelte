@@ -28,7 +28,6 @@
 </script>
 
 <div class="transcribe-options">
-	<div class="options-decoration"></div>
 	<h3>
 		<span class="title-icon"><MusicIcon /></span>
 		Choose Audio Source
@@ -72,7 +71,7 @@
 		</label>
 
 		<div class="or-divider">
-			<span>OR</span>
+			<span>or</span>
 		</div>
 
 		<label class="option-label demo-option" class:selected={transcribeMode === 'demo'}>
@@ -100,130 +99,76 @@
 
 <style>
 	.transcribe-options {
-		background: var(--color-background-main);
-		border: var(--border-brutalist-extra-thick);
-		padding: 2rem;
-		box-shadow: var(--shadow-brutalist-xlarge);
-		margin-bottom: 1.5rem;
-		position: relative;
-		transform: rotate(0.5deg);
-		animation: slideIn 0.4s ease-out;
-		animation-delay: 0.1s;
-		animation-fill-mode: both;
-	}
-
-	@keyframes slideIn {
-		from {
-			transform: translateX(20px) rotate(1deg);
-			opacity: 0;
-		}
-		to {
-			transform: translateX(0) rotate(0.5deg);
-			opacity: 1;
-		}
-	}
-
-	.options-decoration {
-		position: absolute;
-		top: -8px;
-		left: -8px;
-		right: -8px;
-		bottom: -8px;
-		background: linear-gradient(
-			135deg,
-			var(--color-primary-dark) 0%,
-			var(--color-accent-pink) 100%
-		);
-		z-index: -1;
-		opacity: 0.3;
-		border-radius: 5% 20% 5% 20% / 20% 5% 20% 5%;
+		background: var(--color-card);
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-lg);
+		padding: 1.5rem;
+		margin-bottom: 1.25rem;
 	}
 
 	.transcribe-options h3 {
-		margin-top: 0;
-		margin-bottom: 1.5rem;
-		font-family: var(--font-family-display);
-		font-size: 2rem;
+		margin: 0 0 1.25rem;
+		font-size: 1.125rem;
+		font-weight: 600;
 		color: var(--color-text-primary);
-		text-align: center;
-		letter-spacing: 2px;
 		display: flex;
 		align-items: center;
-		justify-content: center;
-		gap: 0.75rem;
-		background: var(--color-primary-dark);
-		padding: 0.5rem 1.5rem;
-		border: var(--border-brutalist-thick);
-		box-shadow: 5px 5px 0 var(--color-text-primary);
-		transform: rotate(1deg);
-		width: fit-content;
-		margin-left: auto;
-		margin-right: auto;
-		text-transform: uppercase;
+		gap: 0.5rem;
 	}
 
 	.title-icon {
-		font-size: 1.75rem;
 		display: flex;
 		align-items: center;
-		color: var(--color-text-primary);
+		color: var(--color-primary);
 	}
 
 	.title-icon :global(svg) {
-		width: 1.75rem;
-		height: 1.75rem;
+		width: 1.25rem;
+		height: 1.25rem;
 	}
 
 	.option-group {
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
-		margin-bottom: 1.25rem;
+		gap: 0.625rem;
+		margin-bottom: 1rem;
 	}
 
 	.option-label {
 		display: flex;
 		align-items: center;
-		gap: 1rem;
-		padding: 1.25rem;
-		border: var(--border-brutalist-thick);
+		gap: 0.75rem;
+		padding: 0.875rem 1rem;
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-md);
 		background: var(--color-background-main);
 		cursor: pointer;
 		transition: all 0.15s ease;
-		box-shadow: var(--shadow-brutalist-medium);
-		position: relative;
-		transform: rotate(-0.5deg);
-	}
-
-	.option-label:nth-child(2) {
-		transform: rotate(0.5deg);
 	}
 
 	.option-label:hover {
-		transform: translate(-2px, -2px) rotate(0deg);
-		box-shadow: var(--shadow-brutalist-large);
-		background: var(--color-background-cream);
+		border-color: var(--color-primary);
+		background: var(--color-accent-primary-alpha);
 	}
 
 	.option-label.selected {
-		background: var(--color-success);
-		transform: translate(-3px, -3px) rotate(0deg);
-		box-shadow: 7px 7px 0 var(--color-text-primary);
+		border-color: var(--color-primary);
+		background: var(--color-accent-primary-alpha);
+		box-shadow: 0 0 0 3px var(--color-accent-primary-alpha);
 	}
 
 	.option-label input[type='radio'] {
-		width: 20px;
-		height: 20px;
+		width: 18px;
+		height: 18px;
 		margin: 0;
-		accent-color: var(--color-text-primary);
+		accent-color: var(--color-primary);
 		cursor: pointer;
-		border: var(--border-brutalist-thin);
 	}
 
 	.option-content {
 		display: flex;
 		flex-direction: column;
-		gap: 0.375rem;
+		gap: 0.25rem;
 		flex: 1;
 	}
 
@@ -234,64 +179,52 @@
 	}
 
 	.option-icon {
-		font-size: 1.5rem;
 		display: flex;
 		align-items: center;
-		color: var(--color-text-primary);
+		color: var(--color-text-secondary);
 	}
 
 	.option-icon :global(svg) {
-		width: 1.5rem;
-		height: 1.5rem;
+		width: 1.125rem;
+		height: 1.125rem;
 	}
 
 	.option-content strong {
-		font-size: 1.125rem;
+		font-size: 0.9375rem;
+		font-weight: 600;
 		color: var(--color-text-primary);
-		text-transform: uppercase;
-		letter-spacing: 1px;
 	}
 
 	.option-content small {
-		font-size: 0.9375rem;
-		color: var(--color-text-secondary);
-		font-weight: 500;
-		margin-left: 2rem;
+		font-size: 0.8125rem;
+		color: var(--color-text-tertiary);
+		margin-left: 1.625rem;
 	}
 
 	.option-content small a {
-		color: var(--color-text-primary);
-		font-weight: 700;
+		color: var(--color-primary);
+		font-weight: 500;
 		text-decoration: none;
-		padding: 2px 6px;
-		background: var(--color-primary-dark);
-		border: var(--border-brutalist-thin);
-		transition: all 0.15s;
-		display: inline-block;
-		box-shadow: var(--shadow-brutalist-small);
+		transition: color 0.15s;
 	}
 
 	.option-content small a:hover {
-		transform: translate(-1px, -1px);
-		box-shadow: var(--shadow-brutalist-small);
-		background: var(--color-accent-pink);
+		text-decoration: underline;
 	}
 
 	.or-divider {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		margin: 0.5rem 0;
+		margin: 0.25rem 0;
 		position: relative;
 	}
 
 	.or-divider span {
-		background: var(--color-background-main);
-		padding: 0 1rem;
-		font-weight: 700;
-		font-size: 0.875rem;
-		text-transform: uppercase;
-		letter-spacing: 2px;
+		background: var(--color-card);
+		padding: 0 0.75rem;
+		font-weight: 500;
+		font-size: 0.75rem;
 		color: var(--color-text-tertiary);
 		position: relative;
 	}
@@ -301,14 +234,13 @@
 		position: absolute;
 		left: 0;
 		right: 0;
-		height: 2px;
-		background: var(--color-gray-300);
+		height: 1px;
+		background: var(--color-border-light);
 		top: 50%;
-		transform: translateY(-50%);
 	}
 
 	.demo-option {
-		padding: 0.75rem 1rem !important;
+		padding: 0.625rem 1rem !important;
 	}
 
 	.demo-option .option-content {
@@ -318,28 +250,23 @@
 	}
 
 	.demo-option strong {
-		font-size: 1rem !important;
+		font-size: 0.875rem !important;
 	}
 
 	.demo-option small {
 		margin-left: 0 !important;
-		font-size: 0.875rem !important;
+		font-size: 0.8125rem !important;
 	}
 
 	@media (max-width: 600px) {
 		.transcribe-options {
-			padding: 1.25rem;
-		}
-
-		.option-group {
-			gap: 0.75rem;
+			padding: 1rem;
 		}
 
 		.option-label {
-			padding: 1rem;
 			flex-direction: column;
 			align-items: flex-start;
-			gap: 0.75rem;
+			gap: 0.5rem;
 		}
 
 		.option-content small {

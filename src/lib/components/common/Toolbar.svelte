@@ -30,32 +30,31 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: 1rem 1.25rem;
-		background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
-		border-bottom: var(--border-brutalist-thick);
+		padding: var(--sp-3) var(--sp-5);
+		background: var(--color-background-secondary);
+		border-bottom: 1px solid var(--color-border-light);
 		flex-wrap: wrap;
-		gap: 0.5rem;
+		gap: var(--sp-2);
 		position: relative;
 	}
 
 	.model-info {
-		font-size: 0.875rem;
-		font-weight: 700;
-		color: var(--color-text-primary);
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		font-size: 0.8125rem;
+		font-weight: 600;
+		color: var(--color-text-secondary);
+		letter-spacing: 0.02em;
 		word-break: break-word;
 		max-width: 100%;
 		display: flex;
 		align-items: center;
-		gap: 0.25rem;
+		gap: var(--sp-2);
 	}
 
 	.model-emoji {
 		font-size: 1.125rem;
 		display: flex;
 		align-items: center;
-		color: var(--color-text-primary);
+		color: var(--color-primary);
 	}
 
 	.model-emoji :global(svg) {
@@ -66,28 +65,17 @@
 	.toolbar-actions {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
+		gap: var(--sp-2);
 		flex-wrap: wrap;
 	}
 
 	.toolbar-decoration {
-		position: absolute;
-		bottom: -6px;
-		left: 0;
-		right: 0;
-		height: 3px;
-		background: repeating-linear-gradient(
-			90deg,
-			var(--color-border-primary),
-			var(--color-border-primary) 8px,
-			var(--color-success) 8px,
-			var(--color-success) 16px
-		);
+		display: none;
 	}
 
-	@media (max-width: 600px) {
+	@media (max-width: 768px) {
 		.toolbar {
-			padding: 0.875rem 1rem;
+			padding: var(--sp-3) var(--sp-4);
 		}
 
 		.model-info {

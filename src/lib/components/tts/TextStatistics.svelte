@@ -37,9 +37,7 @@
 	}
 
 	.stat-label {
-		font-weight: 600;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		font-weight: 500;
 	}
 
 	.stat-value {

@@ -38,12 +38,11 @@
 
 <style>
 	.advanced-section {
-		background: var(--color-background-main);
-		border: var(--border-brutalist-thick);
-		padding: 1.5rem;
-		box-shadow: var(--shadow-brutalist-medium);
-		margin-bottom: 1rem;
-		transform: rotate(-0.1deg);
+		background: var(--color-card);
+		border: 1px solid var(--color-border-light);
+		padding: var(--sp-5);
+		border-radius: var(--radius-lg);
+		margin-bottom: var(--sp-3);
 	}
 
 	.param-item {
@@ -52,9 +51,9 @@
 		gap: 0.375rem;
 	}
 
-	@media (max-width: 600px) {
+	@media (max-width: 768px) {
 		.advanced-section {
-			padding: 1rem;
+			padding: var(--sp-4);
 		}
 	}
 </style>

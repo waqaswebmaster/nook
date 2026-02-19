@@ -38,10 +38,8 @@
 
 	label {
 		font-size: 0.875rem;
-		font-weight: 700;
-		color: var(--color-text-primary);
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		font-weight: 500;
+		color: var(--color-text-secondary);
 		flex-shrink: 0;
 	}
 
@@ -54,10 +52,10 @@
 
 	input[type='range'] {
 		flex: 1;
-		height: 8px;
-		background: var(--color-background-tertiary);
-		border: var(--border-brutalist-thin);
-		border-radius: 4px;
+		height: 6px;
+		background: var(--color-border-light);
+		border: none;
+		border-radius: var(--radius-sm);
 		outline: none;
 		appearance: none;
 		cursor: pointer;
@@ -65,46 +63,44 @@
 
 	input[type='range']::-webkit-slider-thumb {
 		appearance: none;
-		width: 20px;
-		height: 20px;
+		width: 18px;
+		height: 18px;
 		background: var(--color-primary);
-		border: var(--border-brutalist-thick);
+		border: 2px solid white;
 		border-radius: 50%;
 		cursor: pointer;
-		box-shadow: var(--shadow-brutalist-small);
+		box-shadow: var(--shadow-sm);
 		transition: all 0.15s;
 	}
 
 	input[type='range']::-webkit-slider-thumb:hover {
 		transform: scale(1.1);
-		background: var(--color-primary-hover);
 	}
 
 	input[type='range']::-moz-range-thumb {
-		width: 20px;
-		height: 20px;
+		width: 18px;
+		height: 18px;
 		background: var(--color-primary);
-		border: var(--border-brutalist-thick);
+		border: 2px solid white;
 		border-radius: 50%;
 		cursor: pointer;
-		box-shadow: var(--shadow-brutalist-small);
+		box-shadow: var(--shadow-sm);
 		transition: all 0.15s;
 	}
 
 	input[type='range']::-moz-range-thumb:hover {
 		transform: scale(1.1);
-		background: var(--color-primary-hover);
 	}
 
 	.speed-value {
 		min-width: 3rem;
 		padding: 0.25rem 0.5rem;
-		background: var(--color-background-main);
-		border: var(--border-brutalist-thin);
+		background: var(--color-card);
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-sm);
 		font-size: 0.875rem;
-		font-weight: 700;
+		font-weight: 600;
 		text-align: center;
-		box-shadow: var(--shadow-brutalist-small);
 		color: var(--color-text-primary);
 	}
 </style>

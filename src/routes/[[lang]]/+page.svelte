@@ -4,388 +4,289 @@
 	import ImageIcon from 'virtual:icons/lucide/image';
 	import SpeechIcon from 'virtual:icons/lucide/speech';
 	import CalculatorIcon from 'virtual:icons/lucide/calculator';
-	import CardInterface from '$lib/components/common/CardInterface.svelte';
-	import SectionCard from '$lib/components/common/SectionCard.svelte';
-	import ContentArea from '$lib/components/common/ContentArea.svelte';
+	import ShieldCheckIcon from 'virtual:icons/lucide/shield-check';
+	import WifiOffIcon from 'virtual:icons/lucide/wifi-off';
+	import ZapIcon from 'virtual:icons/lucide/zap';
+	import ToolCard from '$lib/components/common/ToolCard.svelte';
 	import { page } from '$app/stores';
 	import { resolve } from '$app/paths';
 	import { getCurrentLanguageFromPage, createLocalizedLink } from '$lib/i18n-utils';
 
-	// Get current language and create localized links
 	const currentLang = $derived(getCurrentLanguageFromPage($page));
-	const chatLink = $derived(createLocalizedLink('/chat', currentLang));
-	const transcribeLink = $derived(createLocalizedLink('/transcribe', currentLang));
-	const ttsLink = $derived(createLocalizedLink('/text-to-speech', currentLang));
-	const backgroundLink = $derived(createLocalizedLink('/background-remover', currentLang));
-	const tokensLink = $derived(createLocalizedLink('/count-tokens', currentLang));
+	const chatLink = $derived(resolve(createLocalizedLink('/chat', currentLang)));
+	const transcribeLink = $derived(resolve(createLocalizedLink('/transcribe', currentLang)));
+	const ttsLink = $derived(resolve(createLocalizedLink('/text-to-speech', currentLang)));
+	const backgroundLink = $derived(resolve(createLocalizedLink('/background-remover', currentLang)));
+	const tokensLink = $derived(resolve(createLocalizedLink('/count-tokens', currentLang)));
 </script>
 
-<div class="main-menu">
-	<div class="menu-container">
-		<CardInterface>
-			<div class="menu-header-container">
-				<SectionCard rotation={-0.5} animationDelay={0}>
-					<header class="menu-header">
-						<h1 class="main-title">
-							<span class="title-line">Ibex Tools Local AI</span>
-						</h1>
-						<p class="subtitle">
-							On this page you'll find free, private AI tools that run entirely in your browser -
-							and even offline!
-						</p>
-					</header>
-				</SectionCard>
+<div class="landing">
+	<!-- ═══ HERO ═══ -->
+	<section class="hero">
+		<div class="hero-badge">
+			<ShieldCheckIcon style="width: 14px; height: 14px;" />
+			<span>100% Private &middot; On-Device AI</span>
+		</div>
+		<h1 class="hero-title">Local AI Tools</h1>
+		<p class="hero-subtitle">
+			Free, powerful AI tools that run entirely in your browser — no servers, no uploads, works
+			offline.
+		</p>
+		<div class="hero-actions">
+			<a href={chatLink} class="btn btn-primary">Start Chatting</a>
+			<a href={transcribeLink} class="btn btn-secondary">Transcribe Audio</a>
+		</div>
+		<div class="hero-features">
+			<div class="hero-feature">
+				<ShieldCheckIcon style="width: 16px; height: 16px;" />
+				<span>Private by design</span>
 			</div>
+			<div class="hero-feature">
+				<WifiOffIcon style="width: 16px; height: 16px;" />
+				<span>Works offline</span>
+			</div>
+			<div class="hero-feature">
+				<ZapIcon style="width: 16px; height: 16px;" />
+				<span>WebAssembly powered</span>
+			</div>
+		</div>
+	</section>
 
-			<ContentArea>
-				<div class="main-content">
-					<SectionCard rotation={0.3} animationDelay={0.1}>
-						<div class="feature-grid">
-							<a href={resolve(chatLink)} class="feature-card chat-card">
-								<div class="card-number">Tool #01</div>
-								<div class="card-content">
-									<div class="icon-container">
-										<MessageSquareIcon style="width: 48px; height: 48px; stroke-width: 2.5" />
-									</div>
-									<h2>Chat</h2>
-									<p class="feature-description">
-										Chat with Large Language Models like Gemma3, completely on-device thanks to
-										llama.cpp
-									</p>
-								</div>
-							</a>
+	<!-- ═══ TOOLS GRID ═══ -->
+	<section class="tools-section">
+		<h2 class="section-title">Tools</h2>
+		<div class="tools-grid">
+			<ToolCard
+				href={chatLink}
+				title="Chat"
+				description="Chat with LLMs like Gemma3 completely on-device via llama.cpp"
+				icon={MessageSquareIcon}
+				chips={['Gemma3', 'On-Device', 'llama.cpp']}
+			/>
+			<ToolCard
+				href={transcribeLink}
+				title="Transcribe Audio"
+				description="Convert speech to text using Whisper AI — upload or record live"
+				icon={MicIcon}
+				chips={['Whisper', 'Record', 'Subtitles']}
+			/>
+			<ToolCard
+				href={ttsLink}
+				title="Text to Speech"
+				description="Natural-sounding voice synthesis with Kitten, Piper, or Kokoro"
+				icon={SpeechIcon}
+				chips={['Kokoro', 'Piper', 'Kitten TTS']}
+			/>
+			<ToolCard
+				href={backgroundLink}
+				title="Remove Background"
+				description="AI-powered background removal with RMBG or BEN2 models"
+				icon={ImageIcon}
+				chips={['RMBG v1.4', 'BEN2', 'Batch']}
+			/>
+			<ToolCard
+				href={tokensLink}
+				title="Count Tokens"
+				description="Estimate token usage for prompts across OpenAI and Anthropic models"
+				icon={CalculatorIcon}
+				chips={['OpenAI', 'Anthropic', 'Gemini']}
+			/>
+		</div>
+	</section>
 
-							<a href={resolve(transcribeLink)} class="feature-card transcribe-card">
-								<div class="card-number">Tool #02</div>
-								<div class="card-content">
-									<div class="icon-container">
-										<MicIcon style="width: 48px; height: 48px; stroke-width: 2.5" />
-									</div>
-									<h2>Transcribe Audio</h2>
-									<p class="feature-description">
-										Convert speech to text using Whisper AI. Upload any existing audio file or
-										record a new audio clip directly in your browser and export as text or a
-										subtitle file.
-									</p>
-								</div>
-							</a>
-
-							<a href={resolve(ttsLink)} class="feature-card tts-card">
-								<div class="card-number">Tool #03</div>
-								<div class="card-content">
-									<div class="icon-container">
-										<SpeechIcon style="width: 48px; height: 48px; stroke-width: 2.5" />
-									</div>
-									<h2>Text to Speech</h2>
-									<p class="feature-description">
-										Convert text to natural-sounding speech using AI models. Choose from Kitten TTS,
-										Piper, or Kokoro models for high-quality voice synthesis.
-									</p>
-								</div>
-							</a>
-
-							<a href={resolve(backgroundLink)} class="feature-card background-card">
-								<div class="card-number">Tool #04</div>
-								<div class="card-content">
-									<div class="icon-container">
-										<ImageIcon style="width: 48px; height: 48px; stroke-width: 2.5" />
-									</div>
-									<h2>Remove Background</h2>
-									<p class="feature-description">
-										Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2
-										models for professional results.
-									</p>
-								</div>
-							</a>
-
-							<a href={resolve(tokensLink)} class="feature-card tokens-card">
-								<div class="card-number">Tool #05</div>
-								<div class="card-content">
-									<div class="icon-container">
-										<CalculatorIcon style="width: 48px; height: 48px; stroke-width: 2.5" />
-									</div>
-									<h2>Count Tokens</h2>
-									<p class="feature-description">
-										Estimate token usage for prompts across OpenAI and Anthropic models.
-									</p>
-								</div>
-							</a>
-						</div>
-					</SectionCard>
-
-					<SectionCard rotation={-0.2} animationDelay={0.2}>
-						<footer class="menu-footer">
-							<p>All processing happens locally in your browser using WebAssembly.</p>
-							<p>No data is sent to external servers.</p>
-						</footer>
-					</SectionCard>
-				</div>
-			</ContentArea>
-		</CardInterface>
-	</div>
+	<!-- ═══ FOOTER NOTE ═══ -->
+	<footer class="landing-footer">
+		<p>
+			All processing happens locally in your browser using WebAssembly. No data is sent to external
+			servers.
+		</p>
+	</footer>
 </div>
 
 <style>
-	/* Base styles */
-	:global(body) {
-		margin: 0;
-		padding: 0;
-		font-family: var(--font-family-primary);
-		font-size: 16px;
-		line-height: 1.5;
-		background: linear-gradient(
-			135deg,
-			var(--color-gradient-gold) 0%,
-			var(--color-gradient-lavender) 50%,
-			var(--color-gradient-mint) 100%
-		);
-		background-size: 200% 200%;
-		animation: gradient-shift 20s ease infinite;
-		color: var(--color-text-primary);
-		overflow-x: hidden;
-	}
-
-	@keyframes gradient-shift {
-		0% {
-			background-position: 0% 50%;
-		}
-		50% {
-			background-position: 100% 50%;
-		}
-		100% {
-			background-position: 0% 50%;
-		}
-	}
-
-	.main-menu {
-		min-height: 100vh;
+	.landing {
 		display: flex;
-		align-items: flex-start;
-		justify-content: center;
-		box-sizing: border-box;
-		position: relative;
-		z-index: 2;
+		flex-direction: column;
+		gap: var(--sp-12);
+		animation: fadeUp 0.5s ease-out;
 	}
 
-	.menu-header-container {
-		padding: 1.5rem;
+	@keyframes fadeUp {
+		from {
+			opacity: 0;
+			transform: translateY(12px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
 	}
-	.menu-container {
-		width: 100%;
+
+	/* ── Hero ── */
+	.hero {
+		text-align: center;
+		padding: var(--sp-12) 0 var(--sp-8);
+		max-width: 680px;
 		margin: 0 auto;
 	}
 
-	.menu-header {
-		text-align: center;
-		margin-bottom: 2rem;
-		animation: fadeIn 0.6s ease-out;
-	}
-
-	@keyframes fadeIn {
-		from {
-			opacity: 0;
-			transform: translateY(20px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-
-	.main-title {
-		font-size: 3.5rem;
-		line-height: 1.1;
-		margin: 0 0 1.5rem 0;
-		font-weight: 800;
-	}
-
-	.title-line {
-		background: var(--color-text-primary);
+	.hero-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--sp-2);
+		padding: var(--sp-1) var(--sp-4);
+		background: var(--color-primary-subtle);
 		color: var(--color-primary);
-		padding: 0.5rem 2rem;
-		display: inline-block;
-		border: var(--border-brutalist-thick);
-		box-shadow: 5px 5px 0 var(--color-border-primary);
-		letter-spacing: 2px;
-		text-transform: uppercase;
+		border-radius: var(--radius-full);
+		font-size: 0.8125rem;
+		font-weight: 600;
+		margin-bottom: var(--sp-6);
+		border: 1px solid var(--color-primary-subtle);
 	}
 
-	.subtitle {
-		font-size: 1.25rem;
-		color: var(--color-text-primary);
-		margin: 0;
-		font-weight: 500;
-		background: var(--color-background-main);
-		display: inline-block;
-		padding: 0.5rem 1.5rem;
-		border: var(--border-brutalist-thin);
-		box-shadow: var(--shadow-brutalist-medium);
-	}
-
-	.feature-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		gap: 2rem;
-		margin-bottom: 3rem;
-		padding: 0 1rem;
-	}
-
-	.feature-card {
-		display: block;
-		text-decoration: none;
-		color: var(--color-text-primary);
-		background: var(--color-background-main);
-		border: var(--border-brutalist-thick);
-		padding: 0;
-		box-shadow: 5px 5px 0 var(--color-border-primary);
-		transition: all 0.2s ease;
-		position: relative;
-		overflow: hidden;
-		border-radius: 12px;
-		animation: cardFade 0.6s ease-out;
-		animation-fill-mode: both;
-	}
-
-	.feature-card:nth-child(1) {
-		animation-delay: 0.2s;
-	}
-
-	.feature-card:nth-child(2) {
-		animation-delay: 0.3s;
-	}
-
-	.feature-card:nth-child(3) {
-		animation-delay: 0.4s;
-	}
-
-	.feature-card:nth-child(4) {
-		animation-delay: 0.5s;
-	}
-
-	.feature-card:nth-child(5) {
-		animation-delay: 0.6s;
-	}
-
-	@keyframes cardFade {
-		from {
-			opacity: 0;
-			transform: translateY(20px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-
-	.card-number {
-		position: absolute;
-		top: 1rem;
-		right: 1rem;
-		background: var(--color-text-primary);
-		color: var(--color-primary);
-		padding: 0.25rem 0.75rem;
-		font-weight: 700;
-		font-size: 0.875rem;
-		letter-spacing: 1px;
-		border-radius: 4px;
-		text-transform: uppercase;
-	}
-
-	.feature-card:hover {
-		transform: translate(-3px, -3px);
-		box-shadow: 8px 8px 0 var(--color-border-primary);
-	}
-
-	.card-content {
-		padding: 2rem;
-	}
-
-	.icon-container {
-		margin-bottom: 1.5rem;
-		width: fit-content;
-		padding: 0.75rem;
-		background: var(--color-gradient-gold);
-		border: var(--border-brutalist-thin);
-		border-radius: 8px;
-	}
-
-	.feature-card h2 {
-		font-size: 1.75rem;
-		font-weight: 700;
-		margin: 0 0 1rem 0;
+	.hero-title {
+		font-family: var(--font-family-display);
+		font-size: clamp(3rem, 8vw, 5rem);
+		line-height: 1;
+		margin: 0 0 var(--sp-4) 0;
+		letter-spacing: 0.02em;
 		color: var(--color-text-primary);
 	}
 
-	.feature-description {
-		font-size: 1rem;
-		color: var(--color-text-secondary);
-		line-height: 1.6;
-		margin: 0 0 1.5rem 0;
-	}
-
-	.menu-footer {
-		text-align: center;
+	.hero-subtitle {
+		font-size: 1.125rem;
 		color: var(--color-text-tertiary);
+		margin: 0 0 var(--sp-8) 0;
+		line-height: 1.6;
+		max-width: 520px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.hero-actions {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: var(--sp-3);
+		flex-wrap: wrap;
+		margin-bottom: var(--sp-8);
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--sp-2);
+		padding: var(--sp-3) var(--sp-6);
+		border-radius: var(--radius-md);
 		font-size: 0.9375rem;
-		margin-top: 3rem;
-		animation: fadeIn 0.6s ease-out;
-		animation-delay: 0.5s;
-		animation-fill-mode: both;
+		font-weight: 600;
+		text-decoration: none;
+		transition: all var(--transition-fast);
+		cursor: pointer;
 	}
 
-	.menu-footer p {
-		margin: 0.5rem 0;
+	.btn-primary {
+		background: var(--color-primary);
+		color: #fff;
+		box-shadow: var(--shadow-md);
 	}
 
-	/* main-content wrapper (keeps layout consistent with other pages) */
-	.main-content {
-		transition: all 0.3s ease;
+	.btn-primary:hover {
+		background: var(--color-primary-hover);
+		box-shadow: var(--shadow-lg);
+		transform: translateY(-1px);
 	}
 
-	.main-content.disabled {
-		opacity: 0.3;
-		pointer-events: none;
-		filter: grayscale(50%);
+	.btn-secondary {
+		background: var(--color-card);
+		color: var(--color-text-primary);
+		border: 1px solid var(--color-border-light);
+		box-shadow: var(--shadow-sm);
 	}
 
-	/* Responsive adjustments */
-	@media (max-width: 768px) {
-		.main-menu {
-			padding: 1.5rem 1rem;
+	.btn-secondary:hover {
+		background: var(--color-card-hover);
+		border-color: var(--color-primary);
+		box-shadow: var(--shadow-md);
+		transform: translateY(-1px);
+	}
+
+	.hero-features {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: var(--sp-6);
+		flex-wrap: wrap;
+	}
+
+	.hero-feature {
+		display: flex;
+		align-items: center;
+		gap: var(--sp-2);
+		font-size: 0.8125rem;
+		color: var(--color-text-tertiary);
+		font-weight: 500;
+	}
+
+	/* ── Tools ── */
+	.tools-section {
+		max-width: 800px;
+		margin: 0 auto;
+		width: 100%;
+	}
+
+	.section-title {
+		font-size: 1.25rem;
+		font-weight: 700;
+		color: var(--color-text-primary);
+		margin: 0 0 var(--sp-4) 0;
+		letter-spacing: -0.01em;
+	}
+
+	.tools-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--sp-3);
+	}
+
+	/* ── Footer ── */
+	.landing-footer {
+		text-align: center;
+		padding: var(--sp-4) 0 var(--sp-8);
+	}
+
+	.landing-footer p {
+		margin: 0;
+		font-size: 0.8125rem;
+		color: var(--color-text-tertiary);
+	}
+
+	/* ── Responsive ── */
+	@media (min-width: 640px) {
+		.tools-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (max-width: 600px) {
+		.hero {
+			padding: var(--sp-6) 0 var(--sp-4);
 		}
 
-		.main-title {
+		.hero-title {
 			font-size: 2.5rem;
 		}
 
-		.title-line {
-			padding: 0.375rem 1.25rem;
-			font-size: 2rem;
+		.hero-subtitle {
+			font-size: 1rem;
 		}
 
-		.subtitle {
-			font-size: 1.125rem;
-			padding: 0.375rem 1rem;
+		.hero-features {
+			gap: var(--sp-4);
 		}
 
-		.feature-grid {
-			grid-template-columns: 1fr;
-			gap: 1.5rem;
-			padding: 0;
-		}
-
-		.feature-card h2 {
-			font-size: 1.5rem;
-		}
-	}
-
-	@media (max-width: 480px) {
-		.main-title {
-			font-size: 2rem;
-		}
-
-		.card-content {
-			padding: 1.5rem;
+		.landing {
+			gap: var(--sp-8);
 		}
 	}
 </style>

@@ -48,49 +48,37 @@
 <style>
 	.primary-button {
 		background: var(--color-primary);
-		color: var(--color-text-primary);
-		border: var(--border-brutalist-thick);
-		border-radius: 8px;
+		color: #fff;
+		border: none;
+		border-radius: var(--radius-md);
 		cursor: pointer;
-		font-weight: 700;
-		transition: all 0.2s;
-		box-shadow: var(--shadow-brutalist-medium);
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		font-weight: 600;
+		transition: all var(--transition-fast);
+		box-shadow: var(--shadow-sm);
 		font-family: var(--font-family-primary);
 		box-sizing: border-box;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		gap: 0.5rem;
+		gap: var(--sp-2);
 		white-space: nowrap;
 		position: relative;
 		overflow: hidden;
 	}
 
 	.primary-button::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: -100%;
-		width: 100%;
-		height: 100%;
-		background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-		transition: left 0.5s;
-	}
-
-	.primary-button:hover:not(.disabled):not(.loading)::before {
-		left: 100%;
+		display: none;
 	}
 
 	.primary-button:hover:not(.disabled):not(.loading) {
-		transform: translate(-2px, -2px);
-		box-shadow: var(--shadow-brutalist-large);
+		background: var(--color-primary-hover);
+		box-shadow: var(--shadow-md);
+		transform: translateY(-1px);
 	}
 
 	.primary-button:active:not(.disabled):not(.loading) {
-		transform: translate(0);
-		box-shadow: var(--shadow-brutalist-small);
+		transform: translateY(0);
+		box-shadow: var(--shadow-xs);
 	}
 
 	.primary-button.disabled,
@@ -121,10 +109,10 @@
 		width: 100%;
 	}
 
-	@media (max-width: 600px) {
+	@media (max-width: 768px) {
 		.primary-button {
 			font-size: 0.875rem;
-			padding: 0.875rem 1.25rem;
+			padding: var(--sp-3) var(--sp-4);
 		}
 	}
 </style>

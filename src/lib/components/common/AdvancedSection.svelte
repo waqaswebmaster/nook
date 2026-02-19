@@ -33,13 +33,11 @@
 
 <style>
 	.advanced-params {
-		background: linear-gradient(135deg, rgba(255, 217, 61, 0.1) 0%, rgba(152, 251, 152, 0.1) 100%);
-		padding: 1.25rem;
-		border: var(--border-brutalist-thick);
-		border-radius: 8px;
+		background: var(--color-background-secondary);
+		padding: var(--sp-4);
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-md);
 		box-sizing: border-box;
-		transform: rotate(0.2deg);
-		box-shadow: var(--shadow-brutalist-small);
 	}
 
 	.params-toggle {
@@ -47,61 +45,49 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 0.75rem 0;
+		padding: var(--sp-2) 0;
 		background: none;
 		border: none;
-		font-size: 1rem;
-		font-weight: 700;
-		color: var(--color-text-primary);
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: var(--color-text-secondary);
 		cursor: pointer;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
 		font-family: var(--font-family-primary);
-		transition: color 0.2s;
+		transition: color var(--transition-fast);
 	}
 
 	.toggle-emoji {
-		font-size: 1.25rem;
-		margin-right: 0.5rem;
+		font-size: 1.125rem;
+		margin-right: var(--sp-2);
 		display: flex;
 		align-items: center;
-		color: var(--color-text-primary);
-		animation: rotate 3s linear infinite;
-	}
-
-	.toggle-emoji :global(svg) {
-		width: 1.25rem;
-		height: 1.25rem;
-	}
-
-	@keyframes rotate {
-		from {
-			transform: rotate(0deg);
-		}
-		to {
-			transform: rotate(360deg);
-		}
-	}
-
-	.params-toggle:hover .toggle-emoji {
-		animation-duration: 1s;
-	}
-
-	.params-toggle:hover {
 		color: var(--color-text-tertiary);
 	}
 
-	.toggle-icon {
-		transition: transform 0.3s ease;
-		flex-shrink: 0;
-		display: flex;
-		align-items: center;
+	.toggle-emoji :global(svg) {
+		width: 1.125rem;
+		height: 1.125rem;
+	}
+
+	.params-toggle:hover {
 		color: var(--color-text-primary);
 	}
 
+	.params-toggle:hover .toggle-emoji {
+		color: var(--color-primary);
+	}
+
+	.toggle-icon {
+		transition: transform 0.2s ease;
+		flex-shrink: 0;
+		display: flex;
+		align-items: center;
+		color: var(--color-text-tertiary);
+	}
+
 	.toggle-icon :global(svg) {
-		width: 20px;
-		height: 20px;
+		width: 18px;
+		height: 18px;
 	}
 
 	.toggle-icon.rotated {
@@ -111,15 +97,15 @@
 	.params-grid {
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
-		margin-top: 1rem;
-		animation: slideDown 0.3s ease-out;
+		gap: var(--sp-4);
+		margin-top: var(--sp-3);
+		animation: slideDown 0.2s ease-out;
 	}
 
 	@keyframes slideDown {
 		from {
 			opacity: 0;
-			transform: translateY(-10px);
+			transform: translateY(-6px);
 		}
 		to {
 			opacity: 1;
@@ -127,9 +113,9 @@
 		}
 	}
 
-	@media (max-width: 600px) {
+	@media (max-width: 768px) {
 		.advanced-params {
-			padding: 1rem;
+			padding: var(--sp-3);
 		}
 	}
 </style>

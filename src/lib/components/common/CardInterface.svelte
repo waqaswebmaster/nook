@@ -8,105 +8,38 @@
 </script>
 
 <div class="card-interface" class:fixed-height={fixedHeight}>
-	<div class="floating-decoration decoration-1"></div>
-	<div class="floating-decoration decoration-2"></div>
-
 	{@render children?.()}
 </div>
 
 <style>
 	.card-interface {
 		position: relative;
-		transform: rotate(0deg);
-		animation: slideInChat 0.5s ease-out;
+		animation: slideInCard 0.35s ease-out;
 		display: flex;
 		flex-direction: column;
 	}
 
 	.card-interface.fixed-height {
-		height: calc(100vh - 4rem); /* Fixed height to constrain content */
-		min-height: 500px; /* Minimum height for usability */
-		max-height: calc(100vh - 2rem); /* Prevent growing too large */
+		height: calc(100vh - var(--nav-height) - var(--sp-12) - var(--sp-4));
+		min-height: 500px;
+		max-height: calc(100vh - var(--nav-height) - var(--sp-8));
 	}
 
-	@keyframes slideInChat {
+	@keyframes slideInCard {
 		from {
 			opacity: 0;
-			transform: translateY(20px) rotate(0deg);
+			transform: translateY(8px);
 		}
 		to {
 			opacity: 1;
-			transform: translateY(0) rotate(0deg);
+			transform: translateY(0);
 		}
 	}
 
-	.floating-decoration {
-		position: absolute;
-		background: linear-gradient(
-			135deg,
-			var(--color-primary-dark) 0%,
-			var(--color-accent-pink) 100%
-		);
-		border: var(--border-brutalist-thick);
-		opacity: 0.2;
-		/* Ensure decoration sits above card background but below content */
-		z-index: 0;
-		pointer-events: none;
-	}
-
-	/* Keep all non-decoration children above the floating shapes */
-	.card-interface > :not(.floating-decoration) {
-		position: relative;
-		z-index: 1;
-	}
-
-	.decoration-1 {
-		width: 80px;
-		height: 80px;
-		top: -20px;
-		right: -20px;
-		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
-		animation: float1 8s ease-in-out infinite;
-	}
-
-	.decoration-2 {
-		width: 60px;
-		height: 60px;
-		bottom: 100px;
-		left: -15px;
-		border-radius: 70% 30% 30% 70% / 40% 60% 40% 60%;
-		animation: float2 10s ease-in-out infinite;
-	}
-
-	@keyframes float1 {
-		0%,
-		100% {
-			transform: translate(0, 0) rotate(0deg);
-		}
-		50% {
-			transform: translate(-10px, 10px) rotate(180deg);
-		}
-	}
-
-	@keyframes float2 {
-		0%,
-		100% {
-			transform: translate(0, 0) rotate(0deg);
-		}
-		50% {
-			transform: translate(10px, -10px) rotate(-180deg);
-		}
-	}
-
-	@media (max-width: 600px) {
+	@media (max-width: 768px) {
 		.card-interface.fixed-height {
-			height: calc(100vh - 3rem);
+			height: calc(100vh - var(--nav-height) - var(--sp-8));
 			min-height: 400px;
-		}
-
-		.decoration-1,
-		.decoration-2 {
-			display: none;
 		}
 	}
 </style>

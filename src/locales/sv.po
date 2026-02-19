@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:12:40.444Z\n"
-"PO-Revision-Date: 2026-02-17T14:33:00.262Z\n"
+"PO-Revision-Date: 2026-02-19T16:57:30.764Z\n"
 "Last-Translator: \n"
 "Language: sv\n"
 "Language-Team: \n"
@@ -12,6 +12,9 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
+#: src/lib/components/Footer.svelte
+#: src/routes/+layout.svelte
+#: src/routes/+layout.svelte
 #: src/routes/+layout.svelte
 #: src/routes/+layout.ts
 #: src/routes/[[lang]]/og/+page.svelte
@@ -25,10 +28,10 @@ msgstr "Nook"
 #~ "På den här sidan hittar du gratis, privata AI-verktyg som körs helt i din webbläsare - även\n"
 #~ "offline!"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Tool #01"
-msgstr "Verktyg #01"
+#~ msgid "Tool #01"
+#~ msgstr "Verktyg #01"
 
+#: src/lib/components/Footer.svelte
 #: src/routes/+layout.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Chat"
@@ -37,17 +40,16 @@ msgstr "Chatt"
 #~ msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp"
 #~ msgstr "Chatta med stora språkmodeller som Gemma3, helt lokalt tack vare llama.cpp"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Tool #02"
-msgstr "Verktyg #02"
+#~ msgid "Tool #02"
+#~ msgstr "Verktyg #02"
 
+#: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Transcribe Audio"
 msgstr "Transkribera ljud"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Tool #03"
-msgstr "Verktyg #03"
+#~ msgid "Tool #03"
+#~ msgstr "Verktyg #03"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "Text to Speech"
@@ -60,34 +62,30 @@ msgstr "Text till tal"
 #~ "Konvertera text till naturligt tal med AI-modeller. Välj mellan Kitten TTS, Piper\n"
 #~ "eller Kokoro-modeller för högkvalitativ röstsyntes."
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Tool #04"
-msgstr "Verktyg #04"
+#~ msgid "Tool #04"
+#~ msgstr "Verktyg #04"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "Remove Background"
 msgstr "Ta bort bakgrund"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Tool #05"
-msgstr "Verktyg #05"
+#~ msgid "Tool #05"
+#~ msgstr "Verktyg #05"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "Count Tokens"
 msgstr "Räkna tokens"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Estimate token usage for prompts across OpenAI and Anthropic models."
-msgstr "Uppskatta tokenanvändning för prompter i OpenAI- och Anthropic-modeller."
+#~ msgid "Estimate token usage for prompts across OpenAI and Anthropic models."
+#~ msgstr "Uppskatta tokenanvändning för prompter i OpenAI- och Anthropic-modeller."
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "All processing happens locally in your browser using WebAssembly."
-msgstr "All bearbetning sker lokalt i din webbläsare med WebAssembly."
+#~ msgid "All processing happens locally in your browser using WebAssembly."
+#~ msgstr "All bearbetning sker lokalt i din webbläsare med WebAssembly."
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "No data is sent to external servers."
-msgstr "Ingen data skickas till externa servrar."
+#~ msgid "No data is sent to external servers."
+#~ msgstr "Ingen data skickas till externa servrar."
 
+#: src/lib/components/Footer.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
 #: src/routes/+layout.svelte
 msgid "Tokens"
@@ -271,7 +269,6 @@ msgid "or click to browse • JPG, PNG, WebP supported"
 msgstr "eller klicka för att bläddra • JPG, PNG, WebP stöds"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-#: src/lib/components/whisper/TranscribeOptions.svelte
 msgid "OR"
 msgstr "ELLER"
 
@@ -354,13 +351,11 @@ msgstr "Högkvalitativa svar"
 #~ msgid "<0/> Chat with AI Models"
 #~ msgstr "<0/> Chatta med AI-modeller"
 
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "<0>Step 1:</0> Choose Your AI Model"
-msgstr "<0>Steg 1:</0> Välj din AI-modell"
+#~ msgid "<0>Step 1:</0> Choose Your AI Model"
+#~ msgstr "<0>Steg 1:</0> Välj din AI-modell"
 
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "<0>Step 2:</0> Advanced Settings"
-msgstr "<0>Steg 2:</0> Avancerade inställningar"
+#~ msgid "<0>Step 2:</0> Advanced Settings"
+#~ msgstr "<0>Steg 2:</0> Avancerade inställningar"
 
 #: src/lib/components/chat/ModelSelector.svelte
 msgid "Threads <0>(-1 auto)</0>"
@@ -426,9 +421,8 @@ msgstr "{0}x"
 msgid "Sample Rate:"
 msgstr "Samplingsfrekvens:"
 
-#: src/lib/components/tts/ModelSwitcher.svelte
-msgid "<0>Step 1:</0> Text-to-speech Model"
-msgstr "<0>Steg 1:</0> Text-till-tal-modell"
+#~ msgid "<0>Step 1:</0> Text-to-speech Model"
+#~ msgstr "<0>Steg 1:</0> Text-till-tal-modell"
 
 #: src/lib/components/tts/ModelSwitcher.svelte
 msgid "Kitten TTS Nano"
@@ -447,6 +441,7 @@ msgid "75MB • Better Quality • Fast"
 msgstr "75MB • Bättre kvalitet • Snabb"
 
 #: src/lib/components/tts/ModelSwitcher.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Kokoro"
 msgstr "Kokoro"
 
@@ -563,6 +558,7 @@ msgid "Drag & Drop Audio File"
 msgstr "Dra & släpp ljudfil"
 
 #: src/lib/components/whisper/FileUpload.svelte
+#: src/lib/components/whisper/TranscribeOptions.svelte
 msgid "or"
 msgstr "eller"
 
@@ -720,22 +716,18 @@ msgstr "1 token ≈ 4 tecken på engelska"
 #~ "Olika modeller använder olika tokeniseringsmetoder, så samma text kan resultera i olika\n"
 #~ "antal tokens."
 
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "Failed to load model. Please check your connection and try again."
-msgstr "Misslyckades att ladda modell. Kontrollera din anslutning och försök igen."
+#~ msgid "Failed to load model. Please check your connection and try again."
+#~ msgstr "Misslyckades att ladda modell. Kontrollera din anslutning och försök igen."
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
-#: src/routes/[[lang]]/chat/+page.svelte
 msgid "Loading Model"
 msgstr "Laddar modell"
 
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "This will take a couple of minutes. The chat model is being downloaded to your browser."
-msgstr "Detta tar några minuter. Chattmodellen laddas ner till din webbläsare."
+#~ msgid "This will take a couple of minutes. The chat model is being downloaded to your browser."
+#~ msgstr "Detta tar några minuter. Chattmodellen laddas ner till din webbläsare."
 
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "New <0>Chat</0>"
-msgstr "Ny <0>chatt</0>"
+#~ msgid "New <0>Chat</0>"
+#~ msgstr "Ny <0>chatt</0>"
 
 #: src/routes/[[lang]]/og/+page.svelte
 msgid "OpenGraph Image Generator"
@@ -1052,13 +1044,11 @@ msgstr "Claude använder en BPE (Byte Pair Encoding) tokenizer liknande GPT-mode
 msgid "Special characters and code may use more tokens"
 msgstr "Specialtecken och kod kan använda fler tokens"
 
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "Reloading..."
-msgstr "Laddar om..."
+#~ msgid "Reloading..."
+#~ msgstr "Laddar om..."
 
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "Reload Model"
-msgstr "Ladda om modell"
+#~ msgid "Reload Model"
+#~ msgstr "Ladda om modell"
 
 #: src/lib/components/common/AdvancedSection.svelte
 msgid "Advanced Parameters"
@@ -1069,6 +1059,7 @@ msgstr "Avancerade parametrar"
 msgid "RMBG-1.4"
 msgstr "RMBG-1.4"
 
+#: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "RMBG v1.4"
 msgstr "RMBG v1.4"
@@ -1081,6 +1072,7 @@ msgstr "QUANT"
 msgid "BEN2-ONNX"
 msgstr "BEN2-ONNX"
 
+#: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "BEN2"
 msgstr "BEN2"
@@ -1089,10 +1081,12 @@ msgstr "BEN2"
 msgid "FP16"
 msgstr "FP16"
 
+#: src/lib/components/Footer.svelte
 #: src/routes/+layout.svelte
 msgid "Transcribe"
 msgstr "Transkribera"
 
+#: src/lib/components/Footer.svelte
 #: src/routes/+layout.svelte
 msgid "TTS"
 msgstr "TTS"
@@ -1221,10 +1215,12 @@ msgstr "Räkna tokens för Gemini-modeller"
 msgid "Claude"
 msgstr "Claude"
 
+#: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/count-tokens/+layout.svelte
 msgid "OpenAI"
 msgstr "OpenAI"
 
+#: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/count-tokens/+layout.svelte
 msgid "Gemini"
 msgstr "Gemini"
@@ -1579,29 +1575,29 @@ msgstr ""
 msgid "Close menu"
 msgstr "Stäng meny"
 
+#: src/lib/components/Footer.svelte
+#: src/routes/+layout.svelte
 #: src/routes/+layout.svelte
 msgid "Home"
 msgstr "Hem"
 
-#: src/routes/+layout.svelte
-msgid "Change Language"
-msgstr "Byt språk"
+#~ msgid "Change Language"
+#~ msgstr "Byt språk"
 
+#: src/lib/components/Footer.svelte
 #: src/routes/+layout.svelte
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/routes/+layout.svelte
-msgid "Open tools menu"
-msgstr "Öppna verktygsmeny"
+#~ msgid "Open tools menu"
+#~ msgstr "Öppna verktygsmeny"
 
-#: src/routes/+layout.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Tools"
 msgstr "Verktyg"
 
-#: src/routes/+layout.svelte
-msgid "More tools"
-msgstr "Fler verktyg"
+#~ msgid "More tools"
+#~ msgstr "Fler verktyg"
 
 #~ msgid "Nook Local AI"
 #~ msgstr ""
@@ -1609,31 +1605,28 @@ msgstr "Fler verktyg"
 #~ msgid "Local AI"
 #~ msgstr ""
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Ibex Tools Local AI"
-msgstr ""
+#~ msgid "Ibex Tools Local AI"
+#~ msgstr ""
 
 #~ msgid ""
 #~ "On this page you'll find free, private AI tools that run entirely in your browser - and\n"
 #~ "even offline!"
 #~ msgstr ""
 
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"Chat with Large Language Models like Gemma3, completely on-device thanks to\n"
-"llama.cpp"
-msgstr ""
+#~ msgid ""
+#~ "Chat with Large Language Models like Gemma3, completely on-device thanks to\n"
+#~ "llama.cpp"
+#~ msgstr ""
 
 #~ msgid ""
 #~ "Convert speech to text using Whisper AI. Upload any existing audio file or record a\n"
 #~ "new audio clip directly in your browser and export as text or a subtitle file."
 #~ msgstr ""
 
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"Convert text to natural-sounding speech using AI models. Choose from Kitten TTS,\n"
-"Piper, or Kokoro models for high-quality voice synthesis."
-msgstr ""
+#~ msgid ""
+#~ "Convert text to natural-sounding speech using AI models. Choose from Kitten TTS,\n"
+#~ "Piper, or Kokoro models for high-quality voice synthesis."
+#~ msgstr ""
 
 #~ msgid ""
 #~ "Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2 models\n"
@@ -1654,24 +1647,21 @@ msgstr ""
 #~ "for professional results.</2></1></3> <4><0>Tool #05</0> <1><0/> <1>Count Tokens</1> <2>Estimate token usage for prompts across OpenAI and Anthropic models.</2></1></4></0></0> <1><0><0>All processing happens locally in your browser using WebAssembly.</0> <1>No data is sent to external servers.</1></0></1></0></0>"
 #~ msgstr ""
 
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"On this page you'll find free, private AI tools that run entirely in your browser -\n"
-"and even offline!"
-msgstr ""
+#~ msgid ""
+#~ "On this page you'll find free, private AI tools that run entirely in your browser -\n"
+#~ "and even offline!"
+#~ msgstr ""
 
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"Convert speech to text using Whisper AI. Upload any existing audio file or\n"
-"record a new audio clip directly in your browser and export as text or a\n"
-"subtitle file."
-msgstr ""
+#~ msgid ""
+#~ "Convert speech to text using Whisper AI. Upload any existing audio file or\n"
+#~ "record a new audio clip directly in your browser and export as text or a\n"
+#~ "subtitle file."
+#~ msgstr ""
 
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2\n"
-"models for professional results."
-msgstr ""
+#~ msgid ""
+#~ "Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2\n"
+#~ "models for professional results."
+#~ msgstr ""
 
 #: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid ""
@@ -1695,6 +1685,154 @@ msgstr ""
 #~ msgid "Ibex"
 #~ msgstr ""
 
+#~ msgid "Ibex Tools"
+#~ msgstr ""
+
 #: src/routes/+layout.svelte
-msgid "Ibex Tools"
+#: src/routes/+layout.svelte
+msgid "N"
+msgstr ""
+
+#: src/routes/+layout.svelte
+msgid "Main navigation"
+msgstr ""
+
+#: src/routes/+layout.svelte
+msgid "Open menu"
+msgstr ""
+
+#: src/routes/+layout.svelte
+msgid "Navigation menu"
+msgstr ""
+
+#: src/routes/+layout.svelte
+msgid "Language"
+msgstr ""
+
+#. placeholder {0}: theme === 'light' ? 'dark' : 'light'
+#: src/lib/components/common/ThemeToggle.svelte
+msgid "Toggle {0} mode"
+msgstr ""
+
+#: src/lib/components/common/ThemeToggle.svelte
+msgid "Toggle theme"
+msgstr ""
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "100% Private · On-Device AI"
+msgstr ""
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Local AI Tools"
+msgstr ""
+
+#~ msgid "Free, powerful AI tools that run entirely in your browser — no servers, no uploads, works offline."
+#~ msgstr ""
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Start Chatting"
+msgstr ""
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Private by design"
+msgstr ""
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Works offline"
+msgstr ""
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "WebAssembly powered"
+msgstr ""
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Chat with LLMs like Gemma3 completely on-device via llama.cpp"
+msgstr ""
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Gemma3"
+msgstr ""
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "On-Device"
+msgstr ""
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Convert speech to text using Whisper AI — upload or record live"
+msgstr ""
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Whisper"
+msgstr ""
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Record"
+msgstr ""
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Subtitles"
+msgstr ""
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Natural-sounding voice synthesis with Kitten, Piper, or Kokoro"
+msgstr ""
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Piper"
+msgstr ""
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Kitten TTS"
+msgstr ""
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "AI-powered background removal with RMBG or BEN2 models"
+msgstr ""
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Batch"
+msgstr ""
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Estimate token usage for prompts across OpenAI and Anthropic models"
+msgstr ""
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Anthropic"
+msgstr ""
+
+#~ msgid "All processing happens locally in your browser using WebAssembly. No data is sent to external servers."
+#~ msgstr ""
+
+#: src/lib/components/Footer.svelte
+msgid "Local AI tools. Private by default."
+msgstr ""
+
+#: src/lib/components/Footer.svelte
+msgid "Footer navigation"
+msgstr ""
+
+#. placeholder {0}: year
+#: src/lib/components/Footer.svelte
+msgid "© {0} Nook"
+msgstr ""
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "Choose Your AI Model"
+msgstr ""
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "Text-to-speech Model"
+msgstr ""
+
+#: src/routes/[[lang]]/+page.svelte
+msgid ""
+"Free, powerful AI tools that run entirely in your browser — no servers, no uploads, works\n"
+"offline."
+msgstr ""
+
+#: src/routes/[[lang]]/+page.svelte
+msgid ""
+"All processing happens locally in your browser using WebAssembly. No data is sent to external\n"
+"servers."
 msgstr ""

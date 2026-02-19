@@ -1,9 +1,13 @@
 export { default as ActionButton } from './ActionButton.svelte';
 export { default as AdvancedSection } from './AdvancedSection.svelte';
 export { default as CardInterface } from './CardInterface.svelte';
+export { default as Chip } from './Chip.svelte';
 export { default as ContentArea } from './ContentArea.svelte';
 export { default as InputArea } from './InputArea.svelte';
 export { default as PrimaryButton } from './PrimaryButton.svelte';
 export { default as SectionCard } from './SectionCard.svelte';
+export { default as SectionHeader } from './SectionHeader.svelte';
 export { default as StepHeader } from './StepHeader.svelte';
+export { default as ThemeToggle } from './ThemeToggle.svelte';
+export { default as ToolCard } from './ToolCard.svelte';
 export { default as Toolbar } from './Toolbar.svelte';

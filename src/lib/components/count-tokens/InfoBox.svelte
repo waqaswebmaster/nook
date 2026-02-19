@@ -18,23 +18,19 @@
 
 <style>
 	.info-box {
-		background: var(--color-background-main);
-		border: var(--border-brutalist-thick);
-		box-shadow: var(--shadow-brutalist-large);
+		background: var(--color-card);
+		border: 1px solid var(--color-border-light);
+		box-shadow: var(--shadow-xs);
 		padding: 1.5rem;
-		border-radius: 8px;
-		transform: rotate(-0.2deg);
+		border-radius: var(--radius-lg);
 		margin-top: 2rem;
 	}
 
 	.info-box h4 {
 		margin: 0 0 1rem 0;
-		font-size: 1.25rem;
-		font-weight: 700;
+		font-size: 1rem;
+		font-weight: 600;
 		color: var(--color-text-primary);
-		text-transform: uppercase;
-		letter-spacing: 1px;
-		font-family: var(--font-family-display);
 	}
 
 	.info-box ul {
@@ -56,12 +52,12 @@
 	}
 
 	.info-box li::before {
-		content: '▶';
+		content: '•';
 		position: absolute;
 		left: 0;
-		color: var(--color-accent-primary);
-		font-size: 0.75rem;
-		top: 0.1rem;
+		color: var(--color-primary);
+		font-size: 1rem;
+		top: 0;
 	}
 
 	.info-box li:hover {

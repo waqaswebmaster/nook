@@ -2,9 +2,9 @@
 	import LoadingProgress from '$lib/components/common/LoadingProgress.svelte';
 	import ErrorDisplay from '$lib/components/common/ErrorDisplay.svelte';
 	import { isOPFSSupported } from '$lib/download-utils';
-	import { PUBLIC_DISABLE_OPFS } from '$env/static/public';
 	import CheckIcon from 'virtual:icons/lucide/check';
 	import ChevronDownIcon from 'virtual:icons/lucide/chevron-down';
+	import { PUBLIC_DISABLE_OPFS } from '$env/static/public';
 
 	interface Props {
 		selectedModel: string;
@@ -110,23 +110,21 @@
 
 <style>
 	.model-selection {
-		background: var(--color-background-main);
-		border: var(--border-brutalist-thick);
+		background: var(--color-card);
+		border: 1px solid var(--color-border-light);
 		padding: 1.5rem;
-		box-shadow: 5px 5px 0 var(--color-text-primary);
+		box-shadow: var(--shadow-sm);
 		margin-bottom: 1.5rem;
-		border-radius: 12px;
+		border-radius: var(--radius-lg);
 	}
 
 	.model-selection h3 {
 		margin-top: 0;
 		margin-bottom: 1rem;
-		font-size: 1.25rem;
+		font-size: 1.125rem;
 		color: var(--color-text-primary);
 		text-align: center;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		font-weight: 600;
 	}
 
 	.model-controls {
@@ -146,16 +144,18 @@
 		width: 100%;
 		padding: 0.75rem;
 		padding-right: 2.5rem;
-		border: var(--border-brutalist-thin);
-		border-radius: 6px;
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-md);
 		font-size: 0.9375rem;
 		font-weight: 500;
-		background: var(--color-background-main);
+		background: var(--color-card);
 		text-align: center;
-		box-shadow: var(--shadow-brutalist-small);
+		box-shadow: var(--shadow-xs);
 		font-family: var(--font-family-primary);
 		cursor: pointer;
-		transition: all 0.2s;
+		transition:
+			border-color 0.2s,
+			box-shadow 0.2s;
 		appearance: none;
 	}
 
@@ -176,12 +176,14 @@
 	}
 
 	.model-controls select:hover:not(:disabled) {
-		box-shadow: var(--shadow-brutalist-medium);
+		border-color: var(--color-primary);
+		box-shadow: var(--shadow-sm);
 	}
 
 	.model-controls select:focus {
 		outline: none;
-		border-color: #ffd700;
+		border-color: var(--color-primary);
+		box-shadow: 0 0 0 3px var(--color-accent-primary-alpha);
 	}
 
 	.model-controls select:disabled {
@@ -199,17 +201,16 @@
 		gap: 0.5rem;
 		color: var(--color-text-primary);
 		font-weight: 600;
-		font-size: 1rem;
-		background: var(--color-accent-light-green);
+		font-size: 0.875rem;
+		background: var(--color-accent-primary-alpha);
 		padding: 0.5rem 1rem;
-		border: var(--border-brutalist-thin);
-		border-radius: 6px;
-		text-transform: uppercase;
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-md);
 	}
 
 	.checkmark {
 		font-size: 1.25rem;
-		color: var(--color-text-primary);
+		color: var(--color-primary);
 		display: flex;
 		align-items: center;
 	}
@@ -228,22 +229,22 @@
 
 	.change-model-btn {
 		padding: 0.5rem 1rem;
-		background: var(--color-background-tertiary);
+		background: var(--color-card);
 		color: var(--color-text-primary);
-		border: var(--border-brutalist-thin);
-		border-radius: 6px;
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-md);
 		cursor: pointer;
 		font-size: 0.875rem;
-		font-weight: 600;
-		transition: all 0.2s;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		font-weight: 500;
+		transition:
+			background 0.2s,
+			border-color 0.2s;
 		font-family: var(--font-family-primary);
 	}
 
 	.change-model-btn:hover {
-		background: var(--color-background-pattern);
-		box-shadow: var(--shadow-brutalist-small);
+		background: var(--color-accent-primary-alpha);
+		border-color: var(--color-primary);
 	}
 
 	.change-model-btn:disabled {
@@ -252,29 +253,29 @@
 	}
 
 	.primary-button {
-		padding: 0.875rem 1.75rem;
-		background: #ffd700;
-		color: var(--color-text-primary);
-		border: var(--border-brutalist-thick);
-		border-radius: 8px;
+		padding: 0.75rem 1.5rem;
+		background: var(--color-primary);
+		color: #fff;
+		border: none;
+		border-radius: var(--radius-md);
 		cursor: pointer;
-		font-size: 1rem;
-		font-weight: 700;
-		transition: all 0.2s;
-		box-shadow: var(--shadow-brutalist-medium);
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		font-size: 0.9375rem;
+		font-weight: 600;
+		transition:
+			background 0.2s,
+			box-shadow 0.2s;
+		box-shadow: var(--shadow-sm);
 		font-family: var(--font-family-primary);
 	}
 
 	.primary-button:hover:not(:disabled) {
-		transform: translate(-2px, -2px);
-		box-shadow: var(--shadow-brutalist-large);
+		box-shadow: var(--shadow-md);
+		filter: brightness(1.05);
 	}
 
 	.primary-button:active:not(:disabled) {
-		transform: translate(0);
-		box-shadow: var(--shadow-brutalist-small);
+		box-shadow: var(--shadow-xs);
+		filter: brightness(0.97);
 	}
 
 	.primary-button:disabled {

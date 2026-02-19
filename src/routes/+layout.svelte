@@ -13,8 +13,10 @@
 	import SpeechIcon from 'virtual:icons/lucide/speech';
 	import CalculatorIcon from 'virtual:icons/lucide/calculator';
 	import GlobeIcon from 'virtual:icons/lucide/globe';
-	import WrenchIcon from 'virtual:icons/lucide/wrench';
+	import MenuIcon from 'virtual:icons/lucide/menu';
 	import XIcon from 'virtual:icons/lucide/x';
+	import ThemeToggle from '$lib/components/common/ThemeToggle.svelte';
+	import Footer from '$lib/components/Footer.svelte';
 	import { Toaster } from 'svelte-sonner';
 	import { resolve } from '$app/paths';
 	import { getCurrentLanguage, createLocalizedLink, locales } from '$lib/i18n-utils';
@@ -25,45 +27,31 @@
 
 	let { children }: Props = $props();
 
-	// Get current language from URL and generate localized navigation links
 	const currentLang = $derived(getCurrentLanguage(page.url.pathname));
 
-	// Check if a path is active
 	function isActive(path: string): boolean {
-		// Exact match
-		if (page.url.pathname === path) {
-			return true;
-		}
-		// Don't allow parent path matching for language home pages
+		if (page.url.pathname === path) return true;
 		const isLanguageHomePage = locales.some((locale) => path === `/${locale}`);
-		if (!isLanguageHomePage && path !== '/' && page.url.pathname.startsWith(path + '/')) {
+		if (!isLanguageHomePage && path !== '/' && page.url.pathname.startsWith(path + '/'))
 			return true;
-		}
 		return false;
 	}
 
 	const DEFAULT_TITLE = 'Nook';
 
-	const getLocalizedNavLinks = (currentLang: string) => {
-		return [
-			{ path: createLocalizedLink('/', currentLang), label: '', icon: 'home' },
-			{ path: createLocalizedLink('/chat', currentLang), label: 'Chat', icon: 'chat' },
-			{ path: createLocalizedLink('/transcribe', currentLang), label: 'Transcribe', icon: 'mic' },
-			{ path: createLocalizedLink('/text-to-speech', currentLang), label: 'TTS', icon: 'speech' },
-			{
-				path: createLocalizedLink('/background-remover', currentLang),
-				label: 'BG Remover',
-				icon: 'image'
-			},
-			{
-				path: createLocalizedLink('/count-tokens', currentLang),
-				label: 'Tokens',
-				icon: 'calculator'
-			}
-		];
-	};
+	const getLocalizedNavLinks = (currentLang: string) => [
+		{ path: createLocalizedLink('/', currentLang), label: 'Home', icon: 'home' },
+		{ path: createLocalizedLink('/chat', currentLang), label: 'Chat', icon: 'chat' },
+		{ path: createLocalizedLink('/transcribe', currentLang), label: 'Transcribe', icon: 'mic' },
+		{ path: createLocalizedLink('/text-to-speech', currentLang), label: 'TTS', icon: 'speech' },
+		{
+			path: createLocalizedLink('/background-remover', currentLang),
+			label: 'BG Remover',
+			icon: 'image'
+		},
+		{ path: createLocalizedLink('/count-tokens', currentLang), label: 'Tokens', icon: 'calculator' }
+	];
 
-	// Mobile menu state
 	let isMobileMenuOpen = $state(false);
 
 	function toggleMobileMenu() {
@@ -74,61 +62,54 @@
 		isMobileMenuOpen = false;
 	}
 
-	// Handle escape key to close menu
 	function handleKeydown(event: KeyboardEvent) {
-		if (event.key === 'Escape' && isMobileMenuOpen) {
-			closeMobileMenu();
-		}
+		if (event.key === 'Escape' && isMobileMenuOpen) closeMobileMenu();
 	}
 
 	$effect(() => {
 		if (isMobileMenuOpen) {
 			document.body.style.overflow = 'hidden';
-			document.body.style.setProperty('--mobile-menu-overlay', 'rgba(0, 0, 0, 0.5)');
-			document.body.style.setProperty('--mobile-menu-overlay-events', 'auto');
-
-			// Add click handler to close menu when clicking outside (with delay to avoid immediate trigger)
 			const handleOutsideClick = (e: MouseEvent) => {
-				const drawer = document.querySelector('.mobile-menu-drawer');
+				const drawer = document.querySelector('.mobile-drawer');
 				if (drawer && !drawer.contains(e.target as Node)) {
 					e.stopPropagation();
 					closeMobileMenu();
 				}
 			};
-			// Use setTimeout to avoid catching the click that opened the menu
 			const timeoutId = setTimeout(() => {
 				document.addEventListener('click', handleOutsideClick);
 			}, 100);
-
 			return () => {
 				clearTimeout(timeoutId);
 				document.removeEventListener('click', handleOutsideClick);
 			};
 		} else {
 			document.body.style.overflow = '';
-			document.body.style.removeProperty('--mobile-menu-overlay');
-			document.body.style.removeProperty('--mobile-menu-overlay-events');
 		}
 	});
+
+	const iconMap: Record<string, any> = {
+		home: HomeIcon,
+		chat: MessageSquareIcon,
+		mic: MicIcon,
+		speech: SpeechIcon,
+		image: ImageIcon,
+		calculator: CalculatorIcon
+	};
 </script>
 
 <svelte:head>
 	<title>{page.data.seo?.title || DEFAULT_TITLE}</title>
 	<meta name="description" content={page.data.seo?.description || ''} />
-
 	{#if page.data.seo?.url}
 		<link rel="canonical" href={page.data.seo?.url} />
 	{/if}
-
-	<!-- Open Graph meta tags -->
 	<meta property="og:title" content={page.data.seo?.title || DEFAULT_TITLE} />
 	<meta property="og:description" content={page.data.seo?.description || ''} />
 	<meta property="og:image" content={page.data.seo?.ogImage || ''} />
 	<meta property="og:url" content={page.data.seo?.url} />
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content={DEFAULT_TITLE} />
-
-	<!-- Twitter Card meta tags -->
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content={page.data.seo?.title || DEFAULT_TITLE} />
 	<meta name="twitter:description" content={page.data.seo?.description || ''} />
@@ -137,146 +118,110 @@
 
 <svelte:window onkeydown={handleKeydown} />
 
-<div class="app-wrapper">
-	<div class="container" class:fullWidth={page.url.pathname === '/og'}>
-		<nav class="main-nav">
-			<ul>
-				<li class="nav-left">
-					{#each getLocalizedNavLinks(currentLang) as link (link.path)}
-						{#if link.icon === 'home'}
-							<div class="home-item">
-								<a
-									href={resolve(link.path)}
-									class:active={isActive(link.path)}
-									class:home-link={link.icon === 'home'}
-								>
-									<HomeIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
-									{#if link.label}
-										<span>{link.label}</span>
-									{/if}
-								</a>
-							</div>
-						{/if}
-					{/each}
-					<div class="center-items">
-						{#each getLocalizedNavLinks(currentLang) as link (link.path)}
-							{#if link.icon !== 'home'}
-								<div>
-									<a href={resolve(link.path)} class:active={isActive(link.path)}>
-										{#if link.icon === 'chat'}
-											<MessageSquareIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
-										{:else if link.icon === 'mic'}
-											<MicIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
-										{:else if link.icon === 'speech'}
-											<SpeechIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
-										{:else if link.icon === 'image'}
-											<ImageIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
-										{:else if link.icon === 'calculator'}
-											<CalculatorIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
-										{/if}
-										{#if link.label}
-											<span>{link.label}</span>
-										{/if}
-									</a>
-								</div>
-							{/if}
-						{/each}
-					</div>
-				</li>
-				<li class="home-item menu-button-item">
-					<button
-						class="home-link menu-button"
-						onclick={toggleMobileMenu}
-						aria-label="Open tools menu"
-						aria-expanded={isMobileMenuOpen}
-					>
-						<WrenchIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
-						<span>More tools</span>
-					</button>
-				</li>
-				<li class="home-item language-item">
-					<a
-						href={resolve(createLocalizedLink('/language', currentLang))}
-						class="home-link"
-						aria-label="Change language"
-					>
-						<GlobeIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
-					</a>
-				</li>
-				<li class="home-item github-item">
-					<a
-						href="https://github.com/khromov/nook"
-						class="home-link"
-						aria-label="View source on GitHub"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<GithubIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
-					</a>
-				</li>
-			</ul>
-		</nav>
+<div class="app-shell">
+	<!-- ═══ TOP NAV ═══ -->
+	<header class="top-nav">
+		<div class="nav-inner">
+			<a href={resolve(createLocalizedLink('/', currentLang))} class="brand">
+				<span class="brand-mark">N</span>
+				<span class="brand-text">Nook</span>
+			</a>
 
-		<div class="content-wrapper">
+			<nav class="nav-links" aria-label="Main navigation">
+				{#each getLocalizedNavLinks(currentLang) as link (link.path)}
+					{#if link.icon !== 'home'}
+						{@const IconComp = iconMap[link.icon]}
+						<a href={resolve(link.path)} class="nav-link" class:active={isActive(link.path)}>
+							<IconComp style="width: 18px; height: 18px;" />
+							<span>{link.label}</span>
+						</a>
+					{/if}
+				{/each}
+			</nav>
+
+			<div class="nav-actions">
+				<a
+					href={resolve(createLocalizedLink('/language', currentLang))}
+					class="nav-icon-btn"
+					aria-label="Change language"
+				>
+					<GlobeIcon style="width: 18px; height: 18px;" />
+				</a>
+				<a
+					href="https://github.com/khromov/nook"
+					class="nav-icon-btn"
+					aria-label="View source on GitHub"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<GithubIcon style="width: 18px; height: 18px;" />
+				</a>
+				<ThemeToggle />
+				<button
+					class="mobile-menu-btn"
+					onclick={toggleMobileMenu}
+					aria-label="Open menu"
+					aria-expanded={isMobileMenuOpen}
+				>
+					<MenuIcon style="width: 20px; height: 20px;" />
+				</button>
+			</div>
+		</div>
+	</header>
+
+	<!-- ═══ CONTENT ═══ -->
+	<main class="main-content" class:fullWidth={page.url.pathname === '/og'}>
+		<div class="content-container">
 			{@render children?.()}
 		</div>
-	</div>
+	</main>
+
+	<Footer />
 </div>
 
+<!-- ═══ MOBILE DRAWER ═══ -->
 {#if isMobileMenuOpen}
-	<div class="mobile-menu-drawer">
-		<div class="mobile-menu-header">
-			<h2 class="mobile-menu-title">Tools</h2>
-			<button class="mobile-menu-close" onclick={closeMobileMenu} aria-label="Close menu">
-				<XIcon style="width: 24px; height: 24px; stroke-width: 2.5" />
+	<div class="mobile-overlay" aria-hidden="true"></div>
+	<div class="mobile-drawer" role="dialog" aria-label="Navigation menu">
+		<div class="drawer-header">
+			<span class="brand">
+				<span class="brand-mark">N</span>
+				<span class="brand-text">Nook</span>
+			</span>
+			<button class="drawer-close" onclick={closeMobileMenu} aria-label="Close menu">
+				<XIcon style="width: 20px; height: 20px;" />
 			</button>
 		</div>
-		<nav class="mobile-menu-nav">
+		<nav class="drawer-nav">
 			{#each getLocalizedNavLinks(currentLang) as link (link.path)}
+				{@const IconComp = iconMap[link.icon]}
 				<a
 					href={resolve(link.path)}
-					class="mobile-menu-link"
+					class="drawer-link"
 					class:active={isActive(link.path)}
 					onclick={closeMobileMenu}
 				>
-					{#if link.icon === 'home'}
-						<HomeIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
-						<span>Home</span>
-					{:else if link.icon === 'chat'}
-						<MessageSquareIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
-						<span>{link.label}</span>
-					{:else if link.icon === 'mic'}
-						<MicIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
-						<span>{link.label}</span>
-					{:else if link.icon === 'speech'}
-						<SpeechIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
-						<span>{link.label}</span>
-					{:else if link.icon === 'image'}
-						<ImageIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
-						<span>{link.label}</span>
-					{:else if link.icon === 'calculator'}
-						<CalculatorIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
-						<span>{link.label}</span>
-					{/if}
+					<IconComp style="width: 20px; height: 20px;" />
+					<span>{link.icon === 'home' ? 'Home' : link.label}</span>
 				</a>
 			{/each}
-			<div class="mobile-menu-divider"></div>
+			<div class="drawer-divider"></div>
 			<a
 				href={resolve(createLocalizedLink('/language', currentLang))}
-				class="mobile-menu-link"
+				class="drawer-link"
 				onclick={closeMobileMenu}
 			>
-				<GlobeIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
-				<span>Change Language</span>
+				<GlobeIcon style="width: 20px; height: 20px;" />
+				<span>Language</span>
 			</a>
 			<a
 				href="https://github.com/khromov/nook"
-				class="mobile-menu-link"
+				class="drawer-link"
 				target="_blank"
 				rel="noopener noreferrer"
 				onclick={closeMobileMenu}
 			>
-				<GithubIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
+				<GithubIcon style="width: 20px; height: 20px;" />
 				<span>GitHub</span>
 			</a>
 		</nav>
@@ -285,16 +230,15 @@
 
 <Toaster
 	position="bottom-right"
-	theme="light"
 	richColors
 	toastOptions={{
 		style:
-			'border: 3px solid #000; box-shadow: 4px 4px 0 #000; border-radius: 8px; font-family: Space Grotesk, sans-serif; font-weight: 600;'
+			'border: 1px solid var(--color-border-light); box-shadow: var(--shadow-lg); border-radius: var(--radius-md); font-family: Space Grotesk, sans-serif; font-weight: 500; background: var(--color-card); color: var(--color-text-primary);'
 	}}
 />
 
 <style>
-	/* Base styles with refined Neo-Brutalist approach */
+	/* ── Global body ── */
 	:global(html) {
 		height: 100%;
 	}
@@ -304,215 +248,186 @@
 		padding: 0;
 		font-family: var(--font-family-primary);
 		font-size: 16px;
-		line-height: 1.5;
-		background: linear-gradient(
-			135deg,
-			var(--color-gradient-gold) 0%,
-			var(--color-gradient-lavender) 50%,
-			var(--color-gradient-mint) 100%
-		);
-		background-size: 200% 200%;
-		background-attachment: fixed;
-		animation: gradient-shift 20s ease infinite;
+		line-height: 1.6;
+		background: var(--color-background-secondary);
 		color: var(--color-text-primary);
-		position: relative;
 		overflow-x: hidden;
 		min-height: 100vh;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
 	}
 
-	:global(body)::before {
-		content: '';
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background-image: repeating-linear-gradient(
-			0deg,
-			transparent,
-			transparent 40px,
-			rgba(0, 0, 0, 0.02) 40px,
-			rgba(0, 0, 0, 0.02) 41px
-		);
-		pointer-events: none;
-		z-index: 0;
-	}
-
-	:global(body)::after {
-		content: '';
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background: var(--mobile-menu-overlay, transparent);
-		pointer-events: var(--mobile-menu-overlay-events, none);
-		z-index: 999;
-		transition: background 0.3s ease;
-	}
-
-	@keyframes gradient-shift {
-		0% {
-			background-position: 0% 50%;
-		}
-		50% {
-			background-position: 100% 50%;
-		}
-		100% {
-			background-position: 0% 50%;
-		}
-	}
-
-	.container.fullWidth {
-		width: 100% !important;
-		max-width: 9000px;
-	}
-
-	.app-wrapper {
+	/* ── App shell ── */
+	.app-shell {
 		min-height: 100vh;
 		display: flex;
 		flex-direction: column;
-		position: relative;
-		z-index: 2;
 	}
 
-	.container {
-		width: 100%;
-		max-width: 90vw;
+	/* ── Top Nav ── */
+	.top-nav {
+		position: sticky;
+		top: 0;
+		z-index: var(--z-sticky);
+		height: var(--nav-height);
+		background: var(--nav-bg);
+		backdrop-filter: var(--backdrop-blur);
+		-webkit-backdrop-filter: var(--backdrop-blur);
+		border-bottom: 1px solid var(--color-border-light);
+	}
+
+	.nav-inner {
+		max-width: 1200px;
 		margin: 0 auto;
-		padding: 1rem;
-		box-sizing: border-box;
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-	}
-
-	.content-wrapper {
-		width: 100%;
-		position: relative;
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		min-height: 0; /* Critical for nested flex scrolling */
-	}
-
-	/* Navigation styles - Refined Neo-Brutalist */
-	.main-nav {
-		margin-bottom: 1rem;
-		width: 100%;
-		flex: 0 0 auto; /* Don't grow/shrink */
-	}
-
-	.main-nav ul {
+		height: 100%;
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
-		gap: 1rem;
-		padding: 0;
-		margin: 0;
-		list-style: none;
-		background: var(--color-background-main);
-		padding: 0.75rem;
-		box-sizing: border-box;
-		border: var(--border-brutalist-thick);
-		box-shadow: 5px 5px 0 var(--color-border-primary);
-		border-radius: 12px;
+		gap: var(--sp-6);
+		padding: 0 var(--sp-5);
 	}
 
-	.nav-left {
+	.brand {
 		display: flex;
 		align-items: center;
-		gap: 1rem;
-		flex-wrap: nowrap;
-		overflow-x: auto;
-		flex: 1;
-		min-width: 0;
-		scrollbar-width: thin;
-		scrollbar-color: var(--color-border-primary) transparent;
-		padding-top: 4px;
-		padding-bottom: 4px;
-		list-style: none;
-	}
-
-	.nav-left::-webkit-scrollbar {
-		height: 2px;
-	}
-
-	.nav-left::-webkit-scrollbar-thumb {
-		background: var(--color-border-primary);
-	}
-
-	.center-items {
-		display: flex;
-		gap: 1rem;
-	}
-
-	.center-items div {
-		flex: none;
-	}
-
-	.main-nav li {
-		flex: none;
-	}
-
-	.main-nav li.nav-left {
-		flex: 1;
-		min-width: 0;
-	}
-
-	.main-nav a {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: center;
-		gap: 0.5rem;
-		padding: 0.75rem 1.25rem;
+		gap: var(--sp-2);
 		text-decoration: none;
 		color: var(--color-text-primary);
-		font-weight: 600;
-		font-size: 1rem;
-		transition: all 0.2s ease;
-		background: var(--color-background-main);
-		border: 2px solid transparent;
-		border-radius: 8px;
-		position: relative;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		flex-shrink: 0;
 	}
 
-	.main-nav a:hover {
-		background: var(--color-gradient-gold);
-		transform: translateY(-2px);
-	}
-
-	.main-nav a.active {
+	.brand-mark {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 32px;
+		height: 32px;
+		border-radius: var(--radius-md);
 		background: var(--color-primary);
-		border-color: var(--color-border-primary);
-		box-shadow: var(--shadow-brutalist-medium);
+		color: #fff;
+		font-family: var(--font-family-display);
+		font-size: 1.25rem;
+		letter-spacing: 0.02em;
 	}
 
-	.home-link {
-		padding: 0.75rem !important;
+	.brand-text {
+		font-weight: 700;
+		font-size: 1.125rem;
+		letter-spacing: -0.02em;
 	}
 
-	.language-item .home-link,
-	.github-item .home-link,
-	.menu-button-item .menu-button {
-		border: var(--border-brutalist-thick);
-		box-shadow: var(--shadow-brutalist-medium);
+	/* Nav links */
+	.nav-links {
+		display: flex;
+		align-items: center;
+		gap: var(--sp-1);
+		flex: 1;
+		min-width: 0;
 	}
 
-	/* Shared component styling - Refined Neo-Brutalist */
+	.nav-link {
+		display: flex;
+		align-items: center;
+		gap: var(--sp-2);
+		padding: var(--sp-2) var(--sp-3);
+		text-decoration: none;
+		color: var(--color-text-tertiary);
+		font-size: 0.875rem;
+		font-weight: 500;
+		border-radius: var(--radius-md);
+		transition: all var(--transition-fast);
+		white-space: nowrap;
+	}
+
+	.nav-link:hover {
+		color: var(--color-text-primary);
+		background: var(--color-primary-subtle);
+	}
+
+	.nav-link.active {
+		color: var(--color-primary);
+		background: var(--color-primary-subtle);
+		font-weight: 600;
+	}
+
+	/* Right actions */
+	.nav-actions {
+		display: flex;
+		align-items: center;
+		gap: var(--sp-2);
+		flex-shrink: 0;
+	}
+
+	.nav-icon-btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 38px;
+		height: 38px;
+		border-radius: var(--radius-md);
+		color: var(--color-text-tertiary);
+		text-decoration: none;
+		transition: all var(--transition-fast);
+		border: 1px solid transparent;
+	}
+
+	.nav-icon-btn:hover {
+		color: var(--color-text-primary);
+		background: var(--color-background-tertiary);
+		border-color: var(--color-border-light);
+	}
+
+	.mobile-menu-btn {
+		display: none;
+		align-items: center;
+		justify-content: center;
+		width: 38px;
+		height: 38px;
+		border-radius: var(--radius-md);
+		border: 1px solid var(--color-border-light);
+		background: var(--color-background-secondary);
+		color: var(--color-text-secondary);
+		cursor: pointer;
+		transition: all var(--transition-fast);
+	}
+
+	.mobile-menu-btn:hover {
+		background: var(--color-primary-subtle);
+		color: var(--color-primary);
+	}
+
+	/* ── Main content ── */
+	.main-content {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		min-height: 0;
+	}
+
+	.main-content.fullWidth .content-container {
+		max-width: none;
+	}
+
+	.content-container {
+		max-width: 1200px;
+		width: 100%;
+		margin: 0 auto;
+		padding: var(--sp-6) var(--sp-5);
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		min-height: 0;
+	}
+
+	/* ── Global component overrides ── */
 	:global(.card-interface) {
-		border: var(--border-brutalist-thick);
-		background: var(--color-background-main);
-		box-shadow: var(--shadow-brutalist-large);
+		background: var(--color-card);
+		border: 1px solid var(--color-border-light);
+		box-shadow: var(--shadow-md);
 		width: 100%;
 		position: relative;
-		border-radius: 12px;
+		border-radius: var(--radius-lg);
 		overflow: hidden;
 		box-sizing: border-box;
-		border-bottom-right-radius: 16px;
 		display: flex;
 		flex-direction: column;
 	}
@@ -521,85 +436,72 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: 1rem 1.25rem;
-		background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-warning) 100%);
-		border-bottom: var(--border-brutalist-thick);
+		padding: var(--sp-3) var(--sp-5);
+		background: var(--color-background-secondary);
+		border-bottom: 1px solid var(--color-border-light);
 		flex-wrap: wrap;
-		gap: 0.5rem;
-		flex: 0 0 auto; /* Don't grow/shrink */
+		gap: var(--sp-2);
+		flex: 0 0 auto;
 	}
 
 	:global(.model-info) {
-		font-size: 0.875rem;
-		font-weight: 700;
-		color: var(--color-text-primary);
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		font-size: 0.8125rem;
+		font-weight: 600;
+		color: var(--color-text-secondary);
+		letter-spacing: 0.02em;
 		word-break: break-word;
 		max-width: 100%;
 	}
 
 	:global(.content-area) {
-		padding: 1.5rem;
-		background: var(--color-background-main);
+		padding: var(--sp-5);
+		background: var(--color-card);
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
+		gap: var(--sp-4);
 		box-sizing: border-box;
 	}
 
 	:global(.input-area) {
-		padding: 1rem 1.25rem;
-		border-top: var(--border-brutalist-thick);
+		padding: var(--sp-4) var(--sp-5);
+		border-top: 1px solid var(--color-border-light);
 		background: var(--color-background-secondary);
 		box-sizing: border-box;
-		flex: 0 0 auto; /* Don't grow/shrink */
+		flex: 0 0 auto;
 	}
 
 	:global(.disclaimer) {
-		margin-top: 0.5rem;
+		margin-top: var(--sp-2);
 		font-size: 0.8125rem;
-		font-weight: 500;
+		font-weight: 400;
 		color: var(--color-text-tertiary);
 		text-align: center;
 	}
 
-	@keyframes fadeIn {
-		from {
-			opacity: 0;
-			transform: translateY(10px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-
 	:global(.primary-button) {
-		padding: 0.875rem 1.75rem;
+		padding: var(--sp-3) var(--sp-5);
 		background: var(--color-primary);
-		color: var(--color-text-primary);
-		border: var(--border-brutalist-thick);
-		border-radius: 8px;
+		color: #fff;
+		border: none;
+		border-radius: var(--radius-md);
 		cursor: pointer;
-		font-size: 1rem;
-		font-weight: 700;
-		transition: all 0.2s;
-		box-shadow: var(--shadow-brutalist-medium);
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		font-size: 0.9375rem;
+		font-weight: 600;
+		transition: all var(--transition-fast);
+		box-shadow: var(--shadow-sm);
 		font-family: var(--font-family-primary);
 		box-sizing: border-box;
 	}
 
 	:global(.primary-button:hover) {
-		transform: translate(-2px, -2px);
-		box-shadow: var(--shadow-brutalist-large);
+		background: var(--color-primary-hover);
+		box-shadow: var(--shadow-md);
+		transform: translateY(-1px);
 	}
 
 	:global(.primary-button:active) {
-		transform: translate(0);
-		box-shadow: var(--shadow-brutalist-small);
+		transform: translateY(0);
+		box-shadow: var(--shadow-xs);
 	}
 
 	:global(.primary-button:disabled) {
@@ -610,49 +512,54 @@
 		box-shadow: none;
 	}
 
-	.menu-button-item {
-		display: none;
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(8px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
 	}
 
-	.menu-button {
-		background: var(--color-background-main);
-		cursor: pointer;
-		border-radius: 8px;
-		padding: 0.75rem 1.25rem;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 0.5rem;
-		transition: all 0.2s ease;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
-		font-weight: 600;
-		font-size: 1rem;
+	/* ── Mobile drawer ── */
+	.mobile-overlay {
+		position: fixed;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.4);
+		backdrop-filter: blur(4px);
+		z-index: var(--z-overlay);
+		animation: fadeOverlay 0.2s ease;
 	}
 
-	.menu-button:hover {
-		background: var(--color-gradient-gold);
-		transform: translateY(-2px);
+	@keyframes fadeOverlay {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
 	}
 
-	.mobile-menu-drawer {
+	.mobile-drawer {
 		position: fixed;
 		top: 0;
 		left: 0;
 		bottom: 0;
-		width: 280px;
+		width: 300px;
 		max-width: 85vw;
 		background: var(--color-background-main);
-		border-right: var(--border-brutalist-thick);
-		box-shadow: 8px 0 0 var(--color-border-primary);
-		z-index: 1001;
+		border-right: 1px solid var(--color-border-light);
+		box-shadow: var(--shadow-xl);
+		z-index: var(--z-drawer);
 		display: flex;
 		flex-direction: column;
-		animation: slideIn 0.3s ease;
+		animation: slideDrawer 0.25s ease;
 		overflow-y: auto;
 	}
 
-	@keyframes slideIn {
+	@keyframes slideDrawer {
 		from {
 			transform: translateX(-100%);
 		}
@@ -661,188 +568,109 @@
 		}
 	}
 
-	.mobile-menu-header {
+	.drawer-header {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: 1.5rem 1.25rem;
-		border-bottom: var(--border-brutalist-thick);
-		background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-warning) 100%);
+		padding: var(--sp-4) var(--sp-5);
+		border-bottom: 1px solid var(--color-border-light);
+		flex-shrink: 0;
 	}
 
-	.mobile-menu-title {
-		margin: 0;
-		font-size: 1.5rem;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
-		color: var(--color-text-primary);
-	}
-
-	.mobile-menu-close {
-		background: var(--color-background-main);
-		border: var(--border-brutalist-thick);
-		border-radius: 8px;
-		padding: 0.5rem;
-		cursor: pointer;
+	.drawer-close {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		transition: all 0.2s ease;
-		box-shadow: var(--shadow-brutalist-small);
+		width: 36px;
+		height: 36px;
+		border-radius: var(--radius-md);
+		border: 1px solid var(--color-border-light);
+		background: var(--color-background-secondary);
+		color: var(--color-text-secondary);
+		cursor: pointer;
+		transition: all var(--transition-fast);
 	}
 
-	.mobile-menu-close:hover {
-		transform: translateY(-2px);
-		box-shadow: var(--shadow-brutalist-medium);
+	.drawer-close:hover {
+		background: var(--color-background-tertiary);
+		color: var(--color-text-primary);
 	}
 
-	.mobile-menu-close:active {
-		transform: translateY(0);
-		box-shadow: var(--shadow-brutalist-small);
-	}
-
-	.mobile-menu-nav {
+	.drawer-nav {
 		display: flex;
 		flex-direction: column;
-		padding: 1rem;
-		gap: 0.5rem;
+		padding: var(--sp-3);
+		gap: var(--sp-1);
 	}
 
-	.mobile-menu-link {
+	.drawer-link {
 		display: flex;
 		align-items: center;
-		gap: 1rem;
-		padding: 1rem 1.25rem;
+		gap: var(--sp-3);
+		padding: var(--sp-3) var(--sp-4);
 		text-decoration: none;
+		color: var(--color-text-secondary);
+		font-weight: 500;
+		font-size: 0.9375rem;
+		border-radius: var(--radius-md);
+		transition: all var(--transition-fast);
+	}
+
+	.drawer-link:hover {
+		background: var(--color-primary-subtle);
 		color: var(--color-text-primary);
+	}
+
+	.drawer-link.active {
+		background: var(--color-primary-subtle);
+		color: var(--color-primary);
 		font-weight: 600;
-		font-size: 1rem;
-		background: var(--color-background-main);
-		border: var(--border-brutalist-thick);
-		border-radius: 8px;
-		transition: all 0.2s ease;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
-		box-shadow: var(--shadow-brutalist-small);
 	}
 
-	.mobile-menu-link:hover {
-		background: var(--color-gradient-gold);
-		transform: translateX(4px);
-		box-shadow: var(--shadow-brutalist-medium);
+	.drawer-divider {
+		height: 1px;
+		background: var(--color-border-light);
+		margin: var(--sp-2) var(--sp-4);
 	}
 
-	.mobile-menu-link.active {
-		background: var(--color-primary);
-		border-color: var(--color-border-primary);
-		box-shadow: var(--shadow-brutalist-medium);
-	}
-
-	.mobile-menu-divider {
-		height: 2px;
-		background: var(--color-border-primary);
-		margin: 0.5rem 0;
-	}
-
-	/* Responsive adjustments */
-	@media (max-width: 600px) {
-		.container {
-			padding: 0.75rem;
-		}
-
-		.main-nav ul {
-			gap: 0.5rem;
-			padding: 0.5rem;
-		}
-
-		.main-nav a {
-			padding: 0.625rem;
-			font-size: 0.875rem;
-		}
-
-		.main-nav a span {
+	/* ── Responsive ── */
+	@media (max-width: 768px) {
+		.nav-links {
 			display: none;
 		}
 
-		.home-link {
-			padding: 0.625rem !important;
-		}
-
-		.menu-button {
-			padding: 0.625rem 1rem;
-			font-size: 0.875rem;
-		}
-
-		/* Show mobile menu button and hide center items on mobile */
-		.menu-button-item {
-			display: block;
-		}
-
-		.center-items {
+		.nav-icon-btn {
 			display: none;
 		}
 
-		.language-item,
-		.github-item {
-			display: none;
+		.mobile-menu-btn {
+			display: flex;
+		}
+
+		.content-container {
+			padding: var(--sp-4) var(--sp-3);
 		}
 
 		:global(.toolbar) {
-			padding: 0.875rem 1rem;
-		}
-
-		:global(.model-info) {
-			font-size: 0.75rem;
+			padding: var(--sp-3) var(--sp-4);
 		}
 
 		:global(.content-area) {
-			padding: 1rem;
+			padding: var(--sp-4);
 		}
 
 		:global(.input-area) {
-			padding: 0.875rem 1rem;
-		}
-
-		.nav-left {
-			gap: 0.5rem;
-		}
-
-		.center-items {
-			gap: 0.5rem;
-		}
-
-		.language-item .home-link,
-		.github-item .home-link,
-		.menu-button-item .menu-button {
-			border: var(--border-brutalist-thin);
-			box-shadow: var(--shadow-brutalist-small);
+			padding: var(--sp-3) var(--sp-4);
 		}
 	}
 
-	@media (max-width: 400px) {
-		.container {
-			padding: 0.5rem;
+	@media (max-width: 480px) {
+		.content-container {
+			padding: var(--sp-3) var(--sp-2);
 		}
 
-		.main-nav a {
-			padding: 0.5rem 0.75rem;
-			font-size: 0.8125rem;
-		}
-
-		.nav-left {
-			gap: 0.375rem;
-		}
-
-		.center-items {
-			gap: 0.375rem;
-		}
-
-		.language-item .home-link,
-		.github-item .home-link,
-		.menu-button-item .menu-button {
-			border: var(--border-brutalist-thin);
-			box-shadow: var(--shadow-brutalist-small);
+		.nav-inner {
+			padding: 0 var(--sp-3);
 		}
 	}
 </style>

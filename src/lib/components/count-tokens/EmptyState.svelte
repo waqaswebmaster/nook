@@ -18,12 +18,11 @@
 
 <style>
 	.empty-state {
-		background: var(--color-background-main);
-		border: var(--border-brutalist-thick);
-		box-shadow: var(--shadow-brutalist-large);
+		background: var(--color-card);
+		border: 1px solid var(--color-border-light);
+		box-shadow: var(--shadow-sm);
 		padding: 3rem 2rem;
-		transform: rotate(0.1deg);
-		border-radius: 8px;
+		border-radius: var(--radius-lg);
 		text-align: center;
 	}
 
@@ -39,13 +38,11 @@
 		width: 4rem;
 		height: 4rem;
 		margin: 0 auto 1.5rem auto;
-		background: var(--color-background-secondary);
-		border: var(--border-brutalist-thick);
+		background: var(--color-accent-primary-alpha);
+		border: 1px solid var(--color-border-light);
 		border-radius: 50%;
 		color: var(--color-text-secondary);
 		font-size: 1.5rem;
-		transform: rotate(-0.2deg);
-		box-shadow: var(--shadow-brutalist-medium);
 	}
 
 	.dots {
@@ -56,31 +53,16 @@
 
 	.empty-state h3 {
 		margin: 0 0 1rem 0;
-		font-size: 1.5rem;
-		font-weight: 700;
+		font-size: 1.25rem;
+		font-weight: 600;
 		color: var(--color-text-primary);
-		font-family: var(--font-family-display);
-		text-transform: uppercase;
-		letter-spacing: 1px;
 	}
 
 	.empty-state p {
 		margin: 0;
-		color: var(--color-text-secondary);
-		font-size: 1rem;
+		color: var(--color-text-tertiary);
+		font-size: 0.95rem;
 		line-height: 1.6;
-		opacity: 0.8;
-	}
-
-	.empty-state:hover {
-		transform: rotate(0deg) translate(-2px, -2px);
-		box-shadow: var(--shadow-brutalist-large);
-	}
-
-	.empty-state:hover .empty-state-icon {
-		transform: rotate(0deg);
-		background: var(--color-accent-primary);
-		color: var(--color-text-primary);
 	}
 
 	@media (max-width: 600px) {
@@ -89,7 +71,7 @@
 		}
 
 		.empty-state h3 {
-			font-size: 1.25rem;
+			font-size: 1.125rem;
 		}
 
 		.empty-state p {

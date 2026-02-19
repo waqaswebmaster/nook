@@ -2,7 +2,6 @@
 	import createModule from '@transcribe/shout';
 	import { FileTranscriber } from '@transcribe/transcriber';
 	import { downloadModelWithProgress, isModelCached, isOPFSSupported } from '$lib/download-utils';
-	import { PUBLIC_DISABLE_OPFS } from '$env/static/public';
 	import { onMount, onDestroy } from 'svelte';
 	import { whisperModel } from '$lib/stores';
 	import { useWakeLock } from '$lib/wakeLock.svelte';
@@ -240,7 +239,7 @@
 	}
 
 	onMount(async () => {
-		opfsSupported = isOPFSSupported(PUBLIC_DISABLE_OPFS === 'true');
+		opfsSupported = isOPFSSupported(import.meta.env.PUBLIC_DISABLE_OPFS === 'true');
 		if (!opfsSupported) {
 			console.log('OPFS not supported - models will not be cached');
 		}
@@ -355,82 +354,65 @@
 
 <style>
 	.main-content {
-		transition: all 0.3s ease;
+		transition: opacity 0.25s ease;
 	}
 
 	.main-content.disabled {
-		opacity: 0.3;
+		opacity: 0.35;
 		pointer-events: none;
-		filter: grayscale(50%);
 	}
 
 	.button-icon {
-		font-size: 1.5rem;
+		font-size: 1.25rem;
 		display: flex;
 		align-items: center;
-		color: #000;
+		color: #fff;
 	}
 
 	.button-icon :global(svg) {
-		width: 1.5rem;
-		height: 1.5rem;
+		width: 1.25rem;
+		height: 1.25rem;
 	}
 
 	:global(.loading-spinner) {
-		color: #000;
-		margin-right: 0.5rem;
-	}
-
-	@keyframes spin {
-		from {
-			transform: rotate(0deg);
-		}
-		to {
-			transform: rotate(360deg);
-		}
+		color: #fff;
+		margin-right: var(--sp-2);
 	}
 
 	.disclaimer {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		gap: 0.5rem;
-		margin-top: 1rem;
-		font-size: 0.9375rem;
-		font-weight: 600;
-		color: #000;
+		gap: var(--sp-2);
+		margin-top: var(--sp-3);
+		font-size: 0.8125rem;
+		font-weight: 500;
+		color: var(--color-text-tertiary);
 		text-align: center;
-		background: #ff69b4;
-		padding: 0.75rem 1rem;
-		border: 3px solid #000;
-		box-shadow: 5px 5px 0 #000;
-		transform: rotate(1deg);
+		background: var(--color-background-secondary);
+		padding: var(--sp-2) var(--sp-3);
+		border-radius: var(--radius-md);
 		width: fit-content;
 		margin-left: auto;
 		margin-right: auto;
 	}
 
 	.disclaimer-icon {
-		font-size: 1.25rem;
+		font-size: 1rem;
 		display: flex;
 		align-items: center;
-		color: #000;
+		color: var(--color-text-tertiary);
 	}
 
 	.disclaimer-icon :global(svg) {
-		width: 1.25rem;
-		height: 1.25rem;
+		width: 1rem;
+		height: 1rem;
 	}
 
-	@media (max-width: 600px) {
-		.main-content.disabled {
-			opacity: 0.3;
-			pointer-events: none;
-		}
-
+	@media (max-width: 768px) {
 		.disclaimer {
-			font-size: 0.875rem;
-			padding: 0.625rem 0.875rem;
+			font-size: 0.75rem;
+			padding: var(--sp-2);
 		}
 	}
 </style>

@@ -72,7 +72,6 @@
 
 <div class="result-wrapper">
 	<div class="result">
-		<div class="result-decoration"></div>
 		<div class="result-content">
 			<div class="result-header">
 				<h3>
@@ -119,138 +118,110 @@
 		display: flex;
 		margin: 1.5rem 0;
 		width: 100%;
-		animation: resultSlide 0.5s ease-out;
+		animation: fadeIn 0.3s ease-out;
 	}
 
-	@keyframes resultSlide {
+	@keyframes fadeIn {
 		from {
-			transform: translateY(20px) rotate(-1deg);
 			opacity: 0;
+			transform: translateY(8px);
 		}
 		to {
-			transform: translateY(0) rotate(0.5deg);
 			opacity: 1;
+			transform: translateY(0);
 		}
 	}
 
 	.result {
 		position: relative;
 		width: 100%;
-		max-width: 100%;
-		transform: rotate(0.5deg);
-	}
-
-	.result-decoration {
-		position: absolute;
-		top: -10px;
-		left: -10px;
-		right: -10px;
-		bottom: -10px;
-		background: linear-gradient(135deg, var(--color-success) 0%, var(--color-accent-blue) 100%);
-		z-index: -1;
-		opacity: 0.3;
-		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
-		transform: rotate(-1deg);
 	}
 
 	.result-content {
-		padding: 2rem;
-		background: var(--color-background-main);
-		border: var(--border-brutalist-extra-thick);
-		box-shadow: var(--shadow-brutalist-xlarge);
-		position: relative;
+		padding: 1.5rem;
+		background: var(--color-card);
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-sm);
 	}
 
 	.result-header {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		margin-bottom: 1.5rem;
+		margin-bottom: 1.25rem;
 		flex-wrap: wrap;
 		gap: 1rem;
 		padding-bottom: 1rem;
-		border-bottom: var(--border-brutalist-thick);
+		border-bottom: 1px solid var(--color-border-light);
 	}
 
 	.result-content h3 {
 		margin: 0;
-		font-family: var(--font-family-display);
-		font-size: 1.75rem;
+		font-size: 1.125rem;
+		font-weight: 600;
 		color: var(--color-text-primary);
-		letter-spacing: 2px;
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
-		background: var(--color-success);
-		padding: 0.5rem 1rem;
-		border: var(--border-brutalist-thick);
-		box-shadow: var(--shadow-brutalist-medium);
-		transform: rotate(-1deg);
-		text-transform: uppercase;
 	}
 
 	.header-icon {
-		font-size: 1.5rem;
 		display: flex;
 		align-items: center;
-		color: var(--color-text-primary);
+		color: var(--color-primary);
 	}
 
 	.header-icon :global(svg) {
-		width: 1.5rem;
-		height: 1.5rem;
+		width: 1.25rem;
+		height: 1.25rem;
 	}
 
 	.result-actions {
 		display: flex;
 		align-items: center;
-		gap: 1rem;
+		gap: 0.75rem;
 	}
 
 	/* Tab selectors */
 	.tab-selectors {
 		display: flex;
-		border: var(--border-brutalist-thick);
-		background: var(--color-background-main);
-		box-shadow: var(--shadow-brutalist-medium);
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-md);
+		overflow: hidden;
 	}
 
 	.tab-selectors button {
-		padding: 0.625rem 1rem;
-		background: var(--color-background-main);
+		padding: 0.5rem 1rem;
+		background: var(--color-card);
 		border: none;
 		cursor: pointer;
-		font-size: 1rem;
-		font-weight: 700;
-		color: var(--color-text-primary);
+		font-size: 0.875rem;
+		font-weight: 500;
+		color: var(--color-text-secondary);
 		transition: all 0.15s ease;
-		text-transform: uppercase;
-		letter-spacing: 1px;
-		font-family: var(--font-family-primary);
+		font-family: inherit;
 	}
 
 	.tab-selectors button:not(:last-child) {
-		border-right: var(--border-brutalist-thick);
+		border-right: 1px solid var(--color-border-light);
 	}
 
 	.tab-selectors button:hover:not(.active) {
-		background: var(--color-background-cream);
+		background: var(--color-accent-primary-alpha);
 	}
 
 	.tab-selectors button.active {
-		background: var(--color-primary-dark);
+		background: var(--color-primary);
+		color: white;
 	}
 
 	/* Result text container */
 	.result-text-container {
-		background: linear-gradient(
-			135deg,
-			rgba(255, 217, 61, 0.05) 0%,
-			rgba(152, 251, 152, 0.05) 100%
-		);
-		border: var(--border-brutalist-thick);
-		padding: 1.5rem;
-		box-shadow: inset 3px 3px 0 rgba(0, 0, 0, 0.1);
+		background: var(--color-accent-primary-alpha);
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-md);
+		padding: 1.25rem;
 		min-height: 100px;
 		max-height: 400px;
 		overflow-y: auto;
@@ -258,10 +229,9 @@
 
 	.result-text {
 		margin: 0;
-		font-size: 1.0625rem;
-		line-height: 1.6;
+		font-size: 0.9375rem;
+		line-height: 1.7;
 		color: var(--color-text-primary);
-		font-weight: 500;
 		white-space: pre-wrap;
 		word-break: break-word;
 	}
@@ -269,88 +239,68 @@
 	/* SRT Preview */
 	.srt-preview {
 		font-family: monospace;
-		font-size: 0.9375rem;
+		font-size: 0.875rem;
 		line-height: 1.5;
 		white-space: pre-wrap;
-		background: var(--color-background-main);
+		background: var(--color-card);
 		padding: 1rem;
-		border: 2px dashed var(--color-text-primary);
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-sm);
 		overflow-x: auto;
 		margin: 0;
 		color: var(--color-text-primary);
-		font-weight: 600;
 	}
 
 	.copy-btn {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
-		padding: 0.625rem 1.25rem;
-		background: var(--color-accent-pink);
-		color: var(--color-text-primary);
-		border: var(--border-brutalist-thick);
+		gap: 0.375rem;
+		padding: 0.5rem 1rem;
+		background: var(--color-primary);
+		color: white;
+		border: none;
+		border-radius: var(--radius-md);
 		cursor: pointer;
-		font-size: 1rem;
-		font-weight: 700;
-		transition: all 0.15s ease;
-		box-shadow: var(--shadow-brutalist-medium);
-		text-transform: uppercase;
-		letter-spacing: 1px;
-		font-family: var(--font-family-primary);
+		font-size: 0.875rem;
+		font-weight: 500;
+		transition: opacity 0.15s ease;
+		font-family: inherit;
 	}
 
 	.copy-btn:hover {
-		transform: translate(-2px, -2px);
-		box-shadow: var(--shadow-brutalist-large);
-		background: var(--color-primary-dark);
+		opacity: 0.85;
 	}
 
 	.copy-btn.copied {
 		background: var(--color-success);
-		animation: copySuccess 0.3s ease-out;
-	}
-
-	@keyframes copySuccess {
-		0% {
-			transform: scale(1);
-		}
-		50% {
-			transform: scale(1.1);
-		}
-		100% {
-			transform: scale(1);
-		}
 	}
 
 	.copy-icon {
-		font-size: 1.25rem;
 		display: flex;
 		align-items: center;
-		color: var(--color-text-primary);
 	}
 
 	.copy-icon :global(svg) {
-		width: 1.25rem;
-		height: 1.25rem;
+		width: 1rem;
+		height: 1rem;
 	}
 
 	/* Custom scrollbar */
 	.result-text-container::-webkit-scrollbar {
-		width: 12px;
+		width: 6px;
 	}
 
 	.result-text-container::-webkit-scrollbar-track {
-		background: var(--color-background-main);
-		border-left: var(--border-brutalist-thick);
+		background: transparent;
 	}
 
 	.result-text-container::-webkit-scrollbar-thumb {
-		background: var(--color-primary-dark);
-		border: var(--border-brutalist-thin);
+		background: var(--color-border-light);
+		border-radius: 3px;
 	}
 
 	.result-text-container::-webkit-scrollbar-thumb:hover {
-		background: var(--color-accent-pink);
+		background: var(--color-text-secondary);
 	}
 
 	@media (max-width: 600px) {
@@ -361,18 +311,18 @@
 		.result-header {
 			flex-direction: column;
 			align-items: flex-start;
-			gap: 1rem;
+			gap: 0.75rem;
 		}
 
 		.result-content h3 {
-			font-size: 1.5rem;
+			font-size: 1rem;
 		}
 
 		.result-actions {
 			width: 100%;
 			flex-direction: column;
 			align-items: stretch;
-			gap: 0.75rem;
+			gap: 0.5rem;
 		}
 
 		.tab-selectors {

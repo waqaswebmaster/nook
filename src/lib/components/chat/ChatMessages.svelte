@@ -51,16 +51,16 @@
 
 <style>
 	.chat-messages {
-		flex: 1 1 0; /* Take remaining space but don't grow beyond container */
-		min-height: 0; /* Critical for flex scrolling */
+		flex: 1 1 0;
+		min-height: 0;
 		overflow-y: auto;
 		overflow-x: hidden;
 		position: relative;
-		background: linear-gradient(135deg, rgba(255, 229, 180, 0.1) 0%, rgba(230, 230, 250, 0.1) 100%);
+		background: var(--color-background-main);
 		width: 100%;
 		box-sizing: border-box;
-		border-left: var(--border-brutalist-thick);
-		border-right: var(--border-brutalist-thick);
+		border-left: 1px solid var(--color-border-light);
+		border-right: 1px solid var(--color-border-light);
 	}
 
 	.chat-decoration {
@@ -68,21 +68,13 @@
 		top: 0;
 		left: 0;
 		right: 0;
-		height: 3px;
-		background: repeating-linear-gradient(
-			90deg,
-			var(--color-primary-dark),
-			var(--color-primary-dark) 10px,
-			var(--color-success) 10px,
-			var(--color-success) 20px,
-			var(--color-accent-pink) 20px,
-			var(--color-accent-pink) 30px
-		);
+		height: 1px;
+		background: var(--color-border-light);
 		z-index: 10;
 	}
 
 	.messages-content {
-		padding: 1.5rem;
+		padding: var(--sp-5);
 		min-height: 100%;
 		display: flex;
 		flex-direction: column;
@@ -96,15 +88,15 @@
 		flex: 1;
 		min-height: 300px;
 		text-align: center;
-		padding: 2rem;
+		padding: var(--sp-6);
 		position: relative;
-		animation: fadeIn 0.5s ease-out;
+		animation: fadeIn 0.35s ease-out;
 	}
 
 	@keyframes fadeIn {
 		from {
 			opacity: 0;
-			transform: translateY(20px);
+			transform: translateY(10px);
 		}
 		to {
 			opacity: 1;
@@ -113,98 +105,76 @@
 	}
 
 	.empty-icon {
-		font-size: 4rem;
-		margin-bottom: 1rem;
+		margin-bottom: var(--sp-3);
 		animation: float 3s ease-in-out infinite;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		color: var(--color-text-primary);
+		color: var(--color-text-disabled);
 	}
 
 	.empty-icon :global(svg) {
-		width: 4rem;
-		height: 4rem;
+		width: 3rem;
+		height: 3rem;
 	}
 
 	@keyframes float {
 		0%,
 		100% {
-			transform: translateY(0) rotate(-5deg);
+			transform: translateY(0);
 		}
 		50% {
-			transform: translateY(-15px) rotate(5deg);
+			transform: translateY(-8px);
 		}
 	}
 
 	.empty-state h3 {
-		font-size: 1.75rem;
+		font-size: 1.25rem;
 		font-weight: 700;
 		color: var(--color-text-primary);
-		margin: 0 0 0.5rem 0;
-		text-transform: uppercase;
-		letter-spacing: 1px;
-		background: var(--color-primary-dark);
-		padding: 0.5rem 1.5rem;
-		border: var(--border-brutalist-thick);
-		box-shadow: var(--shadow-brutalist-medium);
-		display: inline-block;
-		transform: rotate(-1deg);
+		margin: 0 0 var(--sp-2) 0;
 	}
 
 	.empty-state p {
-		font-size: 1.125rem;
+		font-size: 0.9375rem;
 		color: var(--color-text-tertiary);
-		margin: 0.5rem 0 0 0;
-		font-weight: 500;
+		margin: 0;
+		font-weight: 400;
 	}
 
 	.chat-messages::-webkit-scrollbar {
-		width: 12px;
+		width: 8px;
 	}
 
 	.chat-messages::-webkit-scrollbar-track {
-		background: linear-gradient(
-			180deg,
-			var(--color-primary-dark) 0%,
-			var(--color-success) 50%,
-			var(--color-accent-pink) 100%
-		);
-		border: var(--border-brutalist-thick);
-		border-radius: 6px;
+		background: var(--color-background-secondary);
 	}
 
 	.chat-messages::-webkit-scrollbar-thumb {
-		background: var(--color-text-primary);
-		border-radius: 6px;
-		border: 2px solid var(--color-background-main);
-		box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+		background: var(--color-text-disabled);
+		border-radius: var(--radius-full);
 	}
 
 	.chat-messages::-webkit-scrollbar-thumb:hover {
-		background: var(--color-text-secondary);
+		background: var(--color-text-tertiary);
 	}
 
-	@media (max-width: 600px) {
+	@media (max-width: 768px) {
 		.messages-content {
-			padding: 1rem;
-		}
-
-		.empty-icon {
-			font-size: 3rem;
+			padding: var(--sp-3);
 		}
 
 		.empty-icon :global(svg) {
-			width: 3rem;
-			height: 3rem;
+			width: 2.5rem;
+			height: 2.5rem;
 		}
 
 		.empty-state h3 {
-			font-size: 1.5rem;
+			font-size: 1.125rem;
 		}
 
 		.empty-state p {
-			font-size: 1rem;
+			font-size: 0.875rem;
 		}
 	}
 </style>

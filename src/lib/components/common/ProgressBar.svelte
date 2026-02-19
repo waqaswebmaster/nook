@@ -23,14 +23,13 @@
 <style>
 	.progress-container {
 		width: 100%;
-		margin: 0.5rem 0;
+		margin: var(--sp-1) 0;
 	}
 
 	.progress-bar {
-		height: 1.25rem;
+		height: 0.5rem;
 		background: var(--color-background-tertiary);
-		border: var(--border-brutalist-thin);
-		border-radius: 6px;
+		border-radius: var(--radius-full);
 		overflow: hidden;
 		width: 100%;
 		position: relative;
@@ -41,6 +40,7 @@
 		background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
 		position: relative;
 		transition: width 0.3s ease;
+		border-radius: var(--radius-full);
 	}
 
 	.progress-bar-fill.animated::after {
