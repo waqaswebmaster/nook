@@ -491,7 +491,7 @@
 	</div>
 {:else}
 	<CardInterface>
-		<Toolbar {modelInfo} ModelIcon={ImageIcon}>
+		<Toolbar {modelInfo} ModelIcon={ImageIcon} variant="studio">
 			{#if (processingMode === 'single' && processedImageUrl) || (processingMode === 'batch' && batchResults.length > 0)}
 				<ActionButton onClick={clearResults} variant="danger" Icon={RefreshCcwIcon}
 					>Restart</ActionButton
@@ -506,7 +506,7 @@
 					<StepHeader
 						stepNumber={1}
 						title="Model Selection"
-						backgroundColor="var(--color-accent-red)"
+						backgroundColor="var(--color-background-secondary)"
 					/>
 					<div class="model-buttons">
 						{#each getAvailableModels() as modelOption (modelOption.id)}
@@ -559,7 +559,7 @@
 
 			{#if !isProcessing && !processedImageUrl && batchResults.length === 0}
 				<SectionCard rotation={-0.1} animationDelay={0.2}>
-					<StepHeader stepNumber={3} title="Upload Images" backgroundColor="#98fb98" />
+					<StepHeader stepNumber={3} title="Upload Images" />
 					<BackgroundRemoverUpload
 						mode={processingMode}
 						{selectedFile}
@@ -658,18 +658,19 @@
 
 	.mode-btn:hover {
 		transform: translate(-2px, -2px);
-		box-shadow: 6px 6px 0 #000;
-		background: #e0e0e0;
+		box-shadow: var(--shadow-brutalist-medium);
+		background: var(--color-background-pattern);
 	}
 
 	.mode-btn.active {
-		background: #98fb98;
+		background: var(--color-success);
 		transform: translate(-2px, -2px);
-		box-shadow: 6px 6px 0 #000;
+		box-shadow: var(--shadow-brutalist-large);
+		color: var(--color-text-primary);
 	}
 
 	.mode-btn.active:hover {
-		background: #90ee90;
+		background: var(--color-success-hover);
 	}
 
 	.mode-icon {

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:20:18.035Z\n"
-"PO-Revision-Date: 2026-02-17T14:33:00.285Z\n"
+"PO-Revision-Date: 2026-02-18T14:04:37.556Z\n"
 "Last-Translator: \n"
 "Language: uk\n"
 "Language-Team: \n"
@@ -12,8 +12,6 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/+layout.svelte
-#: src/routes/+layout.ts
 #: src/routes/[[lang]]/og/+page.svelte
 msgid "Nook"
 msgstr "Nook"
@@ -97,9 +95,8 @@ msgstr "Токени"
 msgid "Change language"
 msgstr "Змінити мову"
 
-#: src/routes/+layout.svelte
-msgid "View source on GitHub"
-msgstr "Переглянути код на GitHub"
+#~ msgid "View source on GitHub"
+#~ msgstr "Переглянути код на GitHub"
 
 #: src/routes/favicon/+page.svelte
 msgid "Favicon Concept Gallery"
@@ -358,13 +355,11 @@ msgstr "Високоякісні відповіді"
 #~ msgid "<0/> Chat with AI Models"
 #~ msgstr "<0/> Спілкування з AI моделями"
 
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "<0>Step 1:</0> Choose Your AI Model"
-msgstr "<0>Крок 1:</0> Оберіть вашу AI модель"
+#~ msgid "<0>Step 1:</0> Choose Your AI Model"
+#~ msgstr "<0>Крок 1:</0> Оберіть вашу AI модель"
 
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "<0>Step 2:</0> Advanced Settings"
-msgstr "<0>Крок 2:</0> Розширені налаштування"
+#~ msgid "<0>Step 2:</0> Advanced Settings"
+#~ msgstr "<0>Крок 2:</0> Розширені налаштування"
 
 #: src/lib/components/chat/ModelSelector.svelte
 msgid "Threads <0>(-1 auto)</0>"
@@ -539,9 +534,8 @@ msgstr "<0/> Скопійовано!"
 msgid "<0/> Copy"
 msgstr "<0/> Копіювати"
 
-#: src/lib/components/tts/ModelSwitcher.svelte
-msgid "<0>Step 1:</0> Text-to-speech Model"
-msgstr "<0>Крок 1:</0> Модель тексту в мовлення"
+#~ msgid "<0>Step 1:</0> Text-to-speech Model"
+#~ msgstr "<0>Крок 1:</0> Модель тексту в мовлення"
 
 #: src/lib/components/tts/ModelSwitcher.svelte
 msgid "Kitten TTS Nano"
@@ -787,9 +781,8 @@ msgstr "(не підтримується)"
 msgid "Try WebGPU (experimental) <0/>"
 msgstr "Спробувати WebGPU (експериментально) <0/>"
 
-#: src/routes/[[lang]]/language/+page.svelte
-msgid "Change the language settings for the Nook application"
-msgstr "Змініть мовні налаштування для додатку Nook"
+#~ msgid "Change the language settings for the Nook application"
+#~ msgstr "Змініть мовні налаштування для додатку Nook"
 
 #: src/routes/[[lang]]/language/+page.svelte
 msgid "Language Settings"
@@ -1101,9 +1094,8 @@ msgstr "TTS"
 msgid "BG Remover"
 msgstr "Видалення фону"
 
-#: src/routes/[[lang]]/background-remover/+page.ts
-msgid "Background Remover - Nook"
-msgstr "Видалення фону - Локальні AI інструменти"
+#~ msgid "Background Remover - Nook"
+#~ msgstr "Видалення фону - Локальні AI інструменти"
 
 #: src/routes/[[lang]]/background-remover/+page.ts
 msgid "Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for professional results. AI-powered, high quality."
@@ -1113,25 +1105,22 @@ msgstr "Видаляйте фон із зображень за допомого�
 msgid "Private AI tools that run in your browser"
 msgstr "Приватні AI інструменти, що працюють у вашому браузері"
 
-#: src/routes/[[lang]]/+page.ts
-msgid "Nook - Private, Offline AI in Your Browser"
-msgstr "Локальні AI інструменти - Приватний, офлайн AI у вашому браузері"
+#~ msgid "Nook - Private, Offline AI in Your Browser"
+#~ msgstr "Локальні AI інструменти - Приватний, офлайн AI у вашому браузері"
 
 #: src/routes/[[lang]]/+page.ts
 msgid "Free, private AI tools that run entirely in your browser - and even offline! Chat with LLMs, transcribe audio, and remove backgrounds using WebAssembly."
 msgstr "Безкоштовні, приватні AI інструменти, що працюють повністю у вашому браузері - навіть офлайн! Спілкуйтеся з LLM, транскрибуйте аудіо та видаляйте фон за допомогою WebAssembly."
 
-#: src/routes/[[lang]]/count-tokens/+page.ts
-msgid "Count LLM Tokens - Nook"
-msgstr "Підрахунок токенів LLM - Локальні AI інструменти"
+#~ msgid "Count LLM Tokens - Nook"
+#~ msgstr "Підрахунок токенів LLM - Локальні AI інструменти"
 
 #: src/routes/[[lang]]/count-tokens/+page.ts
 msgid "Calculate token counts for different AI models. Understand context limits for Claude and ChatGPT models with our tokenizer tools."
 msgstr "Обчисліть кількість токенів для різних AI моделей. Зрозумійте обмеження контексту для моделей Claude та ChatGPT за допомогою наших інструментів токенізації."
 
-#: src/routes/[[lang]]/text-to-speech/+page.ts
-msgid "Text to Speech - Nook"
-msgstr "Текст у мовлення - Локальні AI інструменти"
+#~ msgid "Text to Speech - Nook"
+#~ msgstr "Текст у мовлення - Локальні AI інструменти"
 
 #: src/routes/[[lang]]/text-to-speech/+page.ts
 msgid "Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper, or Kokoro models for high-quality voice synthesis, all running locally in your browser."
@@ -1145,17 +1134,15 @@ msgstr "Концепти фавіконів - Локальні AI інструм
 msgid "A comprehensive gallery of 31 favicon concept designs in 512×512 format, featuring AI-themed icons, tech patterns, and brutalist design elements for the Nook application."
 msgstr "Повна галерея з 31 концепту дизайну фавіконів у форматі 512×512, що містить AI-тематичні іконки, технологічні візерунки та бруталістичні елементи дизайну для додатку Локальні AI інструменти."
 
-#: src/routes/[[lang]]/chat/+page.ts
-msgid "AI Chat - Nook"
-msgstr "AI чат - Локальні AI інструменти"
+#~ msgid "AI Chat - Nook"
+#~ msgstr "AI чат - Локальні AI інструменти"
 
 #: src/routes/[[lang]]/chat/+page.ts
 msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp. Private, secure, and works offline with no data sharing."
 msgstr "Спілкуйтеся з великими мовними моделями як Gemma3, повністю на вашому пристрої завдяки llama.cpp. Приватно, безпечно і працює офлайн без передачі даних."
 
-#: src/routes/[[lang]]/transcribe/+page.ts
-msgid "Audio Transcription - Nook"
-msgstr "Транскрипція Аудіо - Nook"
+#~ msgid "Audio Transcription - Nook"
+#~ msgstr "Транскрипція Аудіо - Nook"
 
 #: src/routes/[[lang]]/transcribe/+page.ts
 msgid "Convert speech to text using Whisper AI. Upload any existing audio file and export as text or subtitle file. High accuracy with multiple formats and local processing."
@@ -1184,9 +1171,8 @@ msgstr "Підрахувати токени для моделей Claude, вкл
 #~ "Видаляйте фон із зображень за допомогою AI. Виберіть між моделями RMBG v1.4 та BEN2 для\n"
 #~ "професійних результатів."
 
-#: src/routes/[[lang]]/language/+page.svelte
-msgid "Language Settings - Nook"
-msgstr "Налаштування мови - Локальні Інструменти ШІ"
+#~ msgid "Language Settings - Nook"
+#~ msgstr "Налаштування мови - Локальні Інструменти ШІ"
 
 #: src/routes/[[lang]]/og/+page.svelte
 msgid "OpenGraph Generator - Nook: Local AI"
@@ -1571,37 +1557,30 @@ msgstr ""
 msgid "Processing..."
 msgstr ""
 
-#: src/routes/+layout.svelte
-msgid "Escape"
-msgstr ""
+#~ msgid "Escape"
+#~ msgstr ""
 
-#: src/routes/+layout.svelte
-msgid "Close menu"
-msgstr "Закрити меню"
+#~ msgid "Close menu"
+#~ msgstr "Закрити меню"
 
-#: src/routes/+layout.svelte
-msgid "Home"
-msgstr "Головна"
+#~ msgid "Home"
+#~ msgstr "Головна"
 
-#: src/routes/+layout.svelte
-msgid "Change Language"
-msgstr "Змінити мову"
+#~ msgid "Change Language"
+#~ msgstr "Змінити мову"
 
 #: src/routes/+layout.svelte
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/routes/+layout.svelte
-msgid "Open tools menu"
-msgstr "Відкрити меню інструментів"
+#~ msgid "Open tools menu"
+#~ msgstr "Відкрити меню інструментів"
 
-#: src/routes/+layout.svelte
-msgid "Tools"
-msgstr "Інструменти"
+#~ msgid "Tools"
+#~ msgstr "Інструменти"
 
-#: src/routes/+layout.svelte
-msgid "More tools"
-msgstr "Більше інструментів"
+#~ msgid "More tools"
+#~ msgstr "Більше інструментів"
 
 #~ msgid "Nook Local AI"
 #~ msgstr ""
@@ -1696,5 +1675,73 @@ msgstr ""
 #~ msgstr ""
 
 #: src/routes/+layout.svelte
+#: src/routes/+layout.svelte
+#: src/routes/+layout.ts
 msgid "Ibex Tools"
 msgstr ""
+
+#: src/routes/[[lang]]/chat/+page.ts
+msgid "AI Chat - Ibex Tools"
+msgstr ""
+
+#: src/routes/[[lang]]/language/+page.svelte
+msgid "Language Settings - Ibex Tools"
+msgstr ""
+
+#: src/routes/[[lang]]/language/+page.svelte
+msgid "Change the language settings for the Ibex Tools application"
+msgstr ""
+
+#: src/routes/[[lang]]/+page.ts
+msgid "Ibex Tools - Private, Offline AI in Your Browser"
+msgstr ""
+
+#: src/routes/[[lang]]/transcribe/+page.ts
+msgid "Audio Transcription - Ibex Tools"
+msgstr ""
+
+#: src/routes/+layout.svelte
+msgid "Ibex Tools home"
+msgstr ""
+
+#: src/routes/+layout.svelte
+msgid "Toggle theme"
+msgstr ""
+
+#: src/routes/[[lang]]/text-to-speech/+page.ts
+msgid "Text to Speech - Ibex Tools"
+msgstr ""
+
+#: src/routes/[[lang]]/background-remover/+page.ts
+msgid "Background Remover - Ibex Tools"
+msgstr ""
+
+#: src/routes/[[lang]]/count-tokens/+page.ts
+msgid "Count LLM Tokens - Ibex Tools"
+msgstr ""
+
+#~ msgid "Open tools"
+#~ msgstr ""
+
+#: src/routes/+layout.svelte
+msgid "Primary"
+msgstr ""
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "Text-to-speech Model"
+msgstr ""
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "Choose Your AI Model"
+msgstr ""
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "Advanced Settings"
+msgstr ""
+
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+msgid "Count LLM Tokens"
+msgstr ""
+
+#~ msgid "Choose Audio Source"
+#~ msgstr ""

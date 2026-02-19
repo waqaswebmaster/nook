@@ -17,14 +17,14 @@
 
 <style>
 	.section-card {
-		background: #fff;
-		border: 4px solid #000;
-		padding: 1.5rem;
-		box-shadow: 6px 6px 0 #000;
-		margin-bottom: 1.5rem;
+		background: var(--color-background-secondary);
+		border: 1px solid var(--color-border-primary);
+		padding: 1.25rem;
+		box-shadow: var(--shadow-soft-sm);
+		margin-bottom: 1rem;
 		position: relative;
-		animation: slideIn 0.4s ease-out;
-		animation-fill-mode: both;
+		border-radius: var(--card-radius);
+		animation: slideIn 300ms var(--transition-fast) both;
 	}
 
 	@keyframes slideIn {

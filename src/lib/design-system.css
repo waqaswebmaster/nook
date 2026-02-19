@@ -1,138 +1,109 @@
 :root {
-	/* Colors - Base */
-	/* --color-black: #000;
-	--color-white: #fff;
-	--color-gray-100: #f5f5f5;
-	--color-gray-200: #e0e0e0;
-	--color-gray-300: #d0d0d0;
-	--color-gray-400: #b0b0b0;
-	--color-gray-500: #888;
-	--color-gray-600: #666;
-	--color-gray-700: #333;
-	--color-gray-800: #222;
-	--color-gray-900: #111; */
+	/* Design tokens — Light mode (default) */
+	--radius: 12px;
+	--transition-fast: 180ms cubic-bezier(0.2, 0.8, 0.2, 1);
+	--transition-smooth: 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
 
-	/* Colors - Primary */
-	/* --color-primary: #ffd700;
-	--color-primary-dark: #ffd93d;
-	--color-primary-hover: #ffcc00; */
+	/* Soft shadows */
+	--shadow-soft-sm: 0 6px 18px rgba(2, 6, 23, 0.06);
+	--shadow-soft-md: 0 10px 30px rgba(2, 6, 23, 0.08);
+	--shadow-soft-lg: 0 18px 50px rgba(2, 6, 23, 0.1);
 
-	/* Colors - State */
-	/* --color-success: #98fb98;
-	--color-success-hover: #90ee90;
-	--color-danger: #ff6b6b;
-	--color-danger-hover: #ff5252;
-	--color-warning: #ffa500;
-	--color-warning-hover: #ff8c00; */
-
-	/* Colors - Accent */
-	/* --color-accent-pink: #ff69b4;
-	--color-accent-blue: #87ceeb;
-	--color-accent-light-green: #b4e7ce;
-	--color-accent-red: #ff0000;
-	--color-accent-light-blue: #f0f8ff;
-	--color-accent-light-pink: #ffe4e1;
-	--color-accent-light-yellow: #fffacd; */
-
-	/* Colors - Background */
-	/* --color-background-main: #fff;
-	--color-background-secondary: #f5f5f5;
-	--color-background-tertiary: #f0f0f0;
-	--color-background-disabled: #e0e0e0;
-	--color-background-cream: #fffacd;
-	--color-background-light-blue: #f0f8ff;
-	--color-background-light-green: #f0fff0;
-	--color-background-light-pink: #ffe4e1;
-	--color-background-pattern: #e8e8e8; */
-
-	/* Colors - Border */
-	/* --color-border-primary: #000;
-	--color-border-secondary: #333; */
-
-	/* Colors - Text */
-	/* --color-text-primary: #000;
-	--color-text-secondary: #333;
-	--color-text-tertiary: #666;
-	--color-text-disabled: #999;
-	--color-text-inverse: #fff;
-	--color-text-danger: #d62828; */
-
-	/* Colors - Gradient Backgrounds */
-	/* --color-gradient-gold: #ffe5b4;
-	--color-gradient-lavender: #e6e6fa;
-	--color-gradient-mint: #b4e7ce; */
-
-	/* Base */
-	--color-black: #111827;
+	/* Colors - base */
 	--color-white: #ffffff;
+	--color-black: #0b1220;
 
-	/* Neutrals */
-	--color-gray-100: #f9fafb;
-	--color-gray-200: #f3f4f6;
-	--color-gray-300: #e5e7eb;
-	--color-gray-400: #d1d5db;
-	--color-gray-500: #9ca3af;
-	--color-gray-600: #6b7280;
-	--color-gray-700: #4b5563;
-	--color-gray-800: #374151;
-	--color-gray-900: #1f2937;
+	/* Backgrounds */
+	--color-background-main: #f7f7fb; /* very light gray / off white */
+	--color-background-secondary: #ffffff; /* cards */
+	--color-background-tertiary: #f4f5f7;
+	--color-background-disabled: #eef0f3;
 
-	/* Primary */
-	--color-primary: #0ac4e0;
-	--color-primary-dark: #1f8cd6;
-	--color-primary-hover: #0992c2;
-	--color-secondary: #f6e7bc;
-
-	/* State */
-	--color-success: #f6e7bc;
-	--color-success-hover: #f9d983;
-	--color-danger: #dc2626;
-	--color-danger-hover: #b91c1c;
-	--color-warning: #d97706;
-	--color-warning-hover: #b45309;
-
-	/* Accent (minimal usage) */
-	--color-accent-blue: #3da5e9;
-	--color-accent-light-blue: #e0f2fe;
-
-	/* Background */
-	--color-background-main: #ffffff;
-	--color-background-secondary: #f9fafb;
-	--color-background-tertiary: #f3f4f6;
-	--color-background-disabled: #e5e7eb;
-	--color-background-pattern: #f3f4f6;
-
-	/* Border */
-	--color-border-primary: #1f2937; /* not pure black */
-	--color-border-secondary: #374151;
-
-	/* Text */
-	--color-text-primary: #111827; /* strong dark */
-	--color-text-secondary: #374151;
+	/* Borders & neutrals */
+	--color-border-primary: #e6e9ef; /* soft gray */
+	--color-border-secondary: #e1e4ea;
+	--color-text-primary: #0f1724; /* dark gray */
+	--color-text-secondary: #4b5563;
 	--color-text-tertiary: #6b7280;
-	--color-text-disabled: #9ca3af;
 	--color-text-inverse: #ffffff;
-	--color-text-danger: #dc2626;
 
-	/* Gradients (subtle only) */
-	--color-gradient-gold: #f3f4f6;
-	--color-gradient-lavender: #f3f4f6;
-	--color-gradient-mint: #f3f4f6;
+	/* Primary accent (light) — soft purple */
+	--color-primary: #7c5cff;
+	--color-primary-dark: #6746e6;
+	--color-primary-hover: #6b4be8;
 
-	/* Typography */
+	/* Button text on primary */
+	--color-button-text: #ffffff;
+
+	/* Step badge */
+	--color-step-badge: var(--color-primary);
+	--color-step-badge-text: #ffffff;
+
+	/* States */
+	/* Accent formerly green — replaced with amber/gold to pair with purple & white */
+	--color-success: #f59e0b; /* amber */
+	--color-success-hover: #d97706; /* slightly darker for hover */
+	--color-success-active: #fbbf24; /* lighter amber for active states */
+	--color-danger: #ef4444;
+	--color-warning: #f59e0b;
+
+	/* Radii */
+	--card-radius: 12px;
+	--radius-sm: 8px;
+
+	/* Legacy (kept for compatibility but softened) */
+	--border-brutalist-thin: 1px solid var(--color-border-primary);
+	--border-brutalist-thick: 1px solid var(--color-border-primary);
+	--border-brutalist-extra-thick: 2px solid var(--color-border-primary);
+
+	--shadow-brutalist-small: var(--shadow-soft-sm);
+	--shadow-brutalist-medium: var(--shadow-soft-md);
+	--shadow-brutalist-large: var(--shadow-soft-lg);
+
 	--font-family-primary: 'Space Grotesk', system-ui, -apple-system, sans-serif;
 	--font-family-display: 'Bebas Neue', sans-serif;
+}
 
-	/* Shadows & Effects */
-	--shadow-brutalist-small: 2px 2px 0 var(--color-border-primary);
-	--shadow-brutalist-medium: 4px 4px 0 var(--color-border-primary);
-	--shadow-brutalist-large: 6px 6px 0 var(--color-border-primary);
-	--shadow-brutalist-xlarge: 8px 8px 0 var(--color-border-primary);
+/* Dark theme overrides (class/data-attribute toggled) */
+[data-theme='dark'] {
+	--color-background-main: #0b1220; /* deep navy */
+	--color-background-secondary: #0f1724; /* slightly lighter cards */
+	--color-background-tertiary: #07101a;
+	--color-border-primary: #1f2a36;
+	--color-border-secondary: #253141;
+	--color-text-primary: #e6eef6; /* near white */
+	--color-text-secondary: #bfc9d6;
+	--color-text-tertiary: #93a1b2;
 
-	/* Borders */
-	--border-brutalist-thin: 2px solid var(--color-border-primary);
-	--border-brutalist-thick: 3px solid var(--color-border-primary);
-	--border-brutalist-extra-thick: 4px solid var(--color-border-primary);
+	/* Primary accent (dark) — teal */
+	--color-primary: #0ac4e0;
+	--color-primary-dark: #079fb0;
+	--color-primary-hover: #0791a0;
+
+	/* Keep success accent consistent in dark mode */
+	--color-success: #f59e0b;
+	--color-success-hover: #d97706;
+	--color-success-active: #fbbf24; /* lighter amber for active states */
+
+	--color-step-badge: var(--color-primary);
+	--color-step-badge-text: #071921;
+
+	--color-button-text: #071921; /* dark text on teal */
+
+	--shadow-soft-sm: 0 8px 30px rgba(2, 6, 23, 0.6);
+	--shadow-soft-md: 0 12px 40px rgba(2, 6, 23, 0.6);
+}
+
+/* Smooth theme transition helper — added/removed in JS when toggling */
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+	transition:
+		background-color var(--transition-fast),
+		color var(--transition-fast),
+		border-color var(--transition-fast),
+		box-shadow var(--transition-fast),
+		transform 200ms ease;
 }
 
 html {
