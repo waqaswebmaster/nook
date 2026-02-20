@@ -416,7 +416,8 @@
 		font-size: 1.25rem;
 		display: flex;
 		align-items: center;
-		color: #000;
+		/* use secondary text color for the lock icon */
+		color: var(--color-text-secondary);
 	}
 
 	.disclaimer-icon :global(svg) {
