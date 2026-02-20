@@ -154,7 +154,7 @@
 		background: var(--color-primary-dark);
 		padding: 0.5rem 1.5rem;
 		border: var(--border-brutalist-thick);
-		box-shadow: 5px 5px 0 var(--color-text-primary);
+		/* box-shadow: 5px 5px 0 var(--color-text-primary); */
 		transform: rotate(1deg);
 		width: fit-content;
 		margin-left: auto;
@@ -208,7 +208,7 @@
 	.option-label.selected {
 		background: var(--color-success);
 		transform: translate(-3px, -3px) rotate(0deg);
-		box-shadow: 7px 7px 0 var(--color-text-primary);
+		/* box-shadow: 7px 7px 0 var(--color-text-primary); */
 	}
 
 	.option-label input[type='radio'] {

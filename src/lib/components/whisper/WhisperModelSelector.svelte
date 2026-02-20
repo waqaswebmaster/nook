@@ -113,9 +113,8 @@
 		background: var(--color-background-main);
 		border: var(--border-brutalist-thick);
 		padding: 1.5rem;
-		box-shadow: 5px 5px 0 var(--color-text-primary);
+		/* box-shadow: 5px 5px 0 var(--color-text-primary); */
 		margin-bottom: 1.5rem;
-		border-radius: 12px;
 	}
 
 	.model-selection h3 {

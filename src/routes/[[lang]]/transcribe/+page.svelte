@@ -398,12 +398,14 @@
 		margin-top: 1rem;
 		font-size: 0.9375rem;
 		font-weight: 600;
-		color: #000;
+		color: var(color-text-primary);
 		text-align: center;
-		background: #ff69b4;
+
+		background: var(--color-accent-blue);
 		padding: 0.75rem 1rem;
-		border: 3px solid #000;
-		box-shadow: 5px 5px 0 #000;
+		border: var(--border-brutalist-thick);
+		box-shadow: 5px 5px 0 var(--color-text-primary);
+
 		transform: rotate(1deg);
 		width: fit-content;
 		margin-left: auto;
