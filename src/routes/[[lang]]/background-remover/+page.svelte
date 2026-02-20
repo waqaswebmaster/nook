@@ -658,6 +658,7 @@
 		position: relative;
 		overflow: hidden;
 		transform: rotate(0.5deg);
+		color: var(--color-text-primary);
 	}
 
 	.mode-btn:hover {
@@ -682,7 +683,7 @@
 		font-size: 2rem;
 		display: flex;
 		align-items: center;
-		color: #000;
+		color: var(--color-text-primary);
 	}
 
 	.mode-icon :global(svg) {
@@ -719,6 +720,7 @@
 		position: relative;
 		overflow: hidden;
 		transform: rotate(0.5deg);
+		color: var(--color-text-primary);
 	}
 
 	.model-btn:disabled {
@@ -735,7 +737,7 @@
 		background: var(--color-success);
 		transform: translate(-2px, -2px) rotate(0deg);
 		border-color: var(--color-text-primary);
-		color: var(--color-text-primary);
+		color: #0f1724;
 	}
 
 	.model-btn.active:not(:disabled):hover {
@@ -747,7 +749,6 @@
 		font-weight: 700;
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
-		color: #000;
 	}
 
 	.model-badges {

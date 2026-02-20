@@ -156,6 +156,7 @@
 		cursor: pointer;
 		transition: all 0.2s;
 		appearance: none;
+		color: var(--color-text-primary);
 	}
 
 	.select-arrow {
@@ -253,7 +254,7 @@
 	.primary-button {
 		padding: 0.875rem 1.75rem;
 		background: #ffd700;
-		color: var(--color-text-primary);
+		color: #0f1724;
 		border: var(--border-brutalist-thick);
 		border-radius: 8px;
 		cursor: pointer;
@@ -278,7 +279,8 @@
 
 	.primary-button:disabled {
 		background: var(--color-background-disabled);
-		color: var(--color-text-disabled);
+		/* color: var(--color-text-disabled); */
+		color: #0f1724;
 		cursor: not-allowed;
 	}
 

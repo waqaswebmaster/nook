@@ -209,6 +209,7 @@
 		background: var(--color-success);
 		transform: translate(-3px, -3px) rotate(0deg);
 		/* box-shadow: 7px 7px 0 var(--color-text-primary); */
+		color: #0f1724;
 	}
 
 	.option-label input[type='radio'] {
@@ -237,7 +238,6 @@
 		font-size: 1.5rem;
 		display: flex;
 		align-items: center;
-		color: var(--color-text-primary);
 	}
 
 	.option-icon :global(svg) {
@@ -247,14 +247,14 @@
 
 	.option-content strong {
 		font-size: 1.125rem;
-		color: var(--color-text-primary);
+		/* color: var(--color-text-primary); */
 		text-transform: uppercase;
 		letter-spacing: 1px;
 	}
 
 	.option-content small {
 		font-size: 0.9375rem;
-		color: var(--color-text-secondary);
+		/* color: var(--color-text-secondary); */
 		font-weight: 500;
 		margin-left: 2rem;
 	}
@@ -333,6 +333,7 @@
 
 		.option-group {
 			gap: 0.75rem;
+			color: var(--color-text-primary);
 		}
 
 		.option-label {
