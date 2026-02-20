@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T12:44:06.349Z\n"
-"PO-Revision-Date: 2026-02-19T18:26:09.141Z\n"
+"PO-Revision-Date: 2026-02-20T17:12:06.319Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -13,11 +13,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 
 #: src/lib/components/Footer.svelte
-#: src/routes/+layout.svelte
-#: src/routes/+layout.svelte
-#: src/routes/+layout.svelte
 #: src/routes/+layout.ts
-#: src/routes/[[lang]]/og/+page.svelte
 msgid "Nook"
 msgstr "Nook"
 
@@ -25,9 +21,8 @@ msgstr "Nook"
 msgid "Change language"
 msgstr "Change language"
 
-#: src/routes/+layout.svelte
-msgid "View source on GitHub"
-msgstr "View source on GitHub"
+#~ msgid "View source on GitHub"
+#~ msgstr "View source on GitHub"
 
 #~ msgid "Whisper Audio Transcription"
 #~ msgstr "Whisper Audio Transcription"
@@ -169,9 +164,8 @@ msgstr "SRT"
 msgid "<0/> Copy"
 msgstr "<0/> Copy"
 
-#: src/routes/[[lang]]/language/+page.svelte
-msgid "Change the language settings for the Nook application"
-msgstr "Change the language settings for the Nook application"
+#~ msgid "Change the language settings for the Nook application"
+#~ msgstr "Change the language settings for the Nook application"
 
 #: src/routes/[[lang]]/language/+page.svelte
 msgid "Language Settings"
@@ -1137,9 +1131,8 @@ msgstr "Count tokens for Claude models including Claude Opus 4.1, Sonnet 4, and 
 #~ "Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2 models for\n"
 #~ "professional results."
 
-#: src/routes/[[lang]]/language/+page.svelte
-msgid "Language Settings - Nook"
-msgstr "Language Settings - Nook"
+#~ msgid "Language Settings - Nook"
+#~ msgstr "Language Settings - Nook"
 
 #: src/routes/[[lang]]/og/+page.svelte
 msgid "OpenGraph Generator - Nook: Local AI"
@@ -1527,17 +1520,14 @@ msgid "Processing..."
 msgstr "Processing..."
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
-#: src/routes/+layout.svelte
 msgid "Escape"
 msgstr "Escape"
 
-#: src/routes/+layout.svelte
-msgid "Close menu"
-msgstr "Close menu"
+#~ msgid "Close menu"
+#~ msgstr "Close menu"
 
 #: src/lib/components/Footer.svelte
 #: src/lib/components/whisper/WhisperModelSelector.svelte
-#: src/routes/+layout.svelte
 #: src/routes/+layout.svelte
 msgid "Home"
 msgstr "Home"
@@ -1673,29 +1663,25 @@ msgstr ""
 #~ msgid "Ibex"
 #~ msgstr "Ibex"
 
-#~ msgid "Ibex Tools"
-#~ msgstr "Ibex Tools"
+#: src/routes/+layout.svelte
+#: src/routes/+layout.svelte
+msgid "Ibex Tools"
+msgstr "Ibex Tools"
 
-#: src/routes/+layout.svelte
-#: src/routes/+layout.svelte
-msgid "N"
-msgstr "N"
+#~ msgid "N"
+#~ msgstr "N"
 
-#: src/routes/+layout.svelte
-msgid "Main navigation"
-msgstr "Main navigation"
+#~ msgid "Main navigation"
+#~ msgstr "Main navigation"
 
-#: src/routes/+layout.svelte
-msgid "Open menu"
-msgstr "Open menu"
+#~ msgid "Open menu"
+#~ msgstr "Open menu"
 
-#: src/routes/+layout.svelte
-msgid "Navigation menu"
-msgstr "Navigation menu"
+#~ msgid "Navigation menu"
+#~ msgstr "Navigation menu"
 
-#: src/routes/+layout.svelte
-msgid "Language"
-msgstr "Language"
+#~ msgid "Language"
+#~ msgstr "Language"
 
 #. placeholder {0}: theme === 'light' ? 'dark' : 'light'
 #: src/lib/components/common/ThemeToggle.svelte
@@ -1703,6 +1689,7 @@ msgid "Toggle {0} mode"
 msgstr "Toggle {0} mode"
 
 #: src/lib/components/common/ThemeToggle.svelte
+#: src/routes/+layout.svelte
 msgid "Toggle theme"
 msgstr "Toggle theme"
 
@@ -2007,3 +1994,23 @@ msgstr "New Chat"
 #: src/lib/components/chat/ModelSelector.svelte
 msgid "<0/> Loading…"
 msgstr "<0/> Loading…"
+
+#: src/routes/+layout.svelte
+msgid "Ibex Tools home"
+msgstr "Ibex Tools home"
+
+#: src/routes/+layout.svelte
+msgid "Primary"
+msgstr "Primary"
+
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+msgid "Count LLM Tokens"
+msgstr "Count LLM Tokens"
+
+#: src/routes/[[lang]]/language/+page.svelte
+msgid "Language Settings - Ibex Tools"
+msgstr "Language Settings - Ibex Tools"
+
+#: src/routes/[[lang]]/language/+page.svelte
+msgid "Change the language settings for the Ibex Tools application"
+msgstr "Change the language settings for the Ibex Tools application"
