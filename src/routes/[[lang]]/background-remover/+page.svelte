@@ -640,23 +640,6 @@
 	}
 
 	.mode-btn {
-		/* display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 0.5rem;
-		padding: 1.5rem;
-		background: #f0f0f0;
-		border: 3px solid #000;
-		border-radius: 8px;
-		cursor: pointer;
-		font-size: 1rem;
-		font-weight: 700;
-		transition: all 0.2s;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
-		font-family: 'Space Grotesk', system-ui, sans-serif;
-		box-shadow: 4px 4px 0 #000;
-		min-width: 140px; */
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -684,19 +667,15 @@
 	}
 
 	.mode-btn.active {
-		/* background: var(--color-success);
-		transform: translate(-2px, -2px);
-		box-shadow: var(--shadow-brutalist-large);
-		color: var(--color-text-primary); */
-		background: var(--color-success);
+		background: var(--color-background-pattern);
 		transform: translate(-2px, -2px) rotate(0deg);
-		/* box-shadow: var(--shadow-brutalist-large); */
-		border-color: var(--color-text-primary);
+		border: 2px solid var(--color-primary);
+
 		color: var(--color-text-primary);
 	}
 
 	.mode-btn.active:hover {
-		background: var(--color-success-hover);
+		background: var(--color-background-pattern);
 	}
 
 	.mode-icon {
@@ -722,23 +701,6 @@
 	}
 
 	.model-btn {
-		/* display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 0.5rem;
-		padding: 1.5rem;
-		background: #f8f8f8;
-		border: 3px solid #000;
-		border-radius: 8px;
-		cursor: pointer;
-		font-size: 0.875rem;
-		font-weight: 600;
-		transition: all 0.2s;
-		font-family: 'Space Grotesk', system-ui, sans-serif;
-		box-shadow: 4px 4px 0 #000;
-		min-width: 160px;
-		text-align: center; */
-
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -765,20 +727,13 @@
 	}
 
 	.model-btn:not(:disabled):hover {
-		/* transform: translate(-2px, -2px);
-		box-shadow: 6px 6px 0 #000;
-		background: #e8e8e8; */
 		transform: translate(-2px, -2px) rotate(0deg);
 		box-shadow: var(--shadow-brutalist-large);
 	}
 
 	.model-btn.active {
-		/* background: #ffd93d;
-		transform: translate(-2px, -2px);
-		box-shadow: 6px 6px 0 #000; */
 		background: var(--color-success);
 		transform: translate(-2px, -2px) rotate(0deg);
-		/* box-shadow: var(--shadow-brutalist-large); */
 		border-color: var(--color-text-primary);
 		color: var(--color-text-primary);
 	}
