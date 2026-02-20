@@ -236,7 +236,8 @@
 		background: var(--color-background-main);
 		border: var(--border-brutalist-extra-thick);
 		padding: 2rem;
-		box-shadow: var(--shadow-brutalist-xlarge);
+		/* removed heavy shadow per design request */
+		box-shadow: none;
 		margin-bottom: 1.5rem;
 		position: relative;
 		transform: rotate(0.5deg);
@@ -291,7 +292,8 @@
 		background: var(--color-primary-dark);
 		padding: 0.5rem 1.5rem;
 		border: var(--border-brutalist-thick);
-		box-shadow: 5px 5px 0 var(--color-text-primary);
+		/* header shadow removed for cleaner look */
+		box-shadow: none;
 		transform: rotate(1deg);
 		width: fit-content;
 		margin-left: auto;
@@ -329,13 +331,11 @@
 		transition: all 0.15s ease;
 		overflow: hidden;
 		transform: rotate(-0.5deg);
-		box-shadow: 5px 5px 0 var(--color-text-primary);
 		margin-bottom: 1.5rem;
 	}
 
 	.file-upload-label:hover:not(.disabled) {
 		transform: translate(-2px, -2px) rotate(0deg);
-		box-shadow: 7px 7px 0 var(--color-text-primary);
 		background: var(--color-background-cream);
 	}
 
