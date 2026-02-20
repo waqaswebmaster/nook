@@ -29,12 +29,12 @@
 </script>
 
 <svelte:head>
-	<title>Language Settings - Nook</title>
-	<meta name="description" content="Change the language settings for the Nook application" />
+	<title>Language Settings - Ibex Tools</title>
+	<meta name="description" content="Change the language settings for the Ibex Tools application" />
 </svelte:head>
 
 <CardInterface>
-	<Toolbar modelInfo="Language Settings"></Toolbar>
+	<Toolbar modelInfo="Language Settings" variant="studio"></Toolbar>
 
 	<ContentArea>
 		<div class="language-settings">

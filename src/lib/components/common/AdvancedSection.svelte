@@ -34,9 +34,9 @@
 <style>
 	.advanced-params {
 		background: var(--color-background-secondary);
-		padding: var(--sp-4);
-		border: 1px solid var(--color-border-light);
-		border-radius: var(--radius-md);
+		padding: 1.25rem;
+		border: var(--border-brutalist-thick);
+		border-radius: 8px;
 		box-sizing: border-box;
 	}
 

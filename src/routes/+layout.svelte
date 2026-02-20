@@ -13,10 +13,8 @@
 	import SpeechIcon from 'virtual:icons/lucide/speech';
 	import CalculatorIcon from 'virtual:icons/lucide/calculator';
 	import GlobeIcon from 'virtual:icons/lucide/globe';
-	import MenuIcon from 'virtual:icons/lucide/menu';
-	import XIcon from 'virtual:icons/lucide/x';
-	import ThemeToggle from '$lib/components/common/ThemeToggle.svelte';
-	import Footer from '$lib/components/Footer.svelte';
+	import SunIcon from 'virtual:icons/lucide/sun';
+	import MoonIcon from 'virtual:icons/lucide/moon';
 	import { Toaster } from 'svelte-sonner';
 	import { resolve } from '$app/paths';
 	import { getCurrentLanguage, createLocalizedLink, locales } from '$lib/i18n-utils';
@@ -37,7 +35,7 @@
 		return false;
 	}
 
-	const DEFAULT_TITLE = 'Nook';
+	const DEFAULT_TITLE = 'Ibex Tools';
 
 	const getLocalizedNavLinks = (currentLang: string) => [
 		{ path: createLocalizedLink('/', currentLang), label: 'Home', icon: 'home' },
@@ -52,50 +50,27 @@
 		{ path: createLocalizedLink('/count-tokens', currentLang), label: 'Tokens', icon: 'calculator' }
 	];
 
-	let isMobileMenuOpen = $state(false);
+	// Navigation: header-only (removed persistent left drawer and its persisted state)
+	// Global navigation is rendered in the top header below — no `toolsDrawerOpen` state anymore.
 
-	function toggleMobileMenu() {
-		isMobileMenuOpen = !isMobileMenuOpen;
-	}
-
-	function closeMobileMenu() {
-		isMobileMenuOpen = false;
-	}
-
-	function handleKeydown(event: KeyboardEvent) {
-		if (event.key === 'Escape' && isMobileMenuOpen) closeMobileMenu();
-	}
+	// Theme (light / dark) — persisted and applied via [data-theme]
+	let theme = $state('light');
 
 	$effect(() => {
-		if (isMobileMenuOpen) {
-			document.body.style.overflow = 'hidden';
-			const handleOutsideClick = (e: MouseEvent) => {
-				const drawer = document.querySelector('.mobile-drawer');
-				if (drawer && !drawer.contains(e.target as Node)) {
-					e.stopPropagation();
-					closeMobileMenu();
-				}
-			};
-			const timeoutId = setTimeout(() => {
-				document.addEventListener('click', handleOutsideClick);
-			}, 100);
-			return () => {
-				clearTimeout(timeoutId);
-				document.removeEventListener('click', handleOutsideClick);
-			};
-		} else {
-			document.body.style.overflow = '';
+		if (typeof window !== 'undefined') {
+			const s = localStorage.getItem('theme');
+			if (s) theme = s;
+			document.documentElement.setAttribute('data-theme', theme);
 		}
 	});
 
-	const iconMap: Record<string, any> = {
-		home: HomeIcon,
-		chat: MessageSquareIcon,
-		mic: MicIcon,
-		speech: SpeechIcon,
-		image: ImageIcon,
-		calculator: CalculatorIcon
-	};
+	function toggleTheme() {
+		theme = theme === 'light' ? 'dark' : 'light';
+		document.documentElement.classList.add('theme-transition');
+		document.documentElement.setAttribute('data-theme', theme);
+		if (typeof window !== 'undefined') localStorage.setItem('theme', theme);
+		setTimeout(() => document.documentElement.classList.remove('theme-transition'), 400);
+	}
 </script>
 
 <svelte:head>
@@ -116,117 +91,82 @@
 	<meta name="twitter:image" content={page.data.seo?.ogImage || ''} />
 </svelte:head>
 
-<svelte:window onkeydown={handleKeydown} />
+<div class="app-wrapper">
+	<div class="container" class:fullWidth={page.url.pathname === '/og'}>
+		<header class="top-nav studio">
+			<div class="top-nav-left">
+				<a
+					href={resolve(createLocalizedLink('/', currentLang))}
+					class="brand-link top-brand"
+					aria-label="Ibex Tools home"
+				>
+					<div class="brand-logo">
+						<HomeIcon style="width: 22px; height: 22px; stroke-width: 2.5" />
+					</div>
+					<div class="brand-title">Ibex Tools</div>
+				</a>
 
-<div class="app-shell">
-	<!-- ═══ TOP NAV ═══ -->
-	<header class="top-nav">
-		<div class="nav-inner">
-			<a href={resolve(createLocalizedLink('/', currentLang))} class="brand">
-				<span class="brand-mark">N</span>
-				<span class="brand-text">Nook</span>
-			</a>
-
-			<nav class="nav-links" aria-label="Main navigation">
-				{#each getLocalizedNavLinks(currentLang) as link (link.path)}
-					{#if link.icon !== 'home'}
-						{@const IconComp = iconMap[link.icon]}
-						<a href={resolve(link.path)} class="nav-link" class:active={isActive(link.path)}>
-							<IconComp style="width: 18px; height: 18px;" />
-							<span>{link.label}</span>
+				<nav class="top-nav-items" aria-label="Primary">
+					{#each getLocalizedNavLinks(currentLang) as link (link.path)}
+						<a href={resolve(link.path)} class:active={isActive(link.path)}>
+							{#if link.icon === 'chat'}
+								<MessageSquareIcon style="width: 18px; height: 18px; stroke-width: 2.5" />
+							{:else if link.icon === 'mic'}
+								<MicIcon style="width: 18px; height: 18px; stroke-width: 2.5" />
+							{:else if link.icon === 'speech'}
+								<SpeechIcon style="width: 18px; height: 18px; stroke-width: 2.5" />
+							{:else if link.icon === 'image'}
+								<ImageIcon style="width: 18px; height: 18px; stroke-width: 2.5" />
+							{:else if link.icon === 'calculator'}
+								<CalculatorIcon style="width: 18px; height: 18px; stroke-width: 2.5" />
+							{/if}
+							{#if link.label}
+								<span>{link.label}</span>
+							{/if}
 						</a>
-					{/if}
-				{/each}
-			</nav>
+					{/each}
+				</nav>
+			</div>
 
-			<div class="nav-actions">
+			<div class="top-nav-actions">
+				<button
+					class="theme-toggle"
+					onclick={toggleTheme}
+					aria-pressed={theme === 'dark'}
+					aria-label="Toggle theme"
+				>
+					{#if theme === 'dark'}
+						<SunIcon style="width: 18px; height: 18px; stroke-width: 2" />
+					{:else}
+						<MoonIcon style="width: 18px; height: 18px; stroke-width: 2" />
+					{/if}
+				</button>
+
 				<a
 					href={resolve(createLocalizedLink('/language', currentLang))}
-					class="nav-icon-btn"
+					class="action-link"
 					aria-label="Change language"
 				>
-					<GlobeIcon style="width: 18px; height: 18px;" />
+					<GlobeIcon style="width: 18px; height: 18px; stroke-width: 2.5" />
 				</a>
+
 				<a
 					href="https://github.com/khromov/nook"
-					class="nav-icon-btn"
-					aria-label="View source on GitHub"
+					class="action-link"
 					target="_blank"
 					rel="noopener noreferrer"
+					aria-label="GitHub"
 				>
-					<GithubIcon style="width: 18px; height: 18px;" />
+					<GithubIcon style="width: 18px; height: 18px; stroke-width: 2.5" />
 				</a>
-				<ThemeToggle />
-				<button
-					class="mobile-menu-btn"
-					onclick={toggleMobileMenu}
-					aria-label="Open menu"
-					aria-expanded={isMobileMenuOpen}
-				>
-					<MenuIcon style="width: 20px; height: 20px;" />
-				</button>
 			</div>
-		</div>
-	</header>
+		</header>
 
-	<!-- ═══ CONTENT ═══ -->
-	<main class="main-content" class:fullWidth={page.url.pathname === '/og'}>
-		<div class="content-container">
+		<div class="content-wrapper">
 			{@render children?.()}
 		</div>
-	</main>
-
-	<Footer />
-</div>
-
-<!-- ═══ MOBILE DRAWER ═══ -->
-{#if isMobileMenuOpen}
-	<div class="mobile-overlay" aria-hidden="true"></div>
-	<div class="mobile-drawer" role="dialog" aria-label="Navigation menu">
-		<div class="drawer-header">
-			<span class="brand">
-				<span class="brand-mark">N</span>
-				<span class="brand-text">Nook</span>
-			</span>
-			<button class="drawer-close" onclick={closeMobileMenu} aria-label="Close menu">
-				<XIcon style="width: 20px; height: 20px;" />
-			</button>
-		</div>
-		<nav class="drawer-nav">
-			{#each getLocalizedNavLinks(currentLang) as link (link.path)}
-				{@const IconComp = iconMap[link.icon]}
-				<a
-					href={resolve(link.path)}
-					class="drawer-link"
-					class:active={isActive(link.path)}
-					onclick={closeMobileMenu}
-				>
-					<IconComp style="width: 20px; height: 20px;" />
-					<span>{link.icon === 'home' ? 'Home' : link.label}</span>
-				</a>
-			{/each}
-			<div class="drawer-divider"></div>
-			<a
-				href={resolve(createLocalizedLink('/language', currentLang))}
-				class="drawer-link"
-				onclick={closeMobileMenu}
-			>
-				<GlobeIcon style="width: 20px; height: 20px;" />
-				<span>Language</span>
-			</a>
-			<a
-				href="https://github.com/khromov/nook"
-				class="drawer-link"
-				target="_blank"
-				rel="noopener noreferrer"
-				onclick={closeMobileMenu}
-			>
-				<GithubIcon style="width: 20px; height: 20px;" />
-				<span>GitHub</span>
-			</a>
-		</nav>
 	</div>
-{/if}
+</div>
 
 <Toaster
 	position="bottom-right"
@@ -248,13 +188,14 @@
 		padding: 0;
 		font-family: var(--font-family-primary);
 		font-size: 16px;
-		line-height: 1.6;
-		background: var(--color-background-secondary);
+		line-height: 1.5;
+		background: var(--color-background-main); /* theme-controlled */
 		color: var(--color-text-primary);
 		overflow-x: hidden;
 		min-height: 100vh;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
+		transition:
+			background-color var(--transition-smooth),
+			color var(--transition-smooth);
 	}
 
 	/* ── App shell ── */
@@ -264,16 +205,18 @@
 		flex-direction: column;
 	}
 
-	/* ── Top Nav ── */
-	.top-nav {
-		position: sticky;
-		top: 0;
-		z-index: var(--z-sticky);
-		height: var(--nav-height);
-		background: var(--nav-bg);
-		backdrop-filter: var(--backdrop-blur);
-		-webkit-backdrop-filter: var(--backdrop-blur);
-		border-bottom: 1px solid var(--color-border-light);
+	.container {
+		width: 100%;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 1rem;
+		box-sizing: border-box;
+		flex: 1;
+		display: grid;
+		grid-template-columns: 1fr; /* single-column layout — overlay drawer is the only sidebar */
+		gap: 1.5rem;
+		align-items: start;
+		min-height: calc(100vh - 2rem);
 	}
 
 	.nav-inner {
@@ -281,148 +224,157 @@
 		margin: 0 auto;
 		height: 100%;
 		display: flex;
-		align-items: center;
-		gap: var(--sp-6);
-		padding: 0 var(--sp-5);
+		flex-direction: column;
+		min-height: 0; /* Critical for nested flex scrolling */
+		transition:
+			filter var(--transition-fast) ease,
+			opacity var(--transition-fast) ease;
 	}
 
-	.brand {
+	/* Top header navigation — updated to match the provided design (keeps `.active` unchanged) */
+	.top-nav {
 		display: flex;
 		align-items: center;
-		gap: var(--sp-2);
+		justify-content: space-between;
+		gap: 1rem;
+		padding: 0.65rem 1rem;
+		background: var(--color-background-secondary);
+		border: 1px solid var(--color-border-primary);
+		border-radius: 12px;
+		box-shadow: var(--shadow-soft-sm);
+		position: sticky;
+		top: 0;
+		z-index: 60;
+	}
+
+	.top-nav-left {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.top-brand {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
 		text-decoration: none;
 		color: var(--color-text-primary);
-		flex-shrink: 0;
+		padding: 0.15rem 0.5rem;
+		border-radius: 10px;
 	}
 
-	.brand-mark {
+	.top-nav-items {
 		display: flex;
 		align-items: center;
-		justify-content: center;
-		width: 32px;
-		height: 32px;
-		border-radius: var(--radius-md);
-		background: var(--color-primary);
-		color: #fff;
-		font-family: var(--font-family-display);
-		font-size: 1.25rem;
-		letter-spacing: 0.02em;
+		gap: 0.5rem;
 	}
 
-	.brand-text {
-		font-weight: 700;
-		font-size: 1.125rem;
-		letter-spacing: -0.02em;
-	}
-
-	/* Nav links */
-	.nav-links {
-		display: flex;
+	.top-nav-items a {
+		display: inline-flex;
 		align-items: center;
-		gap: var(--sp-1);
-		flex: 1;
-		min-width: 0;
-	}
-
-	.nav-link {
-		display: flex;
-		align-items: center;
-		gap: var(--sp-2);
-		padding: var(--sp-2) var(--sp-3);
+		gap: 0.5rem;
+		padding: 0.4rem 0.9rem;
 		text-decoration: none;
-		color: var(--color-text-tertiary);
-		font-size: 0.875rem;
-		font-weight: 500;
-		border-radius: var(--radius-md);
-		transition: all var(--transition-fast);
-		white-space: nowrap;
-	}
-
-	.nav-link:hover {
-		color: var(--color-text-primary);
-		background: var(--color-primary-subtle);
-	}
-
-	.nav-link.active {
-		color: var(--color-primary);
-		background: var(--color-primary-subtle);
+		color: var(--color-text-secondary);
 		font-weight: 600;
-	}
-
-	/* Right actions */
-	.nav-actions {
-		display: flex;
-		align-items: center;
-		gap: var(--sp-2);
-		flex-shrink: 0;
-	}
-
-	.nav-icon-btn {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 38px;
-		height: 38px;
-		border-radius: var(--radius-md);
-		color: var(--color-text-tertiary);
-		text-decoration: none;
-		transition: all var(--transition-fast);
+		border-radius: 9999px; /* pill */
+		background: transparent;
+		transition:
+			background 140ms ease,
+			transform 140ms ease,
+			color 140ms ease;
 		border: 1px solid transparent;
 	}
 
-	.nav-icon-btn:hover {
+	/* subtle pill hover for non-active items */
+	.top-nav-items a:hover {
+		background: color-mix(in srgb, var(--color-primary) 6%, transparent);
 		color: var(--color-text-primary);
-		background: var(--color-background-tertiary);
-		border-color: var(--color-border-light);
+		transform: translateY(-1px);
 	}
 
-	.mobile-menu-btn {
-		display: none;
+	/* preserve existing active-tab styling exactly as requested */
+	.top-nav-items a.active {
+		/* more prominent active — deeper purple wash, subtle lift and border */
+		background: linear-gradient(
+			90deg,
+			color-mix(in srgb, var(--color-primary) 72%, transparent) 0%,
+			color-mix(in srgb, var(--color-primary) 28%, transparent) 100%
+		);
+		color: var(--color-text-secondary); /* match non-active text (not white) */
+		box-shadow:
+			inset 0 1px 0 rgba(255, 255, 255, 0.04),
+			0 6px 18px rgba(2, 6, 23, 0.08);
+		transform: translateY(-1px);
+		border: 1px solid color-mix(in srgb, var(--color-primary) 30%, transparent);
+	}
+
+	.top-nav-actions {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	/* action buttons (theme, language, GitHub) — small rounded containers like the screenshot */
+	.top-nav-actions .action-link,
+	.top-nav-actions .theme-toggle {
+		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		width: 38px;
-		height: 38px;
-		border-radius: var(--radius-md);
-		border: 1px solid var(--color-border-light);
-		background: var(--color-background-secondary);
+		width: 40px;
+		height: 40px;
+		border-radius: 10px;
+		border: 1px solid var(--color-border-primary);
+		background: var(--color-background-main);
 		color: var(--color-text-secondary);
-		cursor: pointer;
-		transition: all var(--transition-fast);
+		transition:
+			background 140ms ease,
+			transform 120ms ease;
 	}
 
-	.mobile-menu-btn:hover {
-		background: var(--color-primary-subtle);
+	.top-nav-actions .action-link:hover,
+	.top-nav-actions .theme-toggle:hover {
+		transform: translateY(-2px);
+		background: color-mix(in srgb, var(--color-primary) 6%, transparent);
+		color: var(--color-text-primary);
+	}
+
+	/* keep global header 'studio' visually neutral (matches screenshot) */
+	.top-nav.studio {
+		background: var(--color-background-secondary);
+		color: var(--color-text-primary);
+		border-radius: 12px;
+		box-shadow: var(--shadow-soft-sm);
+	}
+
+	.top-nav.studio .brand-logo {
+		background: transparent; /* icon only — no filled background */
 		color: var(--color-primary);
+		border-radius: 0;
+		padding: 0;
+		width: auto;
+		height: auto;
 	}
 
-	/* ── Main content ── */
-	.main-content {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		min-height: 0;
+	.top-nav.studio::after {
+		display: none; /* remove decorative stripe for global header */
 	}
 
-	.main-content.fullWidth .content-container {
-		max-width: none;
-	}
+	@media (max-width: 600px) {
+		.top-nav-items a span {
+			display: none;
+		}
 
-	.content-container {
-		max-width: 1200px;
-		width: 100%;
-		margin: 0 auto;
-		padding: var(--sp-6) var(--sp-5);
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		min-height: 0;
+		.top-nav {
+			padding: 0.5rem;
+		}
 	}
 
 	/* ── Global component overrides ── */
 	:global(.card-interface) {
-		background: var(--color-card);
-		border: 1px solid var(--color-border-light);
-		box-shadow: var(--shadow-md);
+		border: var(--border-brutalist-thick);
+		background: var(--color-background-secondary);
+		box-shadow: var(--shadow-brutalist-large);
 		width: 100%;
 		position: relative;
 		border-radius: var(--radius-lg);
@@ -436,9 +388,9 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: var(--sp-3) var(--sp-5);
+		padding: 0.75rem 1rem;
 		background: var(--color-background-secondary);
-		border-bottom: 1px solid var(--color-border-light);
+		border-bottom: 1px solid var(--color-border-primary);
 		flex-wrap: wrap;
 		gap: var(--sp-2);
 		flex: 0 0 auto;
@@ -454,8 +406,8 @@
 	}
 
 	:global(.content-area) {
-		padding: var(--sp-5);
-		background: var(--color-card);
+		padding: 1.5rem;
+		background: var(--color-background-secondary);
 		display: flex;
 		flex-direction: column;
 		gap: var(--sp-4);
@@ -481,14 +433,18 @@
 	:global(.primary-button) {
 		padding: var(--sp-3) var(--sp-5);
 		background: var(--color-primary);
-		color: #fff;
-		border: none;
-		border-radius: var(--radius-md);
+		color: var(--color-button-text);
+		border: 1px solid transparent;
+		border-radius: 10px;
 		cursor: pointer;
-		font-size: 0.9375rem;
-		font-weight: 600;
-		transition: all var(--transition-fast);
-		box-shadow: var(--shadow-sm);
+		font-size: 1rem;
+		font-weight: 700;
+		transition:
+			transform 160ms ease,
+			box-shadow 160ms ease;
+		box-shadow: var(--shadow-soft-md);
+		text-transform: none;
+		letter-spacing: 0.25px;
 		font-family: var(--font-family-primary);
 		box-sizing: border-box;
 	}
@@ -512,143 +468,27 @@
 		box-shadow: none;
 	}
 
-	@keyframes fadeIn {
-		from {
-			opacity: 0;
-			transform: translateY(8px);
+	/* Responsive adjustments */
+	@media (max-width: 600px) {
+		.container {
+			padding: 0.75rem;
 		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
+
+		.top-nav-items {
+			gap: 0.5rem;
+			padding: 0.5rem;
 		}
-	}
 
-	/* ── Mobile drawer ── */
-	.mobile-overlay {
-		position: fixed;
-		inset: 0;
-		background: rgba(0, 0, 0, 0.4);
-		backdrop-filter: blur(4px);
-		z-index: var(--z-overlay);
-		animation: fadeOverlay 0.2s ease;
-	}
-
-	@keyframes fadeOverlay {
-		from {
-			opacity: 0;
+		.top-nav-items a {
+			padding: 0.625rem;
+			font-size: 0.875rem;
 		}
-		to {
-			opacity: 1;
-		}
-	}
 
-	.mobile-drawer {
-		position: fixed;
-		top: 0;
-		left: 0;
-		bottom: 0;
-		width: 300px;
-		max-width: 85vw;
-		background: var(--color-background-main);
-		border-right: 1px solid var(--color-border-light);
-		box-shadow: var(--shadow-xl);
-		z-index: var(--z-drawer);
-		display: flex;
-		flex-direction: column;
-		animation: slideDrawer 0.25s ease;
-		overflow-y: auto;
-	}
-
-	@keyframes slideDrawer {
-		from {
-			transform: translateX(-100%);
-		}
-		to {
-			transform: translateX(0);
-		}
-	}
-
-	.drawer-header {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		padding: var(--sp-4) var(--sp-5);
-		border-bottom: 1px solid var(--color-border-light);
-		flex-shrink: 0;
-	}
-
-	.drawer-close {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 36px;
-		height: 36px;
-		border-radius: var(--radius-md);
-		border: 1px solid var(--color-border-light);
-		background: var(--color-background-secondary);
-		color: var(--color-text-secondary);
-		cursor: pointer;
-		transition: all var(--transition-fast);
-	}
-
-	.drawer-close:hover {
-		background: var(--color-background-tertiary);
-		color: var(--color-text-primary);
-	}
-
-	.drawer-nav {
-		display: flex;
-		flex-direction: column;
-		padding: var(--sp-3);
-		gap: var(--sp-1);
-	}
-
-	.drawer-link {
-		display: flex;
-		align-items: center;
-		gap: var(--sp-3);
-		padding: var(--sp-3) var(--sp-4);
-		text-decoration: none;
-		color: var(--color-text-secondary);
-		font-weight: 500;
-		font-size: 0.9375rem;
-		border-radius: var(--radius-md);
-		transition: all var(--transition-fast);
-	}
-
-	.drawer-link:hover {
-		background: var(--color-primary-subtle);
-		color: var(--color-text-primary);
-	}
-
-	.drawer-link.active {
-		background: var(--color-primary-subtle);
-		color: var(--color-primary);
-		font-weight: 600;
-	}
-
-	.drawer-divider {
-		height: 1px;
-		background: var(--color-border-light);
-		margin: var(--sp-2) var(--sp-4);
-	}
-
-	/* ── Responsive ── */
-	@media (max-width: 768px) {
-		.nav-links {
+		.top-nav-items a span {
 			display: none;
 		}
-
-		.nav-icon-btn {
-			display: none;
-		}
-
-		.mobile-menu-btn {
-			display: flex;
-		}
-
-		.content-container {
-			padding: var(--sp-4) var(--sp-3);
+		:global(.toolbar) {
+			padding: 0.875rem 1rem;
 		}
 
 		:global(.toolbar) {
@@ -660,17 +500,18 @@
 		}
 
 		:global(.input-area) {
-			padding: var(--sp-3) var(--sp-4);
+			padding: 0.875rem 1rem;
 		}
 	}
 
-	@media (max-width: 480px) {
-		.content-container {
-			padding: var(--sp-3) var(--sp-2);
+	@media (max-width: 400px) {
+		.container {
+			padding: 0.5rem;
 		}
 
-		.nav-inner {
-			padding: 0 var(--sp-3);
+		.top-nav-items a {
+			padding: 0.5rem 0.75rem;
+			font-size: 0.8125rem;
 		}
 	}
 </style>

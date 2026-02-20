@@ -3,229 +3,111 @@
    ═══════════════════════════════════════════════════════════ */
 
 :root {
-	/* ── Radius ── */
-	--radius-sm: 6px;
-	--radius-md: 10px;
-	--radius-lg: 16px;
-	--radius-xl: 24px;
-	--radius-full: 9999px;
+	/* Design tokens — Light mode (default) */
+	--radius: 12px;
+	--transition-fast: 180ms cubic-bezier(0.2, 0.8, 0.2, 1);
+	--transition-smooth: 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
 
-	/* ── Spacing (4px grid) ── */
-	--sp-1: 0.25rem;
-	--sp-2: 0.5rem;
-	--sp-3: 0.75rem;
-	--sp-4: 1rem;
-	--sp-5: 1.25rem;
-	--sp-6: 1.5rem;
-	--sp-8: 2rem;
-	--sp-10: 2.5rem;
-	--sp-12: 3rem;
-	--sp-16: 4rem;
-	--sp-20: 5rem;
+	/* Soft shadows */
+	--shadow-soft-sm: 0 6px 18px rgba(2, 6, 23, 0.06);
+	--shadow-soft-md: 0 10px 30px rgba(2, 6, 23, 0.08);
+	--shadow-soft-lg: 0 18px 50px rgba(2, 6, 23, 0.1);
 
-	/* ── Typography ── */
-	--font-family-primary: 'Space Grotesk', system-ui, -apple-system, sans-serif;
-	--font-family-display: 'Bebas Neue', system-ui, sans-serif;
-
-	/* ── Transitions ── */
-	--transition-fast: 150ms ease;
-	--transition-base: 250ms ease;
-	--transition-slow: 400ms ease;
-
-	/* ── Z‑layers ── */
-	--z-base: 1;
-	--z-dropdown: 100;
-	--z-sticky: 200;
-	--z-overlay: 900;
-	--z-drawer: 1000;
-
-	/* ── Navbar height ── */
-	--nav-height: 64px;
-}
-
-/* ═══════════  LIGHT MODE (default)  ═══════════ */
-:root,
-[data-theme='light'] {
-	color-scheme: light;
-
-	/* Surface */
-	--color-background-main: #ffffff;
-	--color-background-secondary: #f8fafc;
-	--color-background-tertiary: #f1f5f9;
-	--color-background-disabled: #e2e8f0;
-	--color-background-pattern: #f1f5f9;
-
-	/* Brand */
-	--color-primary: #6366f1;
-	--color-primary-dark: #4f46e5;
-	--color-primary-hover: #4338ca;
-	--color-primary-subtle: rgba(99, 102, 241, 0.08);
-	--color-secondary: #f0abfc;
-
-	/* State */
-	--color-success: #22c55e;
-	--color-success-hover: #16a34a;
-	--color-danger: #ef4444;
-	--color-danger-hover: #dc2626;
-	--color-warning: #f59e0b;
-	--color-warning-hover: #d97706;
-
-	/* Accent */
-	--color-accent-blue: #3b82f6;
-	--color-accent-light-blue: #dbeafe;
-	--color-accent-pink: #f0abfc;
-
-	/* Border */
-	--color-border-primary: #1e293b;
-	--color-border-secondary: #334155;
-	--color-border-light: #e2e8f0;
-
-	/* Text */
-	--color-text-primary: #0f172a;
-	--color-text-secondary: #334155;
-	--color-text-tertiary: #64748b;
-	--color-text-disabled: #94a3b8;
-	--color-text-inverse: #ffffff;
-	--color-text-danger: #dc2626;
-
-	/* Card surface */
-	--color-card: #ffffff;
-	--color-card-hover: #f8fafc;
-
-	/* Gradient accents */
-	--color-gradient-gold: #fef3c7;
-	--color-gradient-lavender: #ede9fe;
-	--color-gradient-mint: #d1fae5;
-
-	/* Shadows */
-	--shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
-	--shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
-	--shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-	--shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
-	--shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
-	--shadow-glow: 0 0 20px rgba(99, 102, 241, 0.15);
-
-	/* Backdrop */
-	--backdrop-blur: blur(12px) saturate(180%);
-	--nav-bg: rgba(255, 255, 255, 0.78);
-
-	/* Legacy compat */
-	--shadow-brutalist-small: var(--shadow-sm);
-	--shadow-brutalist-medium: var(--shadow-md);
-	--shadow-brutalist-large: var(--shadow-lg);
-	--shadow-brutalist-xlarge: var(--shadow-xl);
-	--border-brutalist-thin: 1px solid var(--color-border-light);
-	--border-brutalist-thick: 1px solid var(--color-border-light);
-	--border-brutalist-extra-thick: 2px solid var(--color-border-light);
-
-	/* Legacy / Misc */
-	--color-background-cream: #fffbeb;
-	--color-background-light-blue: #eff6ff;
-	--color-background-light-pink: #fef2f2;
-	--color-accent-light-green: #dcfce7;
-	--color-accent-light-yellow: #fef9c3;
-	--color-accent-red: #ef4444;
-	--color-accent-primary: var(--color-primary);
-	--color-accent-primary-alpha: rgba(99, 102, 241, 0.15);
-	--font-family-mono: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
-
-	--color-black: #0f172a;
+	/* Colors - base */
 	--color-white: #ffffff;
-	--color-gray-100: #f8fafc;
-	--color-gray-200: #f1f5f9;
-	--color-gray-300: #e2e8f0;
-	--color-gray-400: #cbd5e1;
-	--color-gray-500: #94a3b8;
-	--color-gray-600: #64748b;
-	--color-gray-700: #475569;
-	--color-gray-800: #334155;
-	--color-gray-900: #1e293b;
+	--color-black: #0b1220;
+
+	/* Backgrounds */
+	--color-background-main: #f7f7fb; /* very light gray / off white */
+	--color-background-secondary: #ffffff; /* cards */
+	--color-background-tertiary: #f4f5f7;
+	--color-background-disabled: #eef0f3;
+
+	/* Borders & neutrals */
+	--color-border-primary: #e6e9ef; /* soft gray */
+	--color-border-secondary: #e1e4ea;
+	--color-text-primary: #0f1724; /* dark gray */
+	--color-text-secondary: #4b5563;
+	--color-text-tertiary: #6b7280;
+	--color-text-inverse: #ffffff;
+
+	/* Primary accent (light) — soft purple */
+	--color-primary: #7c5cff;
+	--color-primary-dark: #6746e6;
+	--color-primary-hover: #6b4be8;
+
+	/* Button text on primary */
+	--color-button-text: #ffffff;
+
+	/* Step badge */
+	--color-step-badge: var(--color-primary);
+	--color-step-badge-text: #ffffff;
+
+	/* States */
+	/* Accent formerly green — replaced with amber/gold to pair with purple & white */
+	--color-success: #f59e0b; /* amber */
+	--color-success-hover: #d97706; /* slightly darker for hover */
+	--color-success-active: #fbbf24; /* lighter amber for active states */
+	--color-danger: #ef4444;
+	--color-warning: #f59e0b;
+
+	/* Radii */
+	--card-radius: 12px;
+	--radius-sm: 8px;
+
+	/* Legacy (kept for compatibility but softened) */
+	--border-brutalist-thin: 1px solid var(--color-border-primary);
+	--border-brutalist-thick: 1px solid var(--color-border-primary);
+	--border-brutalist-extra-thick: 2px solid var(--color-border-primary);
+
+	--shadow-brutalist-small: var(--shadow-soft-sm);
+	--shadow-brutalist-medium: var(--shadow-soft-md);
+	--shadow-brutalist-large: var(--shadow-soft-lg);
+
+	--font-family-primary: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+	--font-family-display: 'Bebas Neue', sans-serif;
 }
 
-/* ═══════════  DARK MODE  ═══════════ */
+/* Dark theme overrides (class/data-attribute toggled) */
 [data-theme='dark'] {
-	color-scheme: dark;
+	--color-background-main: #0b1220; /* deep navy */
+	--color-background-secondary: #0f1724; /* slightly lighter cards */
+	--color-background-tertiary: #07101a;
+	--color-border-primary: #1f2a36;
+	--color-border-secondary: #253141;
+	--color-text-primary: #e6eef6; /* near white */
+	--color-text-secondary: #bfc9d6;
+	--color-text-tertiary: #93a1b2;
 
-	--color-background-main: #0f172a;
-	--color-background-secondary: #1e293b;
-	--color-background-tertiary: #334155;
-	--color-background-disabled: #475569;
-	--color-background-pattern: #1e293b;
+	/* Primary accent (dark) — teal */
+	--color-primary: #0ac4e0;
+	--color-primary-dark: #079fb0;
+	--color-primary-hover: #0791a0;
 
-	--color-primary: #818cf8;
-	--color-primary-dark: #6366f1;
-	--color-primary-hover: #a5b4fc;
-	--color-primary-subtle: rgba(129, 140, 248, 0.12);
-	--color-secondary: #e879f9;
+	/* Keep success accent consistent in dark mode */
+	--color-success: #f59e0b;
+	--color-success-hover: #d97706;
+	--color-success-active: #fbbf24; /* lighter amber for active states */
 
-	--color-success: #4ade80;
-	--color-success-hover: #22c55e;
-	--color-danger: #f87171;
-	--color-danger-hover: #ef4444;
-	--color-warning: #fbbf24;
-	--color-warning-hover: #f59e0b;
+	--color-step-badge: var(--color-primary);
+	--color-step-badge-text: #071921;
 
-	--color-accent-blue: #60a5fa;
-	--color-accent-light-blue: #1e3a5f;
-	--color-accent-pink: #e879f9;
+	--color-button-text: #071921; /* dark text on teal */
 
-	--color-border-primary: #e2e8f0;
-	--color-border-secondary: #94a3b8;
-	--color-border-light: #334155;
+	--shadow-soft-sm: 0 8px 30px rgba(2, 6, 23, 0.6);
+	--shadow-soft-md: 0 12px 40px rgba(2, 6, 23, 0.6);
+}
 
-	--color-text-primary: #f1f5f9;
-	--color-text-secondary: #cbd5e1;
-	--color-text-tertiary: #94a3b8;
-	--color-text-disabled: #64748b;
-	--color-text-inverse: #0f172a;
-	--color-text-danger: #fca5a5;
-
-	--color-card: #1e293b;
-	--color-card-hover: #334155;
-
-	--color-gradient-gold: #44403c;
-	--color-gradient-lavender: #312e81;
-	--color-gradient-mint: #064e3b;
-
-	--shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
-	--shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
-	--shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
-	--shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
-	--shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
-	--shadow-glow: 0 0 20px rgba(129, 140, 248, 0.2);
-
-	--nav-bg: rgba(15, 23, 42, 0.82);
-	--backdrop-blur: blur(12px) saturate(180%);
-
-	--shadow-brutalist-small: var(--shadow-sm);
-	--shadow-brutalist-medium: var(--shadow-md);
-	--shadow-brutalist-large: var(--shadow-lg);
-	--shadow-brutalist-xlarge: var(--shadow-xl);
-	--border-brutalist-thin: 1px solid var(--color-border-light);
-	--border-brutalist-thick: 1px solid var(--color-border-light);
-	--border-brutalist-extra-thick: 2px solid var(--color-border-light);
-
-	--color-black: #f1f5f9;
-	--color-white: #0f172a;
-	--color-background-cream: #1e293b;
-	--color-background-light-blue: #1e293b;
-	--color-background-light-pink: #3b1c1c;
-	--color-accent-light-green: #14532d;
-	--color-accent-light-yellow: #422006;
-	--color-accent-red: #f87171;
-	--color-accent-primary: var(--color-primary);
-	--color-accent-primary-alpha: rgba(129, 140, 248, 0.2);
-	--font-family-mono: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
-
-	--color-gray-100: #1e293b;
-	--color-gray-200: #334155;
-	--color-gray-300: #475569;
-	--color-gray-400: #64748b;
-	--color-gray-500: #94a3b8;
-	--color-gray-600: #cbd5e1;
-	--color-gray-700: #e2e8f0;
-	--color-gray-800: #f1f5f9;
-	--color-gray-900: #f8fafc;
+/* Smooth theme transition helper — added/removed in JS when toggling */
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+	transition:
+		background-color var(--transition-fast),
+		color var(--transition-fast),
+		border-color var(--transition-fast),
+		box-shadow var(--transition-fast),
+		transform 200ms ease;
 }
 
 /* ═══════════  BASE RESETS  ═══════════ */

@@ -30,6 +30,12 @@
 		medium: { padding: '0.875rem 1.75rem', fontSize: '1rem' },
 		large: { padding: '1.25rem 2rem', fontSize: '1.125rem' }
 	};
+
+	const activeStyles = {
+		primary: 'var(--color-primary-hover)',
+		success: 'var(--color-success-active)',
+		warning: 'var(--color-primary-dark)'
+	};
 </script>
 
 <button
@@ -38,7 +44,7 @@
 	class:disabled
 	class:loading
 	style="background: {variantStyles[variant]}; padding: {sizeStyles[size]
-		.padding}; font-size: {sizeStyles[size].fontSize};"
+		.padding}; font-size: {sizeStyles[size].fontSize}; --active-color: {activeStyles[variant]};"
 	onclick={onClick}
 	{disabled}
 >
@@ -77,8 +83,9 @@
 	}
 
 	.primary-button:active:not(.disabled):not(.loading) {
-		transform: translateY(0);
-		box-shadow: var(--shadow-xs);
+		background: var(--active-color);
+		transform: translate(0);
+		box-shadow: var(--shadow-brutalist-small);
 	}
 
 	.primary-button.disabled,

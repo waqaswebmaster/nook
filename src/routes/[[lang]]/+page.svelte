@@ -104,7 +104,35 @@
 </div>
 
 <style>
-	.landing {
+	/* Base styles */
+	:global(body) {
+		margin: 0;
+		padding: 0;
+		font-family: var(--font-family-primary);
+		font-size: 16px;
+		line-height: 1.5;
+		background: var(--color-background-main);
+		color: var(--color-text-primary);
+		overflow-x: hidden;
+		transition:
+			background-color var(--transition-smooth),
+			color var(--transition-smooth);
+	}
+
+	@keyframes gradient-shift {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+
+	.main-menu {
+		min-height: 100vh;
 		display: flex;
 		flex-direction: column;
 		gap: var(--sp-12);
@@ -130,18 +158,16 @@
 		margin: 0 auto;
 	}
 
-	.hero-badge {
-		display: inline-flex;
-		align-items: center;
-		gap: var(--sp-2);
-		padding: var(--sp-1) var(--sp-4);
-		background: var(--color-primary-subtle);
-		color: var(--color-primary);
-		border-radius: var(--radius-full);
-		font-size: 0.8125rem;
-		font-weight: 600;
-		margin-bottom: var(--sp-6);
-		border: 1px solid var(--color-primary-subtle);
+	.title-line {
+		background: var(--color-primary);
+		color: var(--color-text-inverse);
+		padding: 0.5rem 1.25rem;
+		display: inline-block;
+		border-radius: 8px;
+		box-shadow: var(--shadow-soft-sm);
+		letter-spacing: 1px;
+		text-transform: uppercase;
+		font-weight: 700;
 	}
 
 	.hero-title {
@@ -204,19 +230,23 @@
 		box-shadow: var(--shadow-sm);
 	}
 
-	.btn-secondary:hover {
-		background: var(--color-card-hover);
-		border-color: var(--color-primary);
-		box-shadow: var(--shadow-md);
-		transform: translateY(-1px);
+	.card-number {
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+		background: var(--color-step-badge);
+		color: var(--color-step-badge-text);
+		padding: 0.25rem 0.75rem;
+		font-weight: 800;
+		font-size: 0.875rem;
+		letter-spacing: 0.5px;
+		border-radius: 6px;
+		text-transform: uppercase;
+		box-shadow: var(--shadow-soft-sm);
 	}
-
-	.hero-features {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: var(--sp-6);
-		flex-wrap: wrap;
+	.feature-card:hover {
+		transform: translate(-3px, -3px);
+		box-shadow: 8px 8px 0 var(--color-border-primary);
 	}
 
 	.hero-feature {
@@ -228,15 +258,17 @@
 		font-weight: 500;
 	}
 
-	/* ── Tools ── */
-	.tools-section {
-		max-width: 800px;
-		margin: 0 auto;
-		width: 100%;
+	.icon-container {
+		margin-bottom: 1.5rem;
+		width: fit-content;
+		padding: 0.75rem;
+		background: var(--color-background-tertiary);
+		border: 1px solid var(--color-border-primary);
+		border-radius: 8px;
+		box-shadow: var(--shadow-soft-sm);
 	}
-
-	.section-title {
-		font-size: 1.25rem;
+	.feature-card h2 {
+		font-size: 1.75rem;
 		font-weight: 700;
 		color: var(--color-text-primary);
 		margin: 0 0 var(--sp-4) 0;

@@ -14,15 +14,14 @@
 
 <style>
 	.section-card {
-		background: var(--color-card);
-		border: 1px solid var(--color-border-light);
-		padding: var(--sp-5);
-		box-shadow: var(--shadow-sm);
-		border-radius: var(--radius-lg);
-		margin-bottom: var(--sp-4);
+		background: var(--color-background-secondary);
+		border: 1px solid var(--color-border-primary);
+		padding: 1.25rem;
+		box-shadow: var(--shadow-soft-sm);
+		margin-bottom: 1rem;
 		position: relative;
-		animation: slideIn 0.35s ease-out;
-		animation-fill-mode: both;
+		border-radius: var(--card-radius);
+		animation: slideIn 300ms var(--transition-fast) both;
 	}
 
 	@keyframes slideIn {

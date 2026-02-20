@@ -23,7 +23,7 @@ export const load: LayoutLoad = async ({ url, params }) => {
 
 	return {
 		seo: {
-			title: 'Nook',
+			title: 'Ibex Tools',
 			description: 'Private AI tools that run in your browser',
 			ogImage: ogImageUrl,
 			url: currentUrl
