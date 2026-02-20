@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:12:40.444Z\n"
-"PO-Revision-Date: 2026-02-19T16:57:30.764Z\n"
+"PO-Revision-Date: 2026-02-19T18:26:09.172Z\n"
 "Last-Translator: \n"
 "Language: sv\n"
 "Language-Team: \n"
@@ -191,11 +191,9 @@ msgstr "<0/> Bearbetar bild"
 
 #. placeholder {0}: progress
 #. placeholder {0}: progress
-#. placeholder {0}: progress
 #. placeholder {0}: downloadProgress
 #: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 #: src/lib/components/common/LoadingProgress.svelte
-#: src/lib/components/whisper/TranscriptionProgress.svelte
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "{0}% Complete"
 msgstr "{0}% klart"
@@ -316,6 +314,7 @@ msgstr "AI"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/chat/MessageInput.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Enter"
 msgstr "Enter"
 
@@ -340,9 +339,8 @@ msgstr "<0/> Råa tokens ({0})"
 msgid "Smarter AI responses"
 msgstr "Smartare AI-svar"
 
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "Runs on most computers and phones"
-msgstr "Körs på de flesta datorer och telefoner"
+#~ msgid "Runs on most computers and phones"
+#~ msgstr "Körs på de flesta datorer och telefoner"
 
 #: src/lib/components/chat/ModelSelector.svelte
 msgid "High quality responses"
@@ -369,9 +367,8 @@ msgstr "Kontextstorlek"
 msgid "Temperature"
 msgstr "Temperatur"
 
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "<0/> Loading Model..."
-msgstr "<0/> Laddar modell..."
+#~ msgid "<0/> Loading Model..."
+#~ msgstr "<0/> Laddar modell..."
 
 #: src/lib/components/chat/ModelSelector.svelte
 msgid "<0/> Load Selected Model"
@@ -404,13 +401,11 @@ msgstr "Ladda exempel"
 
 #: src/lib/components/count-tokens/TextInputSection.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Clear text"
 msgstr "Rensa text"
 
-#: src/lib/components/tts/SpeedControl.svelte
-msgid "Speed:"
-msgstr "Hastighet:"
+#~ msgid "Speed:"
+#~ msgstr "Hastighet:"
 
 #. placeholder {0}: speed
 #: src/lib/components/tts/SpeedControl.svelte
@@ -428,26 +423,23 @@ msgstr "Samplingsfrekvens:"
 msgid "Kitten TTS Nano"
 msgstr "Kitten TTS Nano"
 
-#: src/lib/components/tts/ModelSwitcher.svelte
-msgid "24MB • Best for edge devices"
-msgstr "24MB • Bäst för edge-enheter"
+#~ msgid "24MB • Best for edge devices"
+#~ msgstr "24MB • Bäst för edge-enheter"
 
 #: src/lib/components/tts/ModelSwitcher.svelte
 msgid "Piper Voices"
 msgstr "Piper-röster"
 
-#: src/lib/components/tts/ModelSwitcher.svelte
-msgid "75MB • Better Quality • Fast"
-msgstr "75MB • Bättre kvalitet • Snabb"
+#~ msgid "75MB • Better Quality • Fast"
+#~ msgstr "75MB • Bättre kvalitet • Snabb"
 
 #: src/lib/components/tts/ModelSwitcher.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Kokoro"
 msgstr "Kokoro"
 
-#: src/lib/components/tts/ModelSwitcher.svelte
-msgid "80MB • Highest Quality • Slow"
-msgstr "80MB • Högsta kvalitet • Långsam"
+#~ msgid "80MB • Highest Quality • Slow"
+#~ msgstr "80MB • Högsta kvalitet • Långsam"
 
 #: src/lib/components/tts/TextStatistics.svelte
 msgid "Words"
@@ -537,17 +529,14 @@ msgstr "<0/> Rensa inspelning"
 msgid "Loading"
 msgstr "Laddar"
 
-#: src/lib/components/whisper/TranscriptionProgress.svelte
-msgid "<0/> Transcribing Audio"
-msgstr "<0/> Transkriberar ljud"
+#~ msgid "<0/> Transcribing Audio"
+#~ msgstr "<0/> Transkriberar ljud"
 
-#: src/lib/components/whisper/TranscriptionProgress.svelte
-msgid "Current Segment"
-msgstr "Aktuellt segment"
+#~ msgid "Current Segment"
+#~ msgstr "Aktuellt segment"
 
-#: src/lib/components/whisper/TranscriptionProgress.svelte
-msgid "<0/> Transcription seems stuck <1>Reload Page →</1>"
-msgstr "<0/> Transkriberingen verkar ha fastnat <1>Ladda om sidan →</1>"
+#~ msgid "<0/> Transcription seems stuck <1>Reload Page →</1>"
+#~ msgstr "<0/> Transkriberingen verkar ha fastnat <1>Ladda om sidan →</1>"
 
 #: src/lib/components/whisper/TranscriptionProgress.svelte
 msgid "<0/> Keep this tab active during transcription"
@@ -558,7 +547,6 @@ msgid "Drag & Drop Audio File"
 msgstr "Dra & släpp ljudfil"
 
 #: src/lib/components/whisper/FileUpload.svelte
-#: src/lib/components/whisper/TranscribeOptions.svelte
 msgid "or"
 msgstr "eller"
 
@@ -566,29 +554,24 @@ msgstr "eller"
 msgid "Browse Files"
 msgstr "Bläddra bland filer"
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Select Model"
-msgstr "Välj modell"
+#~ msgid "Select Model"
+#~ msgstr "Välj modell"
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Loading Model..."
-msgstr "Laddar modell..."
+#~ msgid "Loading Model..."
+#~ msgstr "Laddar modell..."
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Load Model"
 msgstr "Ladda modell"
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Model Ready"
-msgstr "Modell redo"
+#~ msgid "Model Ready"
+#~ msgstr "Modell redo"
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Changing..."
-msgstr "Byter..."
+#~ msgid "Changing..."
+#~ msgstr "Byter..."
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Change Model"
-msgstr "Byt modell"
+#~ msgid "Change Model"
+#~ msgstr "Byt modell"
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Failed to load transcription model. Please try again."
@@ -601,37 +584,29 @@ msgstr "Misslyckades att ladda transkriptionsmodell. Försök igen."
 msgid "Retry"
 msgstr "Försök igen"
 
-#: src/lib/components/whisper/TranscribeOptions.svelte
-msgid "<0/> Choose Audio Source"
-msgstr "<0/> Välj ljudkälla"
+#~ msgid "<0/> Choose Audio Source"
+#~ msgstr "<0/> Välj ljudkälla"
 
-#: src/lib/components/whisper/TranscribeOptions.svelte
-msgid "Local File"
-msgstr "Lokal fil"
+#~ msgid "Local File"
+#~ msgstr "Lokal fil"
 
-#: src/lib/components/whisper/TranscribeOptions.svelte
-msgid "Select an audio file from your device (.mp3, .wav, .m4a)"
-msgstr "Välj en ljudfil från din enhet (.mp3, .wav, .m4a)"
+#~ msgid "Select an audio file from your device (.mp3, .wav, .m4a)"
+#~ msgstr "Välj en ljudfil från din enhet (.mp3, .wav, .m4a)"
 
-#: src/lib/components/whisper/TranscribeOptions.svelte
-msgid "Record Audio"
-msgstr "Spela in ljud"
+#~ msgid "Record Audio"
+#~ msgstr "Spela in ljud"
 
-#: src/lib/components/whisper/TranscribeOptions.svelte
-msgid "Record audio directly from your microphone"
-msgstr "Spela in ljud direkt från din mikrofon"
+#~ msgid "Record audio directly from your microphone"
+#~ msgstr "Spela in ljud direkt från din mikrofon"
 
-#: src/lib/components/whisper/TranscribeOptions.svelte
-msgid "Demo File"
-msgstr "Demofil"
+#~ msgid "Demo File"
+#~ msgstr "Demofil"
 
-#: src/lib/components/whisper/TranscribeOptions.svelte
-msgid "Listen →"
-msgstr "Lyssna →"
+#~ msgid "Listen →"
+#~ msgstr "Lyssna →"
 
-#: src/lib/components/whisper/TranscriptionResult.svelte
-msgid "<0/> Transcription Result"
-msgstr "<0/> Transkriptionsresultat"
+#~ msgid "<0/> Transcription Result"
+#~ msgstr "<0/> Transkriptionsresultat"
 
 #: src/lib/components/whisper/TranscriptionResult.svelte
 msgid "Text"
@@ -641,21 +616,18 @@ msgstr "Text"
 msgid "SRT"
 msgstr "SRT"
 
-#: src/lib/components/whisper/TranscriptionResult.svelte
-msgid "<0/> Copied!"
-msgstr "<0/> Kopierat!"
+#~ msgid "<0/> Copied!"
+#~ msgstr "<0/> Kopierat!"
 
 #: src/lib/components/whisper/TranscriptionResult.svelte
 msgid "<0/> Copy"
 msgstr "<0/> Kopiera"
 
-#: src/routes/[[lang]]/transcribe/+page.svelte
-msgid "Whisper Audio Transcription"
-msgstr "Whisper ljudtranskription"
+#~ msgid "Whisper Audio Transcription"
+#~ msgstr "Whisper ljudtranskription"
 
-#: src/routes/[[lang]]/transcribe/+page.svelte
-msgid "<0/> Transcribing..."
-msgstr "<0/> Transkriberar..."
+#~ msgid "<0/> Transcribing..."
+#~ msgstr "<0/> Transkriberar..."
 
 #: src/routes/[[lang]]/transcribe/+page.svelte
 msgid "<0/> Start Transcription"
@@ -716,15 +688,18 @@ msgstr "1 token ≈ 4 tecken på engelska"
 #~ "Olika modeller använder olika tokeniseringsmetoder, så samma text kan resultera i olika\n"
 #~ "antal tokens."
 
-#~ msgid "Failed to load model. Please check your connection and try again."
-#~ msgstr "Misslyckades att ladda modell. Kontrollera din anslutning och försök igen."
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "Failed to load model. Please check your connection and try again."
+msgstr "Misslyckades att ladda modell. Kontrollera din anslutning och försök igen."
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/[[lang]]/chat/+page.svelte
 msgid "Loading Model"
 msgstr "Laddar modell"
 
-#~ msgid "This will take a couple of minutes. The chat model is being downloaded to your browser."
-#~ msgstr "Detta tar några minuter. Chattmodellen laddas ner till din webbläsare."
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "This will take a couple of minutes. The chat model is being downloaded to your browser."
+msgstr "Detta tar några minuter. Chattmodellen laddas ner till din webbläsare."
 
 #~ msgid "New <0>Chat</0>"
 #~ msgstr "Ny <0>chatt</0>"
@@ -807,6 +782,7 @@ msgstr "Språkinställningar"
 msgid "Small and fast"
 msgstr "Liten och snabb"
 
+#: src/lib/components/chat/ModelSelector.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Runs on most devices"
 msgstr "Körs på de flesta enheter"
@@ -819,10 +795,8 @@ msgstr "Stor, mycket långsam modell"
 msgid "Generally provides better results"
 msgstr "Ger generellt bättre resultat"
 
-#. placeholder {0}: getAvailableModels().find((m) => m.id === selectedModelId)?.name
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Background Remover ({0})"
-msgstr "Bakgrundsborttagare ({0})"
+#~ msgid "Background Remover ({0})"
+#~ msgstr "Bakgrundsborttagare ({0})"
 
 #: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Loading Background Removal Model"
@@ -832,29 +806,23 @@ msgstr "Laddar bakgrundsborttagningsmodell"
 msgid "The AI model is being downloaded and initialized. This may take a few moments."
 msgstr "AI-modellen laddas ner och initialiseras. Detta kan ta några ögonblick."
 
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Restart"
-msgstr "Starta om"
+#~ msgid "Restart"
+#~ msgstr "Starta om"
 
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Model Selection"
-msgstr "Modellval"
+#~ msgid "Model Selection"
+#~ msgstr "Modellval"
 
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Processing Mode"
-msgstr "Bearbetningsläge"
+#~ msgid "Processing Mode"
+#~ msgstr "Bearbetningsläge"
 
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "<0/> Single Image"
-msgstr "<0/> Enkel bild"
+#~ msgid "<0/> Single Image"
+#~ msgstr "<0/> Enkel bild"
 
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "<0/> Multiple images"
-msgstr "<0/> Flera bilder"
+#~ msgid "<0/> Multiple images"
+#~ msgstr "<0/> Flera bilder"
 
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Upload Images"
-msgstr "Ladda upp bilder"
+#~ msgid "Upload Images"
+#~ msgstr "Ladda upp bilder"
 
 #: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Try Again"
@@ -868,13 +836,11 @@ msgstr "Text kopierad till urklipp!"
 msgid "Text to Speech Studio"
 msgstr "Text-till-tal-studio"
 
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "<0/> Welcome to TTS Studio"
-msgstr "<0/> Välkommen till TTS-studion"
+#~ msgid "<0/> Welcome to TTS Studio"
+#~ msgstr "<0/> Välkommen till TTS-studion"
 
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Generate high-quality speech from text, all running locally in your browser!"
-msgstr "Generera högkvalitativt tal från text, allt körs lokalt i din webbläsare!"
+#~ msgid "Generate high-quality speech from text, all running locally in your browser!"
+#~ msgstr "Generera högkvalitativt tal från text, allt körs lokalt i din webbläsare!"
 
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Loading TTS Model"
@@ -884,26 +850,20 @@ msgstr "Laddar TTS-modell"
 msgid "Initializing text-to-speech model..."
 msgstr "Initialiserar text-till-tal-modell..."
 
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Enter Your Text"
-msgstr "Ange din text"
+#~ msgid "Enter Your Text"
+#~ msgstr "Ange din text"
 
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Get random Svelte quote"
-msgstr "Få slumpmässigt Svelte-citat"
+#~ msgid "Get random Svelte quote"
+#~ msgstr "Få slumpmässigt Svelte-citat"
 
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Type or paste your text here..."
-msgstr "Skriv eller klistra in din text här..."
+#~ msgid "Type or paste your text here..."
+#~ msgstr "Skriv eller klistra in din text här..."
 
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Voice:"
-msgstr "Röst:"
+#~ msgid "Voice:"
+#~ msgstr "Röst:"
 
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Generating"
-msgstr "Genererar"
+#~ msgid "Generating"
+#~ msgstr "Genererar"
 
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Pause"
@@ -913,13 +873,11 @@ msgstr "Pausa"
 msgid "Play"
 msgstr "Spela"
 
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Generate"
-msgstr "Generera"
+#~ msgid "Generate"
+#~ msgstr "Generera"
 
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Download Audio"
-msgstr "Ladda ner ljud"
+#~ msgid "Download Audio"
+#~ msgstr "Ladda ner ljud"
 
 #: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 msgid "OpenAI ChatGPT Tokenizer"
@@ -964,12 +922,10 @@ msgstr "Token-ID: {0}"
 
 #: src/lib/components/count-tokens/TextInputSection.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Copied!"
 msgstr "Kopierad!"
 
 #: src/lib/components/count-tokens/TextInputSection.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Copy text"
 msgstr "Kopiera text"
@@ -1044,11 +1000,13 @@ msgstr "Claude använder en BPE (Byte Pair Encoding) tokenizer liknande GPT-mode
 msgid "Special characters and code may use more tokens"
 msgstr "Specialtecken och kod kan använda fler tokens"
 
-#~ msgid "Reloading..."
-#~ msgstr "Laddar om..."
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "Reloading..."
+msgstr "Laddar om..."
 
-#~ msgid "Reload Model"
-#~ msgstr "Ladda om modell"
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "Reload Model"
+msgstr "Ladda om modell"
 
 #: src/lib/components/common/AdvancedSection.svelte
 msgid "Advanced Parameters"
@@ -1083,6 +1041,7 @@ msgstr "FP16"
 
 #: src/lib/components/Footer.svelte
 #: src/routes/+layout.svelte
+#: src/routes/[[lang]]/transcribe/+page.svelte
 msgid "Transcribe"
 msgstr "Transkribera"
 
@@ -1567,6 +1526,7 @@ msgstr ""
 msgid "Processing..."
 msgstr ""
 
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/+layout.svelte
 msgid "Escape"
 msgstr ""
@@ -1576,6 +1536,7 @@ msgid "Close menu"
 msgstr "Stäng meny"
 
 #: src/lib/components/Footer.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/+layout.svelte
 #: src/routes/+layout.svelte
 msgid "Home"
@@ -1675,9 +1636,8 @@ msgid ""
 "one character or as long as one word. On average:"
 msgstr ""
 
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "Chat with AI Models"
-msgstr ""
+#~ msgid "Chat with AI Models"
+#~ msgstr ""
 
 #~ msgid "All processing happens locally — no data leaves your browser."
 #~ msgstr ""
@@ -1817,13 +1777,11 @@ msgstr ""
 msgid "© {0} Nook"
 msgstr ""
 
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "Choose Your AI Model"
-msgstr ""
+#~ msgid "Choose Your AI Model"
+#~ msgstr ""
 
-#: src/lib/components/tts/ModelSwitcher.svelte
-msgid "Text-to-speech Model"
-msgstr ""
+#~ msgid "Text-to-speech Model"
+#~ msgstr ""
 
 #: src/routes/[[lang]]/+page.svelte
 msgid ""
@@ -1835,4 +1793,185 @@ msgstr ""
 msgid ""
 "All processing happens locally in your browser using WebAssembly. No data is sent to external\n"
 "servers."
+msgstr ""
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Loading…"
+msgstr ""
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "<0/> Ready"
+msgstr ""
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Changing…"
+msgstr ""
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Change"
+msgstr ""
+
+#: src/lib/components/whisper/TranscribeOptions.svelte
+msgid "<0/> Upload file"
+msgstr ""
+
+#: src/lib/components/whisper/TranscribeOptions.svelte
+msgid "<0/> Record"
+msgstr ""
+
+#: src/lib/components/whisper/TranscribeOptions.svelte
+msgid "<0/> Demo"
+msgstr ""
+
+#: src/lib/components/whisper/TranscribeOptions.svelte
+msgid "A sample audio file will be transcribed. <0>Listen →</0>"
+msgstr ""
+
+#: src/lib/components/whisper/TranscriptionResult.svelte
+msgid "<0/> Output"
+msgstr ""
+
+#: src/lib/components/whisper/TranscriptionResult.svelte
+msgid "<0/> Copied"
+msgstr ""
+
+#: src/lib/components/whisper/TranscriptionProgress.svelte
+msgid "Transcribing…"
+msgstr ""
+
+#: src/lib/components/whisper/TranscriptionProgress.svelte
+msgid "Current segment"
+msgstr ""
+
+#: src/lib/components/whisper/TranscriptionProgress.svelte
+msgid "<0/> Transcription seems stuck. <1>Reload page</1>"
+msgstr ""
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Background Remover"
+msgstr ""
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "AI-powered background removal, running locally in your browser."
+msgstr ""
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Model"
+msgstr ""
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Mode"
+msgstr ""
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Single"
+msgstr ""
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Multiple"
+msgstr ""
+
+#: src/routes/[[lang]]/transcribe/+page.svelte
+msgid "Whisper runs locally in your browser. No uploads."
+msgstr ""
+
+#: src/routes/[[lang]]/transcribe/+page.svelte
+msgid "<0/> Transcribing…"
+msgstr ""
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "ArrowDown"
+msgstr ""
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "ArrowUp"
+msgstr ""
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "End"
+msgstr ""
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Tab"
+msgstr ""
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Select model"
+msgstr ""
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Models"
+msgstr ""
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Generate high-quality speech from text, running locally in your browser."
+msgstr ""
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Your Text"
+msgstr ""
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Get random quote"
+msgstr ""
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Type or paste your text here…"
+msgstr ""
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Voice"
+msgstr ""
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Generating…"
+msgstr ""
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Generate Speech"
+msgstr ""
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Download"
+msgstr ""
+
+#: src/lib/components/chat/ModelSelector.svelte
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "Choose a Model"
+msgstr ""
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "24MB · Edge devices"
+msgstr ""
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "75MB · Fast & clear"
+msgstr ""
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "80MB · Highest quality"
+msgstr ""
+
+#: src/lib/components/tts/SpeedControl.svelte
+msgid "Speed"
+msgstr ""
+
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "Chat with AI"
+msgstr ""
+
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "Run language models locally in your browser — no data leaves your device."
+msgstr ""
+
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "New Chat"
+msgstr ""
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "<0/> Loading…"
 msgstr ""

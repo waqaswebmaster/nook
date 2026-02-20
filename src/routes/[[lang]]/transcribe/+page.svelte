@@ -14,11 +14,6 @@
 	import TranscribeOptions from '$lib/components/whisper/TranscribeOptions.svelte';
 	import TranscriptionProgress from '$lib/components/whisper/TranscriptionProgress.svelte';
 	import TranscriptionResult from '$lib/components/whisper/TranscriptionResult.svelte';
-	import CardInterface from '$lib/components/common/CardInterface.svelte';
-	import Toolbar from '$lib/components/common/Toolbar.svelte';
-	import ContentArea from '$lib/components/common/ContentArea.svelte';
-	import InputArea from '$lib/components/common/InputArea.svelte';
-	import PrimaryButton from '$lib/components/common/PrimaryButton.svelte';
 
 	let isReady = $state(false);
 	let isLoading = $state(false);
@@ -282,27 +277,34 @@
 	});
 </script>
 
-<CardInterface>
-	<Toolbar modelInfo="Whisper Audio Transcription" />
+<div class="page-container">
+	<header class="page-header">
+		<h1>Transcribe</h1>
+		<p>Whisper runs locally in your browser. No uploads.</p>
+	</header>
 
-	<ContentArea>
-		<WhisperModelSelector
-			bind:selectedModel
-			{availableModels}
-			{isLoading}
-			{isReady}
-			loadedModel={$whisperModel}
-			{error}
-			{downloadProgress}
-			{previousDownloadProgress}
-			{usingCachedModel}
-			{hasProgressTracking}
-			onLoadModel={loadModel}
-			onChangeModel={changeModel}
-			onRetry={retry}
-		/>
+	<div class="page-content">
+		<!-- Section A: Model -->
+		<section class="panel">
+			<WhisperModelSelector
+				bind:selectedModel
+				{availableModels}
+				{isLoading}
+				{isReady}
+				loadedModel={$whisperModel}
+				{error}
+				{downloadProgress}
+				{previousDownloadProgress}
+				{usingCachedModel}
+				{hasProgressTracking}
+				onLoadModel={loadModel}
+				onChangeModel={changeModel}
+				onRetry={retry}
+			/>
+		</section>
 
-		<div class="main-content" class:disabled={!isReady}>
+		<!-- Section B: Audio Input -->
+		<section class="panel" class:disabled={!isReady}>
 			<TranscribeOptions
 				bind:transcribeMode
 				bind:selectedFile
@@ -310,8 +312,11 @@
 				onModeChange={handleModeChange}
 				disabled={!isReady}
 			/>
+		</section>
 
-			{#if isTranscribing}
+		<!-- Section C: Output -->
+		{#if isTranscribing}
+			<section class="panel">
 				<TranscriptionProgress
 					progress={transcribeProgress}
 					{previousProgress}
@@ -319,64 +324,126 @@
 					{isStuck}
 					onReload={reloadPage}
 				/>
-			{:else if text}
+			</section>
+		{:else if text}
+			<section class="panel">
 				<TranscriptionResult {text} {transcriptionData} />
-			{/if}
+			</section>
+		{/if}
+
+		<!-- Action -->
+		<div class="action-row">
+			<button
+				class="transcribe-btn"
+				onclick={transcribe}
+				disabled={!isReady ||
+					isTranscribing ||
+					((transcribeMode === 'upload' || transcribeMode === 'record') && !selectedFile)}
+			>
+				{#if isTranscribing}
+					<SquareSpinner class="loading-spinner" />
+					Transcribing…
+				{:else}
+					<span class="btn-icon"><PlayIcon /></span>
+					Start Transcription
+				{/if}
+			</button>
 		</div>
-	</ContentArea>
 
-	<InputArea disabled={!isReady}>
-		<PrimaryButton
-			onClick={transcribe}
-			disabled={!isReady ||
-				isTranscribing ||
-				((transcribeMode === 'upload' || transcribeMode === 'record') && !selectedFile)}
-			loading={isTranscribing}
-			variant="success"
-			size="large"
-			fullWidth
-		>
-			{#if isTranscribing}
-				<SquareSpinner class="loading-spinner" />
-				Transcribing...
-			{:else}
-				<span class="button-icon"><PlayIcon /></span>
-				Start Transcription
-			{/if}
-		</PrimaryButton>
-
-		<div class="disclaimer">
+		<p class="disclaimer">
 			<span class="disclaimer-icon"><LockIcon /></span>
 			Transcription is performed locally in your browser. Results may not always be accurate.
-		</div>
-	</InputArea>
-</CardInterface>
+		</p>
+	</div>
+</div>
 
 <style>
-	.main-content {
+	.page-container {
+		max-width: 720px;
+		margin: 0 auto;
+		padding: var(--sp-6) var(--sp-4);
+	}
+
+	.page-header {
+		margin-bottom: var(--sp-6);
+	}
+
+	.page-header h1 {
+		font-size: 1.75rem;
+		font-weight: 700;
+		color: var(--color-text-primary);
+		margin: 0 0 var(--sp-1) 0;
+	}
+
+	.page-header p {
+		margin: 0;
+		font-size: 0.9375rem;
+		color: var(--color-text-secondary);
+	}
+
+	.page-content {
+		display: flex;
+		flex-direction: column;
+		gap: var(--sp-5);
+	}
+
+	.panel {
+		background: var(--color-background-primary);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		padding: var(--sp-5);
 		transition: opacity 0.25s ease;
 	}
 
-	.main-content.disabled {
-		opacity: 0.35;
+	.panel.disabled {
+		opacity: 0.4;
 		pointer-events: none;
 	}
 
-	.button-icon {
-		font-size: 1.25rem;
+	.action-row {
 		display: flex;
-		align-items: center;
-		color: #fff;
+		justify-content: flex-end;
 	}
 
-	.button-icon :global(svg) {
-		width: 1.25rem;
-		height: 1.25rem;
+	.transcribe-btn {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--sp-2);
+		padding: var(--sp-2) var(--sp-5);
+		font-size: 0.9375rem;
+		font-weight: 600;
+		color: #fff;
+		background: var(--color-primary);
+		border: none;
+		border-radius: var(--radius-md);
+		cursor: pointer;
+		transition:
+			background 0.15s ease,
+			opacity 0.15s ease;
+	}
+
+	.transcribe-btn:hover:not(:disabled) {
+		background: var(--color-primary-hover);
+	}
+
+	.transcribe-btn:disabled {
+		opacity: 0.45;
+		cursor: not-allowed;
+	}
+
+	.btn-icon {
+		display: flex;
+		align-items: center;
+		font-size: 1.125rem;
+	}
+
+	.btn-icon :global(svg) {
+		width: 1.125rem;
+		height: 1.125rem;
 	}
 
 	:global(.loading-spinner) {
 		color: #fff;
-		margin-right: var(--sp-2);
 	}
 
 	.disclaimer {
@@ -384,35 +451,42 @@
 		align-items: center;
 		justify-content: center;
 		gap: var(--sp-2);
-		margin-top: var(--sp-3);
 		font-size: 0.8125rem;
-		font-weight: 500;
 		color: var(--color-text-tertiary);
 		text-align: center;
-		background: var(--color-background-secondary);
-		padding: var(--sp-2) var(--sp-3);
-		border-radius: var(--radius-md);
-		width: fit-content;
-		margin-left: auto;
-		margin-right: auto;
 	}
 
 	.disclaimer-icon {
-		font-size: 1rem;
 		display: flex;
 		align-items: center;
-		color: var(--color-text-tertiary);
+		font-size: 0.875rem;
 	}
 
 	.disclaimer-icon :global(svg) {
-		width: 1rem;
-		height: 1rem;
+		width: 0.875rem;
+		height: 0.875rem;
 	}
 
-	@media (max-width: 768px) {
-		.disclaimer {
-			font-size: 0.75rem;
-			padding: var(--sp-2);
+	@media (max-width: 640px) {
+		.page-container {
+			padding: var(--sp-4) var(--sp-3);
+		}
+
+		.page-header h1 {
+			font-size: 1.375rem;
+		}
+
+		.panel {
+			padding: var(--sp-4);
+		}
+
+		.action-row {
+			justify-content: stretch;
+		}
+
+		.transcribe-btn {
+			width: 100%;
+			justify-content: center;
 		}
 	}
 </style>

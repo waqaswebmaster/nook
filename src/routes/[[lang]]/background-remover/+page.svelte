@@ -3,9 +3,6 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { useWakeLock } from '$lib/wakeLock.svelte';
 	import JSZip from 'jszip';
-	import ImageIcon from 'virtual:icons/lucide/image';
-	import RefreshCcwIcon from 'virtual:icons/lucide/refresh-ccw';
-	import FolderIcon from 'virtual:icons/lucide/folder';
 
 	import BackgroundRemoverUpload from '$lib/components/background-remover/BackgroundRemoverUpload.svelte';
 	import BackgroundRemoverProgress from '$lib/components/background-remover/BackgroundRemoverProgress.svelte';
@@ -13,12 +10,7 @@
 	import BackgroundRemoverBatchResult from '$lib/components/background-remover/BackgroundRemoverBatchResult.svelte';
 	import LoadingProgress from '$lib/components/common/LoadingProgress.svelte';
 	import ErrorDisplay from '$lib/components/common/ErrorDisplay.svelte';
-	import CardInterface from '$lib/components/common/CardInterface.svelte';
-	import Toolbar from '$lib/components/common/Toolbar.svelte';
-	import ContentArea from '$lib/components/common/ContentArea.svelte';
-	import SectionCard from '$lib/components/common/SectionCard.svelte';
-	import StepHeader from '$lib/components/common/StepHeader.svelte';
-	import ActionButton from '$lib/components/common/ActionButton.svelte';
+	import SegmentedControl from '$lib/components/common/SegmentedControl.svelte';
 	import { BASE_MODEL_URL } from '$lib/config';
 
 	let isModelLoaded = $state(false);
@@ -59,11 +51,6 @@
 	};
 
 	let selectedModelId = $state('RMBG-1.4');
-
-	// Computed model info for display
-	let modelInfo = $derived(
-		`Background Remover (${getAvailableModels().find((m) => m.id === selectedModelId)?.name})`
-	);
 
 	// Single image mode
 	let selectedFile: File | null = $state(null);
@@ -473,97 +460,76 @@
 </script>
 
 {#if !isModelLoaded}
-	<div class="loading">
-		{#if error}
-			<ErrorDisplay
-				message={errorMessage}
-				buttonText={isLoadingModel ? 'Loading...' : 'Retry'}
-				onRetry={retry}
-				isRetrying={isLoadingModel}
-			/>
-		{:else if isLoadingModel}
-			<LoadingProgress
-				title="Loading Background Removal Model"
-				progress={modelLoadProgress}
-				message="The AI model is being downloaded and initialized. This may take a few moments."
-			/>
-		{/if}
+	<div class="page-container">
+		<header class="page-header">
+			<h1>Background Remover</h1>
+			<p>AI-powered background removal, running locally in your browser.</p>
+		</header>
+		<div class="loading-panel">
+			{#if error}
+				<ErrorDisplay
+					message={errorMessage}
+					buttonText={isLoadingModel ? 'Loading...' : 'Retry'}
+					onRetry={retry}
+					isRetrying={isLoadingModel}
+				/>
+			{:else if isLoadingModel}
+				<LoadingProgress
+					title="Loading Background Removal Model"
+					progress={modelLoadProgress}
+					message="The AI model is being downloaded and initialized. This may take a few moments."
+				/>
+			{/if}
+		</div>
 	</div>
 {:else}
-	<CardInterface>
-		<Toolbar {modelInfo} ModelIcon={ImageIcon}>
-			{#if (processingMode === 'single' && processedImageUrl) || (processingMode === 'batch' && batchResults.length > 0)}
-				<ActionButton onClick={clearResults} variant="danger" Icon={RefreshCcwIcon}
-					>Restart</ActionButton
-				>
-			{/if}
-		</Toolbar>
+	<div class="page-container">
+		<header class="page-header">
+			<h1>Background Remover</h1>
+			<p>AI-powered background removal, running locally in your browser.</p>
+		</header>
 
-		<ContentArea>
-			<!-- Model Selection -->
+		<div class="page-content">
+			<!-- Config row: model + mode -->
 			{#if !isProcessing && !processedImageUrl && batchResults.length === 0}
-				<SectionCard rotation={0.2} animationDelay={0}>
-					<StepHeader
-						stepNumber={1}
-						title="Model Selection"
-						backgroundColor="var(--color-accent-red)"
-					/>
-					<div class="model-buttons">
-						{#each getAvailableModels() as modelOption (modelOption.id)}
-							<button
-								class="model-btn"
-								class:active={selectedModelId === modelOption.id}
-								onclick={() => handleModelChange(modelOption.id)}
+				<section class="panel config-panel">
+					<div class="config-row">
+						<div class="config-group">
+							<span class="config-label">Model</span>
+							<SegmentedControl
+								options={getAvailableModels().map((m) => ({ value: m.id, label: m.name }))}
+								bind:value={selectedModelId}
+								onchange={(v) => handleModelChange(v)}
 								disabled={isLoadingModel}
-							>
-								<span class="model-name">{modelOption.name}</span>
-								<div class="model-badges">
-									<span class="model-size">{modelOption.size}</span>
-									<span class="model-precision">{modelOption.precision}</span>
-								</div>
-								<div class="model-description">
-									{#each modelOption.description as line, index (index)}
-										<div>{line}</div>
-									{/each}
-								</div>
-							</button>
-						{/each}
+							/>
+						</div>
+						<div class="config-group">
+							<span class="config-label">Mode</span>
+							<SegmentedControl
+								options={[
+									{ value: 'single', label: 'Single' },
+									{ value: 'batch', label: 'Multiple' }
+								]}
+								bind:value={processingMode}
+								onchange={(v) => switchMode(v as 'single' | 'batch')}
+							/>
+						</div>
 					</div>
-				</SectionCard>
-			{/if}
 
-			<!-- Mode Selection -->
-			{#if !isProcessing && !processedImageUrl && batchResults.length === 0}
-				<SectionCard rotation={-0.3} animationDelay={0.1}>
-					<StepHeader stepNumber={2} title="Processing Mode" />
-					<div class="mode-buttons">
-						<button
-							class="mode-btn"
-							class:active={processingMode === 'single'}
-							onclick={() => switchMode('single')}
-						>
-							<span class="mode-icon"><ImageIcon /></span>
-							Single Image
-						</button>
-						<button
-							class="mode-btn"
-							class:active={processingMode === 'batch'}
-							onclick={() => switchMode('batch')}
-						>
-							<span class="mode-icon"><FolderIcon /></span>
-							Multiple images
-						</button>
-					</div>
-				</SectionCard>
-			{/if}
+					{#if selectedModelId}
+						{@const model = getAvailableModels().find((m) => m.id === selectedModelId)}
+						{#if model}
+							<p class="model-meta">
+								{model.size} &middot; {model.precision}
+								{#each model.description as line}&middot; {line}
+								{/each}
+							</p>
+						{/if}
+					{/if}
+				</section>
 
-			{#if !isProcessing && !processedImageUrl && batchResults.length === 0}
-				<SectionCard rotation={-0.1} animationDelay={0.2}>
-					<StepHeader
-						stepNumber={3}
-						title="Upload Images"
-						backgroundColor="var(--color-accent-primary-alpha)"
-					/>
+				<!-- Upload -->
+				<section class="panel">
 					<BackgroundRemoverUpload
 						mode={processingMode}
 						{selectedFile}
@@ -573,16 +539,18 @@
 						onExampleUse={handleExampleUse}
 						disabled={isProcessing}
 					/>
-				</SectionCard>
+				</section>
 			{/if}
 
 			{#if isProcessing}
-				<BackgroundRemoverProgress
-					progress={processingProgress}
-					message={processingMode === 'single'
-						? 'Processing image and removing background...'
-						: `Processing image ${currentBatchIndex} of ${totalBatchCount}...`}
-				/>
+				<section class="panel">
+					<BackgroundRemoverProgress
+						progress={processingProgress}
+						message={processingMode === 'single'
+							? 'Processing image and removing background...'
+							: `Processing image ${currentBatchIndex} of ${totalBatchCount}...`}
+					/>
+				</section>
 			{/if}
 
 			{#if error}
@@ -590,42 +558,64 @@
 			{/if}
 
 			{#if processingMode === 'single' && processedImageUrl && originalImageUrl && !isProcessing}
-				<BackgroundRemoverResult
-					{originalImageUrl}
-					{processedImageUrl}
-					onProcessAnother={clearResults}
-				/>
+				<section class="panel">
+					<BackgroundRemoverResult
+						{originalImageUrl}
+						{processedImageUrl}
+						onProcessAnother={clearResults}
+					/>
+				</section>
 			{/if}
 
 			{#if processingMode === 'batch' && batchResults.length > 0 && !isProcessing}
-				<BackgroundRemoverBatchResult
-					{batchResults}
-					onProcessAnother={clearResults}
-					onDownloadZip={downloadBatchAsZip}
-				/>
+				<section class="panel">
+					<BackgroundRemoverBatchResult
+						{batchResults}
+						onProcessAnother={clearResults}
+						onDownloadZip={downloadBatchAsZip}
+					/>
+				</section>
 			{/if}
-		</ContentArea>
-	</CardInterface>
+		</div>
+	</div>
 {/if}
 
 <style>
-	.loading {
+	.page-container {
+		max-width: 720px;
+		margin: 0 auto;
+		padding: var(--sp-6) var(--sp-4);
+	}
+
+	.page-header {
+		margin-bottom: var(--sp-6);
+	}
+
+	.page-header h1 {
+		font-size: 1.75rem;
+		font-weight: 700;
+		color: var(--color-text-primary);
+		margin: 0 0 var(--sp-1) 0;
+	}
+
+	.page-header p {
+		margin: 0;
+		font-size: 0.9375rem;
+		color: var(--color-text-secondary);
+	}
+
+	.loading-panel {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: var(--sp-6);
-		margin: var(--sp-6) 0;
-		animation: fadeIn 0.35s ease-out;
-		width: 100%;
-		box-sizing: border-box;
-		overflow-x: hidden;
-		padding: 0;
+		gap: var(--sp-4);
+		animation: fadeIn 0.25s ease-out;
 	}
 
 	@keyframes fadeIn {
 		from {
 			opacity: 0;
-			transform: translateY(10px);
+			transform: translateY(6px);
 		}
 		to {
 			opacity: 1;
@@ -633,166 +623,68 @@
 		}
 	}
 
-	/* Mode Selection */
-	.mode-buttons {
-		display: flex;
-		gap: var(--sp-3);
-		justify-content: center;
-	}
-
-	.mode-btn {
+	.page-content {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
-		gap: var(--sp-2);
-		padding: var(--sp-4);
-		background: var(--color-card);
-		border: 1px solid var(--color-border-light);
+		gap: var(--sp-5);
+	}
+
+	.panel {
+		background: var(--color-background-primary);
+		border: 1px solid var(--color-border);
 		border-radius: var(--radius-lg);
-		cursor: pointer;
-		font-size: 0.875rem;
-		font-weight: 600;
-		transition: all var(--transition-fast);
-		font-family: var(--font-family-primary);
-		box-shadow: var(--shadow-xs);
-		min-width: 140px;
-		color: var(--color-text-primary);
+		padding: var(--sp-5);
 	}
 
-	.mode-btn:hover {
-		border-color: var(--color-primary);
-		box-shadow: var(--shadow-sm);
-		transform: translateY(-1px);
-	}
-
-	.mode-btn.active {
-		background: var(--color-primary-subtle);
-		border-color: var(--color-primary);
-		box-shadow: 0 0 0 3px var(--color-primary-subtle);
-	}
-
-	.mode-btn.active:hover {
-		background: var(--color-primary-subtle);
-	}
-
-	.mode-icon {
-		font-size: 1.5rem;
-		display: flex;
-		align-items: center;
-		color: var(--color-text-secondary);
-	}
-
-	.mode-btn.active .mode-icon {
-		color: var(--color-primary);
-	}
-
-	.mode-icon :global(svg) {
-		width: 1.5rem;
-		height: 1.5rem;
-	}
-
-	/* Model Selection */
-	.model-buttons {
-		display: flex;
-		gap: var(--sp-3);
-		justify-content: center;
-	}
-
-	.model-btn {
+	/* Config section */
+	.config-panel {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
-		gap: var(--sp-2);
-		padding: var(--sp-4);
-		background: var(--color-card);
-		border: 1px solid var(--color-border-light);
-		border-radius: var(--radius-lg);
-		cursor: pointer;
-		font-size: 0.875rem;
-		font-weight: 500;
-		transition: all var(--transition-fast);
-		font-family: var(--font-family-primary);
-		box-shadow: var(--shadow-xs);
-		min-width: 160px;
-		text-align: center;
-		color: var(--color-text-primary);
+		gap: var(--sp-3);
 	}
 
-	.model-btn:disabled {
-		opacity: 0.5;
-		cursor: not-allowed;
-	}
-
-	.model-btn:not(:disabled):hover {
-		border-color: var(--color-primary);
-		box-shadow: var(--shadow-sm);
-		transform: translateY(-1px);
-	}
-
-	.model-btn.active {
-		background: var(--color-primary-subtle);
-		border-color: var(--color-primary);
-		box-shadow: 0 0 0 3px var(--color-primary-subtle);
-	}
-
-	.model-btn.active:not(:disabled):hover {
-		background: var(--color-primary-subtle);
-	}
-
-	.model-name {
-		font-size: 1rem;
-		font-weight: 700;
-		color: var(--color-text-primary);
-	}
-
-	.model-badges {
+	.config-row {
 		display: flex;
-		gap: var(--sp-2);
-		justify-content: center;
+		gap: var(--sp-5);
 		flex-wrap: wrap;
 	}
 
-	.model-size {
-		font-size: 0.75rem;
-		font-weight: 600;
-		color: var(--color-text-secondary);
-		background: var(--color-background-secondary);
-		padding: 0.125rem var(--sp-2);
-		border-radius: var(--radius-sm);
+	.config-group {
+		display: flex;
+		flex-direction: column;
+		gap: var(--sp-2);
 	}
 
-	.model-precision {
+	.config-label {
 		font-size: 0.75rem;
 		font-weight: 600;
-		color: #fff;
-		background: var(--color-primary);
-		padding: 0.125rem var(--sp-2);
-		border-radius: var(--radius-sm);
-	}
-
-	.model-description {
-		font-size: 0.75rem;
 		color: var(--color-text-tertiary);
-		font-weight: 400;
-		line-height: 1.3;
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
 	}
 
-	@media (max-width: 768px) {
-		.loading {
-			align-items: stretch;
-			margin: var(--sp-3) 0;
+	.model-meta {
+		margin: 0;
+		font-size: 0.8125rem;
+		color: var(--color-text-tertiary);
+	}
+
+	@media (max-width: 640px) {
+		.page-container {
+			padding: var(--sp-4) var(--sp-3);
 		}
 
-		.mode-buttons,
-		.model-buttons {
+		.page-header h1 {
+			font-size: 1.375rem;
+		}
+
+		.panel {
+			padding: var(--sp-4);
+		}
+
+		.config-row {
 			flex-direction: column;
-			gap: var(--sp-2);
-		}
-
-		.mode-btn,
-		.model-btn {
-			min-width: auto;
-			width: 100%;
+			gap: var(--sp-4);
 		}
 	}
 </style>

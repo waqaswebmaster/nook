@@ -14,16 +14,13 @@
 	import DownloadIcon from 'virtual:icons/lucide/download';
 	import CopyIcon from 'virtual:icons/lucide/copy';
 	import CheckIcon from 'virtual:icons/lucide/check';
-	import SparklesIcon from 'virtual:icons/lucide/sparkles';
 	import DicesIcon from 'virtual:icons/lucide/dices';
 	import TrashIcon from 'virtual:icons/lucide/trash';
 	import LoaderIcon from 'virtual:icons/lucide/loader';
 
-	import CardInterface from '$lib/components/common/CardInterface.svelte';
-	import Toolbar from '$lib/components/common/Toolbar.svelte';
-	import ContentArea from '$lib/components/common/ContentArea.svelte';
 	import LoadingProgress from '$lib/components/common/LoadingProgress.svelte';
 	import ErrorDisplay from '$lib/components/common/ErrorDisplay.svelte';
+	import PageHeader from '$lib/components/common/PageHeader.svelte';
 
 	import AudioChunk from '$lib/components/tts/AudioChunk.svelte';
 	import ModelSwitcher from '$lib/components/tts/ModelSwitcher.svelte';
@@ -387,27 +384,25 @@
 	});
 </script>
 
-<CardInterface>
-	<Toolbar modelInfo="Text to Speech Studio" ModelIcon={MicIcon} />
+<div class="page-container">
+	<PageHeader
+		title="Text to Speech Studio"
+		subtitle="Generate high-quality speech from text, running locally in your browser."
+		Icon={MicIcon}
+	/>
 
-	<ContentArea>
-		<div class="tts-container">
-			<div class="model-selection-intro">
-				<h2>
-					<span class="title-icon"><SparklesIcon /></span>
-					Welcome to TTS Studio
-				</h2>
-				<p>Generate high-quality speech from text, all running locally in your browser!</p>
-			</div>
-
-			<!-- Model Selection -->
+	<div class="page-content">
+		<!-- Step 1: Model Selection -->
+		<section class="panel">
 			<ModelSwitcher
 				selectedModel={$ttsModel}
 				onModelChange={handleModelChange}
 				loading={status === 'loading'}
 			/>
+		</section>
 
-			{#if status === 'loading'}
+		{#if status === 'loading'}
+			<section class="panel">
 				<LoadingProgress
 					title="Loading TTS Model"
 					progress={0}
@@ -415,278 +410,230 @@
 					showPercentage={false}
 					mode="spinner"
 				/>
-			{:else if status === 'error'}
+			</section>
+		{:else if status === 'error'}
+			<section class="panel">
 				<ErrorDisplay
 					message={error || 'Failed to load model'}
 					buttonText="Retry"
 					onRetry={() => restartWorker()}
 				/>
-			{:else if status !== 'waiting'}
-				<!-- Text Input Section -->
-				<div class="text-input-section">
-					<div class="section-header">
-						<div class="title-and-icons">
-							<h3>Enter Your Text</h3>
-							<div class="button-group mobile-icons">
-								<button
-									class="dice-button"
-									onclick={handleGetRandomQuote}
-									title="Get random Svelte quote"
-								>
-									<DicesIcon />
-								</button>
-								<button
-									class="copy-button"
-									onclick={handleCopy}
-									title={copied ? 'Copied!' : 'Copy text'}
-									disabled={!text}
-								>
-									{#if copied}
-										<CheckIcon />
-									{:else}
-										<CopyIcon />
-									{/if}
-								</button>
-								<button class="clear-button" onclick={handleClear} title="Clear text">
-									<TrashIcon />
-								</button>
-							</div>
-						</div>
-						<div class="stats-and-buttons desktop-only">
-							<TextStatistics {text} />
-							<div class="button-group">
-								<button
-									class="dice-button"
-									onclick={handleGetRandomQuote}
-									title="Get random Svelte quote"
-								>
-									<DicesIcon />
-								</button>
-								<button
-									class="copy-button"
-									onclick={handleCopy}
-									title={copied ? 'Copied!' : 'Copy text'}
-									disabled={!text}
-								>
-									{#if copied}
-										<CheckIcon />
-									{:else}
-										<CopyIcon />
-									{/if}
-								</button>
-								<button class="clear-button" onclick={handleClear} title="Clear text">
-									<TrashIcon />
-								</button>
-							</div>
-						</div>
-					</div>
-					<div class="mobile-stats">
+			</section>
+		{:else if status !== 'waiting'}
+			<!-- Step 2: Text Input -->
+			<section class="panel">
+				<div class="panel-header">
+					<h3>Your Text</h3>
+					<div class="panel-toolbar">
 						<TextStatistics {text} />
-					</div>
-
-					<div class="text-input-wrapper">
-						<textarea
-							bind:value={text}
-							oninput={() => {
-								$ttsText = text;
-							}}
-							placeholder="Type or paste your text here..."
-							class="text-input"
-							disabled={status === 'generating'}
-						></textarea>
+						<div class="icon-group">
+							<button class="icon-btn" onclick={handleGetRandomQuote} title="Get random quote">
+								<DicesIcon />
+							</button>
+							<button
+								class="icon-btn"
+								onclick={handleCopy}
+								title={copied ? 'Copied!' : 'Copy text'}
+								disabled={!text}
+							>
+								{#if copied}
+									<CheckIcon />
+								{:else}
+									<CopyIcon />
+								{/if}
+							</button>
+							<button class="icon-btn" onclick={handleClear} title="Clear text" disabled={!text}>
+								<TrashIcon />
+							</button>
+						</div>
 					</div>
 				</div>
+				<textarea
+					bind:value={text}
+					oninput={() => {
+						$ttsText = text;
+					}}
+					placeholder="Type or paste your text here…"
+					class="text-input"
+					disabled={status === 'generating'}
+				></textarea>
+			</section>
 
-				<AdvancedParameters
-					selectedModel={$ttsModel}
-					{useWebGPU}
-					{selectedSampleRate}
-					onWebGPUToggle={handleWebGPUToggle}
-					onSampleRateChange={setSampleRate}
-				/>
-
-				<!-- Controls Section -->
-				{#if voices.length > 0}
-					<div class="controls-section">
-						<div class="controls-grid">
-							<div class="control-item">
-								<label for="voice-selector">Voice:</label>
-								<VoiceSelector
-									{voices}
-									selectedVoice={selectedVoice ?? ''}
-									onVoiceChange={setSelectedVoice}
-									onVoicePreview={handleVoicePreview}
-								/>
-							</div>
-
-							<div class="control-item">
-								<SpeedControl {speed} onSpeedChange={setSpeed} />
-							</div>
+			<!-- Step 3: Voice & Speed Controls -->
+			{#if voices.length > 0}
+				<section class="panel controls-panel">
+					<div class="controls-row">
+						<div class="control-field">
+							<label>Voice</label>
+							<VoiceSelector
+								{voices}
+								selectedVoice={selectedVoice ?? ''}
+								onVoiceChange={setSelectedVoice}
+								onVoicePreview={handleVoicePreview}
+							/>
+						</div>
+						<div class="control-field speed-field">
+							<SpeedControl {speed} onSpeedChange={setSpeed} />
 						</div>
 					</div>
-
-					<!-- Action Buttons -->
-					<div class="action-buttons">
-						<button
-							class="primary-action-btn"
-							class:playing={isPlaying}
-							onclick={handlePlayPause}
-							disabled={(status === 'ready' && !isPlaying && !text) ||
-								(status !== 'ready' && chunks.length === 0)}
-						>
-							{#if status === 'generating'}
-								<LoaderIcon />
-								<span>Generating</span>
-							{:else if isPlaying && status === 'ready'}
-								<PauseIcon />
-								<span>Pause</span>
-							{:else}
-								<PlayIcon />
-								<span>{processed ? 'Play' : 'Generate'}</span>
-							{/if}
-						</button>
-
-						<button
-							class="secondary-action-btn"
-							onclick={downloadAudio}
-							disabled={!result || status !== 'ready'}
-						>
-							<DownloadIcon />
-							<span>Download Audio</span>
-						</button>
-					</div>
-
-					<!-- Hidden Audio Chunks -->
-					<div class="hidden">
-						{#if chunks.length > 0}
-							{#each chunks as chunk, index (index)}
-								<AudioChunk
-									audio={chunk.audio}
-									active={currentChunkIndex === index}
-									playing={isPlaying}
-									onStart={() => setCurrentChunkIndex(index)}
-									onPause={() => {
-										if (currentChunkIndex === index) setIsPlaying(false);
-									}}
-									onEnd={handleChunkEnd}
-								/>
-							{/each}
-						{/if}
-					</div>
-				{/if}
+				</section>
 			{/if}
-		</div>
-	</ContentArea>
-</CardInterface>
+
+			<AdvancedParameters
+				selectedModel={$ttsModel}
+				{useWebGPU}
+				{selectedSampleRate}
+				onWebGPUToggle={handleWebGPUToggle}
+				onSampleRateChange={setSampleRate}
+			/>
+
+			<!-- Output / Actions -->
+			{#if voices.length > 0}
+				<div class="action-row">
+					<button
+						class="generate-btn"
+						class:playing={isPlaying}
+						onclick={handlePlayPause}
+						disabled={(status === 'ready' && !isPlaying && !text) ||
+							(status !== 'ready' && chunks.length === 0)}
+					>
+						{#if status === 'generating'}
+							<LoaderIcon />
+							<span>Generating…</span>
+						{:else if isPlaying && status === 'ready'}
+							<PauseIcon />
+							<span>Pause</span>
+						{:else}
+							<PlayIcon />
+							<span>{processed ? 'Play' : 'Generate Speech'}</span>
+						{/if}
+					</button>
+
+					<button
+						class="download-btn"
+						onclick={downloadAudio}
+						disabled={!result || status !== 'ready'}
+					>
+						<DownloadIcon />
+						<span>Download</span>
+					</button>
+				</div>
+
+				<!-- Hidden Audio Chunks -->
+				<div class="hidden">
+					{#if chunks.length > 0}
+						{#each chunks as chunk, index (index)}
+							<AudioChunk
+								audio={chunk.audio}
+								active={currentChunkIndex === index}
+								playing={isPlaying}
+								onStart={() => setCurrentChunkIndex(index)}
+								onPause={() => {
+									if (currentChunkIndex === index) setIsPlaying(false);
+								}}
+								onEnd={handleChunkEnd}
+							/>
+						{/each}
+					{/if}
+				</div>
+			{/if}
+		{/if}
+	</div>
+</div>
 
 <style>
-	.tts-container {
+	.page-container {
+		max-width: 760px;
+		margin: 0 auto;
+		padding: var(--sp-6) var(--sp-4);
+	}
+
+	.page-content {
 		display: flex;
 		flex-direction: column;
 		gap: var(--sp-5);
 	}
 
-	.model-selection-intro {
-		text-align: center;
-		padding: var(--sp-6);
-		background: var(--color-background-secondary);
+	/* Panels */
+	.panel {
+		background: var(--color-card);
 		border: 1px solid var(--color-border-light);
 		border-radius: var(--radius-lg);
-		margin-bottom: var(--sp-3);
+		padding: var(--sp-5);
 	}
 
-	.model-selection-intro h2 {
-		margin: 0 0 var(--sp-3) 0;
-		font-family: var(--font-family-primary);
-		font-size: 1.5rem;
-		font-weight: 700;
-		color: var(--color-text-primary);
+	.panel-header {
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: space-between;
+		margin-bottom: var(--sp-3);
+		flex-wrap: wrap;
 		gap: var(--sp-2);
 	}
 
-	.title-icon {
-		display: flex;
-		align-items: center;
-		color: var(--color-primary);
-	}
-
-	.title-icon :global(svg) {
-		width: 1.5rem;
-		height: 1.5rem;
-	}
-
-	.model-selection-intro p {
+	.panel-header h3 {
 		margin: 0;
-		font-size: 1rem;
-		color: var(--color-text-secondary);
-	}
-
-	.text-input-section {
-		background: var(--color-card);
-		border: 1px solid var(--color-border-light);
-		padding: var(--sp-5);
-		box-shadow: var(--shadow-sm);
-		border-radius: var(--radius-lg);
-		overflow: hidden;
-	}
-
-	.section-header {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		margin-bottom: var(--sp-3);
-		flex-wrap: wrap;
-		gap: var(--sp-3);
-	}
-
-	.title-and-icons {
-		display: flex;
-		align-items: center;
-		gap: var(--sp-3);
-	}
-
-	.button-group.mobile-icons {
-		display: none;
-	}
-
-	.desktop-only {
-		display: flex;
-		align-items: center;
-		gap: var(--sp-3);
-	}
-
-	.mobile-stats {
-		display: none;
-		margin-bottom: var(--sp-3);
-	}
-
-	.section-header h3 {
-		margin: 0;
-		font-size: 1rem;
+		font-size: 0.9375rem;
 		font-weight: 600;
 		color: var(--color-text-primary);
 	}
 
-	.text-input-wrapper {
-		position: relative;
+	.panel-toolbar {
+		display: flex;
+		align-items: center;
+		gap: var(--sp-3);
 	}
 
+	.icon-group {
+		display: flex;
+		gap: var(--sp-1);
+	}
+
+	.icon-btn {
+		width: 32px;
+		height: 32px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: var(--color-background-secondary);
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-sm);
+		color: var(--color-text-secondary);
+		cursor: pointer;
+		transition: all var(--transition-fast);
+	}
+
+	.icon-btn :global(svg) {
+		width: 15px;
+		height: 15px;
+	}
+
+	.icon-btn:hover:not(:disabled) {
+		background: var(--color-accent-primary-alpha);
+		color: var(--color-primary);
+		border-color: var(--color-primary);
+	}
+
+	.icon-btn:disabled {
+		opacity: 0.35;
+		cursor: not-allowed;
+	}
+
+	/* Textarea */
 	.text-input {
 		width: 100%;
-		min-height: 160px;
+		min-height: 150px;
 		padding: var(--sp-3);
 		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-md);
+		background: var(--color-background-main);
+		color: var(--color-text-primary);
 		font-family: var(--font-family-primary);
 		font-size: 0.9375rem;
+		line-height: 1.6;
 		resize: vertical;
 		box-sizing: border-box;
-		background: var(--color-background-main);
-		border-radius: var(--radius-md);
 		transition: border-color var(--transition-fast);
-		color: var(--color-text-primary);
 	}
 
 	.text-input:focus {
@@ -700,208 +647,128 @@
 		cursor: not-allowed;
 	}
 
-	.stats-and-buttons {
-		display: flex;
-		align-items: center;
-		gap: var(--sp-3);
-		flex-shrink: 0;
-		min-width: 0;
+	/* Controls */
+	.controls-panel {
+		padding: var(--sp-4) var(--sp-5);
 	}
 
-	.button-group {
-		display: flex;
-		gap: var(--sp-1);
-		flex-shrink: 0;
-	}
-
-	.dice-button,
-	.copy-button,
-	.clear-button {
-		width: 32px;
-		height: 32px;
-		background: var(--color-background-secondary);
-		border: 1px solid var(--color-border-light);
-		border-radius: var(--radius-sm);
-		cursor: pointer;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		transition: all var(--transition-fast);
-		color: var(--color-text-secondary);
-	}
-
-	.dice-button :global(svg),
-	.copy-button :global(svg),
-	.clear-button :global(svg) {
-		width: 16px;
-		height: 16px;
-	}
-
-	.copy-button:disabled {
-		opacity: 0.4;
-		cursor: not-allowed;
-	}
-
-	.dice-button:hover,
-	.copy-button:hover:not(:disabled),
-	.clear-button:hover {
-		background: var(--color-primary-subtle);
-		color: var(--color-primary);
-		border-color: var(--color-primary);
-	}
-
-	.controls-section {
-		background: var(--color-background-secondary);
-		border: 1px solid var(--color-border-light);
-		padding: var(--sp-5);
-		border-radius: var(--radius-lg);
-	}
-
-	.controls-grid {
+	.controls-row {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-		gap: var(--sp-4);
-		margin-bottom: var(--sp-3);
+		grid-template-columns: 1fr 1fr;
+		gap: var(--sp-5);
+		align-items: end;
 	}
 
-	.control-item {
+	.control-field {
 		display: flex;
 		flex-direction: column;
 		gap: var(--sp-2);
 	}
 
-	.control-item label {
+	.control-field > label {
 		font-size: 0.8125rem;
 		font-weight: 600;
 		color: var(--color-text-secondary);
 	}
 
-	.action-buttons {
+	/* Action buttons */
+	.action-row {
 		display: flex;
 		gap: var(--sp-3);
-		flex-wrap: wrap;
 		justify-content: center;
 	}
 
-	.primary-action-btn,
-	.secondary-action-btn {
+	.generate-btn,
+	.download-btn {
 		display: flex;
 		align-items: center;
 		gap: var(--sp-2);
 		padding: var(--sp-3) var(--sp-5);
 		border: none;
 		border-radius: var(--radius-md);
-		cursor: pointer;
-		font-size: 1rem;
+		font-size: 0.9375rem;
 		font-weight: 600;
-		transition: all var(--transition-fast);
 		font-family: var(--font-family-primary);
-		box-shadow: var(--shadow-sm);
+		cursor: pointer;
+		transition: all var(--transition-fast);
 	}
 
-	.primary-action-btn {
-		background: var(--color-success);
+	.generate-btn {
+		background: var(--color-primary);
 		color: #fff;
 	}
 
-	.primary-action-btn.playing {
+	.generate-btn.playing {
 		background: var(--color-warning);
 		color: #000;
 	}
 
-	.primary-action-btn:hover:not(:disabled) {
+	.generate-btn:hover:not(:disabled) {
+		filter: brightness(1.08);
 		transform: translateY(-1px);
 		box-shadow: var(--shadow-md);
 	}
 
-	.primary-action-btn:disabled {
-		opacity: 0.5;
+	.generate-btn:disabled {
+		opacity: 0.45;
 		cursor: not-allowed;
 	}
 
-	.secondary-action-btn {
+	.download-btn {
 		background: var(--color-card);
 		color: var(--color-text-primary);
 		border: 1px solid var(--color-border-light);
 	}
 
-	.secondary-action-btn:hover:not(:disabled) {
-		background: var(--color-primary-subtle);
+	.download-btn:hover:not(:disabled) {
 		border-color: var(--color-primary);
 		color: var(--color-primary);
 		transform: translateY(-1px);
 		box-shadow: var(--shadow-md);
 	}
 
-	.secondary-action-btn:disabled {
-		opacity: 0.5;
+	.download-btn:disabled {
+		opacity: 0.45;
 		cursor: not-allowed;
 	}
 
-	.primary-action-btn :global(svg),
-	.secondary-action-btn :global(svg) {
-		width: 1.25rem;
-		height: 1.25rem;
+	.generate-btn :global(svg),
+	.download-btn :global(svg) {
+		width: 18px;
+		height: 18px;
 	}
 
 	.hidden {
 		display: none;
 	}
 
-	@media (max-width: 768px) {
-		.controls-grid {
-			grid-template-columns: 1fr;
+	@media (max-width: 640px) {
+		.page-container {
+			padding: var(--sp-4) var(--sp-3);
 		}
 
-		.action-buttons {
-			flex-direction: column;
-		}
-
-		.primary-action-btn,
-		.secondary-action-btn {
-			width: 100%;
-			justify-content: center;
-		}
-	}
-
-	@media (max-width: 600px) {
-		.text-input-section {
+		.panel {
 			padding: var(--sp-4);
 		}
 
-		.section-header {
+		.panel-header {
 			flex-direction: column;
 			align-items: flex-start;
-			gap: var(--sp-2);
 		}
 
-		.title-and-icons {
+		.controls-row {
+			grid-template-columns: 1fr;
+			gap: var(--sp-4);
+		}
+
+		.action-row {
+			flex-direction: column;
+		}
+
+		.generate-btn,
+		.download-btn {
 			width: 100%;
-			justify-content: space-between;
-		}
-
-		.button-group.mobile-icons {
-			display: flex;
-		}
-
-		.desktop-only {
-			display: none;
-		}
-
-		.mobile-stats {
-			display: block;
-		}
-
-		.controls-section {
-			padding: var(--sp-4);
-		}
-
-		.model-selection-intro {
-			padding: var(--sp-4);
-		}
-
-		.model-selection-intro h2 {
-			font-size: 1.25rem;
+			justify-content: center;
 		}
 	}
 </style>
