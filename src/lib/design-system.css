@@ -28,9 +28,12 @@
 	--color-text-inverse: #ffffff;
 
 	/* Primary accent (light) — soft purple */
-	--color-primary: #7c5cff;
+	/* --color-primary: #7c5cff;
 	--color-primary-dark: #6746e6;
-	--color-primary-hover: #6b4be8;
+	--color-primary-hover: #6b4be8; */
+	--color-primary: #0ac4e0;
+	--color-primary-dark: #079fb0;
+	--color-primary-hover: #0791a0;
 
 	/* Button text on primary */
 	--color-button-text: #ffffff;
@@ -41,11 +44,11 @@
 
 	/* States */
 	/* Accent formerly green — replaced with amber/gold to pair with purple & white */
-	--color-success: #f59e0b; /* amber */
-	--color-success-hover: #d97706; /* slightly darker for hover */
+	--color-success: #ffea95;
+	--color-success-hover: #fce380; /* slightly darker for hover */
 	--color-success-active: #fbbf24; /* lighter amber for active states */
 	--color-danger: #ef4444;
-	--color-warning: #f59e0b;
+	--color-warning: #fce380;
 
 	/* Radii */
 	--card-radius: 12px;
@@ -81,8 +84,8 @@
 	--color-primary-hover: #0791a0;
 
 	/* Keep success accent consistent in dark mode */
-	--color-success: #f59e0b;
-	--color-success-hover: #d97706;
+	--color-success: #ffea95;
+	--color-success-hover: #fce380;
 	--color-success-active: #fbbf24; /* lighter amber for active states */
 
 	--color-step-badge: var(--color-primary);

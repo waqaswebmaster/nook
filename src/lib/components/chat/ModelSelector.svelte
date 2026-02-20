@@ -140,6 +140,21 @@
 		}
 	}
 
+	/* Ensure the load model button text/icon remain black regardless of theme */
+	.load-button {
+		color: var(--color-black) !important;
+	}
+
+	.load-button .button-icon,
+	.load-button .loading-icon {
+		color: var(--color-black) !important;
+	}
+
+	.load-button svg {
+		/* some icons may not inherit color automatically */
+		fill: currentColor;
+	}
+
 	/* step header handled by shared `StepHeader` component */
 
 	/* Override StepHeader background + badge for chat page */
@@ -222,6 +237,7 @@
 		transform: translate(-2px, -2px) rotate(0deg);
 		box-shadow: var(--shadow-brutalist-large);
 		border-color: var(--color-text-primary);
+		color: var(--color-text-primary); /* ensure text inherits dark color */
 	}
 
 	.model-card.active:not(:disabled):hover {
@@ -241,6 +257,11 @@
 		box-shadow: var(--shadow-brutalist-small);
 		position: relative;
 		z-index: 1;
+	}
+	/* when card is active turn icon and its background darker */
+	.model-card.active .model-icon {
+		background: #ffffff;
+		color: #0f1724;
 	}
 
 	.model-icon :global(svg) {
@@ -264,6 +285,9 @@
 		letter-spacing: 0.5px;
 		color: var(--color-text-primary);
 		line-height: 1.2;
+	}
+	.model-card.active .model-header h4 {
+		color: #0f1724;
 	}
 
 	.model-size {
@@ -316,6 +340,10 @@
 		letter-spacing: 0.25px;
 		line-height: 1.2;
 		text-align: center;
+	}
+	/* ensure pros text stays dark when card active */
+	.model-card.active .pros-text {
+		color: var(--color-text-primary);
 	}
 
 	/* Advanced Section */
@@ -463,6 +491,15 @@
 		color: var(--color-text-primary);
 	}
 
+	/* force black text/icon for the load button regardless of theme */
+	.load-button .button-icon,
+	.load-button .loading-icon {
+		color: var(--color-black) !important;
+	}
+	.load-button svg {
+		fill: currentColor;
+	}
+
 	.button-icon :global(svg),
 	.loading-icon :global(svg) {
 		width: 1.5rem;
@@ -569,14 +606,8 @@
 	}
 
 	@media (max-width: 600px) {
-		.model-selection,
 		.advanced-section {
 			padding: 1rem;
-		}
-
-		.model-selection h3,
-		.advanced-section h3 {
-			font-size: 1.5rem;
 		}
 
 		.model-icon {
