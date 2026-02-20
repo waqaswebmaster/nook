@@ -84,8 +84,10 @@
 
 <style>
 	.input-area {
-		padding: 1rem 1.25rem;
+		padding: var(--sp-3) var(--sp-4);
+		background: var(--color-background-secondary);
 		border-top: 1px solid var(--color-border-light);
+		flex-shrink: 0;
 	}
 
 	.message-input {

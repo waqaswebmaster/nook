@@ -16,12 +16,10 @@
 
 	import LoadingProgress from '$lib/components/common/LoadingProgress.svelte';
 	import ErrorDisplay from '$lib/components/common/ErrorDisplay.svelte';
+	import PageHeader from '$lib/components/common/PageHeader.svelte';
 	import ModelSelector from '$lib/components/chat/ModelSelector.svelte';
 	import ChatMessages from '$lib/components/chat/ChatMessages.svelte';
 	import MessageInput from '$lib/components/chat/MessageInput.svelte';
-	import CardInterface from '$lib/components/common/CardInterface.svelte';
-	import Toolbar from '$lib/components/common/Toolbar.svelte';
-	import ActionButton from '$lib/components/common/ActionButton.svelte';
 
 	let wllama: Wllama;
 	let isLoading = $state(false);
@@ -261,7 +259,13 @@
 
 <div class="chat-page" class:chat-mode={isModelLoaded}>
 	{#if !isModelLoaded}
-		<div class="loading">
+		<div class="setup-view">
+			<PageHeader
+				title="Chat with AI"
+				subtitle="Run language models locally in your browser — no data leaves your device."
+				Icon={BotIcon}
+			/>
+
 			{#if downloadError}
 				<ErrorDisplay
 					message="Failed to load model. Please check your connection and try again."
@@ -281,12 +285,18 @@
 			{/if}
 		</div>
 	{:else}
-		<CardInterface fixedHeight={true}>
-			<Toolbar modelInfo={selectedModel.name} ModelIcon={BotIcon} variant="studio">
-				<ActionButton onClick={newChat} Icon={SparklesIcon}>
-					New <span class="desktop-only">Chat</span>
-				</ActionButton>
-			</Toolbar>
+		<!-- Chat mode: toolbar + messages + input -->
+		<div class="chat-shell">
+			<header class="chat-toolbar">
+				<div class="chat-toolbar-info">
+					<span class="chat-toolbar-icon"><BotIcon /></span>
+					<span class="chat-toolbar-name">{selectedModel.name}</span>
+				</div>
+				<button class="new-chat-btn" onclick={newChat}>
+					<SparklesIcon />
+					<span>New Chat</span>
+				</button>
+			</header>
 
 			<ChatMessages bind:this={chatMessagesComponent} messages={$messages} {isGenerating} />
 
@@ -297,53 +307,31 @@
 				onSend={sendMessage}
 				onStop={stopGeneration}
 			/>
-		</CardInterface>
+		</div>
 	{/if}
 </div>
 
 <style>
-	/* Chat page wrapper */
 	.chat-page {
 		width: 100%;
 		display: flex;
 		flex-direction: column;
 	}
 
-	/* When in chat mode (model loaded), apply height constraints */
-	.chat-page.chat-mode {
-		height: calc(100vh - var(--nav-height) - var(--sp-8));
-		overflow: hidden;
-	}
-
-	/* Apply flex and scrolling constraints to fixed-height CardInterfaces in chat mode */
-	.chat-page.chat-mode :global(.card-interface.fixed-height) {
-		flex: 1;
-		min-height: 0;
-	}
-
-	/* Apply flex and scrolling constraints to content areas in chat mode */
-	.chat-page.chat-mode :global(.card-interface.fixed-height .content-area) {
-		flex: 1;
-		min-height: 0;
-		overflow-y: auto;
-	}
-
-	.loading {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: var(--sp-6);
-		animation: fadeIn 0.35s ease-out;
+	/* ── Setup view (before model loaded) ── */
+	.setup-view {
+		max-width: 680px;
+		margin: 0 auto;
+		padding: var(--sp-6) var(--sp-4);
 		width: 100%;
 		box-sizing: border-box;
-		overflow-x: hidden;
-		padding: 0;
+		animation: fadeIn 0.3s ease-out;
 	}
 
 	@keyframes fadeIn {
 		from {
 			opacity: 0;
-			transform: translateY(10px);
+			transform: translateY(8px);
 		}
 		to {
 			opacity: 1;
@@ -351,17 +339,89 @@
 		}
 	}
 
+	/* ── Chat mode (model loaded) ── */
+	.chat-page.chat-mode {
+		height: calc(100vh - var(--nav-height) - var(--sp-8));
+		overflow: hidden;
+	}
+
+	.chat-shell {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+		min-height: 0;
+		height: 100%;
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+		background: var(--color-background-main);
+	}
+
+	/* Toolbar */
+	.chat-toolbar {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: var(--sp-3) var(--sp-4);
+		background: var(--color-background-secondary);
+		border-bottom: 1px solid var(--color-border-light);
+		flex-shrink: 0;
+	}
+
+	.chat-toolbar-info {
+		display: flex;
+		align-items: center;
+		gap: var(--sp-2);
+		color: var(--color-text-secondary);
+		font-size: 0.8125rem;
+		font-weight: 600;
+	}
+
+	.chat-toolbar-icon {
+		display: flex;
+		align-items: center;
+		color: var(--color-primary);
+	}
+
+	.chat-toolbar-icon :global(svg) {
+		width: 18px;
+		height: 18px;
+	}
+
+	.new-chat-btn {
+		display: flex;
+		align-items: center;
+		gap: var(--sp-1);
+		padding: var(--sp-2) var(--sp-3);
+		background: var(--color-background-secondary);
+		border: 1px solid var(--color-border-light);
+		border-radius: var(--radius-md);
+		color: var(--color-text-secondary);
+		font-size: 0.8125rem;
+		font-weight: 600;
+		font-family: var(--font-family-primary);
+		cursor: pointer;
+		transition: all var(--transition-fast);
+	}
+
+	.new-chat-btn :global(svg) {
+		width: 14px;
+		height: 14px;
+	}
+
+	.new-chat-btn:hover {
+		border-color: var(--color-primary);
+		color: var(--color-primary);
+		background: var(--color-accent-primary-alpha);
+	}
+
 	@media (max-width: 768px) {
 		.chat-page.chat-mode {
 			height: calc(100vh - var(--nav-height) - var(--sp-6));
 		}
 
-		.loading {
-			align-items: stretch;
-		}
-
-		.desktop-only {
-			display: none;
+		.setup-view {
+			padding: var(--sp-4) var(--sp-3);
 		}
 	}
 </style>

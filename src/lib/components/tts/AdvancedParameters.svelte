@@ -19,41 +19,25 @@
 </script>
 
 {#if hasAdvancedOptions}
-	<div class="advanced-section">
-		<AdvancedSection>
-			{#if selectedModel === 'kitten' || selectedModel === 'kokoro'}
-				<div class="param-item">
-					<WebGPUToggle modelValue={useWebGPU} onUpdate={onWebGPUToggle} />
-				</div>
-			{/if}
+	<AdvancedSection>
+		{#if selectedModel === 'kitten' || selectedModel === 'kokoro'}
+			<div class="param-item">
+				<WebGPUToggle modelValue={useWebGPU} onUpdate={onWebGPUToggle} />
+			</div>
+		{/if}
 
-			{#if selectedModel === 'kitten'}
-				<div class="param-item">
-					<SampleRateSelector {selectedSampleRate} {onSampleRateChange} />
-				</div>
-			{/if}
-		</AdvancedSection>
-	</div>
+		{#if selectedModel === 'kitten'}
+			<div class="param-item">
+				<SampleRateSelector {selectedSampleRate} {onSampleRateChange} />
+			</div>
+		{/if}
+	</AdvancedSection>
 {/if}
 
 <style>
-	.advanced-section {
-		background: var(--color-card);
-		border: 1px solid var(--color-border-light);
-		padding: var(--sp-5);
-		border-radius: var(--radius-lg);
-		margin-bottom: var(--sp-3);
-	}
-
 	.param-item {
 		display: flex;
 		flex-direction: column;
 		gap: 0.375rem;
-	}
-
-	@media (max-width: 768px) {
-		.advanced-section {
-			padding: var(--sp-4);
-		}
 	}
 </style>

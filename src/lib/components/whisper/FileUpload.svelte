@@ -91,20 +91,20 @@
 
 <style>
 	.file-upload {
-		margin-top: 1rem;
+		margin-top: 0;
 	}
 
 	.upload-area {
-		border: 2px dashed var(--color-border-light);
+		border: 2px dashed var(--color-border);
 		padding: 2rem;
 		text-align: center;
-		background: var(--color-card);
+		background: var(--color-background-secondary);
 		cursor: pointer;
 		transition:
-			border-color 0.2s,
-			background 0.2s;
+			border-color 0.15s,
+			background 0.15s;
 		position: relative;
-		border-radius: var(--radius-lg);
+		border-radius: var(--radius-md);
 	}
 
 	.upload-area.drag-over {
@@ -163,14 +163,13 @@
 	}
 
 	.file-selected {
-		background: var(--color-card);
-		border: 1px solid var(--color-border-light);
-		box-shadow: var(--shadow-sm);
-		padding: 1.25rem;
+		background: var(--color-background-secondary);
+		border: 1px solid var(--color-border);
+		padding: 1rem;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		border-radius: var(--radius-lg);
+		border-radius: var(--radius-md);
 		animation: slideIn 0.2s ease-out;
 	}
 

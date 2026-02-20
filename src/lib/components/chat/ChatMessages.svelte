@@ -59,8 +59,6 @@
 		background: var(--color-background-main);
 		width: 100%;
 		box-sizing: border-box;
-		border-left: 1px solid var(--color-border-light);
-		border-right: 1px solid var(--color-border-light);
 	}
 
 	.chat-decoration {

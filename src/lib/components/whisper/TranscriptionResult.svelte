@@ -71,60 +71,51 @@
 </script>
 
 <div class="result-wrapper">
-	<div class="result">
-		<div class="result-content">
-			<div class="result-header">
-				<h3>
-					<span class="header-icon"><FileTextIcon /></span>
-					Transcription Result
-				</h3>
-				<div class="result-actions">
-					{#if transcriptionData?.transcription?.length}
-						<div class="tab-selectors">
-							<button class:active={activeTab === 'text'} onclick={() => (activeTab = 'text')}>
-								Text
-							</button>
-							<button class:active={activeTab === 'srt'} onclick={() => (activeTab = 'srt')}>
-								SRT
-							</button>
-						</div>
-					{/if}
-
-					<button class="copy-btn" onclick={copyToClipboard} class:copied={hasCopied}>
-						{#if hasCopied}
-							<span class="copy-icon"><CheckCircleIcon /></span>
-							Copied!
-						{:else}
-							<span class="copy-icon"><ClipboardIcon /></span>
-							Copy
-						{/if}
-					</button>
-				</div>
-			</div>
-
-			<div class="result-text-container">
-				{#if !transcriptionData?.transcription?.length || activeTab === 'text'}
-					<p class="result-text">{text}</p>
-				{:else if activeTab === 'srt' && transcriptionData?.transcription?.length}
-					<pre class="srt-preview">{convertToSRT()}</pre>
-				{/if}
-			</div>
+	<div class="result-header">
+		<div class="result-tabs">
+			{#if transcriptionData?.transcription?.length}
+				<button
+					class="tab"
+					class:active={activeTab === 'text'}
+					onclick={() => (activeTab = 'text')}
+				>
+					Text
+				</button>
+				<button class="tab" class:active={activeTab === 'srt'} onclick={() => (activeTab = 'srt')}>
+					SRT
+				</button>
+			{:else}
+				<span class="result-label"><FileTextIcon /> Output</span>
+			{/if}
 		</div>
+
+		<button class="copy-btn" onclick={copyToClipboard} class:copied={hasCopied}>
+			{#if hasCopied}
+				<CheckCircleIcon /> Copied
+			{:else}
+				<ClipboardIcon /> Copy
+			{/if}
+		</button>
+	</div>
+
+	<div class="result-body">
+		{#if !transcriptionData?.transcription?.length || activeTab === 'text'}
+			<p class="result-text">{text}</p>
+		{:else if activeTab === 'srt' && transcriptionData?.transcription?.length}
+			<pre class="srt-preview">{convertToSRT()}</pre>
+		{/if}
 	</div>
 </div>
 
 <style>
 	.result-wrapper {
-		display: flex;
-		margin: 1.5rem 0;
-		width: 100%;
-		animation: fadeIn 0.3s ease-out;
+		animation: fadeIn 0.25s ease-out;
 	}
 
 	@keyframes fadeIn {
 		from {
 			opacity: 0;
-			transform: translateY(8px);
+			transform: translateY(6px);
 		}
 		to {
 			opacity: 1;
@@ -132,97 +123,98 @@
 		}
 	}
 
-	.result {
-		position: relative;
-		width: 100%;
-	}
-
-	.result-content {
-		padding: 1.5rem;
-		background: var(--color-card);
-		border: 1px solid var(--color-border-light);
-		border-radius: var(--radius-lg);
-		box-shadow: var(--shadow-sm);
-	}
-
 	.result-header {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		margin-bottom: 1.25rem;
-		flex-wrap: wrap;
-		gap: 1rem;
-		padding-bottom: 1rem;
-		border-bottom: 1px solid var(--color-border-light);
+		margin-bottom: var(--sp-3);
+		gap: var(--sp-3);
 	}
 
-	.result-content h3 {
-		margin: 0;
-		font-size: 1.125rem;
-		font-weight: 600;
-		color: var(--color-text-primary);
+	.result-tabs {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
+		gap: var(--sp-1);
 	}
 
-	.header-icon {
-		display: flex;
+	.result-label {
+		display: inline-flex;
 		align-items: center;
-		color: var(--color-primary);
-	}
-
-	.header-icon :global(svg) {
-		width: 1.25rem;
-		height: 1.25rem;
-	}
-
-	.result-actions {
-		display: flex;
-		align-items: center;
-		gap: 0.75rem;
-	}
-
-	/* Tab selectors */
-	.tab-selectors {
-		display: flex;
-		border: 1px solid var(--color-border-light);
-		border-radius: var(--radius-md);
-		overflow: hidden;
-	}
-
-	.tab-selectors button {
-		padding: 0.5rem 1rem;
-		background: var(--color-card);
-		border: none;
-		cursor: pointer;
+		gap: 0.375rem;
 		font-size: 0.875rem;
+		font-weight: 600;
+		color: var(--color-text-secondary);
+	}
+
+	.result-label :global(svg) {
+		width: 0.875rem;
+		height: 0.875rem;
+	}
+
+	.tab {
+		padding: 0.25rem 0.75rem;
+		font-size: 0.8125rem;
 		font-weight: 500;
 		color: var(--color-text-secondary);
-		transition: all 0.15s ease;
-		font-family: inherit;
-	}
-
-	.tab-selectors button:not(:last-child) {
-		border-right: 1px solid var(--color-border-light);
-	}
-
-	.tab-selectors button:hover:not(.active) {
-		background: var(--color-accent-primary-alpha);
-	}
-
-	.tab-selectors button.active {
-		background: var(--color-primary);
-		color: white;
-	}
-
-	/* Result text container */
-	.result-text-container {
-		background: var(--color-accent-primary-alpha);
-		border: 1px solid var(--color-border-light);
+		background: none;
+		border: 1px solid var(--color-border);
 		border-radius: var(--radius-md);
-		padding: 1.25rem;
-		min-height: 100px;
+		cursor: pointer;
+		font-family: var(--font-family-primary);
+		transition:
+			color 0.15s,
+			background 0.15s,
+			border-color 0.15s;
+	}
+
+	.tab:hover {
+		background: var(--color-background-secondary);
+	}
+
+	.tab.active {
+		color: var(--color-primary);
+		background: var(--color-accent-primary-alpha);
+		border-color: var(--color-primary);
+	}
+
+	.copy-btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.375rem;
+		padding: 0.375rem 0.75rem;
+		font-size: 0.8125rem;
+		font-weight: 500;
+		color: var(--color-text-secondary);
+		background: none;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-md);
+		cursor: pointer;
+		font-family: var(--font-family-primary);
+		transition:
+			color 0.15s,
+			border-color 0.15s;
+	}
+
+	.copy-btn :global(svg) {
+		width: 0.875rem;
+		height: 0.875rem;
+	}
+
+	.copy-btn:hover {
+		border-color: var(--color-primary);
+		color: var(--color-text-primary);
+	}
+
+	.copy-btn.copied {
+		color: var(--color-success, #16a34a);
+		border-color: var(--color-success, #16a34a);
+	}
+
+	.result-body {
+		background: var(--color-background-secondary);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-md);
+		padding: var(--sp-4);
 		max-height: 400px;
 		overflow-y: auto;
 	}
@@ -236,110 +228,41 @@
 		word-break: break-word;
 	}
 
-	/* SRT Preview */
 	.srt-preview {
+		margin: 0;
 		font-family: monospace;
-		font-size: 0.875rem;
+		font-size: 0.8125rem;
 		line-height: 1.5;
 		white-space: pre-wrap;
-		background: var(--color-card);
-		padding: 1rem;
-		border: 1px solid var(--color-border-light);
-		border-radius: var(--radius-sm);
-		overflow-x: auto;
-		margin: 0;
 		color: var(--color-text-primary);
 	}
 
-	.copy-btn {
-		display: flex;
-		align-items: center;
-		gap: 0.375rem;
-		padding: 0.5rem 1rem;
-		background: var(--color-primary);
-		color: white;
-		border: none;
-		border-radius: var(--radius-md);
-		cursor: pointer;
-		font-size: 0.875rem;
-		font-weight: 500;
-		transition: opacity 0.15s ease;
-		font-family: inherit;
+	.result-body::-webkit-scrollbar {
+		width: 5px;
 	}
 
-	.copy-btn:hover {
-		opacity: 0.85;
-	}
-
-	.copy-btn.copied {
-		background: var(--color-success);
-	}
-
-	.copy-icon {
-		display: flex;
-		align-items: center;
-	}
-
-	.copy-icon :global(svg) {
-		width: 1rem;
-		height: 1rem;
-	}
-
-	/* Custom scrollbar */
-	.result-text-container::-webkit-scrollbar {
-		width: 6px;
-	}
-
-	.result-text-container::-webkit-scrollbar-track {
+	.result-body::-webkit-scrollbar-track {
 		background: transparent;
 	}
 
-	.result-text-container::-webkit-scrollbar-thumb {
-		background: var(--color-border-light);
+	.result-body::-webkit-scrollbar-thumb {
+		background: var(--color-border);
 		border-radius: 3px;
 	}
 
-	.result-text-container::-webkit-scrollbar-thumb:hover {
-		background: var(--color-text-secondary);
-	}
-
-	@media (max-width: 600px) {
-		.result-content {
-			padding: 1.25rem;
-		}
-
+	@media (max-width: 480px) {
 		.result-header {
 			flex-direction: column;
-			align-items: flex-start;
-			gap: 0.75rem;
-		}
-
-		.result-content h3 {
-			font-size: 1rem;
-		}
-
-		.result-actions {
-			width: 100%;
-			flex-direction: column;
 			align-items: stretch;
-			gap: 0.5rem;
 		}
 
-		.tab-selectors {
+		.result-tabs {
 			width: 100%;
 		}
 
-		.tab-selectors button {
+		.tab {
 			flex: 1;
-		}
-
-		.copy-btn {
-			width: 100%;
-			justify-content: center;
-		}
-
-		.result-text-container {
-			padding: 1rem;
+			text-align: center;
 		}
 	}
 </style>

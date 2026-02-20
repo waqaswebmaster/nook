@@ -1,6 +1,5 @@
 <script lang="ts">
 	import ProgressBar from '$lib/components/common/ProgressBar.svelte';
-	import HeadphonesIcon from 'virtual:icons/lucide/headphones';
 	import ZapIcon from 'virtual:icons/lucide/zap';
 	import AlertTriangleIcon from 'virtual:icons/lucide/alert-triangle';
 
@@ -22,11 +21,10 @@
 </script>
 
 <div class="transcribing">
-	<h3>
-		<span class="title-icon"><HeadphonesIcon /></span>
-		Transcribing Audio
-	</h3>
-	<p class="progress-percentage">{progress}% Complete</p>
+	<div class="progress-top">
+		<span class="progress-label">Transcribing…</span>
+		<span class="progress-pct">{progress}%</span>
+	</div>
 
 	<div class="progress-wrapper">
 		<ProgressBar {progress} {previousProgress} />
@@ -34,22 +32,19 @@
 
 	{#if currentSegment}
 		<div class="segment-preview">
-			<h4>Current Segment</h4>
+			<span class="segment-label">Current segment</span>
 			<p>"{currentSegment}"</p>
 		</div>
 	{/if}
 
 	{#if isStuck}
 		<div class="stuck-message">
-			<span class="warning-icon"><AlertTriangleIcon /></span>
-			Transcription seems stuck
-			<button class="reload-link" onclick={onReload}> Reload Page → </button>
+			<AlertTriangleIcon />
+			Transcription seems stuck.
+			<button class="reload-link" onclick={onReload}>Reload page</button>
 		</div>
 	{:else}
-		<div class="transcribing-message">
-			<span class="pulse-icon"><ZapIcon /></span>
-			Keep this tab active during transcription
-		</div>
+		<p class="hint"><ZapIcon /> Keep this tab active during transcription</p>
 	{/if}
 </div>
 
@@ -57,20 +52,14 @@
 	.transcribing {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
-		padding: 2rem;
-		background: var(--color-card);
-		border: 1px solid var(--color-border-light);
-		border-radius: var(--radius-lg);
-		box-shadow: var(--shadow-sm);
-		margin: 1.5rem 0;
-		animation: fadeIn 0.3s ease-out;
+		gap: var(--sp-4);
+		animation: fadeIn 0.25s ease-out;
 	}
 
 	@keyframes fadeIn {
 		from {
 			opacity: 0;
-			transform: translateY(8px);
+			transform: translateY(4px);
 		}
 		to {
 			opacity: 1;
@@ -78,107 +67,65 @@
 		}
 	}
 
-	.transcribing h3 {
-		margin-top: 0;
-		margin-bottom: 1rem;
-		font-size: 1.25rem;
+	.progress-top {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+	}
+
+	.progress-label {
+		font-size: 0.9375rem;
 		font-weight: 600;
 		color: var(--color-text-primary);
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
 	}
 
-	.title-icon {
-		display: flex;
-		align-items: center;
-		color: var(--color-primary);
-	}
-
-	.title-icon :global(svg) {
-		width: 1.25rem;
-		height: 1.25rem;
-	}
-
-	.progress-percentage {
-		font-size: 1.125rem;
+	.progress-pct {
+		font-size: 0.875rem;
 		font-weight: 600;
 		color: var(--color-primary);
-		margin-bottom: 1rem;
 	}
 
 	.progress-wrapper {
 		width: 100%;
-		max-width: 400px;
-		margin-bottom: 1.5rem;
 	}
 
 	.segment-preview {
-		margin: 1rem 0;
-		padding: 1.25rem;
-		background: var(--color-card);
-		border: 1px solid var(--color-border-light);
+		background: var(--color-background-secondary);
+		border: 1px solid var(--color-border);
 		border-radius: var(--radius-md);
-		box-shadow: var(--shadow-xs);
-		width: 100%;
-		max-width: 500px;
-		animation: slideIn 0.3s ease-out;
+		padding: var(--sp-3);
 	}
 
-	@keyframes slideIn {
-		from {
-			transform: translateY(8px);
-			opacity: 0;
-		}
-		to {
-			transform: translateY(0);
-			opacity: 1;
-		}
-	}
-
-	.segment-preview h4 {
-		margin: 0 0 0.5rem 0;
-		font-size: 0.8125rem;
+	.segment-label {
+		font-size: 0.75rem;
 		font-weight: 600;
-		color: var(--color-text-secondary);
-		letter-spacing: 0.025em;
+		color: var(--color-text-tertiary);
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
 	}
 
 	.segment-preview p {
-		margin: 0;
-		font-size: 0.9375rem;
-		line-height: 1.5;
-		color: var(--color-text-primary);
-		font-style: italic;
-		padding: 0.75rem;
-		background: var(--color-accent-primary-alpha);
-		border-radius: var(--radius-sm);
-	}
-
-	.transcribing-message {
-		margin-top: 1rem;
-		color: var(--color-text-secondary);
-		font-weight: 500;
+		margin: var(--sp-1) 0 0;
 		font-size: 0.875rem;
-		text-align: center;
-		padding: 0.75rem 1.25rem;
-		background: var(--color-accent-primary-alpha);
-		border-radius: var(--radius-md);
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
+		line-height: 1.5;
+		color: var(--color-text-secondary);
+		font-style: italic;
 	}
 
-	.pulse-icon {
+	.hint {
 		display: flex;
 		align-items: center;
+		gap: 0.375rem;
+		margin: 0;
+		font-size: 0.8125rem;
+		color: var(--color-text-tertiary);
+	}
+
+	.hint :global(svg) {
+		width: 0.875rem;
+		height: 0.875rem;
 		color: var(--color-primary);
 		animation: flash 2s ease-in-out infinite;
-	}
-
-	.pulse-icon :global(svg) {
-		width: 1rem;
-		height: 1rem;
 	}
 
 	@keyframes flash {
@@ -187,71 +134,43 @@
 			opacity: 1;
 		}
 		50% {
-			opacity: 0.4;
+			opacity: 0.3;
 		}
 	}
 
 	.stuck-message {
-		margin-top: 1rem;
-		color: var(--color-danger);
+		display: flex;
+		align-items: center;
+		gap: var(--sp-2);
+		font-size: 0.8125rem;
 		font-weight: 500;
-		font-size: 0.875rem;
-		text-align: center;
-		padding: 1rem 1.25rem;
-		background: color-mix(in srgb, var(--color-danger) 8%, transparent);
-		border: 1px solid color-mix(in srgb, var(--color-danger) 20%, transparent);
-		border-radius: var(--radius-md);
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 0.75rem;
-	}
-
-	.warning-icon {
-		display: flex;
-		align-items: center;
 		color: var(--color-danger);
+		padding: var(--sp-3);
+		background: color-mix(in srgb, var(--color-danger) 6%, transparent);
+		border: 1px solid color-mix(in srgb, var(--color-danger) 18%, transparent);
+		border-radius: var(--radius-md);
 	}
 
-	.warning-icon :global(svg) {
-		width: 1.5rem;
-		height: 1.5rem;
+	.stuck-message :global(svg) {
+		width: 1rem;
+		height: 1rem;
+		flex-shrink: 0;
 	}
 
 	.reload-link {
-		background: var(--color-primary);
+		margin-left: auto;
+		background: none;
 		border: none;
-		color: white;
-		padding: 0.5rem 1rem;
-		cursor: pointer;
-		font-size: 0.875rem;
+		color: var(--color-primary);
+		font-size: 0.8125rem;
 		font-weight: 600;
-		border-radius: var(--radius-sm);
-		font-family: inherit;
-		transition: opacity 0.15s;
+		cursor: pointer;
+		font-family: var(--font-family-primary);
+		text-decoration: underline;
+		padding: 0;
 	}
 
 	.reload-link:hover {
-		opacity: 0.85;
-	}
-
-	@media (max-width: 600px) {
-		.transcribing {
-			padding: 1.5rem;
-		}
-
-		.transcribing h3 {
-			font-size: 1.125rem;
-		}
-
-		.segment-preview {
-			max-width: none;
-		}
-
-		.transcribing-message,
-		.stuck-message {
-			font-size: 0.8125rem;
-			padding: 0.75rem 1rem;
-		}
+		color: var(--color-primary-hover);
 	}
 </style>
